@@ -26,16 +26,17 @@ export function startQualitySample(){
    this.input.on('pointerdown',(pointer:Phaser.Input.Pointer)=>this.command({x:pointer.worldX,y:pointer.worldY}));
    document.querySelector('#sample-go')!.addEventListener('click',()=>this.command(SAMPLE_MAP.destination));
    document.querySelector('#sample-attack')!.addEventListener('click',()=>this.attack());
-   document.querySelector('#sample-reset')!.addEventListener('click',()=>{this.route=[];this.attacking=false;this.actor.setPosition(240,720).setFlipX(false).play('sample-idle');status('已归位 · 点地面移动');});
+   document.querySelector('#sample-reset')!.addEventListener('click',()=>{this.route=[];this.attacking=false;this.releaseInspection();this.actor.setPosition(240,720).setFlipX(false).play('sample-idle');status('已归位 · 点地面移动');});
    document.querySelector('#sample-overview')!.addEventListener('click',()=>{this.overview=!this.overview;if(this.overview)this.cameras.main.stopFollow().setZoom(.6).centerOn(800,450);else this.cameras.main.setZoom(.8).startFollow(this.actor,true,.08,.08);});
    document.querySelector('#sample-mask')!.addEventListener('click',()=>this.maskLayer.setVisible(!this.maskLayer.visible));
    status('资产已载入 · 点击山路或草地肩部移动');
   }
+  releaseInspection(){(document.querySelector('#sample-frame') as HTMLSelectElement).value='';}
   alignActor(){const f=frameData.frames[String(this.actor.frame.name) as keyof typeof frameData.frames];if(f)this.actor.setOrigin(f.pivot.x,f.pivot.y);}
   command(p:Point){const goal={x:Math.floor(p.x/SAMPLE_MAP.tile),y:Math.floor(p.y/SAMPLE_MAP.tile)};if(!sampleWalkable(goal.x,goal.y)){status('山体、深谷或非通行区不可到达');return false;}
-   const route=path({x:this.actor.x/SAMPLE_MAP.tile,y:this.actor.y/SAMPLE_MAP.tile},goal,sampleWalkable);if(!route.length){status('已在目标附近');return false;}this.route=route.map(p=>({x:p.x*SAMPLE_MAP.tile,y:p.y*SAMPLE_MAP.tile}));if(!this.attacking)this.actor.play('sample-run',true);status('悟空正在按路线前进 · 镜头跟随');return true;
+   const route=path({x:this.actor.x/SAMPLE_MAP.tile,y:this.actor.y/SAMPLE_MAP.tile},goal,sampleWalkable);if(!route.length){status('已在目标附近');return false;}this.releaseInspection();this.route=route.map(p=>({x:p.x*SAMPLE_MAP.tile,y:p.y*SAMPLE_MAP.tile}));if(!this.attacking)this.actor.play('sample-run',true);status('悟空正在按路线前进 · 镜头跟随');return true;
   }
-  attack(){if(this.attacking)return;this.attacking=true;this.actor.play('sample-strike');status('棒击动作试制 · 不对不存在的敌人结算伤害');}
+  attack(){if(this.attacking)return;this.releaseInspection();this.attacking=true;this.actor.play('sample-strike');status('棒击动作试制 · 不对不存在的敌人结算伤害');}
   update(now:number,delta:number){if(!this.actor)return;
    if(last&&delta>0){frames.push(delta);if(frames.length>3600)frames.shift();}last=now;ticks++;
    if(!this.attacking&&this.route.length){let budget=Math.min(delta/1000,.1)*210*sampleSpeed(this.actor.x,this.actor.y);while(budget>0&&this.route.length){const p=this.route[0],dx=p.x-this.actor.x,dy=p.y-this.actor.y,d=Math.hypot(dx,dy),step=Math.min(budget,d);if(d>0){this.actor.x+=dx/d*step;this.actor.y+=dy/d*step;if(Math.abs(dx)>.1)this.actor.setFlipX(dx<0);}budget-=step;if(d<=step+.001)this.route.shift();}if(!this.route.length){this.actor.play('sample-idle');status('已到达 · 可继续点选路线或查看棒击');}}

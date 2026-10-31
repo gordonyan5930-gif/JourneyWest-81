@@ -25,5 +25,6 @@ test('real quality sample: generated assets, UI movement, follow camera, attack,
  await page.locator('#sample-frame').selectOption('6');await page.waitForTimeout(100);await page.screenshot({path:`reports/quality-wukong-idle-${evidenceTag}.png`,fullPage:true});
  for(const frame of ['0','1','2','3','4','5','6','7','8','9','10','11']){await page.locator('#sample-frame').selectOption(frame);const actor=await page.evaluate(()=>(window as any).qualityTest.actor);expect(Math.abs(actor.registeredFootY-actor.y)).toBeLessThan(.5);}
  await page.screenshot({path:`reports/quality-wukong-recovery-${evidenceTag}.png`,fullPage:true});
+ await page.locator('#sample-reset').click();await expect(page.locator('#sample-frame')).toHaveValue('');
  const report=await page.evaluate(()=>(window as any).qualityTest.metrics);writeFileSync(`reports/quality-device-${evidenceTag}.json`,JSON.stringify(report,null,2));console.log('QUALITY_SAMPLE '+JSON.stringify({project:testInfo.project.name,...report}));expect(errors).toEqual([]);
 });

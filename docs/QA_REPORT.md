@@ -80,3 +80,10 @@ Linux Chromium短样本（非真实设备）：WebGL录像20.78FPS/p95 74.99ms�
 Vercel回读c6611ea对应dpl_Djcz77e9c6HpFwrfNXxadG6bx7wk READY、target=null（Preview）；未操作已登录在线浏览器。受保护链接加?sample=quality-b试制，真实设备可导出本机采样；本轮没有生产部署或合并。
 
 本轮响应独立审查5722745715：Quality B v0.2地图保持原WebP，改为11个手绘地形分区和16px缓存网格，草地/树林/浅滩自由绕行，山石/悬崖/深水阻挡；补全图/蒙版对照与真实点击草地、树林、拒绝山体回归。悟空新12姿势（6跑/2待机/4攻击），明确逐帧pivot、alpha64边距最小12px，新增UI逐帧检查。新测试及Canvas/有无录像WebGL结果待本轮CI，不宣称美术/真实设备通过。两张母版PNG原字节仍不可获取，原样归档待补；archive-references脚本可在接收原件后无转换核验入库。
+
+## Quality B v0.2首轮实际证据
+源3b968652，Actions [41203658888](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41203658888) npm ci、TypeScript/Vite、32单元/11浏览器、报告上传全成功。[工件13043289259](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41203658888/artifacts/13043289259)65,356,393字节，2026-11-07 13:04 UTC到期。
+reports/quality-map-overview-*.png与quality-sample-mask-*.png是同一全图镜头底图/地形对照；quality-wukong-idle/recovery-*.png是实际游戏尺寸检视；test-results/quality-sample-*/video.webm记录真实UI草地、树林绕行和镜头/逐帧操作。截图来源CI本地服务器，未声称操作了Vercel登录浏览器；环境不支持直接查看私有ZIP内部，本轮尚未自行肉眼复核运行截图，交独立QA与用户审核。
+地形网格/碰撞层与蒙版共用，单测区分浅溪/深水/山体/悬崖，实测可到达旧走廊外草地/树林。图集32单元包含运行文件hash、12帧边界和脚线参数检查；浏览器实际切帧注册误差<0.5像素，不能替代自然步态和造型连续性审核。归位/行走/攻击会清除逐帧UI选择，避免显示状态与实际播放不一致，后续提交包含此小修并重跑。
+Linux Chromium短样本WebGL录像25.53FPS/p95 53.33ms，无录像WebGL30.34FPS/p95 38.34ms，Canvas57.78FPS/p95 18.35ms；同交互流程但非固定120秒，含蒙版/逐帧检视，不作与旧样本严格增益百分比比较。真实Mac/Safari、含敌人整场与正式美术仍未通过。
+两张正式PNG原件依然未取得：本轮archive-references脚本仅用1×1测试夹具验证原字节保存/尺寸/hash/拒绝覆盖，绝不将夹具当母版；实际原件归档仍阻断。不得因技术成功关闭此项或美术Gate。
