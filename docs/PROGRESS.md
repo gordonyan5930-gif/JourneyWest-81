@@ -91,3 +91,11 @@ Linux Chromium短样本WebGL录像25.53FPS/p95 53.33ms，无录像WebGL30.34FPS/
 源53691dd，run41222784675：46单元通过、13浏览器通过/2失败，报告正确标failed。已复现连续改道问题：575,470尚未到达时反向点230,640，惯性可驶入合法但失去下一路点视线的口袋区域而停滞；修正为每个步进同时保持到下一点LOS，急转先制动，追加精确重现场景单测，未改为等待上一条命令完成。
 另一失败为带录像试验首次命中时已错过前摇，interrupt=0；其他两个浏览器分支均真实两次命中/两次打断/杀敌且唐僧存活，无干预均五箭自然失败。现在真实UI先瞄准、再观察前摇开始后点躯干，保留interrupt断言，不直接改敌人状态。
 首轮录屏probe duration=null，未冒充时长通过；CI显式安装ffmpeg/ffprobe并记录探测错误，再以实际WebM30—60秒为门槛。新增UI增量属性更新、空场景/重试HUD清理、击败后禁用无目标技能；不新增阶段功能。修正后完整CI待记录，Preview READY不代替测试通过。
+
+## v0.4修复验证成功（游戏代码1d147623）
+Actions [41224079296](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41224079296)：npm ci、TypeScript/Vite、47单元、15浏览器、视频探测/报告/工件全部成功。20段全图模拟和Canvas20次真实短途点击到达；连续反向改道重现场景已修复，未等待旧目标完成或放宽目标精度。原地形、护卫/死亡/复活及原件hash回归保留。
+[工件13051106885](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41224079296/artifacts/13051106885)，201966129字节，保留至北京时间2026-11-08 01:31。实际WebM由ffprobe测得59.12秒，路径test-results/quality-experiment-*/video.webm。reports/movement-legacy/smooth-*.png为相同(240,720)→(600,550)实际移动截图；ranged-counter/unprotected-*.png为真实结算对照；movement-ranged-*.json和movement-ten-roundtrips.json保存实际输入与结果。
+同输入路程旧537.30世界像素，新398.40，碰撞回退0；带录像SW环境到达约9.44/5.89秒，Canvas约3.60/3.52秒，均含输入与截图耗时，不把差异作为真实设备性能或步态美术验收。
+带录像战斗：两次真实命中、一次打断、射手HP0，唐僧余20HP；无录像WebGL余40HP、Canvas余100HP。不同输入时机会影响受伤，不选最高结果冒充全环境。三个环境无反击均5次箭矢命中自然失败。无直接damage/改HP浏览器接口。
+本实验UI/录屏流程FPS：WebGL录像13.88/p95 91.67ms、无录像16.63/p95 73.33ms、Canvas44.71/p95 26.67ms；包含取证开销，未达到真实设备或120秒品质验收。所有正式品质Gate保持待验。
+后续提交只补实地图山体遮挡断言、关闭Trace额外截图（录像/失败截图/DOM追踪仍保留）、修正录屏标题为50秒。前后捕获条件改变，不能把随后FPS变化全归因游戏优化；最终检查与证据以PR最新CI为准。

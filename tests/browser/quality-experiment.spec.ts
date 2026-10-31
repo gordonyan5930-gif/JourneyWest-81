@@ -1,7 +1,7 @@
 import {test,expect,type Page} from '@playwright/test';
 import {mkdirSync,writeFileSync} from 'node:fs';
 async function clickWorld(page:Page,x:number,y:number){const canvas=page.locator('canvas');await canvas.scrollIntoViewIfNeeded();const box=(await canvas.boundingBox())!;const c=await page.evaluate(()=>(window as any).qualityTest.camera);await page.mouse.click(box.x+(x-c.x)*c.zoom/960*box.width,box.y+(y-c.y)*c.zoom/540*box.height);}
-test('45-second real UI comparison and ranged counter demonstration',async({page},info)=>{
+test('50-second real UI comparison and ranged counter demonstration',async({page},info)=>{
  test.setTimeout(70000);const start=Date.now(),errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));const renderer=info.project.metadata.renderer==='canvas'?'canvas':'auto';
  await page.goto(`/?sample=quality-b&test&renderer=${renderer}`);await expect(page.locator('#sample-status')).toContainText('资产已载入',{timeout:20000});const started=Date.now();const runs:any[]=[];
  for(const mode of ['legacy','smooth']){await page.locator('#sample-reset').click();await page.locator('#sample-movement').selectOption(mode);await page.locator('#sample-path-compare').check();const t=Date.now();await clickWorld(page,600,550);await page.waitForTimeout(120);mkdirSync('reports',{recursive:true});await page.screenshot({path:`reports/movement-${mode}-${info.project.name}.png`,fullPage:true});await expect.poll(()=>page.evaluate(()=>(window as any).qualityTest.route.length),{timeout:22000}).toBe(0);const actor=await page.evaluate(()=>(window as any).qualityTest.actor);expect(Math.hypot(actor.x-600,actor.y-550)).toBeLessThan(18);runs.push({mode,seconds:(Date.now()-t)/1000,actor,movement:await page.evaluate(()=>(window as any).qualityTest.movement)});}
