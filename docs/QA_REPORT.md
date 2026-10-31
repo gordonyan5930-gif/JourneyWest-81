@@ -28,3 +28,7 @@ Safari、真实MacBook设备、移动端和8—15分钟长局体验仍未验证�
 待Vercel账户授权。仓库Private已通过GitHub元数据核验。新增预览部署门禁验证：仅preview + feat/p0-a-prototype可构建，Production、main、其他分支和缺失元数据均跳过。尚无实际Vercel部署，因此无HTTPS试玩链接、在线保护验证或在线交互测试结论。已有CI截图不作为在线预览证据。
 
 预览准备验证结果：Actions run 41187064839的npm ci、build、15项单元测试、4项浏览器测试均成功。Vercel连接成功且仓库可读；项目团队suibo未授权导致403，官方团队授权待用户完成。没有部署URL，也没有在线浏览器或访问保护验证结果。
+
+## Vercel部署结果
+已READY：dpl_4ecuRpHNVvHnrWE5XgVvu2pcfb36，target=staging，源e16c0a5/feat/p0-a-prototype。构建日志确认预览门禁允许、npm ci成功、tsc及vite build成功，dist产出并发布。项目API回读确认Vercel Authentication已启用。首次错误标记production的请求被门禁取消（CANCELED），未成功发布。现有工业网站updatedAt未变。
+限制：无已登录浏览器控制工具，未执行在线地图、点击移动和战斗验证；未登录访问的抓取失败也不等于保护验证成功。此前CI测试及截图仍仅代表本地服务器。构建日志npm audit报告3项依赖告警（1 moderate、2 critical），尚未逐项审计；本任务不使用force升级依赖。

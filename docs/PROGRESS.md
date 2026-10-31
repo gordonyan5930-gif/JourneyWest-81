@@ -18,3 +18,6 @@ Actions run 41186150313已完整通过npm ci、build、9项单元测试和4项�
 2026-10-31：用户授权仅部署feat/p0-a-prototype的Preview，不部署Production、不改main、不公开仓库。已核验仓库Private。发现Vercel集成可连接但当前未连接，等待账户授权。准备vercel.json（npm ci / npm run build / dist）、仅预览分支构建门禁及配置说明；账号保护必须在项目端启用并验证，不能靠仓库JSON冒充认证。未部署、没有试玩URL、未做在线浏览器验证。
 
 后续确认：用户已连接Vercel，插件读取账户成功，Vercel的GitHub集成确认可访问本Private仓库。默认团队suibo访问和项目创建返回403，已发起官方一次性团队授权流程，尚未创建项目或部署。Actions run 41187064839的npm ci、build、15项单元测试和4项浏览器测试全部成功；这些是本地服务器测试，不是在线预览验证。
+
+## 独立游戏预览部署
+团队授权生效后先只读检查项目；新建journeywest-81，未改现有sensor-sorting-review（updatedAt保持不变）。项目启用Vercel Authentication，Node24，npm ci/build/dist。预览dpl_4ecuRpHNVvHnrWE5XgVvu2pcfb36已READY，地址见PREVIEW_DEPLOYMENT.md。首次preview参数被服务标为production，但被预览专用门禁取消，未发布；改用REST staging得到真正预览。在线登录后交互仍待验证，当前没有已登录浏览器控制工具。不合并main，不进入P0-B。

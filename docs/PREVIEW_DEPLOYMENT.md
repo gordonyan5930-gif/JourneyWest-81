@@ -1,7 +1,15 @@
 # 受保护的P0-A云端预览
 
 ## 当前状态
-Vercel账户已连接，GitHub集成已能读取本私有仓库。默认团队suibo尚未授予当前连接访问权限（API返回403），等待用户通过官方团队同意流程授权。项目创建请求被拒绝，尚未创建部署，没有可交付的试玩URL。GitHub仓库已核验仍为Private。配置只提交到PR #1；不修改main、不创建Production部署、不购买服务。
+团队授权已生效，已先只读检查账户、团队和全部项目，再新建独立项目 `journeywest-81`（prj_ZeCHC7I2vdSMfYsPqsuOffNkhEGN）。仅关联游戏私有仓库。现有 `sensor-sorting-review` 项目未作写入，其updatedAt核对保持1793421932328。
+
+已成功构建的受保护预览：[打开P0-A预览](https://journeywest-81-3mvpictue-suibo.vercel.app)。部署ID dpl_4ecuRpHNVvHnrWE5XgVvu2pcfb36，状态READY，API目标staging（预览），分支feat/p0-a-prototype，源SHA e16c0a5f00f4463bc5775bb6e86168f0245342b0。
+
+Vercel项目回读确认ssoProtection.enabled=true、deploymentType=prod_deployment_urls_and_all_previews。没有创建绕过认证的分享链接，没有购买或升级服务。npm ci及npm run build成功，产物为dist。当前工具无法读取或操作用户的已登录浏览器，因此在线地图、选角、移动和战斗尚未实际验证；网页抓取工具也无法访问该保护地址，不能据此断言访问保护测试通过。已向用户提供真实HTTPS地址用于登录访问确认。
+
+异常记录：首次请求显式target=preview，但服务返回target=production；预览专用门禁立刻跳过，记录dpl_GfAW5LZkw2pZxFpj15zyXM6b4j9z最终CANCELED，未成功发布。按REST API支持的target=staging重试后，构建环境确认为preview并成功。不使用Production链接作为试玩地址。
+
+后续推送更新预览的实际结果待核验；本文件本次更新将触发Git集成，核对新部署分支和SHA后再确认。
 
 ## 构建配置
 - 框架：Vite；Node.js 24；Root Directory为仓库根目录。
@@ -13,7 +21,7 @@ Vercel账户已连接，GitHub集成已能读取本私有仓库。默认团队su
 ## 授权与项目设置（必须在首个部署之前完成）
 1. 在ChatGPT设置的应用中连接Vercel，登录你自己的账户；不要发送密码或token到聊天。
 2. Vercel GitHub集成只授权私有仓库gordonyan5930-gif/JourneyWest-81；保持Private。连接ChatGPT的Vercel与授权Vercel读取GitHub仓库是两步。
-3. 先创建/复用Vercel项目并配置，再发起部署。不要使用会立即创建Production部署的一键Import/Deploy流程。
+3. 先创建独立的journeywest-81项目并配置，再发起部署。不要使用会立即创建Production部署的一键Import/Deploy流程。
 4. 项目级Settings → Deployment Protection启用Vercel Authentication，覆盖Preview（Standard Protection或账户已有可用的更严格范围）；保存并回读确认。不得生成绕过保护的公开分享链接，不开启付费功能或试用。
 5. 项目Production Branch不得设为feat/p0-a-prototype。禁止Production部署；main没有本分支的vercel.json，**本分支配置不能替代项目级限制**。项目级Ignored Build Step也应设置同等环境/分支门禁（使用内联命令，避免main缺少脚本）：
    `if [ "$VERCEL_ENV" = "preview" ] && [ "$VERCEL_GIT_COMMIT_REF" = "feat/p0-a-prototype" ]; then exit 1; else exit 0; fi`
