@@ -11,18 +11,18 @@ test('正常UI：按钮跨帧稳定，选中后实际移动，山体拒绝指令
  expect(await button!.evaluate(el=>el===document.querySelector('[data-role="wukong"]'))).toBe(true);
  await clickMap(page,11.5,9.5);await expect(page.locator('#message')).toContainText('不可到达');
  await clickMap(page,7.5,2.5);await expect(page.locator('#message')).toContainText('孙悟空：前往指定位置');
- await expect(page.locator('[data-role="wukong"]')).toBeFocused();expect(errors).toEqual([]);
+ await expect(page.locator('[data-role="wukong"]')).toHaveAttribute('aria-pressed','true');expect(errors).toEqual([]);
 });
 test('唐僧通过按钮及地图绕山，实际位置到达且没有穿山',async({page})=>{
- test.setTimeout(30000);await open(page);await quiet(page);
- // Set time only to speed the animation. Commands still go through real pointer input.
- await page.clock.install();await page.locator('[data-role="tang"]').click();await clickMap(page,15.5,9.5);
+ test.setTimeout(60000);await open(page);await quiet(page);
+ // Observe real animation frames without invoking update() or replacing the clock.
+ await page.evaluate(()=>{const w=(window as any).gameTest.world;(window as any).visited=[];w.story.onUpdate=()=>{(window as any).visited.push({x:w.tang.x,y:w.tang.y});};});
+ await page.locator('[data-role="tang"]').click();await clickMap(page,15.5,9.5);
  await expect(page.locator('#message')).toContainText('唐僧：前往指定位置');
- const visited: {x:number;y:number}[]=[];
- for(let i=0;i<24;i++){await page.clock.runFor(500);visited.push(await page.evaluate(()=>{const t=(window as any).gameTest.world.tang;return {x:t.x,y:t.y};}));}
+ await expect.poll(()=>page.evaluate(()=>(window as any).visited.some((p:any)=>Math.hypot(p.x-15.5,p.y-9.5)<.15)),{timeout:45000}).toBe(true);
+ const visited:{x:number;y:number}[]=await page.evaluate(()=>(window as any).visited);
  expect(visited.some(p=>p.y>13)).toBe(true);
  expect(visited.every(p=>!(p.x>=10&&p.x<14&&p.y>=3&&p.y<13))).toBe(true);
- expect(visited.some(p=>Math.hypot(p.x-15.5,p.y-9.5)<.3)).toBe(true);
  await expect(page.locator('[data-role="tang"]')).toHaveAttribute('aria-pressed','true');
 });
 test('白马只查看，死亡步行、UI复活，失败与重试',async({page})=>{

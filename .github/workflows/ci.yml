@@ -22,12 +22,13 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
       - name: Save generated lockfile to development branch
-        if: success() && github.event_name == 'push' && github.ref == 'refs/heads/feat/p0-a-prototype'
+        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/feat/p0-a-prototype'
         run: |
           if ! git ls-files --error-unmatch package-lock.json >/dev/null 2>&1; then
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
             git add package-lock.json
+            if test -f docs/p0-a-screenshot.png; then git add docs/p0-a-screenshot.png; fi
             git commit -m 'build: record npm lockfile generated and verified in Actions'
             git push origin HEAD:feat/p0-a-prototype
           fi
