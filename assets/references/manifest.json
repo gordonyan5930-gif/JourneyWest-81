@@ -1,13 +1,54 @@
 {
-  "version": "1.0-visual-receipt",
+  "version": "1.1-originals-archived",
   "approvalDate": "2026-10-31",
-  "source": "User attachments in current task; directly visible image references",
-  "originalBinaryAvailable": false,
+  "source": "User original ZIP JourneyWest81_approved_original_masters.zip, received 2026-10-31; copied without image decoding/re-encoding",
+  "originalBinaryAvailable": true,
   "references": [
-    {"id":"CHAR-MASTER-R3","ordinal":1,"intendedPath":"assets/references/character-ip-approved-round3.png","role":"approved character/IP master","visualReceived":true,"originalPreserved":false,"sha256":null,"bytes":null},
-    {"id":"SCENE-MASTER-R1","ordinal":2,"intendedPath":"assets/references/gameplay-visual-reference-round1.png","role":"approved gameplay viewport within combined board","visualReceived":true,"originalPreserved":false,"sha256":null,"bytes":null},
-    {"id":"SCENE-SUPPLEMENT-01","ordinal":3,"intendedPath":"assets/references/gameplay-atmosphere-supplement.png","role":"additional epic environment composition; not authorization for later boss stages","visualReceived":true,"originalPreserved":false,"sha256":null,"bytes":null}
+    {
+      "id": "CHAR-MASTER-R3",
+      "ordinal": 1,
+      "intendedPath": "assets/references/character-ip-approved-round3.png",
+      "role": "approved character/IP master",
+      "visualReceived": true,
+      "originalPreserved": true,
+      "sha256": "327411d5d8bef9b527e07c416524ae833ce45ee9ce54bf71a314699f76898bad",
+      "bytes": 3152697,
+      "width": 1672,
+      "height": 941,
+      "format": "PNG",
+      "version": "approved-original-v1"
+    },
+    {
+      "id": "SCENE-MASTER-R1",
+      "ordinal": 2,
+      "intendedPath": "assets/references/gameplay-visual-reference-round1.png",
+      "role": "approved gameplay viewport within combined board",
+      "visualReceived": true,
+      "originalPreserved": true,
+      "sha256": "e2e161a48c0d0b36add1115e01f11b00ccd697f208bb68fd03f27583160e0936",
+      "bytes": 3204162,
+      "width": 1672,
+      "height": 941,
+      "format": "PNG",
+      "version": "approved-original-v1"
+    },
+    {
+      "id": "SCENE-SUPPLEMENT-01",
+      "ordinal": 3,
+      "intendedPath": "assets/references/gameplay-atmosphere-supplement.png",
+      "role": "additional epic environment composition; not authorization for later boss stages",
+      "visualReceived": true,
+      "originalPreserved": false,
+      "sha256": null,
+      "bytes": null
+    }
   ],
-  "blockedReason": "Inline images have no downloadable file ID or local file in this execution workspace. Original checksums cannot be invented or substituted by image generation.",
-  "approvalScope": "Visual direction only; generated sample assets await review; plush design rejected."
+  "blockedReason": null,
+  "approvalScope": "Visual direction only; generated sample assets await review; plush design rejected.",
+  "archive": {
+    "filename": "JourneyWest81_approved_original_masters.zip",
+    "bytes": 6284337,
+    "sha256": "e4d5ddf23aa34f72934c03b292eb3f748238194e26e4524a1fa281c6fd2e4f2f",
+    "entriesVerifiedAgainstReview": "5723126248"
+  }
 }

@@ -25,3 +25,6 @@
 - wukong-atlas v0.1-draft：assets/quality-b/wukong-atlas.webp，1774×887，1588024字节；SHA-256 `be9a3faf58ebc5a0637b59bf83ccdf04672c9f8a5a0c266b92ffb07434066c90`。新生成试制资产，待用户审核，非母版裁片。
 
 悟空v0.2-draft：1448×1086，1,313,732字节；SHA-256 `2079b7da7df1b0d543e258ce5b33c9b1f574d7594840a841ebc1edcd99a35727`。12姿势，alpha64边距与脚线见assets/quality-b/wukong-audit.json；生成源hash见manifest。旧v0.1记录保留为历史，不再运行。梯田图hash未变。母版原件仍未归档，不以新生成资产代替。
+
+## 正式PNG归档已完成（本轮权威状态）
+用户ZIP原字节解压/复制至assets/references，两图均1672×941；人物3152697字节/SHA256 327411d5d8bef9b527e07c416524ae833ce45ee9ce54bf71a314699f76898bad；场景3204162字节/SHA256 e2e161a48c0d0b36add1115e01f11b00ccd697f208bb68fd03f27583160e0936。版本approved-original-v1，原件不作为运行素材。与审查5723126248复核一致，旧未收到状态保留为历史。
