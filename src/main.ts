@@ -47,7 +47,8 @@ class Ridge extends Phaser.Scene{
  updateControls();this.profile.domMs=performance.now()-domStart;
  }
 }
-const game=new Phaser.Game({type:Phaser.AUTO,width:960,height:576,parent:'game',backgroundColor:'#627e52',scene:Ridge,scale:{mode:Phaser.Scale.FIT,autoCenter:Phaser.Scale.CENTER_BOTH}});
+const rendererProbe=new URLSearchParams(location.search).get('renderer')==='canvas';
+const game=new Phaser.Game({type:rendererProbe?Phaser.CANVAS:Phaser.AUTO,width:960,height:576,parent:'game',backgroundColor:'#627e52',scene:Ridge,scale:{mode:Phaser.Scale.FIT,autoCenter:Phaser.Scale.CENTER_BOTH}});
 document.querySelector('#heroes')!.addEventListener('click',e=>{const b=(e.target as HTMLElement).closest('button');if(b){selected=b.dataset.role!;world.revive(selected);if(selected==='horse'&&world.mounted)world.message='白龙马随唐僧移动，仅支持查看状态与复活；请选择唐僧指挥骑乘路线';updateControls();}});
 document.querySelector('#regroup')!.addEventListener('click',()=>world.regroup());document.querySelector('#pause')!.addEventListener('click',()=>world.paused=!world.paused);document.querySelector('#restart')!.addEventListener('click',()=>world=new World());
-if(new URLSearchParams(location.search).has('test'))Object.assign(window,{gameTest:{get world(){return world},get profile(){return (game.scene.getScenes(true)[0] as Ridge)?.profile},reset(){world=new World();return world;}}});
+if(new URLSearchParams(location.search).has('test'))Object.assign(window,{gameTest:{get world(){return world},get profile(){return (game.scene.getScenes(true)[0] as Ridge)?.profile},get rendererInfo(){const gl=(game.renderer as Phaser.Renderer.WebGL.WebGLRenderer).gl;const debug=gl?.getExtension('WEBGL_debug_renderer_info');return {type:game.renderer.type,backend:gl?'webgl':'canvas',vendor:debug?gl.getParameter(debug.UNMASKED_VENDOR_WEBGL):null,renderer:debug?gl.getParameter(debug.UNMASKED_RENDERER_WEBGL):null};},reset(){world=new World();return world;}}});
