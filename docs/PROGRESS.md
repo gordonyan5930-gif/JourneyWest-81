@@ -21,3 +21,5 @@ Actions run 41186150313已完整通过npm ci、build、9项单元测试和4项�
 
 ## 独立游戏预览部署
 团队授权生效后先只读检查项目；新建journeywest-81，未改现有sensor-sorting-review（updatedAt保持不变）。项目启用Vercel Authentication，Node24，npm ci/build/dist。预览dpl_4ecuRpHNVvHnrWE5XgVvu2pcfb36已READY，地址见PREVIEW_DEPLOYMENT.md。首次preview参数被服务标为production，但被预览专用门禁取消，未发布；改用REST staging得到真正预览。在线登录后交互仍待验证，当前没有已登录浏览器控制工具。不合并main，不进入P0-B。
+
+自动更新已实证：cb8e6e2的Git推送触发dpl_BduuWMWMxmyi3DdjUSvWyPXCDqJZ，READY，target=null，分支别名已更新。用户在登录后浏览器确认地图显示；在线选角、移动和战斗仍待验证。

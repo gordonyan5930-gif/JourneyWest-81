@@ -32,3 +32,5 @@ Safari、真实MacBook设备、移动端和8—15分钟长局体验仍未验证�
 ## Vercel部署结果
 已READY：dpl_4ecuRpHNVvHnrWE5XgVvu2pcfb36，target=staging，源e16c0a5/feat/p0-a-prototype。构建日志确认预览门禁允许、npm ci成功、tsc及vite build成功，dist产出并发布。项目API回读确认Vercel Authentication已启用。首次错误标记production的请求被门禁取消（CANCELED），未成功发布。现有工业网站updatedAt未变。
 限制：无已登录浏览器控制工具，未执行在线地图、点击移动和战斗验证；未登录访问的抓取失败也不等于保护验证成功。此前CI测试及截图仍仅代表本地服务器。构建日志npm audit报告3项依赖告警（1 moderate、2 critical），尚未逐项审计；本任务不使用force升级依赖。
+
+补充证据：用户实际打开受保护预览并回复“显示地图了”，仅标记地图加载为用户确认。自动Git更新已核验：cb8e6e2触发新预览dpl_BduuWMWMxmyi3DdjUSvWyPXCDqJZ并READY，稳定分支URL为https://journeywest-81-git-feat-p0-a-prototype-suibo.vercel.app。未将用户地图反馈扩大为选角、移动和战斗全部验证通过。

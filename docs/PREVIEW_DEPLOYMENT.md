@@ -9,7 +9,9 @@ Vercel项目回读确认ssoProtection.enabled=true、deploymentType=prod_deploym
 
 异常记录：首次请求显式target=preview，但服务返回target=production；预览专用门禁立刻跳过，记录dpl_GfAW5LZkw2pZxFpj15zyXM6b4j9z最终CANCELED，未成功发布。按REST API支持的target=staging重试后，构建环境确认为preview并成功。不使用Production链接作为试玩地址。
 
-后续推送更新预览的实际结果待核验；本文件本次更新将触发Git集成，核对新部署分支和SHA后再确认。
+已实证自动更新：向本PR分支推送cb8e6e2后，Vercel自动创建source=git的预览dpl_BduuWMWMxmyi3DdjUSvWyPXCDqJZ，target=null（非Production），最终READY，来源分支和SHA均匹配。稳定分支地址：[P0-A当前预览](https://journeywest-81-git-feat-p0-a-prototype-suibo.vercel.app)，后续同分支推送更新此地址。
+
+用户已在登录后的真实浏览器中确认“显示地图了”；这是用户确认，非代理自动浏览器检查。选角、移动和战斗的在线交互尚未验证。
 
 ## 构建配置
 - 框架：Vite；Node.js 24；Root Directory为仓库根目录。
