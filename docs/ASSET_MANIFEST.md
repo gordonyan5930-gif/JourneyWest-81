@@ -17,3 +17,9 @@
 
 ## 正式视觉母版批准记录
 来源：[用户决策6542578456](https://github.com/gordonyan5930-gif/JourneyWest-81/pull/1#issuecomment-6542578456)，2026-10-31北京时间19:05。CHAR-MASTER-R3第三轮角色图、SCENE-MASTER-R1第一轮游戏画面局部视觉方向已批准；文件未收到，未登记尺寸/hash、未写已入库。毛绒方向拒绝，动画/模型/生产图集/功能样片未批准。旧quality-a-baiguling-v01.jpg不是人物母版。见assets/references/README.md。
+
+## 本轮视觉接收与v0.1运行资产
+用户本轮明确提供正式母版视觉内容；原始附件未提供可读取路径/下载ID，所以CHAR-MASTER-R3、SCENE-MASTER-R1及第三张补充图仍没有原始字节数/SHA-256，见assets/references/manifest.json（null明确表示未知）。不以新生成图冒充原件。
+
+- terrace-map v0.1-draft：assets/quality-b/terrace-map.webp，1672×941，941682字节；SHA-256 `3b54b8782ed0d1fbdb11df2859e666aad1e1fb960e67e5056418e490d1d19eb6`。新生成试制资产，待用户审核，非母版裁片。
+- wukong-atlas v0.1-draft：assets/quality-b/wukong-atlas.webp，1774×887，1588024字节；SHA-256 `be9a3faf58ebc5a0637b59bf83ccdf04672c9f8a5a0c266b92ffb07434066c90`。新生成试制资产，待用户审核，非母版裁片。

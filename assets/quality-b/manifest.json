@@ -1,0 +1,32 @@
+{
+  "assets": [
+    {
+      "id": "terrace-map",
+      "version": "0.1-draft",
+      "path": "assets/quality-b/terrace-map.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 941682,
+      "sha256": "3b54b8782ed0d1fbdb11df2859e666aad1e1fb960e67e5056418e490d1d19eb6",
+      "generatedSourceSha256": "cb1c6b7351b614069fd6b29a7724006083d7f82a64c15c5e3eef2eb3f7b4d9a7",
+      "origin": "newly generated game sample asset using visible approved references; not a crop of a reference board",
+      "status": "prototype-awaiting-user-review",
+      "mode": "RGB"
+    },
+    {
+      "id": "wukong-atlas",
+      "version": "0.1-draft",
+      "path": "assets/quality-b/wukong-atlas.webp",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1588024,
+      "sha256": "be9a3faf58ebc5a0637b59bf83ccdf04672c9f8a5a0c266b92ffb07434066c90",
+      "generatedSourceSha256": "4f5c8d5dbfdbeaa584a2a6f9985cc8521e7e533565236d377cf44cf8f780c32b",
+      "origin": "newly generated game sample asset using visible approved references; not a crop of a reference board",
+      "status": "prototype-awaiting-user-review",
+      "mode": "RGBA"
+    }
+  ],
+  "approval": "pending-human-asset-review",
+  "originalReferenceBytesAvailable": false
+}

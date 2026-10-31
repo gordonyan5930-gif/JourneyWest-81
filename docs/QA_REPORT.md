@@ -61,3 +61,6 @@ Actions [41190391919](https://github.com/gordonyan5930-gif/JourneyWest-81/action
 恢复首个完整验证：run 41197645065（源5f94cfe）26单元/7浏览器成功。CI逻辑meanStep 0.308→0.180ms；录像渲染10.62FPS/p95 100.1ms，无录像11.68FPS/p95 100.1ms，均未解除性能阻断。文字池29、场景对象33；logic/draw提交/DOM各低于0.4ms，CPU提交耗时不等于GPU实际渲染完成时间。继续补Canvas后端对照和真实WebGL renderer信息，不凭低JS耗时宣称性能达标。
 
 恢复任务第二轮完整CI：[41197932350](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41197932350)，源18dfbce，26单元/8浏览器及报告全部成功；[工件13041214742](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41197932350/artifacts/13041214742)15,613,143字节，保留7天。逻辑meanStep 0.191→0.111ms。渲染器确认ANGLE SwiftShader软件驱动：录像18.34FPS/p95 66.8ms，无录像22.33FPS/p95 50.1ms；Canvas无录像59.80FPS/p95 16.7ms。三个样本均约5秒、峰值25/最少24—25敌人，Text29/场景对象33。说明软件WebGL路径在此CI显著较慢，不能据此判定真实GPU或Safari；未更换默认AUTO，也不将Canvas短样本作为产品性能通过。保留后续120秒/代表设备验收阻断。
+
+## 单角色地图试制待验证
+新增地图路径连通/阻挡单测与真实UI样片测试，覆盖新资产加载、点击移动、跟随镜头、棒击、蒙版和截图。Playwright对WebGL/AUTO与Canvas录制/采样，不等于真实用户设备验证。原件附件缺读取ID，原始母版hash无法核验；运行资产hash可从manifest.json复算。新图集只含跑/待机/攻击关键姿势，武器边界/脚点和动作连贯性待人工复核。

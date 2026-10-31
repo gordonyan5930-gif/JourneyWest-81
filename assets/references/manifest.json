@@ -1,0 +1,13 @@
+{
+  "version": "1.0-visual-receipt",
+  "approvalDate": "2026-10-31",
+  "source": "User attachments in current task; directly visible image references",
+  "originalBinaryAvailable": false,
+  "references": [
+    {"id":"CHAR-MASTER-R3","ordinal":1,"intendedPath":"assets/references/character-ip-approved-round3.png","role":"approved character/IP master","visualReceived":true,"originalPreserved":false,"sha256":null,"bytes":null},
+    {"id":"SCENE-MASTER-R1","ordinal":2,"intendedPath":"assets/references/gameplay-visual-reference-round1.png","role":"approved gameplay viewport within combined board","visualReceived":true,"originalPreserved":false,"sha256":null,"bytes":null},
+    {"id":"SCENE-SUPPLEMENT-01","ordinal":3,"intendedPath":"assets/references/gameplay-atmosphere-supplement.png","role":"additional epic environment composition; not authorization for later boss stages","visualReceived":true,"originalPreserved":false,"sha256":null,"bytes":null}
+  ],
+  "blockedReason": "Inline images have no downloadable file ID or local file in this execution workspace. Original checksums cannot be invented or substituted by image generation.",
+  "approvalScope": "Visual direction only; generated sample assets await review; plush design rejected."
+}

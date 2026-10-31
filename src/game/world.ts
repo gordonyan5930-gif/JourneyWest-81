@@ -3,13 +3,13 @@ export const CONFIG={width:30,height:18,tile:32,speed:2.1,walkSpeed:1.35,energyR
 export type Terrain='road'|'grass'|'forest'|'water'|'mountain';
 export const terrain=(x:number,y:number):Terrain=> x<0||y<0||x>=30||y>=18||((x>=10&&x<=13&&y>=3&&y<=12)||(x>=21&&x<=24&&y>=7&&y<=16))?'mountain':y===9||y===10?'road':x>=17&&x<=18?'water':(x<7&&y<6)||(x>24&&y<6)?'forest':'grass';
 export const NAV_METRICS={searches:0};
-export function path(start:Point,end:Point):Point[]{
+export function path(start:Point,end:Point,passable:(x:number,y:number)=>boolean=(x,y)=>terrain(x,y)!=='mountain'):Point[]{
  NAV_METRICS.searches++;
  const sx=Math.floor(start.x),sy=Math.floor(start.y),ex=Math.floor(end.x),ey=Math.floor(end.y);
- if(terrain(ex,ey)==='mountain')return [];
+ if(!passable(ex,ey))return [];
  const key=(x:number,y:number)=>`${x},${y}`, q=[{x:sx,y:sy}], prev=new Map<string,Point|null>([[key(sx,sy),null]]);
  for(let i=0;i<q.length;i++){const p=q[i];if(p.x===ex&&p.y===ey){const out:Point[]=[];let n:Point|null=p;while(n){out.unshift({x:n.x+.5,y:n.y+.5});n=prev.get(key(n.x,n.y))??null;}return out.slice(1);}
- for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){const n={x:p.x+dx,y:p.y+dy},k=key(n.x,n.y);if(!prev.has(k)&&terrain(n.x,n.y)!=='mountain'){prev.set(k,p);q.push(n);}}}return [];
+ for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){const n={x:p.x+dx,y:p.y+dy},k=key(n.x,n.y);if(!prev.has(k)&&passable(n.x,n.y)){prev.set(k,p);q.push(n);}}}return [];
 }
 export type Role='wukong'|'bajie'|'tang'|'sha'|'horse';
 export interface Unit extends Point {id:string;name:string;role?:Role;hp:number;max:number;attack:number;route:Point[];manual:boolean;manualGoal?:Point;navigationTarget?:string;navigationVersion?:number;deadFor:number;cooldown:number;}

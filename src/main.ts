@@ -1,6 +1,8 @@
 import Phaser from 'phaser';
 import {World,terrain} from './game/world';
 import './style.css';
+import {startQualitySample} from './scenes/QualitySample';
+if(new URLSearchParams(location.search).get('sample')==='quality-b'){startQualitySample();}else{
 const app=document.querySelector('#app')!;
 app.innerHTML=`<header><span>西游 · 通关文牒</span><small>第一难试炼 / 白骨岭</small><b>P0-A 可玩原型</b></header><main><aside><p>西行之路 · 护送试炼</p><h1>白骨岭</h1><p>山雾深处，白骨伏行。<br>守住唐僧，择路向西。</p><div id="stats"></div><button id="regroup">全队归阵</button><button id="pause">暂停 / 继续</button><button id="restart">重新出发</button><h3>行军手记</h3><p>点选下方角色或地图人物，再点击地面。金色路线表示主动指令。</p><p>树林、浅水减速；山体无法穿越。倒地 3 秒后可消耗 35 能量复活。</p><small>本阶段到达出口仅结束护送演示，尚不授予通关印章。</small></aside><section><div id="game"></div><div id="message" role="status"></div><div id="heroes"></div></section></main><footer>山路 / 草地 / 树林 / 浅水可行　　▲ 山体阻挡　　保护唐僧 · 战术干预 · 自动战斗</footer>`;
 let world=new World(),selected='wukong';
@@ -52,3 +54,5 @@ const game=new Phaser.Game({type:rendererProbe?Phaser.CANVAS:Phaser.AUTO,width:9
 document.querySelector('#heroes')!.addEventListener('click',e=>{const b=(e.target as HTMLElement).closest('button');if(b){selected=b.dataset.role!;world.revive(selected);if(selected==='horse'&&world.mounted)world.message='白龙马随唐僧移动，仅支持查看状态与复活；请选择唐僧指挥骑乘路线';updateControls();}});
 document.querySelector('#regroup')!.addEventListener('click',()=>world.regroup());document.querySelector('#pause')!.addEventListener('click',()=>world.paused=!world.paused);document.querySelector('#restart')!.addEventListener('click',()=>world=new World());
 if(new URLSearchParams(location.search).has('test'))Object.assign(window,{gameTest:{get world(){return world},get profile(){return (game.scene.getScenes(true)[0] as Ridge)?.profile},get rendererInfo(){const gl=(game.renderer as Phaser.Renderer.WebGL.WebGLRenderer).gl;const debug=gl?.getExtension('WEBGL_debug_renderer_info');return {type:game.renderer.type,backend:gl?'webgl':'canvas',vendor:debug?gl.getParameter(debug.UNMASKED_VENDOR_WEBGL):null,renderer:debug?gl.getParameter(debug.UNMASKED_RENDERER_WEBGL):null};},reset(){world=new World();return world;}}});
+
+}
