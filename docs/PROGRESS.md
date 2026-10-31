@@ -56,3 +56,9 @@ A概念审核图：assets/concepts/quality-a-baiguling-v01.jpg。五角色与怪
 工件reports/quality-sample-auto.png与quality-sample-canvas.png为新资产运行截图，带mask文件为蒙版；test-results/quality-sample-*/video.webm为真实交互录屏，另有Playwright HTML及设备JSON。这里是CI本地服务器，不是假称已操作Vercel登录浏览器，也未直接肉眼检查下载工件。
 单角色新场景Linux Chromium样本：WebGL带视频302帧，20.83FPS/p95 76.67ms；Canvas无视频490帧，51.28FPS/p95 24.99ms。时间窗口/录屏条件不同，不作严格后端性能结论，不是120秒或真实Mac/Safari。补充无视频WebGL样片同场景对照，证据文件名改用project名，避免覆盖录像样本；新增配置仍需本提交CI。真实设备数据仍需用户在预览导出。
 原始母版图片仅视觉可见，原字节未可读取；assets/references没有伪造原件或hash。新运行素材hash已由单元复算。美术/完整动画/正式性能Gate仍未通过，不推进C/D或其余关卡。
+
+## 最终样片对照验证
+运行代码c6611ea，Actions [41200840311](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41200840311)：28单元、11浏览器、构建/报告/上传全部成功。新增无录像WebGL同场景对照通过，截图/JSON按project命名避免互相覆盖。
+[最终截图/录屏工件13042931059](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41200840311/artifacts/13042931059)：42,798,711字节，2026-11-07 12:26 UTC到期。截图reports/quality-sample-render-with-video.png、quality-sample-render-without-video.png、quality-sample-render-canvas-no-video.png；蒙版图另带mask；录像test-results/quality-sample-*/video.webm，配套HTML与设备JSON。
+Linux Chromium短样本（非真实设备）：WebGL录像20.78FPS/p95 74.99ms；无录像WebGL24.91FPS/p95 60ms；无录像Canvas54.06FPS/p95 21.67ms。后两者同交互脚本与无录像条件，仍非固定120秒/硬件GPU验收，性能Gate保留。新地图/单角色数据也不能与旧25怪压力直接混为同场景。
+Vercel回读c6611ea对应dpl_Djcz77e9c6HpFwrfNXxadG6bx7wk READY、target=null（Preview）；未操作已登录在线浏览器。受保护链接加?sample=quality-b试制，真实设备可导出本机采样；本轮没有生产部署或合并。
