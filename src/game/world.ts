@@ -37,10 +37,10 @@ export class World {
  if(h.role==='tang'&&threat&&distance(h,threat)<1.8){
   const escape=[{x:Math.floor(h.x)-.5,y:Math.floor(h.y)+.5},{x:Math.floor(h.x)+.5,y:Math.floor(h.y)-.5},{x:Math.floor(h.x)+.5,y:Math.floor(h.y)+1.5}]
    .filter(p=>terrain(Math.floor(p.x),Math.floor(p.y))!=='mountain').sort((a,b)=>distance(b,threat)-distance(a,threat));
-  if(escape[0]){this.move(h,escape[0],dt,this.speed);h.route=h.manualGoal?path(h,h.manualGoal):[];}continue;
+  if(escape[0])this.move(h,escape[0],dt,this.speed);continue;
  }
  if(h.manual){
-  if(h.route.length)this.move(h,h.route[h.route.length-1],dt,h.role==='tang'?this.speed:3);
+  if(h.manualGoal)this.move(h,h.manualGoal,dt,h.role==='tang'?this.speed:3);
   if(!h.route.length){h.manual=false;h.manualGoal=undefined;}continue;
  }
  if(h.role==='tang'){if(threat){const choices=[{x:h.x-1,y:h.y},{x:h.x,y:h.y-1},{x:h.x,y:h.y+1}].filter(p=>terrain(Math.floor(p.x),Math.floor(p.y))!=='mountain').sort((a,b)=>distance(b,threat)-distance(a,threat));if(choices[0]){this.move(h,choices[0],dt,this.speed);}}else if(!this.reachedExit){this.move(h,{x:28.5,y:9.5},dt,this.speed);if(h.x>28){this.reachedExit=true;this.message='P0-A 护送演示到达终点 · 完整通关条件将在 P0-B 实现';this.story.onReachExit?.(this);}}}

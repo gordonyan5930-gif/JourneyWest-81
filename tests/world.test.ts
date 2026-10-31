@@ -39,3 +39,8 @@ describe('navigation reuse and invalidation',()=>{
   w.move(h,{x:9.5,y:3.5},.01,3);expect(NAV_METRICS.searches).toBe(3);
  });
 });
+
+it('Tang keeps evading across frames and resumes a saved manual goal',()=>{
+ const w=new World();w.spawnTimer=999;w.spawn({x:4.5,y:10.5});w.update(.1);w.update(.1);expect(w.tang.y).toBeLessThan(9.2);
+ const r=new World();r.spawnTimer=999;r.command('tang',{x:4.5,y:3.5});r.spawn({x:4.5,y:10.5});r.update(.1);r.update(.1);r.enemies=[];for(let i=0;i<50&&r.tang.manual;i++)r.update(.1);expect(r.tang.y).toBeCloseTo(3.5);
+});
