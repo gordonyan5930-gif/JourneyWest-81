@@ -48,10 +48,10 @@ export class SmoothMover {
   while(time>1e-7){const dt=Math.min(time,MOVE.substep);time-=dt;if(!this.route.length){this.speed=Math.max(0,this.speed-MOVE.deceleration*dt);continue;}
    while(this.route.length>1&&distance(this.position,this.route[0])<Math.max(14,this.speed*.08)&&segmentClear(this.position,this.route[1],this.nav))this.route.shift();
    const target=this.route[0],d=distance(this.position,target);let remaining=d;for(let i=1;i<this.route.length;i++)remaining+=distance(this.route[i-1],this.route[i]);
-   const desired=Math.atan2(target.y-this.position.y,target.x-this.position.x),turn=Math.abs(angleDelta(desired,this.heading));const targetSpeed=Math.min(MOVE.speed*this.nav.speed(this.position.x,this.position.y)*(1-.55*Math.min(1,turn/Math.PI)),Math.sqrt(2*MOVE.deceleration*remaining),MOVE.turnRate*d*.45);
+   const desired=Math.atan2(target.y-this.position.y,target.x-this.position.x),turn=Math.abs(angleDelta(desired,this.heading));const targetSpeed=Math.min(MOVE.speed*this.nav.speed(this.position.x,this.position.y)*(turn>1.2?0:Math.max(.35,Math.cos(turn))),Math.sqrt(2*MOVE.deceleration*remaining),MOVE.turnRate*d*.45);
    this.speed+=Math.max(-MOVE.deceleration*dt,Math.min(MOVE.acceleration*dt,targetSpeed-this.speed));this.heading+=Math.max(-MOVE.turnRate*dt,Math.min(MOVE.turnRate*dt,angleDelta(desired,this.heading)));
    const step=Math.min(d,this.speed*dt);let candidate={x:this.position.x+Math.cos(this.heading)*step,y:this.position.y+Math.sin(this.heading)*step};
-   if(d<=Math.max(MOVE.arrival,step)){candidate={...target};this.route.shift();}else if(!segmentClear(this.position,candidate,this.nav)){this.blockedSteps++;this.speed=Math.min(this.speed,55);candidate={x:this.position.x+Math.cos(desired)*Math.min(d,this.speed*dt),y:this.position.y+Math.sin(desired)*Math.min(d,this.speed*dt)};this.heading=desired;}
+   if(d<=Math.max(MOVE.arrival,step)){candidate={...target};this.route.shift();}else if(!segmentClear(this.position,candidate,this.nav)||!segmentClear(candidate,target,this.nav)){this.blockedSteps++;this.speed=Math.min(this.speed,55);candidate={x:this.position.x+Math.cos(desired)*Math.min(d,this.speed*dt),y:this.position.y+Math.sin(desired)*Math.min(d,this.speed*dt)};this.heading=desired;}
    if(segmentClear(this.position,candidate,this.nav)){const amount=distance(this.position,candidate);this.position=candidate;this.travelled+=amount;moved+=amount;}else{this.speed=0;break;}
    if(!this.route.length)this.speed=0;
   }return moved;

@@ -34,6 +34,8 @@ jobs:
           node --experimental-transform-types scripts/logic-benchmark.mjs src/game/world.ts after
       - id: browser_install
         run: npx playwright install --with-deps chromium
+      - name: Install video duration probe
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
       - id: browser
         run: npm run test:e2e
       - name: Generate truthful studio report

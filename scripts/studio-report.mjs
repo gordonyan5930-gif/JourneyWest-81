@@ -3,7 +3,7 @@ import {createHash} from 'node:crypto';
 import {readFileSync,writeFileSync,mkdirSync,existsSync,readdirSync,statSync} from 'node:fs';
 const read=p=>{try{return JSON.parse(readFileSync(p,'utf8'));}catch{return null;}};
 const walk=p=>existsSync(p)?readdirSync(p,{withFileTypes:true}).flatMap(d=>d.isDirectory()?walk(`${p}/${d.name}`):[`${p}/${d.name}`]):[];
-const videos=walk('test-results').filter(p=>p.endsWith('.webm')).map(path=>{const probe=spawnSync('ffprobe',['-v','error','-show_entries','format=duration','-of','json',path],{encoding:'utf8',timeout:10000});let durationSeconds=null;try{durationSeconds=Number(JSON.parse(probe.stdout).format.duration)||null;}catch{}return {path,bytes:statSync(path).size,durationSeconds,durationSource:durationSeconds?'ffprobe':null};});
+const videos=walk('test-results').filter(p=>p.endsWith('.webm')).map(path=>{const probe=spawnSync('ffprobe',['-v','error','-show_entries','format=duration','-of','json',path],{encoding:'utf8',timeout:10000});let durationSeconds=null;try{durationSeconds=Number(JSON.parse(probe.stdout).format.duration)||null;}catch{}return {path,bytes:statSync(path).size,durationSeconds,durationSource:durationSeconds?'ffprobe':null,probeError:durationSeconds?null:(probe.error?.message??String(probe.stderr??'').slice(-240))};});
 const event=read(process.env.GITHUB_EVENT_PATH??'')??{};
 const steps=read('reports/steps.json')??{};
 const browser=read('reports/browser.json'),unit=read('reports/unit.json'),pressure=read('reports/pressure.json');
