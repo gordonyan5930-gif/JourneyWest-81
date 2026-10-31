@@ -20,6 +20,6 @@ mkdirSync('reports',{recursive:true});writeFileSync('reports/dashboard.json',JSO
 const md=`# 项目自动报告\n\n生成时间：${report.generatedAt}\n源SHA：${sha}\n阶段：${report.phase}\n技术检查：${report.technicalStatus}\n进入下一阶段：禁止自动进入（等待人工美术/玩法验收）\n\n单元测试：${unit?`${unit.numPassedTests}通过 / ${unit.numFailedTests}失败`:'无有效报告'}\n浏览器：${browser?.stats?JSON.stringify(browser.stats):'无有效报告'}\n\n[PR #1](https://github.com/${repository}/pull/1) · [受保护Preview](${report.preview.url})（本工作流未实时验证部署状态）\n\n截图、视频、性能与JSON报告见本次studio-evidence工件。素材待用户审核。\n\n额度/余额/百分比：需人工核对；未启用自动硬限额。60%关注、80%暂停大型新任务、90%暂停新阶段。\n\n待完成：${report.remaining.join('；')}。\n待决策：${report.userDecisions.join('；')}。\n`;
 writeFileSync('reports/dashboard.md',md);if(process.env.GITHUB_STEP_SUMMARY)writeFileSync(process.env.GITHUB_STEP_SUMMARY,md,{flag:'a'});
 
-console.log(JSON.stringify({technicalStatus:report.technicalStatus,advanceAllowed:report.advanceAllowed,tests:report.tests,evidence:report.evidence,budget:report.budget,preview:report.preview},null,2));
+console.log(JSON.stringify({technicalStatus:report.technicalStatus,advanceAllowed:report.advanceAllowed,tests:report.tests,art:report.art,evidence:report.evidence,budget:report.budget,preview:report.preview},null,2));
 
 if(report.technicalStatus!=="passed")process.exitCode=1;

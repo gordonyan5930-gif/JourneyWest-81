@@ -14,8 +14,10 @@
 
 详规见quality/ART_DIRECTION.md。图像接收状态见assets/references/README.md。批准视觉方向≠批准动画/模型/实机；用户最终品质验收保留。
 
-本轮依据可见母版重新制作了独立悟空/地图试制资产，见assets/quality-b/manifest.json与README；所有运行资产有真实SHA-256。它们不是母版原件或概念图裁片。样片可运行不意味着正式动画或产品品质已批准。原件缺失原因与三个上传视图的角色见assets/references/manifest.json。
+本轮依据可见母版重新制作了独立悟空/地图试制资产，见assets/quality-b/manifest.json与README；所有运行资产有真实SHA-256。它们不是母版原件或概念图裁片。样片可运行不意味着正式动画或产品品质已批准。两张正式PNG原件及第三补充视图的不同状态见assets/references/manifest.json。
 
 Quality B v0.2只修订通行与悟空：原梯田底图保持，新12姿势图集与脚线注册/逐帧检视待人工验收。alpha64最小帧边距12px可量化，不能替代清线、步态和实际尺寸识别。前景草地/树林/浅溪可绕行，山石/悬崖/深水独立阻挡，远景不属于可达前景；见sampleMap.ts及运行蒙版。
 
 当前权威状态：用户原始ZIP已通过archive-references脚本原字节归档；两PNG均1672×941，字符文件3152697字节/场景文件3204162字节，完整hash见assets/references/manifest.json，与审查5723126248一致。旧“原件缺失”段落为历史，不再构成当前阻碍。角色样片继续仅悟空，不把概念板当运行资源。
+
+Quality B v0.3：原母版已归档；新增8姿势跑步研究，按距离播放并保留腾空高度；待机/棒击仍用旧原画，实际尺寸略增大。左右腿、髋部、披风和武器的逐帧自然性未批准。正式地图高密度底图保持，局部围栏/河岸/石面修正见quality/TERRAIN_REVIEW.md。

@@ -31,8 +31,28 @@
         "strike": 4
       },
       "anchorAudit": "assets/quality-b/wukong-audit.json"
+    },
+    {
+      "id": "wukong-run",
+      "version": "0.3-draft",
+      "path": "assets/quality-b/wukong-run.webp",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1128304,
+      "sha256": "d65793dd442e74a2b6013965c6944983955e721fda7f5602c5ed68302472ed8c",
+      "generatedSourceSha256": "bd3c53d7891a749ec334cb6fbe653db626af34a9d2f71aa2257130cf0232e65f",
+      "origin": "New running study derived from archived approved character direction; not a crop or replacement of master",
+      "status": "prototype-awaiting-user-review",
+      "frames": 8,
+      "audit": "assets/quality-b/wukong-run-audit.json"
     }
   ],
   "approval": "pending-human-asset-review",
-  "originalReferenceBytesAvailable": false
+  "originalReferenceBytesAvailable": true,
+  "runtimeAnimations": {
+    "run": "wukong-run 8 frames, distance-driven 160 world pixels/cycle",
+    "idle": "wukong-atlas frames6-7",
+    "strike": "wukong-atlas frames8-11",
+    "legacyUnused": "wukong-atlas frames0-5 retained for provenance, not current run playback"
+  }
 }

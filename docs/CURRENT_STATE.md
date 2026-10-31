@@ -10,3 +10,5 @@
 - 性能基线Linux CI无录像WebGL23.82FPS/p95 56.66ms，Canvas55.21FPS/p95 23.33ms；录像WebGL19.78FPS。短时软件渲染数据，不是Mac/Safari或120秒正式验收。
 - 受保护预览：https://journeywest-81-git-feat-p0-a-prototype-suibo.vercel.app/?sample=quality-b 。自动Git预览更新已验证；登录在线浏览器交互与真实设备采样另记。
 - 仅按需读AGENTS、GAME_DESIGN、ART_BIBLE及最新PR审查；不导入完整历史聊天或二进制。额度/余额需人工核对，无自动硬限额或定时收费服务。
+
+本轮v0.3：原始PNG已在提交7831ef6原样归档；新增六个局部地形核对点、围栏阻挡/6px脚底净距/平石与浅水区分。新增8姿势跑步研究、实际距离驱动、保留腾空，待机/棒击略增大；逐点和逐帧实际浏览器证据待本轮CI。自然步态、全图目视精确性和真实设备性能Gate仍未通过，不扩展其他角色/Boss。

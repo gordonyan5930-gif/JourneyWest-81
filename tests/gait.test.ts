@@ -1,0 +1,2 @@
+import {it,expect} from 'vitest';import {runFrame,RUN_STRIDE} from '../src/game/gait';
+it('leg phase follows travelled distance and pauses when distance stops',()=>{expect(runFrame(0)).toBe(0);expect(runFrame(20)).toBe(1);expect(runFrame(80)).toBe(4);expect(runFrame(160)).toBe(0);expect([0,20,40,60,80,100,120,140].map(runFrame)).toEqual([0,1,2,3,4,5,6,7]);const grassDistance=210*.4,shallowDistance=210*.65*.4;expect(runFrame(shallowDistance)).toBeLessThan(runFrame(grassDistance));expect(runFrame(45+RUN_STRIDE)).toBe(runFrame(45));});

@@ -1,7 +1,7 @@
 {
   "version": "0.2-draft",
   "method": "Alpha bounds inspection, not painted-image editing. Foot line measured in central 30%-85% band at alpha192. Explicit per-frame pivots compensate sheet registration; not a natural-animation certification.",
-  "frameScale": 0.34,
+  "frameScale": 0.4,
   "minimumEdgeClearancePixels": 12,
   "frames": [
     {
@@ -197,5 +197,6 @@
       }
     }
   ],
-  "humanReview": "pending"
+  "humanReview": "pending",
+  "runtimeUsage": "Only frames6-11 used in v0.3; original frames0-5 retained but run playback uses separate8-frame study."
 }
