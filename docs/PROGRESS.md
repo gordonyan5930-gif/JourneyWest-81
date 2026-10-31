@@ -75,3 +75,10 @@ Linux Chromium短样本WebGL录像25.53FPS/p95 53.33ms，无录像WebGL30.34FPS/
 正式ZIP接收：6284337字节，含两张原始PNG；archive-references脚本原样复制并核对IHDR尺寸、字节数、源/目标SHA-256，与独立审查5723126248一致。原件无压缩/重编码，无图像生成替代。归档元数据见assets/references/manifest.json；GitHub提交和新CI结果待本轮后续记录。额度/费用仍无可核实接口。
 
 本轮v0.3：原始PNG已在提交7831ef6原样归档；新增六个局部地形核对点、围栏阻挡/6px脚底净距/平石与浅水区分。新增8姿势跑步研究、实际距离驱动、保留腾空，待机/棒击略增大；逐点和逐帧实际浏览器证据待本轮CI。自然步态、全图目视精确性和真实设备性能Gate仍未通过，不扩展其他角色/Boss。
+
+## Quality B v0.3原件与修订验证（北京时间2026-10-31）
+原件归档提交7831ef6：两PNG原样保留，尺寸/字节/hash已核验，与独立审查5723126248一致。代码22a1879，Actions [41210733641](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41210733641)通过npm ci、TypeScript/Vite、37单元、11浏览器、报告与上传。CI回读originalsReady=true、direction-approved-originals-archived-assets-pending，advanceAllowed仍false；原件缺失阻碍已解除，其他品质Gate不变。
+[本轮工件13046685076](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41210733641/artifacts/13046685076)135717562字节，保留至北京时间2026-11-07 22:39。reports/terrain-F01/F02/R01/W01-art/mask-*.png为四处局部同镜头图/蒙版；quality-map-overview/quality-sample-mask为全图；quality-wukong-*.png为实际尺寸；test-results/quality-sample-*/video.webm为真实UI操作。CI本地服务器证据，不冒充已操作登录后的在线浏览器或肉眼复核所有截图。
+新样片流程含逐点放大/蒙版/逐帧，WebGL录像14.59FPS/p95 136.66ms，无录像17.76FPS/p95 115ms，Canvas51.92FPS/p95 28.34ms。与v0.2样片23.82/55.21FPS流程不同，不能直接归因或报告提升百分比。保持未改流程的旧25怪5秒控制：本轮WebGL录像13.03FPS/无录像14.50FPS，Canvas59.60FPS；WebGL确认SwiftShader软件驱动，Text29/场景对象33，JS各项约0.4ms以内。说明环境/软件渲染仍显著波动，真实设备与固定120秒门槛未解除。
+随后针对静态调试蒙版增加单张纹理缓存，避免每帧重放5700格矢量命令；只初始化生成，不改变底图或通行数据。最终缓存版本以本PR最新CI/工件为准，不把优化推测写作已验证增益。
+跑步按实际距离推进，8姿势保留腾空，原画身份/左右腿/髋部/披风/武器仍需人工补帧与专业审核。参数注册、无边裁切和可达性不能等同动画自然或全图精确。无其他角色/Boss/剧情，PR保持Draft。
