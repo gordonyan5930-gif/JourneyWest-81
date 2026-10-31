@@ -7,6 +7,7 @@ test('real quality sample: generated assets, UI movement, follow camera, attack,
  await page.locator('#sample-select').click();const box=(await page.locator('canvas').boundingBox())!;
  const camera=await page.evaluate(()=>(window as any).qualityTest.camera);
  await page.mouse.click(box.x+(600-camera.x)*camera.zoom/960*box.width,box.y+(550-camera.y)*camera.zoom/540*box.height);
+ await expect(page.locator('#sample-status')).toContainText('正在按路线');
  await expect.poll(()=>page.evaluate(()=>(window as any).qualityTest.actor.x),{timeout:15000}).toBeGreaterThan(350);
  await page.locator('#sample-go').click();await expect.poll(()=>page.evaluate(()=>(window as any).qualityTest.actor.x),{timeout:30000}).toBeGreaterThan(1350);
  expect(await page.evaluate(()=>(window as any).qualityTest.camera.x)).toBeGreaterThan(100);
