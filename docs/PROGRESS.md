@@ -23,3 +23,14 @@ Actions run 41186150313已完整通过npm ci、build、9项单元测试和4项�
 团队授权生效后先只读检查项目；新建journeywest-81，未改现有sensor-sorting-review（updatedAt保持不变）。项目启用Vercel Authentication，Node24，npm ci/build/dist。预览dpl_4ecuRpHNVvHnrWE5XgVvu2pcfb36已READY，地址见PREVIEW_DEPLOYMENT.md。首次preview参数被服务标为production，但被预览专用门禁取消，未发布；改用REST staging得到真正预览。在线登录后交互仍待验证，当前没有已登录浏览器控制工具。不合并main，不进入P0-B。
 
 自动更新已实证：cb8e6e2的Git推送触发dpl_BduuWMWMxmyi3DdjUSvWyPXCDqJZ，READY，target=null，分支别名已更新。用户在登录后浏览器确认地图显示；在线选角、移动和战斗仍待验证。
+
+# 2026-10-31 品质路线调整（当前状态优先）
+用户亲自试玩判定P0-A画面、地图、角色、移动节奏、敌人密度与战斗不达预期。P0-A仅技术验证，产品体验未通过，暂不合并PR #1，不直接进入原P0-B。
+本轮审阅代码与现有测试，形成docs/quality/AUDIT.md；保留生命复活、地形语义、交互回归、工程与部署，计划渐进替换渲染、地图、遭遇和动作状态机。已编写A美术规范、资产生产依赖、B/C/D实施计划与独立验收清单，原创概念图已生成并修正HUD，待用户审核。尚未开始B/C/D实机开发，没有新增实机截图或录屏。
+
+A概念审核图：assets/concepts/quality-a-baiguling-v01.jpg。五角色与怪物/场景/UI统一方向待用户认可；非实机。初稿出现少女替代白马HUD及等级文字，已重新生成修订，不将初稿错误作为需求。
+
+# AI工作室管理建设（当前任务）
+建立开发/美术/独立QA/PM职责；并非4个收费后台服务。新增ART_BIBLE、QUALITY_GATES、ASSET_MANIFEST、BACKLOG、PROJECT_DASHBOARD与STUDIO_OPERATIONS，保留GAME_DESIGN。
+流水线扩展到单元/浏览器JSON、HTML、Markdown管理报告、正常规则自然死亡模拟、25普通敌人真实帧围攻、性能基线、截图与视频。待本次Actions实际运行，不能预先标通过。
+独立QA已只读模拟确认默认规则347.6秒自然失败，限制是已到出口并长时间避险；不代表正式片段难度合格。Codex自动Review未能核验开关，定时日报未启用，账户用量需人工核对。B/C/D正式编码未开始，概念待用户审批。

@@ -21,3 +21,12 @@ describe('审查回归',()=>{
  it('唐僧紧急避险后保留并恢复手动目的地',()=>{const w=new World();w.spawnTimer=999;w.command('tang',{x:4.5,y:3.5});w.spawn({x:4.5,y:10.5});w.update(.1);expect(w.tang.manualGoal).toEqual({x:4.5,y:3.5});expect(w.tang.y).toBeLessThan(9.5);w.enemies=[];for(let i=0;i<40&&w.tang.manual;i++)w.update(.1);expect(w.tang.y).toBeCloseTo(3.5);});
  it('白马拒绝独立移动命令',()=>{const w=new World();expect(w.command('horse',{x:7.5,y:3.5})).toBe(false);expect(w.heroes[4].manual).toBe(false);expect(w.message).toContain('随唐僧');});
 });
+
+describe('正常规则自然失败（非人工扣血）',()=>{
+ it('默认刷怪与AI最终能造成唐僧死亡',()=>{
+  const w=new World();let sawHorseDeath=false;let sawTangDamage=false;
+  // Do not call damage(), modify HP/attack, spawn enemies, or assign failed.
+  for(let i=0;i<6000&&!w.failed;i++){w.update(.1);sawHorseDeath ||= !w.mounted;sawTangDamage ||= w.tang.hp<w.tang.max;}
+  expect(sawHorseDeath).toBe(true);expect(sawTangDamage).toBe(true);expect(w.failed).toBe(true);expect(w.tang.hp).toBe(0);
+ });
+});

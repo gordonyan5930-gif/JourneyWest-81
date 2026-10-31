@@ -2,24 +2,45 @@ name: Build and test
 on: [push, pull_request]
 permissions:
   contents: read
+  pull-requests: read
+  actions: read
 jobs:
   verify:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-      - run: npm ci
-      - run: npm run build
-      - run: npm test
-      - run: npx playwright install --with-deps chromium
-      - run: npm run test:e2e
+      - run: mkdir -p reports && rm -f docs/p0-a-screenshot.png
+      - id: install
+        run: npm ci
+      - id: build
+        run: npm run build
+      - id: unit
+        run: npm test -- --reporter=default --reporter=json --outputFile=reports/unit.json
+      - id: browser_install
+        run: npx playwright install --with-deps chromium
+      - id: browser
+        run: npm run test:e2e
+      - name: Generate truthful studio report
+        if: always()
+        env:
+          STEP_RESULTS: ${{ toJSON(steps) }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          node --input-type=module -e 'import fs from "node:fs";fs.mkdirSync("reports",{recursive:true});fs.writeFileSync("reports/steps.json",process.env.STEP_RESULTS);'
+          node scripts/studio-report.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: browser-evidence
+          name: studio-evidence
+          retention-days: 7
           path: |
-            package-lock.json
+            reports/
             test-results/
+            playwright-report/
             docs/p0-a-screenshot.png
