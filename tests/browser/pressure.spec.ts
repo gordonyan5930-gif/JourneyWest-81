@@ -23,7 +23,8 @@ test('25名普通敌人真实帧压力：连续伤害、下马、自然失败与
  const avg=times.reduce((a,b)=>a+b,0)/times.length,p95=times[Math.floor((times.length-1)*.95)];
  // A severe responsiveness regression guard, not the product 60fps acceptance target.
  expect(p95).toBeLessThan(1000);
- const report={scenario:'developer-encounter-25-normal-enemies',surface:'local-vite-Chromium',sourceSha:process.env.SOURCE_SHA??'local',directDamageUsed:false,normalCampaignQualityValidated:false,samples:dense.length,averageFps:1000/avg,p95FrameMs:p95,productTarget:{averageFps:55,p95FrameMs:25},productTargetMet:1000/avg>=55&&p95<=25,device:'GitHub Actions runner; not user MacBook',videoEvidence:'Playwright video attachment after context teardown; see HTML report',timeline:samples};
+ const report={scenario:'developer-encounter-25-normal-enemies',surface:'local-vite-Chromium',sourceSha:process.env.SOURCE_SHA??'local',directDamageUsed:false,normalCampaignQualityValidated:false,samples:dense.length,averageFps:1000/avg,p95FrameMs:p95,productTarget:{averageFps:55,p95FrameMs:25},observedFrameThresholdsMet:1000/avg>=55&&p95<=25,productQualityApproved:false,device:process.env.CI?'GitHub Actions Linux runner; not user MacBook':'Local browser; hardware not inventoried',videoEvidence:'Playwright video attachment after context teardown; see HTML report',timeline:samples};
+ console.log('PRESSURE_EVIDENCE '+JSON.stringify({samples:report.samples,averageFps:report.averageFps,p95FrameMs:report.p95FrameMs,observedFrameThresholdsMet:report.observedFrameThresholdsMet,simulatedSeconds:samples.at(-1).simTime,tangHp:samples.at(-1).tangHp,normalCampaignQualityValidated:false}));
  mkdirSync('reports',{recursive:true});writeFileSync('reports/pressure.json',JSON.stringify(report,null,2));
  await testInfo.attach('pressure-metrics',{body:JSON.stringify(report),contentType:'application/json'});
  await page.screenshot({path:'reports/pressure-failure.png'});

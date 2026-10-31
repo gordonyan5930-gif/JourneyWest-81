@@ -11,7 +11,7 @@
 现有Codex/ChatGPT按任务承担角色；GitHub Actions承担自动回归，Vercel只托管受保护游戏Preview。本次已调用只读独立QA协作审计，与开发提交职责分离；不声称存在4个24小时运行的Agent。
 
 ## 自动流水线
-push/pull_request → npm ci → tsc与Vite build → Vitest JSON → 安装Chromium → Playwright真实UI/自然伤害压力/截图/视频/JSON+HTML → always生成Markdown/JSON管理报告 → 私有工件7天保留。
+开发PR每次推送（pull_request synchronize）→ npm ci → tsc与Vite build → Vitest JSON → 安装Chromium → Playwright真实UI/自然伤害压力/截图/视频/JSON+HTML → always生成Markdown/JSON管理报告 → 私有工件7天保留。
 测试失败使verify失败，无continue-on-error；skip/incomplete不写passed。报告advanceAllowed=false，人工门槛始终存在。游戏仍是P0-A技术版，CI不自动开发B/C/D。
 
 默认自然死亡单测只使用正常World.update和原刷怪规则；25怪浏览器测试只配置初始普通敌人，随后真实帧正常攻击。不调用damage/改HP/判败。后者标开发压力，不冒充正式正常关卡。报告帧时间与低血量，不把旧版压力通过称商业性能达标。
@@ -37,3 +37,5 @@ AGENTS.md已提供审查规则；确认启用后可按用户授权在PR请求@co
 | 预算保护 | 任务台账+人工阈值判断 | 没有自动账户硬限额，无余额不计算百分比 |
 
 60%关注趋势，80%停止新大型任务等待预算确认，90%停止新阶段。仅当已核验用量与预算口径一致才判断阈值；未知时状态为需人工核对，不是0%。自动化不得循环重试消耗配额，失败后保留证据并修复原因。
+
+为避免同一提交push和PR双跑，技术流水线仅监听pull_request；同一PR新提交取消过时运行，取消状态不能当通过。无schedule，定时方案仍待批准。

@@ -34,3 +34,4 @@ A概念审核图：assets/concepts/quality-a-baiguling-v01.jpg。五角色与怪
 建立开发/美术/独立QA/PM职责；并非4个收费后台服务。新增ART_BIBLE、QUALITY_GATES、ASSET_MANIFEST、BACKLOG、PROJECT_DASHBOARD与STUDIO_OPERATIONS，保留GAME_DESIGN。
 流水线扩展到单元/浏览器JSON、HTML、Markdown管理报告、正常规则自然死亡模拟、25普通敌人真实帧围攻、性能基线、截图与视频。待本次Actions实际运行，不能预先标通过。
 独立QA已只读模拟确认默认规则347.6秒自然失败，限制是已到出口并长时间避险；不代表正式片段难度合格。Codex自动Review未能核验开关，定时日报未启用，账户用量需人工核对。B/C/D正式编码未开始，概念待用户审批。
+独立QA复核已捕获并修复报表证据缺失假通过问题；测试证据和步骤状态双重校验，新增7种报表状态回归。压力数据只表示本次短时观察，不作为产品性能通过。等待最终CI证据。
