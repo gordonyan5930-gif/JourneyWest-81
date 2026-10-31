@@ -15,6 +15,8 @@ jobs:
       SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -25,6 +27,11 @@ jobs:
         run: npm run build
       - id: unit
         run: npm test -- --reporter=default --reporter=json --outputFile=reports/unit.json
+      - name: Compare logic-only baseline and current code
+        run: |
+          git show b249848b00780653f58d7bb323dde614bbbdf924:src/game/world.ts > reports/world-baseline.ts
+          node --experimental-transform-types scripts/logic-benchmark.mjs reports/world-baseline.ts before
+          node --experimental-transform-types scripts/logic-benchmark.mjs src/game/world.ts after
       - id: browser_install
         run: npx playwright install --with-deps chromium
       - id: browser

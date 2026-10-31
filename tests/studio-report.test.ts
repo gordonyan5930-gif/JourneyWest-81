@@ -14,7 +14,7 @@ describe('truthful studio stage reporting',()=>{
     writeFileSync(join(root,'reports/browser.json'),JSON.stringify({stats:{expected:2,unexpected:evidence==='failed-browser'?1:0,flaky:0,skipped:0}}));
    }
    const r=spawnSync(process.execPath,[resolve('scripts/studio-report.mjs')],{cwd:root,env:{...process.env,GITHUB_TOKEN:'',GITHUB_EVENT_PATH:'',GITHUB_STEP_SUMMARY:''},encoding:'utf8'});expect(r.status).toBe(expected==='passed'?0:1);
-   const report=JSON.parse(readFileSync(join(root,'reports/dashboard.json'),'utf8'));expect(report.technicalStatus).toBe(expected);expect(report.advanceAllowed).toBe(false);expect(report.art.approval).toBe('pending-user');expect(report.budget.usedPercent).toBeNull();expect(report.budget.automaticHardLimit).toBe(false);
+   const report=JSON.parse(readFileSync(join(root,'reports/dashboard.json'),'utf8'));expect(report.technicalStatus).toBe(expected);expect(report.advanceAllowed).toBe(false);expect(report.art.approval).toBe('direction-approved-reference-files-missing');expect(report.budget.usedPercent).toBeNull();expect(report.budget.automaticHardLimit).toBe(false);
   }finally{rmSync(root,{recursive:true,force:true});}
  });}
 });

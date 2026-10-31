@@ -30,3 +30,12 @@ describe('正常规则自然失败（非人工扣血）',()=>{
   expect(sawHorseDeath).toBe(true);expect(sawTangDamage).toBe(true);expect(w.failed).toBe(true);expect(w.tang.hp).toBe(0);
  });
 });
+
+describe('navigation reuse and invalidation',()=>{
+ it('stationary target does not request a new route every frame; terrain version invalidates',async()=>{
+  const {NAV_METRICS}=await import('../src/game/world');const w=new World(),h=w.heroes[0];NAV_METRICS.searches=0;
+  for(let i=0;i<20;i++)w.move(h,{x:8.5,y:3.5},.01,3);
+  expect(NAV_METRICS.searches).toBe(1);w.invalidateNavigation();w.move(h,{x:8.5,y:3.5},.01,3);expect(NAV_METRICS.searches).toBe(2);
+  w.move(h,{x:9.5,y:3.5},.01,3);expect(NAV_METRICS.searches).toBe(3);
+ });
+});

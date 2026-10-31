@@ -2,7 +2,7 @@
 
 | ID / 版本 | 文件/规格 | 来源与状态 | 审核 |
 |---|---|---|---|
-| CONCEPT-QA-001 v0.1 | assets/concepts/quality-a-baiguling-v01.jpg；1672×941；RGB；PNG转JPEG仅格式压缩 | 本任务图像生成：初稿+修订共2次；提示摘要见assets/concepts/README.md；原创方向，非实机/生产资源 | 待用户审核 |
+| CONCEPT-QA-001 v0.1 | assets/concepts/quality-a-baiguling-v01.jpg；1672×941；RGB；PNG转JPEG仅格式压缩 | 本任务图像生成：初稿+修订共2次；提示摘要见assets/concepts/README.md；原创方向，非实机/生产资源 | 已被第三轮人物/第一轮场景选择覆盖，仅历史探索 |
 | DEBUG-P0A-001 | src/main.ts程序几何图形 | 调试占位；保留旧版技术验证 | 明确不是正式美术 |
 | MAP-QB-001 | 约2.5—3屏白骨岭、分层图、通行蒙版；设计1920×1080，实际视口验证 | 未制作 | 等待A批准 |
 | HERO-QB-001 | 悟空4向动作；脚点中心、武器挂点、atlas页优先<=2048² | 未制作，先做单角色样片 | 等待A批准 |
@@ -14,3 +14,6 @@
 动作帧建议、角色身高、导出和人工依赖见quality/ASSET_PLAN.md及ART_DIRECTION.md。源PNG保留于工作区generated_images，Git仅存审核JPEG。生成资源不保证逐帧一致性；清线、补帧、分层地图、锚点、动作事件与音画同步需要专业2D处理或专用工具，尚未完成。
 
 新增资产记录模板：ID、版本、文件、尺寸/格式、方向、动作帧数/时长/命中事件、脚点/挂点、生成提示或作者、许可依据、源文件位置、变更原因、用户批准证据、整合SHA、实机证据。未确认许可填待核查，不凭“AI生成”保证可商用。不得购买付费包。
+
+## 正式视觉母版批准记录
+来源：[用户决策6542578456](https://github.com/gordonyan5930-gif/JourneyWest-81/pull/1#issuecomment-6542578456)，2026-10-31北京时间19:05。CHAR-MASTER-R3第三轮角色图、SCENE-MASTER-R1第一轮游戏画面局部视觉方向已批准；文件未收到，未登记尺寸/hash、未写已入库。毛绒方向拒绝，动画/模型/生产图集/功能样片未批准。旧quality-a-baiguling-v01.jpg不是人物母版。见assets/references/README.md。
