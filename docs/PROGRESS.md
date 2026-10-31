@@ -13,3 +13,6 @@ Actions run 41186150313已完整通过npm ci、build、9项单元测试和4项�
 
 ## 范围与下一步
 只处理P0-A和本PR审查；不创建新PR，不合并main，不进入P0-B。完整CI通过后提交独立复验，Safari和长局体验仍需检查。
+
+## 受保护在线预览准备
+2026-10-31：用户授权仅部署feat/p0-a-prototype的Preview，不部署Production、不改main、不公开仓库。已核验仓库Private。发现Vercel集成可连接但当前未连接，等待账户授权。准备vercel.json（npm ci / npm run build / dist）、仅预览分支构建门禁及配置说明；账号保护必须在项目端启用并验证，不能靠仓库JSON冒充认证。未部署、没有试玩URL、未做在线浏览器验证。
