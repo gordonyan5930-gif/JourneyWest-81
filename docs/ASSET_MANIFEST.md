@@ -30,3 +30,5 @@
 用户ZIP原字节解压/复制至assets/references，两图均1672×941；人物3152697字节/SHA256 327411d5d8bef9b527e07c416524ae833ce45ee9ce54bf71a314699f76898bad；场景3204162字节/SHA256 e2e161a48c0d0b36add1115e01f11b00ccd697f208bb68fd03f27583160e0936。版本approved-original-v1，原件不作为运行素材。与审查5723126248复核一致，旧未收到状态保留为历史。
 
 跑步研究v0.3-draft：wukong-run.webp，1774×887，1128304字节，SHA256 d65793dd442e74a2b6013965c6944983955e721fda7f5602c5ed68302472ed8c；8帧，与旧待机/攻击分图集。生成源hash/脚线/边距/限制见运行manifest和run-audit；不是母版改图，用户未批准生产动画。
+
+RANGED-QB-EXPERIMENT v0.4：ranged-study.webp，1774×887、1350980字节，SHA256 b9cbf66a6f024e95f22fa8cc7bf640f854a1f1463dcaabb68345d345e72b63a1。仅辅助弓手4姿势/倒地、唐僧2姿势、飞行FX研究；不是正式批量角色。运行棍影为FX杆身裁窗，原WebP不修改，箭矢小纹理程序生成并真实飞行碰撞。许可/风格与动作最终审查待用户，源PNG留工作区、hash见manifest。

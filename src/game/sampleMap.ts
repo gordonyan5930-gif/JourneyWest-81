@@ -27,7 +27,7 @@ export const REGIONS:TerrainRegion[]=[
 export const ROAD:Point[]=p([[0,838],[250,740],[500,644],[690,570],[920,544],[1060,514],[1139,450],[1275,397],[1442,309],[1567,204],[1671,151]]);
 export function insidePolygon(q:Point,polygon:Point[]){let inside=false;for(let i=0,j=polygon.length-1;i<polygon.length;j=i++){const a=polygon[i],b=polygon[j];if((a.y>q.y)!==(b.y>q.y)&&q.x<(b.x-a.x)*(q.y-a.y)/(b.y-a.y)+a.x)inside=!inside;}return inside;}
 const traversable=(t:SampleTerrain)=>['road','grass','forest','shallow'].includes(t);
-function segmentDistance(q:Point,a:Point,b:Point){const dx=b.x-a.x,dy=b.y-a.y,t=Math.max(0,Math.min(1,((q.x-a.x)*dx+(q.y-a.y)*dy)/(dx*dx+dy*dy)));return Math.hypot(q.x-a.x-t*dx,q.y-a.y-t*dy);}
+function segmentDistance(q:Point,a:Point,b:Point){const dx=b.x-a.x,dy=b.y-a.y,t=dx===0&&dy===0?0:Math.max(0,Math.min(1,((q.x-a.x)*dx+(q.y-a.y)*dy)/(dx*dx+dy*dy)));return Math.hypot(q.x-a.x-t*dx,q.y-a.y-t*dy);}
 // Bake the fine grid once. Use the SAME layer for pathfinding, speed and overlay.
 const columns=Math.ceil(SAMPLE_MAP.width/SAMPLE_MAP.tile),rows=Math.ceil(SAMPLE_MAP.height/SAMPLE_MAP.tile);
 export const FOOT_CLEARANCE=6;
@@ -38,3 +38,10 @@ export function sampleTerrain(x:number,y:number):SampleTerrain{return x<0||y<0||
 export function sampleWalkable(x:number,y:number){return traversable(sampleTerrain(x,y));}
 export const TERRAIN_COLORS:Record<SampleTerrain,number>={road:0xe4b560,grass:0x62c572,forest:0x237b45,shallow:0x40bddd,mountain:0xc84d46,cliff:0x745b9a,'deep-water':0x213b96,background:0x59646f,fence:0xff964f};
 export function sampleSpeed(x:number,y:number){const t=sampleTerrain(Math.floor(x/16),Math.floor(y/16));return t==='forest'?.8:t==='shallow'?.65:1;}
+
+const collisionPolygons=blockers.map(r=>({...r,minX:Math.min(...r.polygon.map(p=>p.x))-FOOT_CLEARANCE,maxX:Math.max(...r.polygon.map(p=>p.x))+FOOT_CLEARANCE,minY:Math.min(...r.polygon.map(p=>p.y))-FOOT_CLEARANCE,maxY:Math.max(...r.polygon.map(p=>p.y))+FOOT_CLEARANCE}));
+const cross=(a:Point,b:Point,c:Point)=>(b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x);
+function edgesIntersect(a:Point,b:Point,c:Point,d:Point){return Math.max(a.x,b.x)>=Math.min(c.x,d.x)&&Math.max(c.x,d.x)>=Math.min(a.x,b.x)&&Math.max(a.y,b.y)>=Math.min(c.y,d.y)&&Math.max(c.y,d.y)>=Math.min(a.y,b.y)&&cross(a,b,c)*cross(a,b,d)<=0&&cross(c,d,a)*cross(c,d,b)<=0;}
+// Continuous swept-foot guard supplements the grid. Polygon corners between
+// cell centres must still block the actor's six-pixel collision radius.
+export function sampleGeometryClear(a:Point,b:Point){for(const r of collisionPolygons){if(Math.max(a.x,b.x)<r.minX||Math.min(a.x,b.x)>r.maxX||Math.max(a.y,b.y)<r.minY||Math.min(a.y,b.y)>r.maxY)continue;if(insidePolygon(a,r.polygon)||insidePolygon(b,r.polygon))return false;for(let i=0;i<r.polygon.length;i++){const c=r.polygon[i],d=r.polygon[(i+1)%r.polygon.length];if(edgesIntersect(a,b,c,d)||Math.min(segmentDistance(a,c,d),segmentDistance(b,c,d),segmentDistance(c,a,b),segmentDistance(d,a,b))<=FOOT_CLEARANCE)return false;}}return true;}

@@ -11,7 +11,7 @@ test('real quality sample: generated assets, UI movement, follow camera, attack,
  await page.mouse.click(box.x+(600-camera.x)*camera.zoom/960*box.width,box.y+(550-camera.y)*camera.zoom/540*box.height);
  await expect(page.locator('#sample-status')).toContainText('正在按路线');
  await expect.poll(()=>page.evaluate(()=>(window as any).qualityTest.actor.x),{timeout:15000}).toBeGreaterThan(350);
- const clickWorld=async(x:number,y:number)=>{const c=await page.evaluate(()=>(window as any).qualityTest.camera);await page.mouse.click(box.x+(x-c.x)*c.zoom/960*box.width,box.y+(y-c.y)*c.zoom/540*box.height);};
+ const clickWorld=async(x:number,y:number)=>{await page.locator('canvas').scrollIntoViewIfNeeded();const box=(await page.locator('canvas').boundingBox())!;const c=await page.evaluate(()=>(window as any).qualityTest.camera);await page.mouse.click(box.x+(x-c.x)*c.zoom/960*box.width,box.y+(y-c.y)*c.zoom/540*box.height);};
  await clickWorld(575,470);await expect.poll(()=>page.evaluate(()=>Math.hypot((window as any).qualityTest.actor.x-575,(window as any).qualityTest.actor.y-470)),{timeout:20000}).toBeLessThan(20);
  await clickWorld(230,640);await expect.poll(()=>page.evaluate(()=>Math.hypot((window as any).qualityTest.actor.x-230,(window as any).qualityTest.actor.y-640)),{timeout:20000}).toBeLessThan(20);
  await page.locator('#sample-go').click();await expect.poll(()=>page.evaluate(()=>(window as any).qualityTest.actor.x),{timeout:30000}).toBeGreaterThan(1350);

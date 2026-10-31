@@ -1,8 +1,9 @@
+import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {readFileSync,writeFileSync,mkdirSync,existsSync,readdirSync,statSync} from 'node:fs';
 const read=p=>{try{return JSON.parse(readFileSync(p,'utf8'));}catch{return null;}};
 const walk=p=>existsSync(p)?readdirSync(p,{withFileTypes:true}).flatMap(d=>d.isDirectory()?walk(`${p}/${d.name}`):[`${p}/${d.name}`]):[];
-const videos=walk('test-results').filter(p=>p.endsWith('.webm')).map(path=>({path,bytes:statSync(path).size}));
+const videos=walk('test-results').filter(p=>p.endsWith('.webm')).map(path=>{const probe=spawnSync('ffprobe',['-v','error','-show_entries','format=duration','-of','json',path],{encoding:'utf8',timeout:10000});let durationSeconds=null;try{durationSeconds=Number(JSON.parse(probe.stdout).format.duration)||null;}catch{}return {path,bytes:statSync(path).size,durationSeconds,durationSource:durationSeconds?'ffprobe':null};});
 const event=read(process.env.GITHUB_EVENT_PATH??'')??{};
 const steps=read('reports/steps.json')??{};
 const browser=read('reports/browser.json'),unit=read('reports/unit.json'),pressure=read('reports/pressure.json');
@@ -11,7 +12,10 @@ const sha=event.pull_request?.head?.sha??process.env.GITHUB_SHA??'local';
 async function github(path){if(!process.env.GITHUB_TOKEN)return {status:'unavailable',reason:'No GitHub read credential in this execution'};try{const r=await fetch(`https://api.github.com/repos/${repository}/${path}`,{headers:{Authorization:`Bearer ${process.env.GITHUB_TOKEN}`,Accept:'application/vnd.github+json'}});return r.ok?await r.json():{status:'unavailable',http:r.status};}catch{return {status:'unavailable',reason:'Network request failed'};}}
 const pr=await github('pulls/1');const runs=await github(`actions/runs?head_sha=${encodeURIComponent(sha)}&per_page=5`);
 const failed=Object.values(steps).some(s=>s.outcome==='failure'||s.outcome==='cancelled')||(unit?.numFailedTests??0)>0||(browser?.stats?.unexpected??0)>0||(browser?.stats?.flaky??0)>0;
-const incomplete=['install','build','unit','browser_install','browser'].some(k=>steps[k]?.outcome!=='success')||!unit||!browser?.stats||!pressure||!(pressure.samples>0)||pressure.directDamageUsed!==false||!(unit.numTotalTests>0)||!(browser.stats.expected>0)||(unit.numPendingTests??0)>0||(browser.stats.skipped??0)>0;
+const requiresExperimentVideo=JSON.stringify(browser?.suites??[]).includes('quality-experiment.spec.ts');
+const experimentVideos=videos.filter(v=>v.path.includes('quality-experiment'));
+const experimentVideoValid=!requiresExperimentVideo||(experimentVideos.length>0&&experimentVideos.every(v=>v.durationSeconds>=30&&v.durationSeconds<=60));
+const incomplete=!experimentVideoValid||['install','build','unit','browser_install','browser'].some(k=>steps[k]?.outcome!=='success')||!unit||!browser?.stats||!pressure||!(pressure.samples>0)||pressure.directDamageUsed!==false||!(unit.numTotalTests>0)||!(browser.stats.expected>0)||(unit.numPendingTests??0)>0||(browser.stats.skipped??0)>0;
 const referenceManifest=read('assets/references/manifest.json');
 const originalRefs=['CHAR-MASTER-R3','SCENE-MASTER-R1'].map(id=>referenceManifest?.references?.find(r=>r.id===id));
 const originalsReady=originalRefs.every(r=>r?.originalPreserved&&existsSync(r.intendedPath)&&statSync(r.intendedPath).size===r.bytes&&createHash('sha256').update(readFileSync(r.intendedPath)).digest('hex')===r.sha256);

@@ -45,6 +45,19 @@
       "status": "prototype-awaiting-user-review",
       "frames": 8,
       "audit": "assets/quality-b/wukong-run-audit.json"
+    },
+    {
+      "id": "ranged-study",
+      "version": "0.4-experimental",
+      "path": "assets/quality-b/ranged-study.webp",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1350980,
+      "sha256": "b9cbf66a6f024e95f22fa8cc7bf640f854a1f1463dcaabb68345d345e72b63a1",
+      "generatedSourceSha256": "33f177e03962e66ee8d4f0a70828fb8c7ba6aa3b774843b5ed0a704fae71c172",
+      "origin": "New supporting archer/Tang/flight-image study only for authorized ranged counter demonstration; not master crops",
+      "status": "prototype-awaiting-user-review",
+      "limitations": "Key poses only; cell-edge cleanup/consistent anatomy and final staff silhouette pending; not production animation"
     }
   ],
   "approval": "pending-human-asset-review",
