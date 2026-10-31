@@ -49,3 +49,8 @@ A概念审核图：assets/concepts/quality-a-baiguling-v01.jpg。五角色与怪
 独立QA二次复核发现并要求修复：步骤全success但测试JSON缺失会假报技术通过。现已改为同时核对必需报告、有效测试数量与失败/跳过计数；缺失/破损标incomplete，失败计数标failed，报告步骤返回非零阻断。增加7种报表回归（成功、步骤失败、跳过、缺失、损坏、单测失败、浏览器失败）。短时压力阈值字段改为observedFrameThresholdsMet，并显式productQualityApproved=false；本地/CI设备来源分开标记。等待修复后CI。
 
 首轮工作室CI实际证据：run 41190134941 完整成功，19项单元、5项浏览器测试通过，25怪自然攻击失败的浏览器测试27.5秒，浏览器合计约1.6分钟。私有studio-evidence工件13038242120含20文件，19,956,141字节，2026-11-07到期。首轮成功不代替独立QA随后指出的报表边界修复，最新修复需重新验证。当前视频与截图均为旧技术美术版，不是Quality B画面。
+
+# 工作室最终代码验证证据
+Actions [41190391919](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41190391919)，源c148ce1db3ff94f188d4bba7a035dc64ead37be6：npm ci、TypeScript/Vite、24项单元、5项Chromium浏览器、报告与上传全部成功。浏览器约99.1秒。报告实际列出5个video.webm，压力视频3,098,774字节，所有证据工件[13038707344](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41190391919/artifacts/13038707344)共20,116,275字节，2026-11-07北京时间17:54到期。
+压力采样191帧，平均8.52FPS、p95帧间隔132.5ms，约9.98模拟秒唐僧自然死亡；observedFrameThresholdsMet=false，productQualityApproved=false。此为当前占位版带录屏Linux CI基线，不满足商业品质/120秒正式性能验收，也不代表用户MacBook帧率。技术响应守卫通过不等于性能品质通过。
+独立QA实际重跑8种报表输入，确认缺失/破损/失败不假报通过，advanceAllowed始终false；原阻断已关闭。真实普通剧情的自然失败/可赢对照、Safari与专业美术仍待B/C/D。
