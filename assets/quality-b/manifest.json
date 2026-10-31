@@ -15,16 +15,22 @@
     },
     {
       "id": "wukong-atlas",
-      "version": "0.1-draft",
+      "version": "0.2-draft",
       "path": "assets/quality-b/wukong-atlas.webp",
-      "width": 1774,
-      "height": 887,
-      "bytes": 1588024,
-      "sha256": "be9a3faf58ebc5a0637b59bf83ccdf04672c9f8a5a0c266b92ffb07434066c90",
-      "generatedSourceSha256": "4f5c8d5dbfdbeaa584a2a6f9985cc8521e7e533565236d377cf44cf8f780c32b",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 1313732,
+      "sha256": "2079b7da7df1b0d543e258ce5b33c9b1f574d7594840a841ebc1edcd99a35727",
+      "generatedSourceSha256": "3d4e44bf14751edd9d5bd2c753cf454fa03f1f3604eb80a88310458e95124c95",
       "origin": "newly generated game sample asset using visible approved references; not a crop of a reference board",
       "status": "prototype-awaiting-user-review",
-      "mode": "RGBA"
+      "mode": "RGBA",
+      "frames": {
+        "run": 6,
+        "idle": 2,
+        "strike": 4
+      },
+      "anchorAudit": "assets/quality-b/wukong-audit.json"
     }
   ],
   "approval": "pending-human-asset-review",

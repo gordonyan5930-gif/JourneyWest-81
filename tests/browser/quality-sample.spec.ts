@@ -1,7 +1,7 @@
 import {test,expect} from '@playwright/test';
 import {mkdirSync,writeFileSync} from 'node:fs';
 test('real quality sample: generated assets, UI movement, follow camera, attack, mask, device report',async({page},testInfo)=>{
- test.setTimeout(90000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ test.setTimeout(120000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
  const evidenceTag=testInfo.project.name;
  const renderer=testInfo.project.metadata.renderer==='canvas'?'canvas':'auto';await page.goto(`/?sample=quality-b&test&renderer=${renderer}`);
  await expect(page.locator('#sample-status')).toContainText('资产已载入',{timeout:20000});
@@ -10,11 +10,20 @@ test('real quality sample: generated assets, UI movement, follow camera, attack,
  await page.mouse.click(box.x+(600-camera.x)*camera.zoom/960*box.width,box.y+(550-camera.y)*camera.zoom/540*box.height);
  await expect(page.locator('#sample-status')).toContainText('正在按路线');
  await expect.poll(()=>page.evaluate(()=>(window as any).qualityTest.actor.x),{timeout:15000}).toBeGreaterThan(350);
+ const clickWorld=async(x:number,y:number)=>{const c=await page.evaluate(()=>(window as any).qualityTest.camera);await page.mouse.click(box.x+(x-c.x)*c.zoom/960*box.width,box.y+(y-c.y)*c.zoom/540*box.height);};
+ await clickWorld(575,470);await expect.poll(()=>page.evaluate(()=>Math.hypot((window as any).qualityTest.actor.x-575,(window as any).qualityTest.actor.y-470)),{timeout:20000}).toBeLessThan(20);
+ await clickWorld(230,640);await expect.poll(()=>page.evaluate(()=>Math.hypot((window as any).qualityTest.actor.x-230,(window as any).qualityTest.actor.y-640)),{timeout:20000}).toBeLessThan(20);
  await page.locator('#sample-go').click();await expect.poll(()=>page.evaluate(()=>(window as any).qualityTest.actor.x),{timeout:30000}).toBeGreaterThan(1350);
+ await expect.poll(()=>page.evaluate(()=>(window as any).qualityTest.route.length),{timeout:15000}).toBe(0);
  expect(await page.evaluate(()=>(window as any).qualityTest.camera.x)).toBeGreaterThan(100);
+ await page.locator('#sample-overview').click();await page.waitForTimeout(500);await clickWorld(380,500);await expect(page.locator('#sample-status')).toContainText('不可到达');
  await page.locator('#sample-attack').click();await expect(page.locator('#sample-status')).toContainText('棒击');
+ mkdirSync('reports',{recursive:true});await page.screenshot({path:`reports/quality-map-overview-${evidenceTag}.png`,fullPage:true});
  await page.locator('#sample-mask').click();expect(await page.evaluate(()=>(window as any).qualityTest.maskVisible)).toBe(true);
  mkdirSync('reports',{recursive:true});await page.screenshot({path:`reports/quality-sample-mask-${evidenceTag}.png`,fullPage:true});await page.locator('#sample-mask').click();
- await page.locator('#sample-reset').click();await page.waitForTimeout(900);await page.screenshot({path:`reports/quality-sample-${evidenceTag}.png`,fullPage:true});
+ await page.locator('#sample-overview').click();await page.locator('#sample-reset').click();await page.waitForTimeout(900);await page.screenshot({path:`reports/quality-sample-${evidenceTag}.png`,fullPage:true});
+ await page.locator('#sample-frame').selectOption('6');await page.waitForTimeout(100);await page.screenshot({path:`reports/quality-wukong-idle-${evidenceTag}.png`,fullPage:true});
+ for(const frame of ['0','1','2','3','4','5','6','7','8','9','10','11']){await page.locator('#sample-frame').selectOption(frame);const actor=await page.evaluate(()=>(window as any).qualityTest.actor);expect(Math.abs(actor.registeredFootY-actor.y)).toBeLessThan(.5);}
+ await page.screenshot({path:`reports/quality-wukong-recovery-${evidenceTag}.png`,fullPage:true});
  const report=await page.evaluate(()=>(window as any).qualityTest.metrics);writeFileSync(`reports/quality-device-${evidenceTag}.json`,JSON.stringify(report,null,2));console.log('QUALITY_SAMPLE '+JSON.stringify({project:testInfo.project.name,...report}));expect(errors).toEqual([]);
 });

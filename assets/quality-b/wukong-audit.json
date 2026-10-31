@@ -1,0 +1,201 @@
+{
+  "version": "0.2-draft",
+  "method": "Alpha bounds inspection, not painted-image editing. Foot line measured in central 30%-85% band at alpha192. Explicit per-frame pivots compensate sheet registration; not a natural-animation certification.",
+  "frameScale": 0.34,
+  "minimumEdgeClearancePixels": 12,
+  "frames": [
+    {
+      "frame": "0",
+      "alphaThreshold": 64,
+      "bounds": [
+        71,
+        91,
+        327,
+        342
+      ],
+      "edgeClearancePixels": 20,
+      "registeredFootY": 340,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9392265193370166
+      }
+    },
+    {
+      "frame": "1",
+      "alphaThreshold": 64,
+      "bounds": [
+        68,
+        83,
+        342,
+        346
+      ],
+      "edgeClearancePixels": 16,
+      "registeredFootY": 344,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9502762430939227
+      }
+    },
+    {
+      "frame": "2",
+      "alphaThreshold": 64,
+      "bounds": [
+        52,
+        91,
+        313,
+        340
+      ],
+      "edgeClearancePixels": 22,
+      "registeredFootY": 338,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9337016574585635
+      }
+    },
+    {
+      "frame": "3",
+      "alphaThreshold": 64,
+      "bounds": [
+        55,
+        100,
+        316,
+        347
+      ],
+      "edgeClearancePixels": 15,
+      "registeredFootY": 345,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9530386740331491
+      }
+    },
+    {
+      "frame": "4",
+      "alphaThreshold": 64,
+      "bounds": [
+        64,
+        75,
+        338,
+        324
+      ],
+      "edgeClearancePixels": 24,
+      "registeredFootY": 322,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8895027624309392
+      }
+    },
+    {
+      "frame": "5",
+      "alphaThreshold": 64,
+      "bounds": [
+        76,
+        76,
+        317,
+        333
+      ],
+      "edgeClearancePixels": 29,
+      "registeredFootY": 332,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9171270718232044
+      }
+    },
+    {
+      "frame": "6",
+      "alphaThreshold": 64,
+      "bounds": [
+        46,
+        67,
+        311,
+        340
+      ],
+      "edgeClearancePixels": 22,
+      "registeredFootY": 338,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9337016574585635
+      }
+    },
+    {
+      "frame": "7",
+      "alphaThreshold": 64,
+      "bounds": [
+        45,
+        69,
+        301,
+        340
+      ],
+      "edgeClearancePixels": 22,
+      "registeredFootY": 338,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9337016574585635
+      }
+    },
+    {
+      "frame": "8",
+      "alphaThreshold": 64,
+      "bounds": [
+        56,
+        19,
+        337,
+        304
+      ],
+      "edgeClearancePixels": 19,
+      "registeredFootY": 302,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8342541436464088
+      }
+    },
+    {
+      "frame": "9",
+      "alphaThreshold": 64,
+      "bounds": [
+        42,
+        60,
+        350,
+        304
+      ],
+      "edgeClearancePixels": 12,
+      "registeredFootY": 303,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8370165745856354
+      }
+    },
+    {
+      "frame": "10",
+      "alphaThreshold": 64,
+      "bounds": [
+        29,
+        43,
+        339,
+        304
+      ],
+      "edgeClearancePixels": 23,
+      "registeredFootY": 303,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8370165745856354
+      }
+    },
+    {
+      "frame": "11",
+      "alphaThreshold": 64,
+      "bounds": [
+        38,
+        74,
+        328,
+        304
+      ],
+      "edgeClearancePixels": 34,
+      "registeredFootY": 303,
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8370165745856354
+      }
+    }
+  ],
+  "humanReview": "pending"
+}

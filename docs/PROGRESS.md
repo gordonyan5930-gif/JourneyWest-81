@@ -62,3 +62,5 @@ A概念审核图：assets/concepts/quality-a-baiguling-v01.jpg。五角色与怪
 [最终截图/录屏工件13042931059](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41200840311/artifacts/13042931059)：42,798,711字节，2026-11-07 12:26 UTC到期。截图reports/quality-sample-render-with-video.png、quality-sample-render-without-video.png、quality-sample-render-canvas-no-video.png；蒙版图另带mask；录像test-results/quality-sample-*/video.webm，配套HTML与设备JSON。
 Linux Chromium短样本（非真实设备）：WebGL录像20.78FPS/p95 74.99ms；无录像WebGL24.91FPS/p95 60ms；无录像Canvas54.06FPS/p95 21.67ms。后两者同交互脚本与无录像条件，仍非固定120秒/硬件GPU验收，性能Gate保留。新地图/单角色数据也不能与旧25怪压力直接混为同场景。
 Vercel回读c6611ea对应dpl_Djcz77e9c6HpFwrfNXxadG6bx7wk READY、target=null（Preview）；未操作已登录在线浏览器。受保护链接加?sample=quality-b试制，真实设备可导出本机采样；本轮没有生产部署或合并。
+
+本轮响应独立审查5722745715：Quality B v0.2地图保持原WebP，改为11个手绘地形分区和16px缓存网格，草地/树林/浅滩自由绕行，山石/悬崖/深水阻挡；补全图/蒙版对照与真实点击草地、树林、拒绝山体回归。悟空新12姿势（6跑/2待机/4攻击），明确逐帧pivot、alpha64边距最小12px，新增UI逐帧检查。新测试及Canvas/有无录像WebGL结果待本轮CI，不宣称美术/真实设备通过。两张母版PNG原字节仍不可获取，原样归档待补；archive-references脚本可在接收原件后无转换核验入库。

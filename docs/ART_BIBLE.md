@@ -1,4 +1,4 @@
-# ART BIBLE · v0.3 · 视觉母版已收到，原件归档待补
+# ART BIBLE · v0.4 · 视觉母版已收到，原件归档待补
 
 依据：[2026-10-31正式用户决策](https://github.com/gordonyan5930-gif/JourneyWest-81/pull/1#issuecomment-6542578456)。本次决定覆盖旧v0.1幼态Q版角色方向；原规范的地形/技术和原创边界保留。
 
@@ -15,3 +15,5 @@
 详规见quality/ART_DIRECTION.md。图像接收状态见assets/references/README.md。批准视觉方向≠批准动画/模型/实机；用户最终品质验收保留。
 
 本轮依据可见母版重新制作了独立悟空/地图试制资产，见assets/quality-b/manifest.json与README；所有运行资产有真实SHA-256。它们不是母版原件或概念图裁片。样片可运行不意味着正式动画或产品品质已批准。原件缺失原因与三个上传视图的角色见assets/references/manifest.json。
+
+Quality B v0.2只修订通行与悟空：原梯田底图保持，新12姿势图集与脚线注册/逐帧检视待人工验收。alpha64最小帧边距12px可量化，不能替代清线、步态和实际尺寸识别。前景草地/树林/浅溪可绕行，山石/悬崖/深水独立阻挡，远景不属于可达前景；见sampleMap.ts及运行蒙版。

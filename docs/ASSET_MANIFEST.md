@@ -23,3 +23,5 @@
 
 - terrace-map v0.1-draft：assets/quality-b/terrace-map.webp，1672×941，941682字节；SHA-256 `3b54b8782ed0d1fbdb11df2859e666aad1e1fb960e67e5056418e490d1d19eb6`。新生成试制资产，待用户审核，非母版裁片。
 - wukong-atlas v0.1-draft：assets/quality-b/wukong-atlas.webp，1774×887，1588024字节；SHA-256 `be9a3faf58ebc5a0637b59bf83ccdf04672c9f8a5a0c266b92ffb07434066c90`。新生成试制资产，待用户审核，非母版裁片。
+
+悟空v0.2-draft：1448×1086，1,313,732字节；SHA-256 `2079b7da7df1b0d543e258ce5b33c9b1f574d7594840a841ebc1edcd99a35727`。12姿势，alpha64边距与脚线见assets/quality-b/wukong-audit.json；生成源hash见manifest。旧v0.1记录保留为历史，不再运行。梯田图hash未变。母版原件仍未归档，不以新生成资产代替。
