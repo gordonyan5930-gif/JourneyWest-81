@@ -2,6 +2,7 @@ import {test,expect} from '@playwright/test';
 import {mkdirSync,writeFileSync} from 'node:fs';
 test('real quality sample: generated assets, UI movement, follow camera, attack, mask, device report',async({page},testInfo)=>{
  test.setTimeout(90000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ const evidenceTag=testInfo.project.name;
  const renderer=testInfo.project.metadata.renderer==='canvas'?'canvas':'auto';await page.goto(`/?sample=quality-b&test&renderer=${renderer}`);
  await expect(page.locator('#sample-status')).toContainText('资产已载入',{timeout:20000});
  await page.locator('#sample-select').click();const box=(await page.locator('canvas').boundingBox())!;
@@ -13,7 +14,7 @@ test('real quality sample: generated assets, UI movement, follow camera, attack,
  expect(await page.evaluate(()=>(window as any).qualityTest.camera.x)).toBeGreaterThan(100);
  await page.locator('#sample-attack').click();await expect(page.locator('#sample-status')).toContainText('棒击');
  await page.locator('#sample-mask').click();expect(await page.evaluate(()=>(window as any).qualityTest.maskVisible)).toBe(true);
- mkdirSync('reports',{recursive:true});await page.screenshot({path:`reports/quality-sample-mask-${renderer}.png`,fullPage:true});await page.locator('#sample-mask').click();
- await page.locator('#sample-reset').click();await page.waitForTimeout(900);await page.screenshot({path:`reports/quality-sample-${renderer}.png`,fullPage:true});
- const report=await page.evaluate(()=>(window as any).qualityTest.metrics);writeFileSync(`reports/quality-device-${renderer}.json`,JSON.stringify(report,null,2));console.log('QUALITY_SAMPLE '+JSON.stringify(report));expect(errors).toEqual([]);
+ mkdirSync('reports',{recursive:true});await page.screenshot({path:`reports/quality-sample-mask-${evidenceTag}.png`,fullPage:true});await page.locator('#sample-mask').click();
+ await page.locator('#sample-reset').click();await page.waitForTimeout(900);await page.screenshot({path:`reports/quality-sample-${evidenceTag}.png`,fullPage:true});
+ const report=await page.evaluate(()=>(window as any).qualityTest.metrics);writeFileSync(`reports/quality-device-${evidenceTag}.json`,JSON.stringify(report,null,2));console.log('QUALITY_SAMPLE '+JSON.stringify({project:testInfo.project.name,...report}));expect(errors).toEqual([]);
 });

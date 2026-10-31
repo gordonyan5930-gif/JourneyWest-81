@@ -66,3 +66,9 @@ Actions [41190391919](https://github.com/gordonyan5930-gif/JourneyWest-81/action
 新增地图路径连通/阻挡单测与真实UI样片测试，覆盖新资产加载、点击移动、跟随镜头、棒击、蒙版和截图。Playwright对WebGL/AUTO与Canvas录制/采样，不等于真实用户设备验证。原件附件缺读取ID，原始母版hash无法核验；运行资产hash可从manifest.json复算。新图集只含跑/待机/攻击关键姿势，武器边界/脚点和动作连贯性待人工复核。
 
 样片首轮CI 41200181526：构建/28单元及原8浏览器通过，新增2样片点击失败。定位为测试坐标把缩放相机scrollX误当可见世界左边，遗漏zoom中心偏移；测试观测改为worldView，保留真实鼠标点击并增加路线状态断言。报告正确标failed，待修复后重跑，不降低断言阈值。
+
+## v0.1样片实际通过证据（2026-10-31）
+代码6118a19，Actions [41200521946](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41200521946)：npm ci、TypeScript/Vite、28单元、10浏览器、真实报告/上传全成功。新增样片真实点击移动、走向梯田、镜头跟随、棒击、通行蒙版与无页面异常均通过；原8回归保留。私有[工件13042735961](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41200521946/artifacts/13042735961)39,371,221字节，2026-11-07 12:21 UTC到期。
+工件reports/quality-sample-auto.png与quality-sample-canvas.png为新资产运行截图，带mask文件为蒙版；test-results/quality-sample-*/video.webm为真实交互录屏，另有Playwright HTML及设备JSON。这里是CI本地服务器，不是假称已操作Vercel登录浏览器，也未直接肉眼检查下载工件。
+单角色新场景Linux Chromium样本：WebGL带视频302帧，20.83FPS/p95 76.67ms；Canvas无视频490帧，51.28FPS/p95 24.99ms。时间窗口/录屏条件不同，不作严格后端性能结论，不是120秒或真实Mac/Safari。补充无视频WebGL样片同场景对照，证据文件名改用project名，避免覆盖录像样本；新增配置仍需本提交CI。真实设备数据仍需用户在预览导出。
+原始母版图片仅视觉可见，原字节未可读取；assets/references没有伪造原件或hash。新运行素材hash已由单元复算。美术/完整动画/正式性能Gate仍未通过，不推进C/D或其余关卡。
