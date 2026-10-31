@@ -1,7 +1,7 @@
 # 受保护的P0-A云端预览
 
 ## 当前状态
-待Vercel账户授权，尚未创建部署，没有可交付的试玩URL。GitHub仓库已核验仍为Private。配置只提交到PR #1；不修改main、不创建Production部署、不购买服务。
+Vercel账户已连接，GitHub集成已能读取本私有仓库。默认团队suibo尚未授予当前连接访问权限（API返回403），等待用户通过官方团队同意流程授权。项目创建请求被拒绝，尚未创建部署，没有可交付的试玩URL。GitHub仓库已核验仍为Private。配置只提交到PR #1；不修改main、不创建Production部署、不购买服务。
 
 ## 构建配置
 - 框架：Vite；Node.js 24；Root Directory为仓库根目录。
