@@ -1,25 +1,25 @@
-# QA 报告
-2026-10-31 · 尚未完成运行验证
+# P0-A QA 报告
 
-| 检查 | 实际结果 |
-|---|---|
-| npm install | 未完成：网络代理 proxy:8080 无法连接 |
-| npm run build | 失败：tsc: not found，依赖未安装 |
-| curl registry.npmjs.org | 失败：Could not connect to proxy port 8080 |
-| 单元测试 | 已编写，未运行 |
-| 浏览器启动、地图显示、移动及点击绕行 | 已编写 Playwright 检查，未运行 |
-| 山体阻挡、战斗护卫、失败、复活 | 已编写逻辑及浏览器测试，未运行 |
-| 截图 | 未生成，不使用设计图冒充游戏截图 |
+2026-10-31（北京时间）。仅覆盖P0-A；保留Draft，最终验收由独立验收员决定。
 
-单元测试覆盖：绕山路径及非法目标、队形和行进、自动战斗、四角色复活、复活延迟与能量限制、下马、唐僧死亡停止模拟。
-浏览器测试覆盖：Canvas加载、真实点击角色及目标、路线生成、战斗和生死状态、页面错误、自动截图。
-浏览器测试中的战斗与死亡使用 test 查询参数开启的模拟接口，仍需独立人工长局试玩。Chrome/Safari兼容性、长时间战斗和队形转弯尚未验证。
+## 环境与此前失败的准确记录
+- Codex云端本机：代理 proxy:8080 无法连接，未在该机器成功安装依赖或启动浏览器。本轮不重复尝试失效代理。
+- GitHub Actions [41184901710](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41184901710)：依赖安装、构建、6项单元测试、Chromium安装成功。失败发生在Playwright点击悟空按钮，原因是按钮每帧替换导致 detached from DOM；不是Actions依赖安装失败。
 
-已知限制：简化原创程序绘图；不含Boss与剧情；出口仅显示演示提示，不发放印章；未验证平衡、避险效果与队形拐弯质量；尚无锁文件。
-没有最终验收结论。
+## 审查修复
+1. 角色按钮只初始化一次；每帧仅更新状态文字、选中类与aria-pressed，点击目标节点保持稳定。
+2. 唐僧主动路线在自动推进之前执行，使用正确的骑乘/步行速度；近身危险时暂时避险，保留目的地，危险解除后继续指令。修复接近目标时路线不能完成的问题。
+3. 白龙马随唐僧移动，UI明确标记仅查看/复活；模拟层拒绝白马独立移动命令。
+4. 利用Actions生成真实package-lock.json，执行npm ci；锁文件落库后移除临时生成步骤。
+5. 浏览器回归使用真实按钮与地图鼠标操作；战斗、死亡测试仅使用测试接口设置初始场景，随后由正常动画帧或UI执行验证。
 
-补充实际验证：使用 Node 24 `--experimental-transform-types` 直接执行 world.ts 的断言脚本，山体绕行路径、四名非唐僧角色复活、自动战斗击杀、唐僧死亡失败全部通过。该检查不替代 TypeScript 编译、Vitest 或真实浏览器验证。
+## 回归覆盖与结果
+- 9项单元测试：地形绕山及非法目标、默认队形和推进、自动护卫战斗、四角色复活、能量与延迟限制、唐僧死亡冻结、手动移动速度、避险恢复目的地、白马拒绝移动。
+- 4项Chromium浏览器测试：普通游戏URL下按钮跨帧稳定及地图指令；唐僧UI绕山、实际到达且不穿山；白马状态与UI复活、失败和重试；护卫逐帧战斗并保存截图。
+- 首轮修复验证 [41185947034](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41185947034)：npm ci、build、9项单元测试成功；浏览器3项通过，唐僧绕山测试的模拟时钟推进超过30秒。改为观察真实动画帧后重跑，保留路径与到达断言。
+- 修复后完整运行 [41186150313](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41186150313)：npm ci、build、9项单元测试、4项Chromium浏览器测试全部通过（浏览器45.5秒）。真实截图与锁文件工件：[browser-evidence](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41186150313/artifacts/13036902452)。
+- package-lock.json和真实截图已由Actions提交至同一开发分支（868ce902）；临时锁文件生成与写仓库步骤已移除。最终配置只读仓库、直接npm ci，正在对最终提交重新验证。
 
-## 正式审查后的验证更正
-已读取 Actions run [41184901710](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41184901710) / job 124489742880：npm install、build、6项单元测试、Chromium安装成功；Playwright在悟空按钮点击处因 DOM 每帧重建超时。
-当前修复及新增回归正在 Actions 验证。Safari 与长局体验仍未验证；仍保持 Draft，等待独立复验，不进入P0-B。
+## 截图与未验证范围
+真实截图由Actions中的Playwright在运行游戏、完成护卫战斗后拍摄：docs/p0-a-screenshot.png，并随browser-evidence工件保存。
+Safari、真实MacBook设备、移动端和8—15分钟长局体验仍未验证。美术仍为原创简化程序绘图；平衡和队形转弯观感需独立试玩。无完整剧情、Boss、主动技能、成长、文牒或存档，不进入P0-B。
