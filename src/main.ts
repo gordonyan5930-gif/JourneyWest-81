@@ -1,9 +1,26 @@
 import Phaser from 'phaser';
-import {World,terrain,CONFIG} from './game/world';
+import {World,terrain} from './game/world';
 import './style.css';
 const app=document.querySelector('#app')!;
 app.innerHTML=`<header><span>西游 · 通关文牒</span><small>第一难试炼 / 白骨岭</small><b>P0-A 可玩原型</b></header><main><aside><p>西行之路 · 护送试炼</p><h1>白骨岭</h1><p>山雾深处，白骨伏行。<br>守住唐僧，择路向西。</p><div id="stats"></div><button id="regroup">全队归阵</button><button id="pause">暂停 / 继续</button><button id="restart">重新出发</button><h3>行军手记</h3><p>点选下方角色或地图人物，再点击地面。金色路线表示主动指令。</p><p>树林、浅水减速；山体无法穿越。倒地 3 秒后可消耗 35 能量复活。</p><small>本阶段到达出口仅结束护送演示，尚不授予通关印章。</small></aside><section><div id="game"></div><div id="message" role="status"></div><div id="heroes"></div></section></main><footer>山路 / 草地 / 树林 / 浅水可行　　▲ 山体阻挡　　保护唐僧 · 战术干预 · 自动战斗</footer>`;
 let world=new World(),selected='wukong';
+// Create controls once: Phaser frames update text/state without replacing click targets.
+const heroButtons=new Map(world.heroes.map(h=>{
+ const button=document.createElement('button');button.dataset.role=h.id;
+ const name=document.createElement('span');name.textContent=h.name;
+ const status=document.createElement('small');button.append(name,status);
+ document.querySelector('#heroes')!.append(button);
+ return [h.id,{button,status}] as const;
+}));
+function updateControls(){
+ for(const h of world.heroes){const {button,status}=heroButtons.get(h.id)!;
+ button.classList.toggle('selected',selected===h.id);
+ button.setAttribute('aria-pressed',String(selected===h.id));
+ const value=h.hp>0?`${h.hp}/${h.max}${h.role==='horse'?' · 随唐僧 / 仅查看':''}`:h.deadFor<3?'等待复活':'复活 · 35灵力';
+ if(status.textContent!==value)status.textContent=value;
+ }
+}
+updateControls();
 const colors:Record<string,number>={road:0xb59a65,grass:0x627e52,forest:0x355f46,water:0x69a4a2,mountain:0x465250};
 class Ridge extends Phaser.Scene{
  ink!:Phaser.GameObjects.Graphics;labels:Phaser.GameObjects.Text[]=[];
@@ -20,10 +37,10 @@ class Ridge extends Phaser.Scene{
  if(u.id===selected){g.lineStyle(2,0xffd47b);g.strokeEllipse(x,y+13,32,15);}g.fillStyle(0x25382d);g.fillRect(x-16,y-29,32,4);g.fillStyle(u.role?0x98cd79:0xdb7965);g.fillRect(x-16,y-29,32*u.hp/u.max,4);text(x,y+32,u.name,10);}
  if(world.failed){g.fillStyle(0x17251e,.85);g.fillRect(170,210,620,130);text(480,250,'护送失败',32);text(480,300,'唐僧已阵亡 · 点击「重新出发」再试',18);}
  document.querySelector('#message')!.textContent=world.message;document.querySelector('#stats')!.innerHTML=`<p>护送 ${world.mounted?'骑乘':'步行'} · 击退 ${world.kills}</p><h2>灵力 ${Math.floor(world.energy)} / 100</h2><p>唐僧 ${world.tang.hp} / ${world.tang.max}</p>`;
- document.querySelector('#heroes')!.innerHTML=world.heroes.map(h=>`<button data-role="${h.id}" class="${selected===h.id?'selected':''}">${h.name}<small>${h.hp>0?`${h.hp}/${h.max}`:h.deadFor<3?'等待复活': '复活 · 35灵力'}</small></button>`).join('');
+ updateControls();
  }
 }
 new Phaser.Game({type:Phaser.AUTO,width:960,height:576,parent:'game',backgroundColor:'#627e52',scene:Ridge,scale:{mode:Phaser.Scale.FIT,autoCenter:Phaser.Scale.CENTER_BOTH}});
-document.querySelector('#heroes')!.addEventListener('click',e=>{const b=(e.target as HTMLElement).closest('button');if(b){selected=b.dataset.role!;world.revive(selected);}});
+document.querySelector('#heroes')!.addEventListener('click',e=>{const b=(e.target as HTMLElement).closest('button');if(b){selected=b.dataset.role!;world.revive(selected);if(selected==='horse'&&world.mounted)world.message='白龙马随唐僧移动，仅支持查看状态与复活；请选择唐僧指挥骑乘路线';updateControls();}});
 document.querySelector('#regroup')!.addEventListener('click',()=>world.regroup());document.querySelector('#pause')!.addEventListener('click',()=>world.paused=!world.paused);document.querySelector('#restart')!.addEventListener('click',()=>world=new World());
 if(new URLSearchParams(location.search).has('test'))Object.assign(window,{gameTest:{get world(){return world},reset(){world=new World();return world;}}});

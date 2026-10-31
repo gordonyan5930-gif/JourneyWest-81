@@ -19,3 +19,7 @@
 没有最终验收结论。
 
 补充实际验证：使用 Node 24 `--experimental-transform-types` 直接执行 world.ts 的断言脚本，山体绕行路径、四名非唐僧角色复活、自动战斗击杀、唐僧死亡失败全部通过。该检查不替代 TypeScript 编译、Vitest 或真实浏览器验证。
+
+## 正式审查后的验证更正
+已读取 Actions run [41184901710](https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41184901710) / job 124489742880：npm install、build、6项单元测试、Chromium安装成功；Playwright在悟空按钮点击处因 DOM 每帧重建超时。
+当前修复及新增回归正在 Actions 验证。Safari 与长局体验仍未验证；仍保持 Draft，等待独立复验，不进入P0-B。
