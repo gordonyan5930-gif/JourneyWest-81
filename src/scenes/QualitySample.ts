@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import {StatusFeedback} from '../game/statusFeedback';
 import frameData from '../../assets/quality-b/wukong-atlas.json';
 import runData from '../../assets/quality-b/wukong-run.json';
 import {SmoothMover,segmentClear} from '../game/smoothMovement';
@@ -19,12 +20,12 @@ export function startQualitySample(){
  const renderer=new URLSearchParams(location.search).get('renderer')??'auto';
  const select=document.querySelector('#sample-renderer') as HTMLSelectElement;select.value=renderer;select.onchange=()=>{const u=new URL(location.href);u.searchParams.set('renderer',select.value);location.href=u.href;};
  let scene:SampleScene;const frames:number[]=[];let last=0;let ticks=0;
- let lastStatus='',deferredStatus='';let rejectionUntil=0;
- const status=(s:string,deferDuringRejection=false)=>{if(deferDuringRejection&&performance.now()<rejectionUntil){deferredStatus=s;return;}deferredStatus='';if(s!==lastStatus){document.querySelector('#sample-status')!.textContent=s;lastStatus=s;}};
+ const feedback=new StatusFeedback(()=>performance.now(),s=>{document.querySelector('#sample-status')!.textContent=s;});
+ const status=(s:string,deferDuringRejection=false)=>feedback.show(s,deferDuringRejection);
  class SampleScene extends Phaser.Scene{
   actor!:Phaser.GameObjects.Sprite;ink!:Phaser.GameObjects.Graphics;maskLayer!:Phaser.GameObjects.Image;route:Point[]=[];attacking=false;lastMetrics=0;overview=false;runActive=false;gaitDistance=0;reviewLayer!:Phaser.GameObjects.Container;motion=new SmoothMover(SAMPLE_MAP.start);movementMode='smooth';legacyComparison:Point[]=[];showComparison=false;battle=new RangedBattle();skillArmed=false;selected=true;archerSprite!:Phaser.GameObjects.Sprite;tangSprite!:Phaser.GameObjects.Sprite;combatInk!:Phaser.GameObjects.Graphics;shotSprites=new Map<number,Phaser.GameObjects.Image>();battleUiAt=0;lastBattleUi='';lastTangHp=100;
   rejectionMark?:Phaser.GameObjects.Graphics;rejectedAt?:Point;markUntil=0;
-  rejectDestination(p:Point){status('山体、深谷或非通行区不可到达');rejectionUntil=performance.now()+1000;this.rejectedAt={...p};this.markUntil=rejectionUntil;this.rejectionMark??=this.add.graphics().setDepth(10);this.rejectionMark.clear().lineStyle(3,0xff7666,.95).strokeCircle(p.x,p.y,13).lineBetween(p.x-6,p.y-6,p.x+6,p.y+6).lineBetween(p.x-6,p.y+6,p.x+6,p.y-6).setVisible(true);return false;}
+  rejectDestination(p:Point){feedback.reject('山体、深谷或非通行区不可到达');this.rejectedAt={...p};this.markUntil=feedback.until;this.rejectionMark??=this.add.graphics().setDepth(10);this.rejectionMark.clear().lineStyle(3,0xff7666,.95).strokeCircle(p.x,p.y,13).lineBetween(p.x-6,p.y-6,p.x+6,p.y+6).lineBetween(p.x-6,p.y+6,p.x+6,p.y-6).setVisible(true);return false;}
   preload(){this.load.image('sample-map',imageUrl);this.load.atlas('sample-wukong',spriteUrl,atlasUrl);this.load.atlas('sample-run',runUrl,runAtlasUrl);this.load.atlas('threat-study',threatUrl,threatAtlas);this.load.on('loaderror',()=>status('资产载入失败，请刷新并查看网络状态'));}
   create(){scene=this;this.add.image(0,0,'sample-map').setOrigin(0).setDisplaySize(1600,900);this.ink=this.add.graphics();const maskInk=this.add.graphics();
    for(let y=0;y<Math.ceil(900/SAMPLE_MAP.tile);y++)for(let x=0;x<1600/SAMPLE_MAP.tile;x++){maskInk.fillStyle(TERRAIN_COLORS[sampleTerrain(x,y)],sampleWalkable(x,y)?.32:.18);maskInk.fillRect(x*SAMPLE_MAP.tile,y*SAMPLE_MAP.tile,SAMPLE_MAP.tile,SAMPLE_MAP.tile);}
@@ -80,7 +81,7 @@ export function startQualitySample(){
   attack(){if(this.attacking)return;this.releaseInspection();this.attacking=true;this.playBase('sample-strike');status('棒击动作试制 · 不对不存在的敌人结算伤害');}
   update(now:number,delta:number){if(!this.actor)return;
    if(performance.now()>=this.markUntil)this.rejectionMark?.setVisible(false);
-   if(deferredStatus&&performance.now()>=rejectionUntil)status(deferredStatus);
+   feedback.tick();
    if(last&&delta>0){frames.push(delta);if(frames.length>3600)frames.shift();}last=now;ticks++;
    this.battle.update(delta/1000);
    if(!this.attacking&&!this.battle.failed&&this.route.length){if(this.movementMode==='smooth'){const moved=this.motion.update(delta/1000);this.actor.setPosition(this.motion.position.x,this.motion.position.y);this.gaitDistance+=moved;this.route=this.motion.route;if(this.motion.speed>20&&Math.abs(Math.cos(this.motion.heading))>.25)this.actor.setFlipX(Math.cos(this.motion.heading)<0);this.actor.setRotation(Math.max(-.045,Math.min(.045,Math.sin(this.motion.heading)*.025)));}else {let budget=Math.min(delta/1000,.1)*210*sampleSpeed(this.actor.x,this.actor.y);while(budget>0&&this.route.length){const p=this.route[0],dx=p.x-this.actor.x,dy=p.y-this.actor.y,d=Math.hypot(dx,dy),step=Math.min(budget,d),next=d?{x:this.actor.x+dx/d*step,y:this.actor.y+dy/d*step}:p;if(!segmentClear(this.actor,next)){this.route=[];status('旧路线触及碰撞边界，已安全停止');break;}this.actor.setPosition(next.x,next.y);if(Math.abs(dx)>.1)this.actor.setFlipX(dx<0);this.gaitDistance+=step;budget-=step;if(d<=step+.001)this.route.shift();}}
