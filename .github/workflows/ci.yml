@@ -37,7 +37,7 @@ jobs:
       - name: Install video duration probe
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
       - id: browser
-        run: npm run test:e2e
+        run: npm run test:e2e -- --max-failures=1
       - name: Generate truthful studio report
         if: always()
         env:
