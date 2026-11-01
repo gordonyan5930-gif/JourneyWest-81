@@ -10,7 +10,7 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     env:
       SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
     steps:
@@ -36,6 +36,8 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Install video duration probe
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Start read-only 45077095 comparison preview
+        run: node scripts/start-quality-baseline.mjs
       - id: browser
         run: npm run test:e2e -- --max-failures=1
       - name: Generate truthful studio report

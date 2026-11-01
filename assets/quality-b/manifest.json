@@ -58,6 +58,117 @@
       "origin": "New supporting archer/Tang/flight-image study only for authorized ranged counter demonstration; not master crops",
       "status": "prototype-awaiting-user-review",
       "limitations": "Key poses only; cell-edge cleanup/consistent anatomy and final staff silhouette pending; not production animation"
+    },
+    {
+      "id": "wukong-recovery-atlas",
+      "version": "0.1-pose-study",
+      "path": "assets/quality-b/wukong-recovery.webp",
+      "width": 2560,
+      "height": 640,
+      "bytes": 280516,
+      "sha256": "093026abd07dca95b2e57d04a639eac5c0cf661dabf27f77e31bcb5d98ae33dc",
+      "origin": "image_gen original minimal same-Wukong 4-pose study; reference existing runtime atlas; no master altered",
+      "status": "prototype-needs-user-art-review",
+      "role": "down/rise game pose sample, not final animation",
+      "audit": "assets/quality-b/recovery-audit.json"
+    },
+    {
+      "id": "audio-attack",
+      "version": "0.1-procedural",
+      "path": "assets/audio/attack-v01.wav",
+      "bytes": 7724,
+      "sha256": "51f26dde39542ea62a8ca7c6ee3809922b92cc6e5264834e5789e37db7336039",
+      "sampleRate": 24000,
+      "channels": 1,
+      "encoding": "PCM16 WAV",
+      "origin": "project-original deterministic synthesis in scripts/generate-combat-audio.mjs; no third-party samples",
+      "status": "functional audio sample; listening/mix review pending"
+    },
+    {
+      "id": "audio-hit",
+      "version": "0.1-procedural",
+      "path": "assets/audio/hit-v01.wav",
+      "bytes": 8684,
+      "sha256": "24f34731c86793aba61aeb5321ab52a2722f61d6f4fe3b5f95f1e555ff807a8b",
+      "sampleRate": 24000,
+      "channels": 1,
+      "encoding": "PCM16 WAV",
+      "origin": "project-original deterministic synthesis in scripts/generate-combat-audio.mjs; no third-party samples",
+      "status": "functional audio sample; listening/mix review pending"
+    },
+    {
+      "id": "audio-danger",
+      "version": "0.1-procedural",
+      "path": "assets/audio/danger-v01.wav",
+      "bytes": 29804,
+      "sha256": "8bf8a9cadd940c9ca3e92603ba058049765030a3fb14bdba53fbe59bdb7178bb",
+      "sampleRate": 24000,
+      "channels": 1,
+      "encoding": "PCM16 WAV",
+      "origin": "project-original deterministic synthesis in scripts/generate-combat-audio.mjs; no third-party samples",
+      "status": "functional audio sample; listening/mix review pending"
+    },
+    {
+      "id": "audio-skill",
+      "version": "0.1-procedural",
+      "path": "assets/audio/skill-v01.wav",
+      "bytes": 20204,
+      "sha256": "e40dce583c065624fa4037397758c0560a4ca85920ae6a03fe4c329c5fc577a7",
+      "sampleRate": 24000,
+      "channels": 1,
+      "encoding": "PCM16 WAV",
+      "origin": "project-original deterministic synthesis in scripts/generate-combat-audio.mjs; no third-party samples",
+      "status": "functional audio sample; listening/mix review pending"
+    },
+    {
+      "id": "wukong-recovery-source-archive",
+      "version": "0.1",
+      "path": "assets/quality-b/sources/recovery-source-archive.json",
+      "bytes": 1317,
+      "sha256": "29e4fe95b3ef795d4c7f029795553cddb3c25d5d3cd63dd4fd895de21478f159",
+      "origin": "original generated PNG bytes preserved in 4 numbered binary parts; restore command in archive descriptor",
+      "originalSha256": "06cd15d3e6d9521439c580950241621968312630e4064b37b5585516687652a8",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "status": "source-preserved-not-final-art"
+    },
+    {
+      "id": "wukong-recovery-source-part-0",
+      "version": "0.1",
+      "path": "assets/quality-b/sources/wukong-recovery-original.png.part0",
+      "bytes": 315558,
+      "sha256": "c454befc89d34a8f2e4ff6d798069859edea0c391f7c87a437ae321bb825d5d9",
+      "origin": "exact byte span of generated original PNG, not a new image",
+      "status": "source-archive-part"
+    },
+    {
+      "id": "wukong-recovery-source-part-1",
+      "version": "0.1",
+      "path": "assets/quality-b/sources/wukong-recovery-original.png.part1",
+      "bytes": 315558,
+      "sha256": "c7af850901ed18620554245e9c682ad4da3bef8e61e39febe743c010b001156a",
+      "origin": "exact byte span of generated original PNG, not a new image",
+      "status": "source-archive-part"
+    },
+    {
+      "id": "wukong-recovery-source-part-2",
+      "version": "0.1",
+      "path": "assets/quality-b/sources/wukong-recovery-original.png.part2",
+      "bytes": 315558,
+      "sha256": "9ddfc4a1146538b2fe02efdfa218fe6cfce586f6c47358c5943d2933992f552b",
+      "origin": "exact byte span of generated original PNG, not a new image",
+      "status": "source-archive-part"
+    },
+    {
+      "id": "wukong-recovery-source-part-3",
+      "version": "0.1",
+      "path": "assets/quality-b/sources/wukong-recovery-original.png.part3",
+      "bytes": 315552,
+      "sha256": "ff0f0f90345289835ee3b0938a5328061a92d16258f336e60888e7c794e147fd",
+      "origin": "exact byte span of generated original PNG, not a new image",
+      "status": "source-archive-part"
     }
   ],
   "approval": "pending-human-asset-review",

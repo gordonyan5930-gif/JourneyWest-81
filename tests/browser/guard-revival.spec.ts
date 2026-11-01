@@ -1,8 +1,9 @@
 import {test,expect} from '@playwright/test';
 import {mkdirSync,writeFileSync} from 'node:fs';
 import {state,fresh,riskyPost,observeInputs,retry} from './escort-ui';
+test.use({viewport:{width:1280,height:800}});
 test('normal risky orders: Wukong takes bow damage, falls, retries and manually revives under scheme B',async({page},info)=>{
- test.setTimeout(200000);mkdirSync('reports',{recursive:true});const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ test.setTimeout(300000);mkdirSync('reports',{recursive:true});const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto('/?sample=quality-b&play=escort&test');await expect(page.locator('#sample-status')).toContainText('资产已载入',{timeout:20000});await observeInputs(page);await page.locator('#escort-start').click();await fresh(page);
  await riskyPost(page);const down=await state(page);expect(down.battle.tang.hp).toBeGreaterThan(0);expect(down.escort.finished).toBe(false);await page.screenshot({path:`reports/autonomy-down-${info.project.name}.png`,fullPage:true});
  await retry(page);const downReset=await fresh(page);

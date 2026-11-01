@@ -12,18 +12,19 @@ export class EscortRun {
  phase:EscortPhase='ready';battle=new RangedBattle();heroMotion=new SmoothMover(ESCORT.heroStart);
  manualHero=false;returning=false;selectedEnemyId='';heroTarget='';melee:{targetId:string;left:number}|null=null;meleeNext=0;poseAt=-10;poseUntil=0;poseTargetId='';reviveAt=-10;actionKind='';meleeHits=0;deadFor=0;revives=0;
  evadeGoal:Point|null=null;evadeAt=0;lastDanger=-10;lastTangHit=-10;dangerSince:number|null=null;evadeAnchor:Point={...ESCORT.encounter};sosUntil=0;sosNext=0;sosCount=0;rescueCalls=0;heroPlanAt=0;
- events:{time:number;kind:string;unit?:string;target?:string;amount?:number}[]=[];
+ threatEndedAt:number|null=null;dangerSeconds=0;eventSequence=0;
+ events:{sequence:number;time:number;kind:string;unit?:string;target?:string;amount?:number;x?:number;y?:number}[]=[];
  private road=new SmoothMover(ESCORT.start);private evade=new SmoothMover(ESCORT.start);private waypoints:Point[]=[];private roadIndex=0;private roadDirty=false;private brains=new Map<string,Brain>();
  space:UnitSpace;
  constructor(public nav:Navigation=SAMPLE_NAV){this.space=new UnitSpace(()=>[this.battle.hero,this.battle.tang,...this.battle.enemies],nav);}
  get finished(){return this.phase==='won'||this.phase==='lost';}get started(){return this.phase!=='ready';}
  get objective(){switch(this.phase){case 'ready':return '开始护送 · 基础护卫自动执行，破空击与复活由玩家决定';case 'approach':return '沿山路护送 · 前方两名弓箭手正在走来';case 'encounter':return this.manualHero?'悟空手动行进/驻守 · 可破空击或点击回援恢复护卫':'悟空自动护卫 · 可指定敌人破空击，或手动移动/回援';case 'depart':return '全部来敌及敌箭已处理 · 护送唐僧抵达终点';case 'won':return '护送试段成功 · 唐僧存活并已抵达终点';case 'lost':return '护送失败 · 唐僧已阵亡，可重新开始';}}
  private mover(p:Point,speed:number){return new SmoothMover({x:p.x,y:p.y},{...this.nav,speed:(x,y)=>this.nav.speed(x,y)*speed/MOVE.speed});}
- private event(kind:string,unit?:string,target?:string,amount?:number){this.events.push({time:this.battle.time,kind,unit,target,amount});if(this.events.length>400)this.events.shift();}
+ private event(kind:string,unit?:string,target?:string,amount?:number){this.events.push({sequence:++this.eventSequence,time:this.battle.time,kind,unit,target,amount});if(this.events.length>400)this.events.shift();}
  start(){
-  this.battle=new RangedBattle(this.nav);const b=this.battle;b.enemies=ESCORT.entrances.map((p,i)=>makeArcher(`archer-${i+1}`,p));b.archer=b.enemies[0];Object.assign(b.tang,ESCORT.start,{goal:{...ESCORT.start}});Object.assign(b.hero,ESCORT.heroStart,{hp:GUARD.hp,max:GUARD.hp});
+  this.battle=new RangedBattle(this.nav);const b=this.battle;b.enemies=ESCORT.entrances.map((p,i)=>makeArcher(`archer-${i+1}`,p));for(const a of b.enemies)a.windupDuration=GUARD.archerWindup;b.archer=b.enemies[0];Object.assign(b.tang,ESCORT.start,{goal:{...ESCORT.start}});Object.assign(b.hero,ESCORT.heroStart,{hp:GUARD.hp,max:GUARD.hp});
   this.heroMotion=new SmoothMover(ESCORT.heroStart,this.nav);this.road=this.mover(ESCORT.start,ESCORT.tangSpeed);this.evade=this.mover(ESCORT.start,ESCORT.tangSpeed);this.planRoad(ESCORT.approachRoute);this.brains=new Map(b.enemies.map(a=>[a.id,{motion:this.mover(a,GUARD.enemySpeed),planAt:0,decideAt:0,walked:0,firstShot:null}]));
-  this.manualHero=false;this.returning=false;this.selectedEnemyId='';this.heroTarget='';this.melee=null;this.meleeNext=0;this.poseAt=-10;this.poseUntil=0;this.poseTargetId='';this.reviveAt=-10;this.actionKind='';this.meleeHits=0;this.deadFor=0;this.revives=0;this.evadeGoal=null;this.evadeAt=0;this.lastDanger=-10;this.lastTangHit=-10;this.dangerSince=null;this.evadeAnchor={...ESCORT.start};this.sosUntil=0;this.sosNext=0;this.sosCount=0;this.rescueCalls=0;this.heroPlanAt=0;this.events=[];
+  this.manualHero=false;this.returning=false;this.selectedEnemyId='';this.heroTarget='';this.melee=null;this.meleeNext=0;this.poseAt=-10;this.poseUntil=0;this.poseTargetId='';this.reviveAt=-10;this.actionKind='';this.meleeHits=0;this.deadFor=0;this.revives=0;this.evadeGoal=null;this.evadeAt=0;this.lastDanger=-10;this.lastTangHit=-10;this.dangerSince=null;this.evadeAnchor={...ESCORT.start};this.sosUntil=0;this.sosNext=0;this.sosCount=0;this.rescueCalls=0;this.heroPlanAt=0;this.events=[];this.eventSequence=0;this.threatEndedAt=null;this.dangerSeconds=0;
   this.space.clear();b.canOccupy=(u,p)=>this.space.free(p,u.id);this.phase='approach';b.driver=dt=>this.drive(dt);b.onDamage=e=>this.damaged(e);b.start();this.event('warning');
  }
  command(c:EscortCommand){const b=this.battle;if(!this.started||this.finished)return false;
@@ -32,9 +33,9 @@ export class EscortRun {
   if(c.type==='cast'){if(!b.request(b.hero,c.targetId))return false;this.selectedEnemyId=c.targetId;this.heroMotion.route=[];this.heroMotion.speed=0;this.melee=null;this.poseAt=b.time;this.poseUntil=b.time+.45;this.actionKind='ranged';this.poseTargetId=c.targetId;this.event('cast','wukong',c.targetId);return true;}
   if(b.casting)return false;
   if(c.type==='rally'){this.space.yielding.delete('wukong');this.manualHero=false;this.returning=true;this.heroTarget='';this.heroPlanAt=0;this.melee=null;this.heroMotion.route=[];this.rescueCalls++;this.event('rally');return true;}
-  this.space.yielding.delete('wukong');this.space.slots.delete('wukong');const goal=this.space.free(c.position,'wukong')?c.position:this.space.endpoint('wukong',c.position,this.battle.hero,[44,62],'manual');if(!goal||!this.space.command('wukong',this.heroMotion,goal))return false;this.manualHero=true;this.returning=false;this.melee=null;this.poseUntil=0;this.event('move','wukong');return true;
+  this.space.yielding.delete('wukong');this.space.slots.delete('wukong');const goal=this.space.free(c.position,'wukong')&&this.space.friendClear(c.position,'wukong')?c.position:this.space.endpoint('wukong',c.position,this.battle.hero,[44,62],'manual');if(!goal||!this.space.command('wukong',this.heroMotion,goal))return false;this.manualHero=true;this.returning=false;this.melee=null;this.poseUntil=0;this.event('move','wukong');return true;
  }
- private damaged(e:DamageEvent){this.event(e.kind,e.sourceId,e.targetId,e.amount);const enemy=this.battle.enemies.find(a=>a.id===e.targetId);if(enemy){const old=enemy.threat[e.sourceId],decayed=old?old.value*Math.exp(-(e.time-old.at)/GUARD.threatDecay):0;enemy.threat[e.sourceId]={value:Math.min(200,decayed+e.amount*2),at:e.time};}if(e.targetId==='tang')this.lastTangHit=e.time;}
+ private damaged(e:DamageEvent){this.event(e.kind,e.sourceId,e.targetId,e.amount);const victim=this.battle.target(e.targetId);if(victim)Object.assign(this.events.at(-1)!,{x:victim.x,y:victim.y});const enemy=this.battle.enemies.find(a=>a.id===e.targetId);if(enemy){const old=enemy.threat[e.sourceId],decayed=old?old.value*Math.exp(-(e.time-old.at)/GUARD.threatDecay):0;enemy.threat[e.sourceId]={value:Math.min(200,decayed+e.amount*2),at:e.time};}if(e.targetId==='tang')this.lastTangHit=e.time;}
  private stepTang(m:SmoothMover,dt:number){const h=this.battle.hero,t=this.battle.tang,next=m.route[0],ahead=this.heroMotion.route[0];if(next&&h.hp>0&&!this.melee&&!this.battle.casting&&this.battle.time>=this.poseUntil&&(distance(h,t)<60||!!ahead&&distance(h,t)<85&&((ahead.x-h.x)*(next.x-t.x)+(ahead.y-h.y)*(next.y-t.y))<0)&&((next.x-t.x)*(h.x-t.x)+(next.y-t.y)*(h.y-t.y))>0)this.space.yieldTo('wukong',this.heroMotion,t,next);const amount=this.space.step('tang',m,dt);if(amount<.01&&m.route.length&&!this.battle.casting)this.space.yieldTo('wukong',this.heroMotion,this.battle.tang,m.route[0]);return amount;}
  private planRoad(points:Point[]){this.waypoints=points.map(p=>({...p}));this.roadIndex=0;this.roadDirty=true;}
  private advanceRoad(dt:number){const t=this.battle.tang;if(this.roadIndex>=this.waypoints.length)return;const goal=this.waypoints[this.roadIndex];if(this.roadDirty||!this.road.route.length){if(distance(t,goal)<=ESCORT.arrival){this.roadIndex++;this.roadDirty=true;return;}this.road.reset({x:t.x,y:t.y});this.road.command(goal);this.roadDirty=false;}this.stepTang(this.road,dt);Object.assign(t,this.road.position);t.goal={...this.road.position};}
@@ -49,7 +50,7 @@ export class EscortRun {
    else {brain.motion.route=[];brain.motion.speed=0;}
    if(!canShoot||!target){a.windup=0;continue;}
    if(a.windup>0){a.windup-=dt;if(a.windup<=0){if(target.hp>0&&distance(a,target)<=ARCHER.range&&segmentClear(a,target,this.nav)){b.launch('arrow',a,target,ARCHER.damage,ARCHER.arrowSpeed,a.id);b.arrowsFired++;a.released=.25;brain.firstShot??=b.time;this.event('shot',a.id,target.id);}a.next=ARCHER.interval;}}
-   else {a.next-=dt;if(a.next<=0)a.windup=ARCHER.windup;}
+   else {a.next-=dt;if(a.next<=0){a.windup=a.windupDuration;this.event('aim',a.id,target.id);}}
   }
  }
  private hero(dt:number){const b=this.battle,h=b.hero;
@@ -74,8 +75,8 @@ export class EscortRun {
  }
  private tang(dt:number){const b=this.battle,t=b.tang,enemies=b.enemies.filter(a=>a.hp>0);
   const danger=b.time-this.lastTangHit<2||enemies.some(a=>distance(a,t)<180||a.targetId==='tang'&&distance(a,t)<=ARCHER.range&&segmentClear(a,t,this.nav));
-  if(danger){if(this.dangerSince===null){this.dangerSince=b.time;this.evadeAnchor={x:t.x,y:t.y};}this.lastDanger=b.time;if(this.phase==='approach')this.phase='encounter';
-   if(b.time>=this.evadeAt){const goal=saferPoint(t,b.hero,enemies,this.evadeAnchor,this.nav,p=>this.space.free(p,'tang',true));this.evadeAt=b.time+GUARD.evadeHold;if(goal){this.evadeGoal=goal;this.evade.reset({x:t.x,y:t.y});this.space.command('tang',this.evade,goal);this.roadDirty=true;this.event('evade','tang');}}
+  if(danger){this.dangerSeconds+=dt;if(this.dangerSince===null){this.dangerSince=b.time;this.evadeAnchor={x:t.x,y:t.y};}this.lastDanger=b.time;if(this.phase==='approach')this.phase='encounter';
+   if(b.time>=this.evadeAt){const goal=saferPoint(t,b.hero,enemies,this.evadeAnchor,this.nav,p=>this.space.free(p,'tang',true)&&this.space.friendClear(p,'tang'));this.evadeAt=b.time+GUARD.evadeHold;if(goal){this.evadeGoal=goal;this.evade.reset({x:t.x,y:t.y});this.space.command('tang',this.evade,goal);this.roadDirty=true;this.event('evade','tang');}}
    this.stepTang(this.evade,dt);if(this.evadeGoal)Object.assign(t,this.evade.position);
   }else if(b.time-this.lastDanger>=GUARD.calm){this.dangerSince=null;this.evadeGoal=null;this.advanceRoad(dt);}
   else if(this.evadeGoal){this.stepTang(this.evade,dt);Object.assign(t,this.evade.position);}
@@ -85,6 +86,7 @@ export class EscortRun {
  }
  private drive(dt:number){this.enemies(dt);this.hero(dt);this.tang(dt);}
  update(delta:number){if(!this.started||this.finished)return;const b=this.battle;b.update(delta);
+  if(b.safe&&this.threatEndedAt===null)this.threatEndedAt=b.time;
   if(b.failed||b.tang.hp<=0){this.phase='lost';return;}
   if(b.safe&&this.phase!=='depart'&&b.time-this.lastDanger>=GUARD.calm){this.phase='depart';this.planRoad(ESCORT.departureRoute);}
   if(this.phase==='depart'&&this.roadIndex>=this.waypoints.length&&distance(b.tang,ESCORT.exit)<=ESCORT.arrival&&b.safe)this.phase='won';

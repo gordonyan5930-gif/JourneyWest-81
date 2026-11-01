@@ -1,6 +1,7 @@
 import {test,expect} from '@playwright/test';
 import {mkdirSync,writeFileSync} from 'node:fs';
 import {clickWorld,state,fresh,spell,observeInputs,retry} from './escort-ui';
+test.use({viewport:{width:1280,height:800}});
 test('autonomous escort and player tactics: real defence, chosen targets, rescue, SOS and flight retry',async({page},info)=>{
  test.setTimeout(330000);mkdirSync('reports',{recursive:true});const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));const canvas=info.project.metadata.renderer==='canvas',tag=info.project.name,report:any={source:'normal DOM buttons and pointer input, read-only observation; no HP writes/deletions/phase jumps',scenarios:{}};
  await page.goto(`/?sample=quality-b&play=escort&test&renderer=${canvas?'canvas':'auto'}`);await expect(page.locator('#sample-status')).toContainText('资产已载入',{timeout:20000});

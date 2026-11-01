@@ -1,3 +1,17 @@
+# 西游：通关文牒 · 当前 Quality-B 战斗品质草稿
+
+当前入口：`http://localhost:5173/?sample=quality-b&play=escort`。Node 22.12+ / 24：`npm ci` → `npm run dev`；生产构建仍为 `npm run build`，输出 `dist`。
+
+[受保护分支试玩](https://journeywest-81-git-feat-p0-a-prototype-suibo.vercel.app/?sample=quality-b&play=escort)需要Vercel登录。PR #1保持Draft，技术检查不等于美术/玩法或真实设备性能通过。
+
+开始后自动护卫。点地面移动，右键可强制地面落点；破空击→点弓手身体或目标按钮。看蓄势条/反击提示，技能命中后才伤害/打断，已发箭不会被追回。回援恢复护卫；倒地后至少3秒、35能量手动复活。菜单内重试、全景、声音开关与开发面板（渲染器、采样、蒙版）。本轮仅悟空/辅助唐僧/现有两弓手，不发完整白骨岭印章。
+
+本轮占位/布局和动作声音样板见 [COMBAT_POLISH](docs/quality/COMBAT_POLISH.md)。地图/正式PNG母版保留；4姿势补充和原创合成声音仍待人工品质审核。原生成姿势PNG以字节分片保存在私有仓库，`npm run restore:recovery-source`可还原并验证整图SHA-256；常规构建/试玩无需还原源PNG。
+
+下文保留原P0-A技术入口说明；根路由及压力模式用于历史回归，不代表当前品质版或本轮新增角色/密集波次。
+
+---
+
 # 西游：通关文牒 · 白骨岭 P0-A
 Phaser + TypeScript + Vite。当前是**P0-A待独立复验草稿**。详见 docs/QA_REPORT.md。
 

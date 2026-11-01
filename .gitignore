@@ -3,3 +3,5 @@ dist/
 test-results/
 playwright-report/
 reports/
+# Exact generated PNG source can be restored from byte-preserving archive parts.
+/assets/quality-b/sources/wukong-recovery-original.png

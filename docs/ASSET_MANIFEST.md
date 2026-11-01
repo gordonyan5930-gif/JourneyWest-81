@@ -32,3 +32,9 @@
 跑步研究v0.3-draft：wukong-run.webp，1774×887，1128304字节，SHA256 d65793dd442e74a2b6013965c6944983955e721fda7f5602c5ed68302472ed8c；8帧，与旧待机/攻击分图集。生成源hash/脚线/边距/限制见运行manifest和run-audit；不是母版改图，用户未批准生产动画。
 
 RANGED-QB-EXPERIMENT v0.4：ranged-study.webp，1774×887、1350980字节，SHA256 b9cbf66a6f024e95f22fa8cc7bf640f854a1f1463dcaabb68345d345e72b63a1。仅辅助弓手4姿势/倒地、唐僧2姿势、飞行FX研究；不是正式批量角色。运行棍影为FX杆身裁窗，原WebP不修改，箭矢小纹理程序生成并真实飞行碰撞。许可/风格与动作最终审查待用户，源PNG留工作区、hash见manifest。
+
+## 本轮同悟空最小姿势与原始声音（均待人工品质审核）
+- wukong-recovery.webp v0.1：2560×640、4姿势、280516字节，SHA256 `093026abd07dca95b2e57d04a639eac5c0cf661dabf27f77e31bcb5d98ae33dc`。源为image_gen最小同角色研究，不是母版，不批量角色；脚线/透明边距见recovery-audit，打包脚本不重绘源。
+- 生成原PNG：2172×724、1262226字节，SHA256 `06cd15d3e6d9521439c580950241621968312630e4064b37b5585516687652a8`。大blob调用未完成，采用4片原字节归档，顺序/校验见sources/recovery-source-archive.json；`npm run restore:recovery-source`还原并校验原图。正式母版assets/references仍为原PNG，未变更/重归档。
+- attack/hit/danger/skill-v01.wav：项目原创确定性合成，PCM16/单声道/24kHz，无第三方采样、未购买。生成器scripts/generate-combat-audio.mjs、来源说明assets/audio/README.md；各文件字节数/SHA256见运行manifest，实际播放/静音测试与波形检测不等于正式听感认可。
+- 新源图分片、运行图集、音效全部有实际校验；没有编造图像/模型额度与金额。动画、声音与生产许可/形象品质最终由用户审核，未替换IP母版。
