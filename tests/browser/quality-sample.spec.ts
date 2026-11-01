@@ -32,3 +32,35 @@ test('real quality sample: generated assets, UI movement, follow camera, attack,
  await page.locator('#sample-reset').click();await expect(page.locator('#sample-frame')).toHaveValue('');
  const report=await page.evaluate(()=>(window as any).qualityTest.metrics);writeFileSync(`reports/quality-device-${evidenceTag}.json`,JSON.stringify(report,null,2));console.log('QUALITY_SAMPLE '+JSON.stringify({project:testInfo.project.name,...report}));expect(errors).toEqual([]);
 });
+
+test('feedback only: empty FPS sample and rejected fence preserve live route for one second',async({page},testInfo)=>{
+ test.setTimeout(45000);mkdirSync('reports',{recursive:true});
+ await page.addInitScript(()=>{(window as any).__metricText=[];new MutationObserver(()=>{const s=document.querySelector('#sample-metrics')?.textContent;if(s&&(window as any).__metricText.at(-1)!==s)(window as any).__metricText.push(s);}).observe(document,{childList:true,subtree:true,characterData:true});});
+ const renderer=testInfo.project.metadata.renderer==='canvas'?'canvas':'auto';await page.goto(`/?sample=quality-b&test&renderer=${renderer}`);
+ await expect(page.locator('#sample-status')).toContainText('资产已载入',{timeout:20000});
+ const metricText=await page.evaluate(()=>(window as any).__metricText as string[]);expect(metricText.some(s=>s.includes('采样中'))).toBe(true);expect(metricText.some(s=>/Infinity|NaN/.test(s))).toBe(false);
+ await expect(page.locator('#sample-metrics')).toContainText('FPS',{timeout:5000});
+ const clickWorld=async(x:number,y:number)=>{await page.locator('canvas').scrollIntoViewIfNeeded();const box=(await page.locator('canvas').boundingBox())!;const c=await page.evaluate(()=>(window as any).qualityTest.camera);await page.mouse.click(box.x+(x-c.x)*c.zoom/960*box.width,box.y+(y-c.y)*c.zoom/540*box.height);};
+ await page.locator('#sample-overview').click();await page.waitForTimeout(150);await clickWorld(150,820);
+ await expect.poll(()=>page.evaluate(()=>Math.hypot((window as any).qualityTest.actor.x-150,(window as any).qualityTest.actor.y-820)),{timeout:15000}).toBeLessThan(2);
+ await clickWorld(230,810);
+ const box=(await page.locator('canvas').boundingBox())!,camera=await page.evaluate(()=>(window as any).qualityTest.camera);
+ const rejectScreen={x:box.x+(150-camera.x)*camera.zoom/960*box.width,y:box.y+(860-camera.y)*camera.zoom/540*box.height};
+ await page.evaluate(()=>{(window as any).__feedbackSamples=[];let start=0;document.querySelector('canvas')!.addEventListener('pointerdown',()=>{start=performance.now();const q=(window as any).qualityTest;(window as any).__beforeRejection=JSON.parse(JSON.stringify({route:q.route,actor:q.actor}));},{once:true,capture:true});const sample=()=>{if(start){const q=(window as any).qualityTest;(window as any).__feedbackSamples.push({ms:performance.now()-start,status:document.querySelector('#sample-status')!.textContent,remaining:q.route.length,marker:q.feedback.markerVisible});}if(!start||performance.now()-start<1800)requestAnimationFrame(sample);};requestAnimationFrame(sample);});
+ await page.waitForFunction(()=>{const q=(window as any).qualityTest;return q.route.length>0&&Math.hypot(q.actor.x-230,q.actor.y-810)<20;},null,{polling:'raf',timeout:5000});
+ await page.mouse.click(rejectScreen.x,rejectScreen.y);const rejectedAt=Date.now();
+ const before=await page.evaluate(()=>(window as any).__beforeRejection);expect(before.route.length).toBeGreaterThan(0);
+ await expect(page.locator('#sample-status')).toContainText('不可到达');
+ const after=await page.evaluate(()=>({route:(window as any).qualityTest.route,actor:(window as any).qualityTest.actor,feedback:(window as any).qualityTest.feedback}));if(after.route.length)expect(after.route.at(-1)).toEqual(before.route.at(-1));else expect(Math.hypot(after.actor.x-before.route.at(-1).x,after.actor.y-before.route.at(-1).y)).toBeLessThan(2);expect(after.feedback).toEqual({markerVisible:true,rejectedAt:{x:expect.closeTo(150,-1),y:expect.closeTo(860,-1)}});
+ await page.screenshot({path:`reports/feedback-rejected-${testInfo.project.name}.png`,fullPage:true});
+ await page.waitForTimeout(1700);const samples=await page.evaluate(()=>(window as any).__feedbackSamples as {ms:number,status:string,remaining:number,marker:boolean}[]);
+ writeFileSync(`reports/feedback-samples-${testInfo.project.name}.json`,JSON.stringify(samples));
+ expect(samples.some(s=>s.ms<950&&s.remaining===0&&s.status.includes('不可到达')&&s.marker)).toBe(true);
+ expect(samples.filter(s=>s.ms<950).every(s=>s.status.includes('不可到达')&&s.marker)).toBe(true);
+ expect(samples.some(s=>s.ms>=1000&&s.ms<1500&&s.status.includes('已到达')&&!s.marker)).toBe(true);
+ await expect(page.locator('#sample-status')).toContainText('已到达');
+ expect(await page.evaluate(()=>(window as any).qualityTest.feedback.markerVisible)).toBe(false);
+ expect(await page.evaluate(()=>Math.hypot((window as any).qualityTest.actor.x-230,(window as any).qualityTest.actor.y-810))).toBeLessThan(2);
+ await page.screenshot({path:`reports/feedback-expired-${testInfo.project.name}.png`,fullPage:true});
+ writeFileSync(`reports/feedback-${testInfo.project.name}.json`,JSON.stringify({renderer,metricText,before,after,samples,rejectionObservedMs:Date.now()-rejectedAt,environment:'automated Chromium; not user Mac/Edge acceptance'},null,2));
+});
