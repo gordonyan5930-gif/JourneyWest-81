@@ -4,7 +4,17 @@ export async function state(page:Page){return page.evaluate(()=>({escort:(window
 export async function fresh(page:Page){const s=await state(page);expect(s.escort.phase).toBe('approach');expect(s.battle.failed).toBe(false);expect(s.escort.heroHp).toBe(180);expect(s.battle.tang.hp).toBe(100);expect(s.battle.energy).toBe(100);expect(s.battle.cooldown).toBe(0);expect(s.battle.shots).toBe(0);expect(s.escort.enemies.map((a:any)=>a.hp)).toEqual([100,100]);expect(s.escort.meleeHits).toBe(0);expect(s.escort.revives).toBe(0);expect(s.escort.sosCount).toBe(0);expect(s.escort.selectedEnemyId).toBe('');await expect(page.locator('#escort-result')).toBeEmpty();return s;}
 export async function spell(page:Page,id:string){await expect.poll(()=>page.evaluate((id)=>{const q=(window as any).qualityTest,a=q.escort.enemies.find((a:any)=>a.id===id);return a&&a.hp>0&&a.windup>1&&Math.hypot(q.actor.x-a.x,q.actor.y-a.y)<400;},id),{timeout:14000,intervals:[40]}).toBe(true);await expect(page.locator('#sample-skill')).toBeEnabled({timeout:8000});await page.locator(`#target-${id}`).click();await expect(page.locator(`#target-${id}`)).toHaveAttribute('aria-pressed','true');await page.locator('#sample-skill').click();await page.locator(`#target-${id}`).click();}
 
-export async function observeInputs(page:Page){await page.evaluate(()=>{(window as any).__inputLog=[];for(const id of ['escort-retry','wukong-rally','wukong-revive'])document.getElementById(id)!.addEventListener('click',()=>{const q=(window as any).qualityTest,read=()=>({shots:q.battle.shots,hero:q.escort.heroHp,tang:q.battle.tang.hp,energy:q.battle.energy,cooldown:q.battle.cooldown,revives:q.escort.revives,x:q.actor.x,y:q.actor.y,phase:q.escort.phase});const e={id,before:read(),after:null as any};(window as any).__inputLog.push(e);document.getElementById(id)!.addEventListener('click',()=>e.after=read(),{once:true});},{capture:true});});}
+export async function observeInputs(page:Page){await page.evaluate(()=>{
+ (window as any).__inputLog=[];
+ for(const id of ['escort-retry','wukong-rally','wukong-revive']){
+  const button=document.getElementById(id)!;let pending:any;
+  const read=()=>{const q=(window as any).qualityTest;return {shots:q.battle.shots,hero:q.escort.heroHp,tang:q.battle.tang.hp,energy:q.battle.energy,cooldown:q.battle.cooldown,revives:q.escort.revives,x:q.actor.x,y:q.actor.y,phase:q.escort.phase};};
+  // Register both phases before any click. Never dynamically attach during dispatch,
+  // and never mistake a previous Retry record for the current command.
+  button.addEventListener('click',()=>{pending={id,before:read(),after:null};(window as any).__inputLog.push(pending);},{capture:true});
+  button.addEventListener('click',()=>{if(pending)pending.after=read();});
+ }
+});}
 
 export async function riskyPost(page:Page){
    await clickWorld(page,900,550);await expect.poll(()=>page.evaluate(()=>Math.hypot((window as any).qualityTest.actor.x-900,(window as any).qualityTest.actor.y-550)),{timeout:14000}).toBeLessThan(8);
