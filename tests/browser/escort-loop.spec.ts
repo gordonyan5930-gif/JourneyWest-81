@@ -1,6 +1,6 @@
 import {test,expect} from '@playwright/test';
 import {mkdirSync,writeFileSync} from 'node:fs';
-import {clickWorld,state,fresh,spell,observeInputs} from './escort-ui';
+import {clickWorld,state,fresh,spell,observeInputs,retry} from './escort-ui';
 test('autonomous escort and player tactics: real defence, chosen targets, rescue, SOS and flight retry',async({page},info)=>{
  test.setTimeout(330000);mkdirSync('reports',{recursive:true});const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));const canvas=info.project.metadata.renderer==='canvas',tag=info.project.name,report:any={source:'normal DOM buttons and pointer input, read-only observation; no HP writes/deletions/phase jumps',scenarios:{}};
  await page.goto(`/?sample=quality-b&play=escort&test&renderer=${canvas?'canvas':'auto'}`);await expect(page.locator('#sample-status')).toContainText('资产已载入',{timeout:20000});
@@ -12,8 +12,8 @@ test('autonomous escort and player tactics: real defence, chosen targets, rescue
  await expect.poll(()=>page.evaluate(()=>(window as any).qualityTest.escort.meleeHits),{timeout:30000}).toBeGreaterThan(0);await page.screenshot({path:`reports/autonomy-melee-${tag}.png`,fullPage:true});
  await expect.poll(()=>page.evaluate(()=>(window as any).qualityTest.escort.phase),{timeout:80000}).toBe('won');const passive=await state(page);expect(passive.battle.hits).toBe(0);expect(passive.battle.energy).toBe(100);expect(passive.escort.heroHp).toBeLessThan(180);expect(passive.escort.enemies.every((a:any)=>a.hp===0)).toBe(true);expect(Math.hypot(passive.battle.tang.x-1456,passive.battle.tang.y-272)).toBeLessThan(3);expect(passive.escort.events.some((e:any)=>e.kind==='shot'&&e.target==='wukong')).toBe(true);await page.screenshot({path:`reports/autonomy-success-${tag}.png`,fullPage:true});report.scenarios.passive={start,first,passive};
  // A real long-range arrow in flight, then the ordinary Retry button.
- await page.locator('#escort-retry').click();await fresh(page);await clickWorld(page,900,550);const retryBox=(await page.locator('#escort-retry').boundingBox())!;
- await page.waitForFunction(()=>(window as any).qualityTest.battle.shots>0,null,{polling:'raf',timeout:20000});await page.mouse.click(retryBox.x+retryBox.width/2,retryBox.y+retryBox.height/2);const flightReset=await fresh(page);const flightLog=await page.evaluate(()=>(window as any).__inputLog.at(-1));expect(flightLog.before.shots).toBeGreaterThan(0);report.scenarios.flightReset={flightLog,flightReset};
+ await retry(page);await fresh(page);await clickWorld(page,900,550);await page.locator('#play-menu>summary').click();const retryBox=(await page.locator('#escort-retry').boundingBox())!;
+ await page.waitForFunction(()=>(window as any).qualityTest.battle.shots>0,null,{polling:'raf',timeout:20000});await page.mouse.click(retryBox.x+retryBox.width/2,retryBox.y+retryBox.height/2);const flightReset=await fresh(page);await page.locator('#play-menu>summary').click();const flightLog=await page.evaluate(()=>(window as any).__inputLog.at(-1));expect(flightLog.before.shots).toBeGreaterThan(0);report.scenarios.flightReset={flightLog,flightReset};
  // Same interface: choose second enemy, then first, then restore actual guard movement.
  await clickWorld(page,900,550);await expect.poll(()=>page.evaluate(()=>Math.hypot((window as any).qualityTest.actor.x-900,(window as any).qualityTest.actor.y-550)),{timeout:12000}).toBeLessThan(8);
  await expect.poll(()=>page.evaluate(()=>{const q=(window as any).qualityTest,a=q.escort.enemies[1];return Math.hypot(q.actor.x-a.x,q.actor.y-a.y);}),{timeout:12000}).toBeLessThan(400);
@@ -27,10 +27,10 @@ test('autonomous escort and player tactics: real defence, chosen targets, rescue
  await expect.poll(()=>page.evaluate(()=>(window as any).qualityTest.escort.finished),{timeout:80000}).toBe(true);expect((await state(page)).escort.phase).toBe('won');const assisted=await state(page);expect(assisted.battle.hits).toBe(2);expect(assisted.battle.interrupts).toBeGreaterThan(0);expect(assisted.escort.meleeHits).toBeLessThan(passive.escort.meleeHits);await page.screenshot({path:`reports/autonomy-assisted-${tag}.png`,fullPage:true});report.scenarios.assisted={rally,recovery,assisted};
  if(!canvas){
   // Wrong distant holding order: SOS is observable and does not cancel the order.
-  await page.locator('#escort-retry').click();await fresh(page);await clickWorld(page,1390,320);
+  await retry(page);await fresh(page);await clickWorld(page,1390,320);
   await expect.poll(()=>page.evaluate(()=>(window as any).qualityTest.escort.sosVisible),{timeout:45000,intervals:[100]}).toBe(true);const sos=await state(page);expect(sos.escort.manualHero).toBe(true);await expect(page.locator('#escort-sos')).toContainText('悟空，救我！');await page.screenshot({path:`reports/autonomy-sos-${tag}.png`,fullPage:true});
   await expect.poll(()=>page.evaluate(()=>(window as any).qualityTest.escort.phase),{timeout:25000}).toBe('lost');const lost=await state(page);expect(lost.battle.tang.hp).toBe(0);await page.screenshot({path:`reports/autonomy-failure-${tag}.png`,fullPage:true});report.scenarios.unansweredSOS={sos,lost};
-  await page.locator('#escort-retry').click();report.scenarios.afterLossReset=await fresh(page);
+  await retry(page);report.scenarios.afterLossReset=await fresh(page);
  }
  report.inputLog=await page.evaluate(()=>(window as any).__inputLog);report.metrics=await page.evaluate(()=>(window as any).qualityTest.metrics);report.productQualityApproved=false;writeFileSync(`reports/autonomy-${tag}.json`,JSON.stringify(report,null,2));console.log('AUTONOMY_SUMMARY '+JSON.stringify({project:tag,scenarios:Object.keys(report.scenarios),passiveHP:passive.battle.tang.hp,passiveMelee:passive.escort.meleeHits,assistedHP:assisted.battle.tang.hp,assistedMelee:assisted.escort.meleeHits,metrics:report.metrics}));expect(errors).toEqual([]);
 });

@@ -11,7 +11,7 @@ export function chooseEnemyTarget(a:Archer,hero:Fighter,tang:Fighter,now:number,
 }
 export function reachableNear(from:Point,goal:Point,nav:Navigation=SAMPLE_NAV){if(!segmentClear(goal,goal,nav))return false;return !!smoothPath(from,goal,nav).route.length;}
 function clearance(p:Point,a:Point,b:Point){const dx=b.x-a.x,dy=b.y-a.y,t=Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.y-a.y)*dy)/Math.max(.0001,dx*dx+dy*dy)));return Math.hypot(p.x-a.x-t*dx,p.y-a.y-t*dy);}
-export function saferPoint(tang:Point,hero:Fighter,enemies:Fighter[],anchor:Point,nav:Navigation=SAMPLE_NAV){
+export function saferPoint(tang:Point,hero:Fighter,enemies:Fighter[],anchor:Point,nav:Navigation=SAMPLE_NAV,unoccupied:(p:Point)=>boolean=()=>true){
  const threats=enemies.filter(e=>e.hp>0);if(!threats.length)return null;
  const nearest=[...threats].sort((a,b)=>distance(a,tang)-distance(b,tang))[0];const useHero=hero.hp>0&&distance(hero,tang)<GUARD.sosFar;
  const angle=Math.atan2(hero.y-nearest.y,hero.x-nearest.x),candidates:Point[]=[];
@@ -19,7 +19,7 @@ export function saferPoint(tang:Point,hero:Fighter,enemies:Fighter[],anchor:Poin
  for(let i=0;i<12;i++)for(const length of [65,110])candidates.push({x:tang.x+Math.cos(i*Math.PI/6)*length,y:tang.y+Math.sin(i*Math.PI/6)*length});
  const safety=(p:Point)=>Math.min(...threats.map(e=>distance(e,p)))*.7+threats.reduce((s,e)=>s+Math.min(500,distance(e,p))*.08,0);
  let chosen:Point|null=null,best=safety(tang);
- for(const p of candidates){if(distance(p,anchor)>GUARD.evadeLeash||!segmentClear(p,p,nav))continue;const path=smoothPath(tang,p,nav).route;if(!path.length)continue;let length=0,prev=tang,minClear=Infinity;for(const n of path){length+=distance(prev,n);minClear=Math.min(minClear,...threats.map(e=>clearance(e,prev,n)));prev=n;}if(length>270||minClear<Math.min(60,...threats.map(e=>distance(e,tang)))-10)continue;
+ for(const p of candidates){if(!unoccupied(p)||distance(p,anchor)>GUARD.evadeLeash||!segmentClear(p,p,nav))continue;const path=smoothPath(tang,p,nav).route;if(!path.length)continue;let length=0,prev=tang,minClear=Infinity;for(const n of path){length+=distance(prev,n);minClear=Math.min(minClear,...threats.map(e=>clearance(e,prev,n)));prev=n;}if(length>270||minClear<Math.min(60,...threats.map(e=>distance(e,tang)))-10)continue;
   const behind=useHero?Math.max(0,((p.x-hero.x)*Math.cos(angle)+(p.y-hero.y)*Math.sin(angle)))*.4:0;const score=safety(p)+behind-length*.2;
   if(score>best+10){best=score;chosen=p;}
  }return chosen;

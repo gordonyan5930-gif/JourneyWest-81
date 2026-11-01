@@ -13,7 +13,7 @@ export class RangedBattle {
  tang={...THREAT.tang,id:'tang',hp:100,max:100,flash:0,goal:{...THREAT.tang}};
  hero:Fighter={...THREAT.hero,id:'wukong',hp:180,max:180,flash:0};
  archer=makeArcher('archer-1',THREAT.archer);enemies:Archer[]=[this.archer];
- driver?: (dt:number)=>void;onDamage?: (event:DamageEvent)=>void;
+ canOccupy?: (unit:Fighter,p:Point)=>boolean;driver?: (dt:number)=>void;onDamage?: (event:DamageEvent)=>void;
  constructor(public nav:Navigation=SAMPLE_NAV){}
  start(){this.active=true;this.message='弓箭手正在威胁唐僧 · 选悟空→破空击→点弓箭手';}
  get casting(){return !!this.cast;}
@@ -36,7 +36,7 @@ export class RangedBattle {
   if(this.driver)this.driver(dt);else this.legacyAI(dt);
   const alive:Shot[]=[];for(const shot of this.shots){const d=distance(shot.position,shot.aim),step=Math.min(d,shot.speed*dt),next=d?{x:shot.position.x+(shot.aim.x-shot.position.x)/d*step,y:shot.position.y+(shot.aim.y-shot.position.y)/d*step}:{...shot.aim};
    if(!segmentClear(shot.position,next,this.nav)){this.message='飞行被地形截断';continue;}shot.position=next;
-   if(d<=step+RANGED.hitRadius){const victim=this.target(shot.targetId);if(victim&&victim.hp>0&&distance(next,victim)<=RANGED.hitRadius){this.damage(victim,shot.damage,shot.sourceId,shot.kind);if(shot.kind==='staff'){const a=victim as Archer;this.hits++;if(a.windup>0)this.interrupts++;a.windup=0;a.stun=RANGED.interrupt;a.next=ARCHER.interval;const away={x:a.x+(a.x-shot.origin.x)/Math.max(1,distance(a,shot.origin))*RANGED.knockback,y:a.y+(a.y-shot.origin.y)/Math.max(1,distance(a,shot.origin))*RANGED.knockback};if(segmentClear(a,away,this.nav))Object.assign(a,away);this.message=a.hp<=0?'破空击命中 · 白骨弓箭手被击败':'破空击命中 · 打断射箭';}else this.message=`${victim.id==='tang'?'唐僧':'悟空'}被箭矢击中`;}else this.message='目标移动，攻击落空';}
+   if(d<=step+RANGED.hitRadius){const victim=this.target(shot.targetId);if(victim&&victim.hp>0&&distance(next,victim)<=RANGED.hitRadius){this.damage(victim,shot.damage,shot.sourceId,shot.kind);if(shot.kind==='staff'){const a=victim as Archer;this.hits++;if(a.windup>0)this.interrupts++;a.windup=0;a.stun=RANGED.interrupt;a.next=ARCHER.interval;const away={x:a.x+(a.x-shot.origin.x)/Math.max(1,distance(a,shot.origin))*RANGED.knockback,y:a.y+(a.y-shot.origin.y)/Math.max(1,distance(a,shot.origin))*RANGED.knockback};if(segmentClear(a,away,this.nav)&&(!this.canOccupy||this.canOccupy(a,away)))Object.assign(a,away);this.message=a.hp<=0?'破空击命中 · 白骨弓箭手被击败':'破空击命中 · 打断射箭';}else this.message=`${victim.id==='tang'?'唐僧':'悟空'}被箭矢击中`;}else this.message='目标移动，攻击落空';}
    else alive.push(shot);
   }this.shots=alive;if(this.hero.hp<=0)this.cast=null;if(this.tang.hp<=0){this.failed=true;this.cast=null;this.message='护送失败 · 唐僧已阵亡';}else if(this.safe)this.message='远程威胁解除 · 唐僧存活（独立技能实验，不发通关印章）';
  }
