@@ -1,25 +1,14 @@
 import {test,expect} from 'vitest';
 import {EscortRun,ESCORT} from '../src/game/escortRun';
-import {RANGED} from '../src/game/rangedCombat';
 import {distance,segmentClear} from '../src/game/smoothMovement';
-const until=(r:EscortRun,condition:()=>boolean,seconds=50)=>{for(let i=0;i<seconds*60&&!condition();i++)r.update(1/60);expect(condition()).toBe(true);};
-const encounter=(r:EscortRun)=>{r.start();until(r,()=>r.phase==='encounter');};
-const protect=(r:EscortRun)=>{expect(r.battle.request(ESCORT.guard,'archer-1')).toBe(true);until(r,()=>r.battle.hits===1);until(r,()=>r.battle.cooldown===0);expect(r.battle.request(ESCORT.guard,'archer-1')).toBe(true);until(r,()=>r.phase==='depart');};
-test('actual safe path positions trigger encounter; killing archer is not arrival victory',()=>{
- const r=new EscortRun();expect(r.phase).toBe('ready');r.start();const initial={...r.battle.tang};r.update(.1);expect(distance(initial,r.battle.tang)).toBeGreaterThan(0);expect(r.battle.active).toBe(false);
- let prev={...r.battle.tang};for(let i=0;i<3000&&r.phase==='approach';i++){r.update(1/60);expect(segmentClear(prev,r.battle.tang)).toBe(true);prev={...r.battle.tang};}
- expect(r.phase).toBe('encounter');expect(distance(r.battle.tang,ESCORT.encounter)).toBeLessThanOrEqual(ESCORT.arrival);protect(r);
- expect(r.finished).toBe(false);expect(distance(r.battle.tang,ESCORT.exit)).toBeGreaterThan(100);
- let previous={...r.battle.tang};for(let i=0;i<3000&&r.phase==='depart';i++){r.update(1/60);expect(segmentClear(previous,r.battle.tang)).toBe(true);previous={...r.battle.tang};}expect(r.phase).toBe('won');expect(r.battle.safe).toBe(true);expect(r.battle.tang.hp).toBeGreaterThan(0);expect(distance(r.battle.tang,ESCORT.exit)).toBeLessThanOrEqual(ESCORT.arrival);
- const terminal=JSON.stringify(r.battle);r.update(10);expect(JSON.stringify(r.battle)).toBe(terminal);
+const until=(r:EscortRun,condition:()=>boolean,seconds=90)=>{for(let i=0;i<seconds*60&&!condition()&&!r.finished;i++)r.update(1/60);expect(condition()).toBe(true);};
+test('both required approaching enemies and every threatening arrow must resolve before real exit victory',()=>{
+ const r=new EscortRun();expect(r.phase).toBe('ready');r.start();expect(r.battle.enemies.length).toBe(2);expect(r.battle.enemies.every(a=>distance(a,r.battle.tang)>900)).toBe(true);const initial=r.battle.enemies.map(a=>({...a}));until(r,()=>r.battle.enemies.some(a=>a.hp<=0));expect(r.battle.safe).toBe(false);expect(r.finished).toBe(false);expect(r.battle.enemies.some(a=>a.hp>0)).toBe(true);expect(r.battle.enemies.every((a,i)=>distance(a,initial[i])>60)).toBe(true);
+ until(r,()=>r.phase==='depart');expect(distance(r.battle.tang,ESCORT.exit)).toBeGreaterThan(100);until(r,()=>r.phase==='won');expect(r.battle.safe).toBe(true);expect(distance(r.battle.tang,ESCORT.exit)).toBeLessThanOrEqual(2);const terminal=JSON.stringify(r.battle);r.update(10);expect(JSON.stringify(r.battle)).toBe(terminal);
 });
-test('normal archer AI kills unprotected Tang; restart after loss and after win are clean',()=>{
- const r=new EscortRun();encounter(r);until(r,()=>r.phase==='lost',20);expect(r.battle.tang.hp).toBe(0);expect(r.battle.arrowsFired).toBeGreaterThanOrEqual(5);
- const old=r.battle;r.start();expect(r.battle).not.toBe(old);expect(r.phase).toBe('approach');expect(r.battle.failed).toBe(false);expect(r.battle.tang.hp).toBe(100);expect(r.battle.archer.hp).toBe(100);expect(r.battle.active).toBe(false);
- until(r,()=>r.phase==='encounter');protect(r);until(r,()=>r.phase==='won');r.start();expect(r.phase).toBe('approach');expect(r.battle.hits).toBe(0);expect(r.battle.tang.hp).toBe(100);
+test('wrong manual holding naturally loses while restart after loss and win has fresh state',()=>{
+ const r=new EscortRun();r.start();r.command({type:'move',position:ESCORT.exit});until(r,()=>r.phase==='lost');expect(r.battle.tang.hp).toBe(0);expect(r.battle.arrowsFired).toBeGreaterThanOrEqual(5);const old=r.battle;r.start();expect(r.battle).not.toBe(old);expect(r.battle.tang.hp).toBe(100);expect(r.battle.hero.hp).toBe(180);expect(r.battle.enemies.every(a=>a.hp===100)).toBe(true);until(r,()=>r.phase==='won');r.start();expect(r.phase).toBe('approach');expect(r.meleeHits).toBe(0);expect(r.sosCount).toBe(0);expect(r.revives).toBe(0);expect(r.manualHero).toBe(false);
 });
-test('restart during actual arrow flight or skill windup clears shots, enemy, cast, resources and timers',()=>{
- const r=new EscortRun();encounter(r);until(r,()=>r.battle.shots.some(s=>s.kind==='arrow'));
- expect(r.battle.request(ESCORT.guard,'archer-1')).toBe(true);expect(r.battle.casting).toBe(true);expect(r.battle.cooldown).toBe(RANGED.cooldown);r.start();
- expect(r.battle.shots).toEqual([]);expect(r.battle.cast).toBe(null);expect(r.battle.cooldown).toBe(0);expect(r.battle.energy).toBe(RANGED.energyMax);expect(r.battle.sequence).toBe(0);expect(r.battle.time).toBe(0);expect(r.battle.arrowsFired).toBe(0);expect(r.battle.archer.windup).toBe(0);expect(r.battle.archer.stun).toBe(0);
+test('restart clears actual flight, windup, target threats, rescue and resource state',()=>{
+ const r=new EscortRun();r.start();until(r,()=>r.battle.shots.some(s=>s.kind==='arrow')&&r.battle.enemies[0].hp>0&&distance(r.battle.hero,r.battle.archer)<420&&segmentClear(r.battle.hero,r.battle.archer));expect(r.command({type:'cast',targetId:'archer-1'})).toBe(true);expect(r.battle.casting).toBe(true);r.start();expect(r.battle.shots).toEqual([]);expect(r.battle.cast).toBe(null);expect(r.battle.cooldown).toBe(0);expect(r.battle.energy).toBe(100);expect(r.battle.enemies.every(a=>a.targetId===''&&Object.keys(a.threat).length===0)).toBe(true);expect(r.evadeGoal).toBe(null);expect(r.melee).toBe(null);expect(r.events.map(e=>e.kind)).toEqual(['warning']);
 });
