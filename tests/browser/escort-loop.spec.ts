@@ -3,7 +3,7 @@ import {mkdirSync,writeFileSync} from 'node:fs';
 import {clickWorld,state,fresh,spell,observeInputs,retry} from './escort-ui';
 test.use({viewport:{width:1280,height:800}});
 test('autonomous escort and player tactics: real defence, chosen targets, rescue, SOS and flight retry',async({page},info)=>{
- test.setTimeout(330000);mkdirSync('reports',{recursive:true});const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));const canvas=info.project.metadata.renderer==='canvas',tag=info.project.name,report:any={source:'normal DOM buttons and pointer input, read-only observation; no HP writes/deletions/phase jumps',scenarios:{}};
+ test.setTimeout(390000);mkdirSync('reports',{recursive:true});const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));const canvas=info.project.metadata.renderer==='canvas',tag=info.project.name,report:any={source:'normal DOM buttons and pointer input, read-only observation; no HP writes/deletions/phase jumps',scenarios:{}};
  await page.goto(`/?sample=quality-b&play=escort&test&renderer=${canvas?'canvas':'auto'}`);await expect(page.locator('#sample-status')).toContainText('资产已载入',{timeout:20000});
  // Observe command-boundary state without changing the game or its clock.
  await observeInputs(page);
@@ -29,8 +29,10 @@ test('autonomous escort and player tactics: real defence, chosen targets, rescue
  if(!canvas){
   // Wrong distant holding order: SOS is observable and does not cancel the order.
   await retry(page);await fresh(page);await clickWorld(page,1390,320);
-  await expect.poll(()=>page.evaluate(()=>(window as any).qualityTest.escort.sosVisible),{timeout:45000,intervals:[100]}).toBe(true);const sos=await state(page);expect(sos.escort.manualHero).toBe(true);await expect(page.locator('#escort-sos')).toContainText('悟空，救我！');await page.screenshot({path:`reports/autonomy-sos-${tag}.png`,fullPage:true});
-  await expect.poll(()=>page.evaluate(()=>(window as any).qualityTest.escort.phase),{timeout:25000}).toBe('lost');const lost=await state(page);expect(lost.battle.tang.hp).toBe(0);await page.screenshot({path:`reports/autonomy-failure-${tag}.png`,fullPage:true});report.scenarios.unansweredSOS={sos,lost};
+  // Capture the actual rendered warning in the browser, before another arrow can kill Tang.
+  // No clock/game writes; a later driver screenshot may already show the loss screen.
+  const sosHandle=await page.waitForFunction(()=>{const q=(window as any).qualityTest,text=document.querySelector('#escort-sos')?.textContent??'';return q.escort.sosVisible&&text.includes('悟空，救我！')?{escort:q.escort,battle:q.battle,actor:q.actor,visibleText:text}:false;},null,{timeout:90000,polling:'raf'});const sos=await sosHandle.jsonValue();if(!sos)throw new Error('Missing rendered SOS snapshot');expect(sos.escort.manualHero).toBe(true);expect(sos.battle.tang.hp).toBeGreaterThan(0);expect(sos.visibleText).toContain('悟空，救我！');console.log('SOS_OBSERVED '+JSON.stringify({time:sos.escort.time,tang:sos.battle.tang.hp,hero:sos.escort.heroHp,text:sos.visibleText}));const screenshotState=await state(page);await page.screenshot({path:`reports/autonomy-after-sos-${tag}.png`,fullPage:true});
+  await expect.poll(()=>page.evaluate(()=>(window as any).qualityTest.escort.phase),{timeout:25000}).toBe('lost');const lost=await state(page);expect(lost.battle.tang.hp).toBe(0);await page.screenshot({path:`reports/autonomy-failure-${tag}.png`,fullPage:true});report.scenarios.unansweredSOS={sos,screenshotState,lost};
   await retry(page);report.scenarios.afterLossReset=await fresh(page);
  }
  report.inputLog=await page.evaluate(()=>(window as any).__inputLog);report.metrics=await page.evaluate(()=>(window as any).qualityTest.metrics);report.productQualityApproved=false;writeFileSync(`reports/autonomy-${tag}.json`,JSON.stringify(report,null,2));console.log('AUTONOMY_SUMMARY '+JSON.stringify({project:tag,scenarios:Object.keys(report.scenarios),passiveHP:passive.battle.tang.hp,passiveMelee:passive.escort.meleeHits,assistedHP:assisted.battle.tang.hp,assistedMelee:assisted.escort.meleeHits,metrics:report.metrics}));expect(errors).toEqual([]);
