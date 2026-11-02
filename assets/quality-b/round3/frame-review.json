@@ -1,0 +1,1787 @@
+{
+  "baseline": "3fcac721",
+  "frames": [
+    {
+      "group": "wukong",
+      "frame": 0,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 37,
+      "oldSourceCell": [
+        0,
+        0,
+        384,
+        174
+      ],
+      "originalSilhouetteBounds": [
+        88,
+        12,
+        276,
+        175
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "decision": "repair",
+      "reason": "Restore existing source silhouette beyond old crop and/or remove a neighbouring pose fragment. No invented pixels, no padding claimed as source repair.",
+      "recoveredAlpha64Pixels": 11,
+      "foreignAlpha64PixelsRemoved": 0,
+      "newSourceRect": [
+        0,
+        0,
+        355,
+        199
+      ],
+      "sourceFoot": [
+        188.5,
+        174
+      ],
+      "runtimeSha256": "0d73ac0d7ad2852dc0be1daa93062125a10de0ff6d7955b81f0821a9d213c606",
+      "repaintedPixels": 0,
+      "sourcePixelSelectionOnly": true
+    },
+    {
+      "group": "wukong",
+      "frame": 1,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        384,
+        0,
+        768,
+        174
+      ],
+      "originalSilhouetteBounds": [
+        434,
+        25,
+        703,
+        173
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "wukong",
+      "frame": 2,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        768,
+        0,
+        1152,
+        174
+      ],
+      "originalSilhouetteBounds": [
+        812,
+        26,
+        1134,
+        173
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "wukong",
+      "frame": 3,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        1152,
+        0,
+        1536,
+        174
+      ],
+      "originalSilhouetteBounds": [
+        1194,
+        21,
+        1513,
+        173
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "wukong",
+      "frame": 4,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 8,
+      "oldSourceCell": [
+        0,
+        174,
+        400,
+        342
+      ],
+      "originalSilhouetteBounds": [
+        91,
+        192,
+        401,
+        340
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "decision": "repair",
+      "reason": "Restore existing source silhouette beyond old crop and/or remove a neighbouring pose fragment. No invented pixels, no padding claimed as source repair.",
+      "recoveredAlpha64Pixels": 3,
+      "foreignAlpha64PixelsRemoved": 11,
+      "newSourceRect": [
+        29,
+        152,
+        407,
+        383
+      ],
+      "sourceFoot": [
+        183.0,
+        339
+      ],
+      "runtimeSha256": "04b1ced7427dd88c865627a97291f5a5e6e6dceadd79ef1afe47608ea22fe2a2",
+      "repaintedPixels": 0,
+      "sourcePixelSelectionOnly": true
+    },
+    {
+      "group": "wukong",
+      "frame": 5,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        400,
+        174,
+        768,
+        342
+      ],
+      "originalSilhouetteBounds": [
+        451,
+        192,
+        699,
+        341
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "repair",
+      "reason": "Restore existing source silhouette beyond old crop and/or remove a neighbouring pose fragment. No invented pixels, no padding claimed as source repair.",
+      "recoveredAlpha64Pixels": 0,
+      "foreignAlpha64PixelsRemoved": 3,
+      "newSourceRect": [
+        370,
+        168,
+        765,
+        359
+      ],
+      "sourceFoot": [
+        551.0,
+        340
+      ],
+      "runtimeSha256": "cb5ad2a459432da55926b29eb623697af4d35880154c5271e0dd81bf85e9f351",
+      "repaintedPixels": 0,
+      "sourcePixelSelectionOnly": true
+    },
+    {
+      "group": "wukong",
+      "frame": 6,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 7,
+      "oldSourceCell": [
+        768,
+        174,
+        1152,
+        342
+      ],
+      "originalSilhouetteBounds": [
+        834,
+        196,
+        1080,
+        342
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "Full original silhouette and weapon/boots retained; boundary flag is a touching antialiased edge, not missing anatomy. Visual review at game size and source size; no regeneration."
+    },
+    {
+      "group": "wukong",
+      "frame": 7,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        1152,
+        174,
+        1536,
+        342
+      ],
+      "originalSilhouetteBounds": [
+        1225,
+        185,
+        1419,
+        342
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "Full original silhouette and weapon/boots retained; boundary flag is a touching antialiased edge, not missing anatomy. Visual review at game size and source size; no regeneration."
+    },
+    {
+      "group": "wukong",
+      "frame": 8,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 10,
+      "oldSourceCell": [
+        0,
+        342,
+        384,
+        515
+      ],
+      "originalSilhouetteBounds": [
+        86,
+        360,
+        278,
+        515
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "Full original silhouette and weapon/boots retained; boundary flag is a touching antialiased edge, not missing anatomy. Visual review at game size and source size; no regeneration."
+    },
+    {
+      "group": "wukong",
+      "frame": 9,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        384,
+        342,
+        768,
+        515
+      ],
+      "originalSilhouetteBounds": [
+        428,
+        358,
+        707,
+        515
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "Full original silhouette and weapon/boots retained; boundary flag is a touching antialiased edge, not missing anatomy. Visual review at game size and source size; no regeneration."
+    },
+    {
+      "group": "wukong",
+      "frame": 10,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        768,
+        342,
+        1152,
+        515
+      ],
+      "originalSilhouetteBounds": [
+        815,
+        366,
+        1130,
+        515
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "Full original silhouette and weapon/boots retained; boundary flag is a touching antialiased edge, not missing anatomy. Visual review at game size and source size; no regeneration."
+    },
+    {
+      "group": "wukong",
+      "frame": 11,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        1152,
+        342,
+        1536,
+        515
+      ],
+      "originalSilhouetteBounds": [
+        1188,
+        367,
+        1521,
+        514
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "wukong",
+      "frame": 12,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 9,
+      "oldSourceCell": [
+        0,
+        515,
+        400,
+        684
+      ],
+      "originalSilhouetteBounds": [
+        57,
+        536,
+        401,
+        682
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "decision": "repair",
+      "reason": "Restore existing source silhouette beyond old crop and/or remove a neighbouring pose fragment. No invented pixels, no padding claimed as source repair.",
+      "recoveredAlpha64Pixels": 7,
+      "foreignAlpha64PixelsRemoved": 0,
+      "newSourceRect": [
+        24,
+        500,
+        425,
+        729
+      ],
+      "sourceFoot": [
+        167.0,
+        681
+      ],
+      "runtimeSha256": "21112d6048a93d745913dbbf2c94bf7699bbddb7d0d74e800336cd14b3f06a98",
+      "repaintedPixels": 0,
+      "sourcePixelSelectionOnly": true
+    },
+    {
+      "group": "wukong",
+      "frame": 13,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 21,
+      "oldSourceCell": [
+        400,
+        515,
+        768,
+        684
+      ],
+      "originalSilhouetteBounds": [
+        447,
+        529,
+        688,
+        685
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "decision": "repair",
+      "reason": "Restore existing source silhouette beyond old crop and/or remove a neighbouring pose fragment. No invented pixels, no padding claimed as source repair.",
+      "recoveredAlpha64Pixels": 8,
+      "foreignAlpha64PixelsRemoved": 27,
+      "newSourceRect": [
+        362,
+        506,
+        750,
+        754
+      ],
+      "sourceFoot": [
+        558.0,
+        684
+      ],
+      "runtimeSha256": "857d25bc78aa1297f6e7979e39b6964d8cd54a2044f4671f91d2de7bd6b3b8c4",
+      "repaintedPixels": 0,
+      "sourcePixelSelectionOnly": true
+    },
+    {
+      "group": "wukong",
+      "frame": 14,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 9,
+      "oldSourceCell": [
+        768,
+        515,
+        1152,
+        684
+      ],
+      "originalSilhouetteBounds": [
+        819,
+        528,
+        1074,
+        684
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "Full original silhouette and weapon/boots retained; boundary flag is a touching antialiased edge, not missing anatomy. Visual review at game size and source size; no regeneration."
+    },
+    {
+      "group": "wukong",
+      "frame": 15,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 33,
+      "oldSourceCell": [
+        1152,
+        515,
+        1536,
+        684
+      ],
+      "originalSilhouetteBounds": [
+        1214,
+        528,
+        1420,
+        685
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "decision": "repair",
+      "reason": "Restore existing source silhouette beyond old crop and/or remove a neighbouring pose fragment. No invented pixels, no padding claimed as source repair.",
+      "recoveredAlpha64Pixels": 22,
+      "foreignAlpha64PixelsRemoved": 0,
+      "newSourceRect": [
+        1141,
+        510,
+        1513,
+        737
+      ],
+      "sourceFoot": [
+        1334.0,
+        684
+      ],
+      "runtimeSha256": "b771c3fd96499ad3133f5b8d6a74f24778f15de67d1bfb4bfc86e17138c2985a",
+      "repaintedPixels": 0,
+      "sourcePixelSelectionOnly": true
+    },
+    {
+      "group": "wukong",
+      "frame": 16,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        0,
+        684,
+        384,
+        865
+      ],
+      "originalSilhouetteBounds": [
+        82,
+        733,
+        332,
+        863
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "wukong",
+      "frame": 17,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 12,
+      "oldSourceCell": [
+        384,
+        684,
+        768,
+        865
+      ],
+      "originalSilhouetteBounds": [
+        455,
+        682,
+        675,
+        864
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        2,
+        0,
+        0
+      ],
+      "decision": "repair",
+      "reason": "Restore existing source silhouette beyond old crop and/or remove a neighbouring pose fragment. No invented pixels, no padding claimed as source repair.",
+      "recoveredAlpha64Pixels": 20,
+      "foreignAlpha64PixelsRemoved": 8,
+      "newSourceRect": [
+        362,
+        664,
+        757,
+        921
+      ],
+      "sourceFoot": [
+        578.0,
+        863
+      ],
+      "runtimeSha256": "cd91c34a62da55f5c4f0e51e776fb3ec8e3f7d0d455259e6026b9e1a32990449",
+      "repaintedPixels": 0,
+      "sourcePixelSelectionOnly": true
+    },
+    {
+      "group": "wukong",
+      "frame": 18,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        768,
+        684,
+        1152,
+        865
+      ],
+      "originalSilhouetteBounds": [
+        812,
+        690,
+        1042,
+        863
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "wukong",
+      "frame": 19,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 18,
+      "oldSourceCell": [
+        1152,
+        684,
+        1536,
+        865
+      ],
+      "originalSilhouetteBounds": [
+        1215,
+        698,
+        1475,
+        865
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "Full original silhouette and weapon/boots retained; boundary flag is a touching antialiased edge, not missing anatomy. Visual review at game size and source size; no regeneration."
+    },
+    {
+      "group": "wukong",
+      "frame": 20,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        0,
+        865,
+        384,
+        1024
+      ],
+      "originalSilhouetteBounds": [
+        79,
+        870,
+        345,
+        1011
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "wukong",
+      "frame": 21,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        384,
+        865,
+        768,
+        1024
+      ],
+      "originalSilhouetteBounds": [
+        467,
+        883,
+        721,
+        1013
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "wukong",
+      "frame": 22,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        768,
+        865,
+        1152,
+        1024
+      ],
+      "originalSilhouetteBounds": [
+        837,
+        878,
+        1079,
+        1013
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "wukong",
+      "frame": 23,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 16,
+      "oldSourceCell": [
+        1152,
+        865,
+        1536,
+        1024
+      ],
+      "originalSilhouetteBounds": [
+        1228,
+        861,
+        1423,
+        1015
+      ],
+      "originalSourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        4,
+        0,
+        0
+      ],
+      "decision": "repair",
+      "reason": "Restore existing source silhouette beyond old crop and/or remove a neighbouring pose fragment. No invented pixels, no padding claimed as source repair.",
+      "recoveredAlpha64Pixels": 48,
+      "foreignAlpha64PixelsRemoved": 0,
+      "newSourceRect": [
+        1142,
+        849,
+        1493,
+        1024
+      ],
+      "sourceFoot": [
+        1335.0,
+        1014
+      ],
+      "runtimeSha256": "ac14e1c468416b8876f8a1433245d259d8c6dab31dbfe9f534ea3e42521e533f",
+      "repaintedPixels": 0,
+      "sourcePixelSelectionOnly": true
+    },
+    {
+      "group": "archer-react",
+      "frame": 0,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        0,
+        0,
+        444,
+        346
+      ],
+      "originalSilhouetteBounds": [
+        68,
+        108,
+        399,
+        338
+      ],
+      "originalSourceSha256": "7ed7eb03059969fa7e872596628e855b19295d45f1b7f9278e33889f6a20297b",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "archer-react",
+      "frame": 1,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        444,
+        0,
+        887,
+        346
+      ],
+      "originalSilhouetteBounds": [
+        536,
+        54,
+        872,
+        342
+      ],
+      "originalSourceSha256": "7ed7eb03059969fa7e872596628e855b19295d45f1b7f9278e33889f6a20297b",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "archer-react",
+      "frame": 2,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        887,
+        0,
+        1330,
+        346
+      ],
+      "originalSilhouetteBounds": [
+        976,
+        76,
+        1281,
+        341
+      ],
+      "originalSourceSha256": "7ed7eb03059969fa7e872596628e855b19295d45f1b7f9278e33889f6a20297b",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "archer-react",
+      "frame": 3,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 21,
+      "oldSourceCell": [
+        1330,
+        0,
+        1774,
+        346
+      ],
+      "originalSilhouetteBounds": [
+        1437,
+        34,
+        1715,
+        347
+      ],
+      "originalSourceSha256": "7ed7eb03059969fa7e872596628e855b19295d45f1b7f9278e33889f6a20297b",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "decision": "repair",
+      "reason": "Restore existing source silhouette beyond old crop and/or remove a neighbouring pose fragment. No invented pixels, no padding claimed as source repair.",
+      "recoveredAlpha64Pixels": 19,
+      "foreignAlpha64PixelsRemoved": 0,
+      "newSourceRect": [
+        1341,
+        28,
+        1721,
+        420
+      ],
+      "sourceFoot": [
+        1571.5,
+        346
+      ],
+      "runtimeSha256": "2d436b5163d02d60ee7111119f64f04c4bad44ad4ff86823402cdd97ae6c4b75",
+      "repaintedPixels": 0,
+      "sourcePixelSelectionOnly": true
+    },
+    {
+      "group": "archer-react",
+      "frame": 4,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        0,
+        346,
+        444,
+        636
+      ],
+      "originalSilhouetteBounds": [
+        62,
+        384,
+        404,
+        605
+      ],
+      "originalSourceSha256": "7ed7eb03059969fa7e872596628e855b19295d45f1b7f9278e33889f6a20297b",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "archer-react",
+      "frame": 5,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        444,
+        346,
+        887,
+        636
+      ],
+      "originalSilhouetteBounds": [
+        512,
+        463,
+        876,
+        626
+      ],
+      "originalSourceSha256": "7ed7eb03059969fa7e872596628e855b19295d45f1b7f9278e33889f6a20297b",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "archer-react",
+      "frame": 6,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        887,
+        346,
+        1330,
+        636
+      ],
+      "originalSilhouetteBounds": [
+        921,
+        510,
+        1280,
+        624
+      ],
+      "originalSourceSha256": "7ed7eb03059969fa7e872596628e855b19295d45f1b7f9278e33889f6a20297b",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "archer-react",
+      "frame": 7,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        1330,
+        346,
+        1774,
+        618
+      ],
+      "originalSilhouetteBounds": [
+        1375,
+        464,
+        1733,
+        615
+      ],
+      "originalSourceSha256": "7ed7eb03059969fa7e872596628e855b19295d45f1b7f9278e33889f6a20297b",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "repair",
+      "reason": "Restore existing source silhouette beyond old crop and/or remove a neighbouring pose fragment. No invented pixels, no padding claimed as source repair.",
+      "recoveredAlpha64Pixels": 0,
+      "foreignAlpha64PixelsRemoved": 19,
+      "newSourceRect": [
+        1317,
+        411,
+        1763,
+        660
+      ],
+      "sourceFoot": [
+        1553.5,
+        614
+      ],
+      "runtimeSha256": "1aca61b42c7b646d17ae455cc04976f3193b101de949eac3917e1ad148329a07",
+      "repaintedPixels": 0,
+      "sourcePixelSelectionOnly": true
+    },
+    {
+      "group": "archer-react",
+      "frame": 8,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        0,
+        636,
+        444,
+        887
+      ],
+      "originalSilhouetteBounds": [
+        74,
+        677,
+        428,
+        858
+      ],
+      "originalSourceSha256": "7ed7eb03059969fa7e872596628e855b19295d45f1b7f9278e33889f6a20297b",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "archer-react",
+      "frame": 9,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        444,
+        636,
+        887,
+        887
+      ],
+      "originalSilhouetteBounds": [
+        545,
+        662,
+        883,
+        851
+      ],
+      "originalSourceSha256": "7ed7eb03059969fa7e872596628e855b19295d45f1b7f9278e33889f6a20297b",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "archer-react",
+      "frame": 10,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        887,
+        636,
+        1330,
+        887
+      ],
+      "originalSilhouetteBounds": [
+        982,
+        650,
+        1287,
+        854
+      ],
+      "originalSourceSha256": "7ed7eb03059969fa7e872596628e855b19295d45f1b7f9278e33889f6a20297b",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "archer-react",
+      "frame": 11,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        1330,
+        618,
+        1774,
+        887
+      ],
+      "originalSilhouetteBounds": [
+        1412,
+        618,
+        1718,
+        868
+      ],
+      "originalSourceSha256": "7ed7eb03059969fa7e872596628e855b19295d45f1b7f9278e33889f6a20297b",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "Full original silhouette and weapon/boots retained; boundary flag is a touching antialiased edge, not missing anatomy. Visual review at game size and source size; no regeneration."
+    },
+    {
+      "group": "tang",
+      "frame": 0,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 4,
+      "oldSourceCell": [
+        0,
+        0,
+        444,
+        446
+      ],
+      "originalSilhouetteBounds": [
+        49,
+        10,
+        445,
+        442
+      ],
+      "originalSourceSha256": "3122f9bfe908aab19fdde9e9499b7b9b53828607a96c23b7a11a9ce9781101f0",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "decision": "repair",
+      "reason": "Restore existing source silhouette beyond old crop and/or remove a neighbouring pose fragment. No invented pixels, no padding claimed as source repair.",
+      "recoveredAlpha64Pixels": 4,
+      "foreignAlpha64PixelsRemoved": 0,
+      "newSourceRect": [
+        0,
+        0,
+        515,
+        498
+      ],
+      "sourceFoot": [
+        280.5,
+        441
+      ],
+      "runtimeSha256": "d93356ab00282795877f41f38ccbf4ab6adb2ae83d5d0ca57ec4027d59cad4da",
+      "repaintedPixels": 0,
+      "sourcePixelSelectionOnly": true
+    },
+    {
+      "group": "tang",
+      "frame": 1,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        444,
+        0,
+        887,
+        446
+      ],
+      "originalSilhouetteBounds": [
+        495,
+        12,
+        856,
+        442
+      ],
+      "originalSourceSha256": "3122f9bfe908aab19fdde9e9499b7b9b53828607a96c23b7a11a9ce9781101f0",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "repair",
+      "reason": "Restore existing source silhouette beyond old crop and/or remove a neighbouring pose fragment. No invented pixels, no padding claimed as source repair.",
+      "recoveredAlpha64Pixels": 0,
+      "foreignAlpha64PixelsRemoved": 4,
+      "newSourceRect": [
+        458,
+        0,
+        916,
+        492
+      ],
+      "sourceFoot": [
+        710.0,
+        441
+      ],
+      "runtimeSha256": "cb233686a0a213d08b1ccc123e37f31d7d830a43b1f79507d5bea59c42ad4f06",
+      "repaintedPixels": 0,
+      "sourcePixelSelectionOnly": true
+    },
+    {
+      "group": "tang",
+      "frame": 2,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        887,
+        0,
+        1330,
+        446
+      ],
+      "originalSilhouetteBounds": [
+        928,
+        14,
+        1270,
+        444
+      ],
+      "originalSourceSha256": "3122f9bfe908aab19fdde9e9499b7b9b53828607a96c23b7a11a9ce9781101f0",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "tang",
+      "frame": 3,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 13,
+      "oldSourceCell": [
+        1330,
+        0,
+        1774,
+        446
+      ],
+      "originalSilhouetteBounds": [
+        1337,
+        7,
+        1702,
+        447
+      ],
+      "originalSourceSha256": "3122f9bfe908aab19fdde9e9499b7b9b53828607a96c23b7a11a9ce9781101f0",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "decision": "repair",
+      "reason": "Restore existing source silhouette beyond old crop and/or remove a neighbouring pose fragment. No invented pixels, no padding claimed as source repair.",
+      "recoveredAlpha64Pixels": 13,
+      "foreignAlpha64PixelsRemoved": 0,
+      "newSourceRect": [
+        1289,
+        0,
+        1759,
+        494
+      ],
+      "sourceFoot": [
+        1452.5,
+        446
+      ],
+      "runtimeSha256": "37a3d2fbfccbbcf1f47e7e6a842399a952262e8ac4b549a14307f938d17a590b",
+      "repaintedPixels": 0,
+      "sourcePixelSelectionOnly": true
+    },
+    {
+      "group": "tang",
+      "frame": 4,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 4,
+      "oldSourceCell": [
+        0,
+        446,
+        448,
+        887
+      ],
+      "originalSilhouetteBounds": [
+        42,
+        455,
+        449,
+        864
+      ],
+      "originalSourceSha256": "3122f9bfe908aab19fdde9e9499b7b9b53828607a96c23b7a11a9ce9781101f0",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "decision": "repair",
+      "reason": "Restore existing source silhouette beyond old crop and/or remove a neighbouring pose fragment. No invented pixels, no padding claimed as source repair.",
+      "recoveredAlpha64Pixels": 4,
+      "foreignAlpha64PixelsRemoved": 0,
+      "newSourceRect": [
+        30,
+        441,
+        487,
+        874
+      ],
+      "sourceFoot": [
+        262.0,
+        863
+      ],
+      "runtimeSha256": "526ad322544e9faa0cce39bd145997a6206d2fd037bbbc3dc078185dba5ba644",
+      "repaintedPixels": 0,
+      "sourcePixelSelectionOnly": true
+    },
+    {
+      "group": "tang",
+      "frame": 5,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        448,
+        446,
+        887,
+        887
+      ],
+      "originalSilhouetteBounds": [
+        471,
+        458,
+        871,
+        863
+      ],
+      "originalSourceSha256": "3122f9bfe908aab19fdde9e9499b7b9b53828607a96c23b7a11a9ce9781101f0",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "repair",
+      "reason": "Restore existing source silhouette beyond old crop and/or remove a neighbouring pose fragment. No invented pixels, no padding claimed as source repair.",
+      "recoveredAlpha64Pixels": 0,
+      "foreignAlpha64PixelsRemoved": 4,
+      "newSourceRect": [
+        448,
+        442,
+        934,
+        887
+      ],
+      "sourceFoot": [
+        729.5,
+        862
+      ],
+      "runtimeSha256": "ba0cdaceea1ad72ff8d583c5caf08d2bcc5d094d487139222260d734ae3f1119",
+      "repaintedPixels": 0,
+      "sourcePixelSelectionOnly": true
+    },
+    {
+      "group": "tang",
+      "frame": 6,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        887,
+        446,
+        1329,
+        887
+      ],
+      "originalSilhouetteBounds": [
+        920,
+        456,
+        1270,
+        863
+      ],
+      "originalSourceSha256": "3122f9bfe908aab19fdde9e9499b7b9b53828607a96c23b7a11a9ce9781101f0",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "tang",
+      "frame": 7,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        1329,
+        446,
+        1774,
+        887
+      ],
+      "originalSilhouetteBounds": [
+        1329,
+        456,
+        1717,
+        870
+      ],
+      "originalSourceSha256": "3122f9bfe908aab19fdde9e9499b7b9b53828607a96c23b7a11a9ce9781101f0",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "repair",
+      "reason": "Restore existing source silhouette beyond old crop and/or remove a neighbouring pose fragment. No invented pixels, no padding claimed as source repair.",
+      "recoveredAlpha64Pixels": 0,
+      "foreignAlpha64PixelsRemoved": 13,
+      "newSourceRect": [
+        1286,
+        419,
+        1747,
+        887
+      ],
+      "sourceFoot": [
+        1573.0,
+        869
+      ],
+      "runtimeSha256": "cfea12aeddd733b494eae5edc663f1add21ae1b954fc340985d2b2c29df14513",
+      "repaintedPixels": 0,
+      "sourcePixelSelectionOnly": true
+    },
+    {
+      "group": "archer",
+      "frame": 0,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        0,
+        0,
+        444,
+        444
+      ],
+      "originalSilhouetteBounds": [
+        45,
+        23,
+        424,
+        440
+      ],
+      "originalSourceSha256": "c9a0a59be64d184dda962cd2ae890d801c87ee3a1699d4645df5b717763f393d",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "archer",
+      "frame": 1,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        444,
+        0,
+        887,
+        444
+      ],
+      "originalSilhouetteBounds": [
+        504,
+        35,
+        883,
+        440
+      ],
+      "originalSourceSha256": "c9a0a59be64d184dda962cd2ae890d801c87ee3a1699d4645df5b717763f393d",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "archer",
+      "frame": 2,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        887,
+        0,
+        1330,
+        444
+      ],
+      "originalSilhouetteBounds": [
+        952,
+        17,
+        1287,
+        444
+      ],
+      "originalSourceSha256": "c9a0a59be64d184dda962cd2ae890d801c87ee3a1699d4645df5b717763f393d",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "Full original silhouette and weapon/boots retained; boundary flag is a touching antialiased edge, not missing anatomy. Visual review at game size and source size; no regeneration."
+    },
+    {
+      "group": "archer",
+      "frame": 3,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        1330,
+        0,
+        1774,
+        444
+      ],
+      "originalSilhouetteBounds": [
+        1365,
+        24,
+        1744,
+        444
+      ],
+      "originalSourceSha256": "c9a0a59be64d184dda962cd2ae890d801c87ee3a1699d4645df5b717763f393d",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "Full original silhouette and weapon/boots retained; boundary flag is a touching antialiased edge, not missing anatomy. Visual review at game size and source size; no regeneration."
+    },
+    {
+      "group": "archer",
+      "frame": 4,
+      "baselineSourceBorderTouched": false,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        0,
+        444,
+        444,
+        887
+      ],
+      "originalSilhouetteBounds": [
+        45,
+        455,
+        437,
+        848
+      ],
+      "originalSourceSha256": "c9a0a59be64d184dda962cd2ae890d801c87ee3a1699d4645df5b717763f393d",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "accept",
+      "reason": "No border flag; silhouette, hands, cape and foot registration retained. Preserve approved runtime frame pixels."
+    },
+    {
+      "group": "archer",
+      "frame": 5,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 17,
+      "oldSourceCell": [
+        444,
+        444,
+        891,
+        887
+      ],
+      "originalSilhouetteBounds": [
+        514,
+        454,
+        892,
+        848
+      ],
+      "originalSourceSha256": "c9a0a59be64d184dda962cd2ae890d801c87ee3a1699d4645df5b717763f393d",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "decision": "repair",
+      "reason": "Restore existing source silhouette beyond old crop and/or remove a neighbouring pose fragment. No invented pixels, no padding claimed as source repair.",
+      "recoveredAlpha64Pixels": 17,
+      "foreignAlpha64PixelsRemoved": 0,
+      "newSourceRect": [
+        431,
+        417,
+        957,
+        874
+      ],
+      "sourceFoot": [
+        712.5,
+        847
+      ],
+      "runtimeSha256": "12e502afaf991a49a5f8fd5021995a186498171da6e822adbe13144585047f72",
+      "repaintedPixels": 0,
+      "sourcePixelSelectionOnly": true
+    },
+    {
+      "group": "archer",
+      "frame": 6,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 3,
+      "oldSourceCell": [
+        891,
+        444,
+        1339,
+        887
+      ],
+      "originalSilhouetteBounds": [
+        984,
+        457,
+        1343,
+        850
+      ],
+      "originalSourceSha256": "c9a0a59be64d184dda962cd2ae890d801c87ee3a1699d4645df5b717763f393d",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        4,
+        0
+      ],
+      "decision": "repair",
+      "reason": "Restore existing source silhouette beyond old crop and/or remove a neighbouring pose fragment. No invented pixels, no padding claimed as source repair.",
+      "recoveredAlpha64Pixels": 16,
+      "foreignAlpha64PixelsRemoved": 17,
+      "newSourceRect": [
+        915,
+        423,
+        1400,
+        887
+      ],
+      "sourceFoot": [
+        1123.5,
+        849
+      ],
+      "runtimeSha256": "70619ed3f417560d24bcc1abfa86f218056bd472b7196b9e405f1c727ce0e309",
+      "repaintedPixels": 0,
+      "sourcePixelSelectionOnly": true
+    },
+    {
+      "group": "archer",
+      "frame": 7,
+      "baselineSourceBorderTouched": true,
+      "opaqueBorderPixels": 0,
+      "oldSourceCell": [
+        1339,
+        444,
+        1774,
+        887
+      ],
+      "originalSilhouetteBounds": [
+        1418,
+        454,
+        1764,
+        853
+      ],
+      "originalSourceSha256": "c9a0a59be64d184dda962cd2ae890d801c87ee3a1699d4645df5b717763f393d",
+      "recoveredPixelsBeyondOldCrop": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "decision": "repair",
+      "reason": "Restore existing source silhouette beyond old crop and/or remove a neighbouring pose fragment. No invented pixels, no padding claimed as source repair.",
+      "recoveredAlpha64Pixels": 0,
+      "foreignAlpha64PixelsRemoved": 16,
+      "newSourceRect": [
+        1345,
+        441,
+        1774,
+        874
+      ],
+      "sourceFoot": [
+        1676.0,
+        852
+      ],
+      "runtimeSha256": "3c3872499bb14a1d080cffc1d67bcc27adaab6a442af6784a2ed1e9018cc79eb",
+      "repaintedPixels": 0,
+      "sourcePixelSelectionOnly": true
+    }
+  ],
+  "reviewed": 52,
+  "baselineFlags": 29,
+  "fixed": [
+    {
+      "group": "wukong",
+      "frame": 0
+    },
+    {
+      "group": "wukong",
+      "frame": 4
+    },
+    {
+      "group": "wukong",
+      "frame": 5
+    },
+    {
+      "group": "wukong",
+      "frame": 12
+    },
+    {
+      "group": "wukong",
+      "frame": 13
+    },
+    {
+      "group": "wukong",
+      "frame": 15
+    },
+    {
+      "group": "wukong",
+      "frame": 17
+    },
+    {
+      "group": "wukong",
+      "frame": 23
+    },
+    {
+      "group": "archer-react",
+      "frame": 3
+    },
+    {
+      "group": "archer-react",
+      "frame": 7
+    },
+    {
+      "group": "tang",
+      "frame": 0
+    },
+    {
+      "group": "tang",
+      "frame": 1
+    },
+    {
+      "group": "tang",
+      "frame": 3
+    },
+    {
+      "group": "tang",
+      "frame": 4
+    },
+    {
+      "group": "tang",
+      "frame": 5
+    },
+    {
+      "group": "tang",
+      "frame": 7
+    },
+    {
+      "group": "archer",
+      "frame": 5
+    },
+    {
+      "group": "archer",
+      "frame": 6
+    },
+    {
+      "group": "archer",
+      "frame": 7
+    }
+  ],
+  "allOriginalAtlasesUnchanged": true,
+  "visualScaleMultipliers": {
+    "wukong": 0.92,
+    "tang": 0.98,
+    "archer": 0.94,
+    "archer-react": 0.94
+  },
+  "oldRunEscortScale": {
+    "before": 0.31,
+    "after": 0.335
+  },
+  "formalAnimationApproval": false,
+  "remaining": "Anatomical hand/cape continuity and full motion naturalness remain for user review; engineering recovery is not a production animation approval."
+}

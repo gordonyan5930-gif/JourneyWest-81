@@ -18,3 +18,6 @@ export class EscortFormation {
   for(const [x,y] of [[-80,-24],[-100,-32],[-80,12],[80,-12],[-64,30]]){const p={x:exit.x+x,y:exit.y+y};if(space.free(p,'wukong',true)&&segmentClear(exit,p,nav)){this.exitPoint=p;this.mode='finish';return p;}}return null;
  }
 }
+
+/** Local firing sidestep: anchor at the bow, never at a distant victim. */
+export function firingSpacing(a:Point&{id:string},other:Point&{id:string},space:UnitSpace){const side=a.x>=other.x?1:-1;return space.endpoint(a.id,a,{x:other.x+side*76,y:a.y},[64,80],'bow-spacing-'+other.id);}

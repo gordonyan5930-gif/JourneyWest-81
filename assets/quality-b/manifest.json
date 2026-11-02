@@ -464,5 +464,240 @@
     },
     "approval": "pending-human-animation-review",
     "limitations": "Source border touches, cloth/hand continuity and inter-pose proportion changes require human cleanup; padded atlas margins do not prove complete original linework."
-  }
+  },
+  "round3": {
+    "baseline": "3fcac721",
+    "index": "assets/quality-b/round3/index.json",
+    "audit": "assets/quality-b/round3/frame-review.json",
+    "approval": "engineering source recovery; animation quality pending user",
+    "newGenerationCalls": 0,
+    "oldMastersUnchanged": true
+  },
+  "round3Files": [
+    {
+      "path": "assets/quality-b/round3/README.md",
+      "bytes": 1547,
+      "sha256": "36b4273dd2a4f590923bd7a370b1da0419c021d173099631e272f68d16b186e6"
+    },
+    {
+      "path": "assets/quality-b/round3/frame-review.json",
+      "bytes": 44577,
+      "sha256": "f74ba097d660bac65cdf38636234e82e6a626bfcea068d09d566dd3d509372d1"
+    },
+    {
+      "path": "assets/quality-b/round3/index.json",
+      "bytes": 17020,
+      "sha256": "b45c7a7962a9086bdedc031955a1e3059c972fb9346edd70728c2ebd57941427"
+    },
+    {
+      "path": "assets/quality-b/round3/review-archer-react.png",
+      "bytes": 268918,
+      "sha256": "07808cba54738ed8d95efe93b24361567e7b59d665499c2fcb09eb2246fe3b49"
+    },
+    {
+      "path": "assets/quality-b/round3/review-archer.png",
+      "bytes": 144698,
+      "sha256": "b12b0138a54e2070fb3981d5d201db5f9fad5ac9b379c91a0165faa1f3b89ab2"
+    },
+    {
+      "path": "assets/quality-b/round3/review-tang.png",
+      "bytes": 142637,
+      "sha256": "7d77cf399d5a211fc0012ca9ba0ab00c429ce83911e732c6d9a26f8f0fea7863"
+    },
+    {
+      "path": "assets/quality-b/round3/review-wukong.png",
+      "bytes": 705497,
+      "sha256": "c51e15db24f18a3ea0daaf64e18fc9b0896786299d0a91c269b813a2ca04736e"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-archer-5.atlas.json",
+      "bytes": 547,
+      "sha256": "a2b9ac8f9ad4a22170ef31017c86aa2ec2e7588e0aa104dd33fed142585c159b"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-archer-5.webp",
+      "bytes": 60060,
+      "sha256": "12e502afaf991a49a5f8fd5021995a186498171da6e822adbe13144585047f72"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-archer-6.atlas.json",
+      "bytes": 547,
+      "sha256": "6eea667e50c16e81b9ad1520c7641709c4fe652df9aa0be45b7415f052601b28"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-archer-6.webp",
+      "bytes": 56012,
+      "sha256": "70619ed3f417560d24bcc1abfa86f218056bd472b7196b9e405f1c727ce0e309"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-archer-7.atlas.json",
+      "bytes": 547,
+      "sha256": "3cd6175d18c734e1064e962b3f6c188a8a05641dda12460faf83d0f02873ff84"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-archer-7.webp",
+      "bytes": 56716,
+      "sha256": "3c3872499bb14a1d080cffc1d67bcc27adaab6a442af6784a2ed1e9018cc79eb"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-archer-react-3.atlas.json",
+      "bytes": 553,
+      "sha256": "bc3cfdb4a16a8b09beec2ba28083e61a2a1a9b280db141611224d8c99c18771c"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-archer-react-3.webp",
+      "bytes": 84990,
+      "sha256": "2d436b5163d02d60ee7111119f64f04c4bad44ad4ff86823402cdd97ae6c4b75"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-archer-react-7.atlas.json",
+      "bytes": 553,
+      "sha256": "d8f353f0b4f4ee203c87fb9fb4e31af0690757e4487e4a3adb9273cef1c850d7"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-archer-react-7.webp",
+      "bytes": 62210,
+      "sha256": "1aca61b42c7b646d17ae455cc04976f3193b101de949eac3917e1ad148329a07"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-0.atlas.json",
+      "bytes": 545,
+      "sha256": "2041d114ed0689159ecf028d6c3c257c72ed2553ceabb1eb79d8646e83aa8fb2"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-0.webp",
+      "bytes": 119280,
+      "sha256": "d93356ab00282795877f41f38ccbf4ab6adb2ae83d5d0ca57ec4027d59cad4da"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-1.atlas.json",
+      "bytes": 545,
+      "sha256": "b54e4cf7e8027b4d4afb1e2553444ce56b957384bb122cb549f1543900289ab1"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-1.webp",
+      "bytes": 109508,
+      "sha256": "cb233686a0a213d08b1ccc123e37f31d7d830a43b1f79507d5bea59c42ad4f06"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-3.atlas.json",
+      "bytes": 545,
+      "sha256": "f0f6804c4914254380578cc78b3bd1ca7ea77fc9ce4395a3aafbb0a4017e4ab3"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-3.webp",
+      "bytes": 107366,
+      "sha256": "37a3d2fbfccbbcf1f47e7e6a842399a952262e8ac4b549a14307f938d17a590b"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-4.atlas.json",
+      "bytes": 545,
+      "sha256": "08af43733f3c925cf1e88737e4b6c5269e877e14113669e2655ee4f2f833074e"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-4.webp",
+      "bytes": 119400,
+      "sha256": "526ad322544e9faa0cce39bd145997a6206d2fd037bbbc3dc078185dba5ba644"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-5.atlas.json",
+      "bytes": 545,
+      "sha256": "03cd0d370fc00a4a8c6a05a3c35ab549d2a7da7c3105a20cc1f953f708acd268"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-5.webp",
+      "bytes": 108272,
+      "sha256": "ba0cdaceea1ad72ff8d583c5caf08d2bcc5d094d487139222260d734ae3f1119"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-7.atlas.json",
+      "bytes": 545,
+      "sha256": "fd5c7a08ab6957708c868cb431516853338e2e56436cd873a649e6f274b0b087"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-7.webp",
+      "bytes": 110858,
+      "sha256": "cfea12aeddd733b494eae5edc663f1add21ae1b954fc340985d2b2c29df14513"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-0.atlas.json",
+      "bytes": 547,
+      "sha256": "b3767114071f8b649415299bfed3258f85ec0ce675b86c3e0eba5357574932e6"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-0.webp",
+      "bytes": 34844,
+      "sha256": "0d73ac0d7ad2852dc0be1daa93062125a10de0ff6d7955b81f0821a9d213c606"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-12.atlas.json",
+      "bytes": 549,
+      "sha256": "5e893d769f74c1420f21cb8bdade5616212ba21763b346b81b7832429880f8b1"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-12.webp",
+      "bytes": 38302,
+      "sha256": "21112d6048a93d745913dbbf2c94bf7699bbddb7d0d74e800336cd14b3f06a98"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-13.atlas.json",
+      "bytes": 549,
+      "sha256": "4c7a743f1854290aa303044a669069f052669e89c7865a5a0ac967dece1daeca"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-13.webp",
+      "bytes": 36566,
+      "sha256": "857d25bc78aa1297f6e7979e39b6964d8cd54a2044f4671f91d2de7bd6b3b8c4"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-15.atlas.json",
+      "bytes": 549,
+      "sha256": "341a8bc05699b4ec5be168181a128d673e3fda734ef2001772e56762828a30ec"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-15.webp",
+      "bytes": 36194,
+      "sha256": "b771c3fd96499ad3133f5b8d6a74f24778f15de67d1bfb4bfc86e17138c2985a"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-17.atlas.json",
+      "bytes": 549,
+      "sha256": "d6d69685fc0b1228da73c66ed25ac5544a8e19dcb7bca6c81068abf79b7993f2"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-17.webp",
+      "bytes": 37706,
+      "sha256": "cd91c34a62da55f5c4f0e51e776fb3ec8e3f7d0d455259e6026b9e1a32990449"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-23.atlas.json",
+      "bytes": 549,
+      "sha256": "67c795fc2adeef660e03fe703fa31b01ddd4551667473ef6ff28f95c9de3abaf"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-23.webp",
+      "bytes": 34216,
+      "sha256": "ac14e1c468416b8876f8a1433245d259d8c6dab31dbfe9f534ea3e42521e533f"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-4.atlas.json",
+      "bytes": 547,
+      "sha256": "8dd6159031907868fdff029a0c48092269e40125cd8770cba54d96d353c37e54"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-4.webp",
+      "bytes": 35818,
+      "sha256": "04b1ced7427dd88c865627a97291f5a5e6e6dceadd79ef1afe47608ea22fe2a2"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-5.atlas.json",
+      "bytes": 547,
+      "sha256": "572296dde8b7c2f074cf33e3cddeae7396faac518dc33673efcd9edce54b96ea"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-5.webp",
+      "bytes": 33956,
+      "sha256": "cb5ad2a459432da55926b29eb623697af4d35880154c5271e0dd81bf85e9f351"
+    }
+  ]
 }

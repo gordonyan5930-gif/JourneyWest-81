@@ -1,0 +1,614 @@
+{
+  "groups": {
+    "wukong": [
+      {
+        "texture": "round3-wukong-0",
+        "frame": "0",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-wukong-0",
+        "frame": "1",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-wukong-0",
+        "frame": "2",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-wukong-0",
+        "frame": "3",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round3-wukong-4",
+        "frame": "4",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round3-wukong-5",
+        "frame": "5",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-wukong-1",
+        "frame": "6",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-wukong-1",
+        "frame": "7",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-wukong-2",
+        "frame": "8",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-wukong-2",
+        "frame": "9",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-wukong-2",
+        "frame": "10",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-wukong-2",
+        "frame": "11",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round3-wukong-12",
+        "frame": "12",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round3-wukong-13",
+        "frame": "13",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-wukong-3",
+        "frame": "14",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round3-wukong-15",
+        "frame": "15",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-wukong-4",
+        "frame": "16",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round3-wukong-17",
+        "frame": "17",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-wukong-4",
+        "frame": "18",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-wukong-4",
+        "frame": "19",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-wukong-5",
+        "frame": "20",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-wukong-5",
+        "frame": "21",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-wukong-5",
+        "frame": "22",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round3-wukong-23",
+        "frame": "23",
+        "scale": 0.9410849021504577,
+        "nativeLeft": false
+      }
+    ],
+    "archer-react": [
+      {
+        "texture": "round2-archer-react-0",
+        "frame": "0",
+        "scale": 0.5346593258426967,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-archer-react-0",
+        "frame": "1",
+        "scale": 0.5346593258426967,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-archer-react-0",
+        "frame": "2",
+        "scale": 0.5346593258426967,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round3-archer-react-3",
+        "frame": "3",
+        "scale": 0.5346593258426967,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-archer-react-1",
+        "frame": "4",
+        "scale": 0.5346593258426967,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-archer-react-1",
+        "frame": "5",
+        "scale": 0.5346593258426967,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-archer-react-1",
+        "frame": "6",
+        "scale": 0.5346593258426967,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round3-archer-react-7",
+        "frame": "7",
+        "scale": 0.5346593258426967,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-archer-react-2",
+        "frame": "8",
+        "scale": 0.5346593258426967,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-archer-react-2",
+        "frame": "9",
+        "scale": 0.5346593258426967,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-archer-react-2",
+        "frame": "10",
+        "scale": 0.5346593258426967,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-archer-react-2",
+        "frame": "11",
+        "scale": 0.5346593258426967,
+        "nativeLeft": false
+      }
+    ],
+    "tang": [
+      {
+        "texture": "round3-tang-0",
+        "frame": "0",
+        "scale": 0.36030208141462516,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round3-tang-1",
+        "frame": "1",
+        "scale": 0.36030208141462516,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-tang-0",
+        "frame": "2",
+        "scale": 0.36030208141462516,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round3-tang-3",
+        "frame": "3",
+        "scale": 0.36030208141462516,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round3-tang-4",
+        "frame": "4",
+        "scale": 0.36030208141462516,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round3-tang-5",
+        "frame": "5",
+        "scale": 0.36030208141462516,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-tang-1",
+        "frame": "6",
+        "scale": 0.36030208141462516,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round3-tang-7",
+        "frame": "7",
+        "scale": 0.36030208141462516,
+        "nativeLeft": false
+      }
+    ],
+    "archer": [
+      {
+        "texture": "round2-archer-0",
+        "frame": "0",
+        "scale": 0.5223886187042316,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-archer-0",
+        "frame": "1",
+        "scale": 0.5223886187042316,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-archer-0",
+        "frame": "2",
+        "scale": 0.5223886187042316,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-archer-0",
+        "frame": "3",
+        "scale": 0.5223886187042316,
+        "nativeLeft": false
+      },
+      {
+        "texture": "round2-archer-1",
+        "frame": "4",
+        "scale": 0.5223886187042316,
+        "nativeLeft": true
+      },
+      {
+        "texture": "round3-archer-5",
+        "frame": "5",
+        "scale": 0.5223886187042316,
+        "nativeLeft": true
+      },
+      {
+        "texture": "round3-archer-6",
+        "frame": "6",
+        "scale": 0.5223886187042316,
+        "nativeLeft": true
+      },
+      {
+        "texture": "round3-archer-7",
+        "frame": "7",
+        "scale": 0.5223886187042316,
+        "nativeLeft": true
+      }
+    ]
+  },
+  "atlases": [
+    {
+      "key": "round2-wukong-0",
+      "image": "round2-wukong-0.webp",
+      "atlas": "round2-wukong-0.atlas.json",
+      "bytes": 70248,
+      "sha256": "d009cb4d9b236952356170ef21e61e659c606063ef8c32d6c3cde76d7ebd4353",
+      "quality": 92,
+      "directory": "round2"
+    },
+    {
+      "key": "round2-wukong-1",
+      "image": "round2-wukong-1.webp",
+      "atlas": "round2-wukong-1.atlas.json",
+      "bytes": 69644,
+      "sha256": "b87f0ab5e1eb9c57e3c0cc7b6354318e4c00e14dd2825dac302406dc43a043a2",
+      "quality": 92,
+      "directory": "round2"
+    },
+    {
+      "key": "round2-wukong-2",
+      "image": "round2-wukong-2.webp",
+      "atlas": "round2-wukong-2.atlas.json",
+      "bytes": 75706,
+      "sha256": "754345a24e5aa1184a24275380fde5fff836c3305c6d60fc5f8885b5356a7ce7",
+      "quality": 92,
+      "directory": "round2"
+    },
+    {
+      "key": "round2-wukong-3",
+      "image": "round2-wukong-3.webp",
+      "atlas": "round2-wukong-3.atlas.json",
+      "bytes": 73914,
+      "sha256": "c931b10274eb3c596b49cb532d96a56c7f2d17ec7832daf60ee52138656059b2",
+      "quality": 92,
+      "directory": "round2"
+    },
+    {
+      "key": "round2-wukong-4",
+      "image": "round2-wukong-4.webp",
+      "atlas": "round2-wukong-4.atlas.json",
+      "bytes": 74414,
+      "sha256": "ef85e79f76424de31c81795446275f22d03f601d4537432b4301975c8d0ad282",
+      "quality": 92,
+      "directory": "round2"
+    },
+    {
+      "key": "round2-wukong-5",
+      "image": "round2-wukong-5.webp",
+      "atlas": "round2-wukong-5.atlas.json",
+      "bytes": 64906,
+      "sha256": "a0851b4b7ebb110407728614478245abaca7546b0b0911c7f3faa5a5e36e587f",
+      "quality": 92,
+      "directory": "round2"
+    },
+    {
+      "key": "round2-archer-react-0",
+      "image": "round2-archer-react-0.webp",
+      "atlas": "round2-archer-react-0.atlas.json",
+      "bytes": 161054,
+      "sha256": "e050a61931eca6c146cbfc6dda80a00dff43b7673f7634e28c24eadb1f41c74d",
+      "quality": 92,
+      "directory": "round2"
+    },
+    {
+      "key": "round2-archer-react-1",
+      "image": "round2-archer-react-1.webp",
+      "atlas": "round2-archer-react-1.atlas.json",
+      "bytes": 120794,
+      "sha256": "edb98481853b6e33f1c73b35238c0e4334c6cd01343740cb3bbc0261f7824ce2",
+      "quality": 92,
+      "directory": "round2"
+    },
+    {
+      "key": "round2-archer-react-2",
+      "image": "round2-archer-react-2.webp",
+      "atlas": "round2-archer-react-2.atlas.json",
+      "bytes": 127830,
+      "sha256": "a5522d941724c08d88acc94f90b9636cae48383f68261368ecc81112e3ae0ee9",
+      "quality": 92,
+      "directory": "round2"
+    },
+    {
+      "key": "round2-tang-0",
+      "image": "round2-tang-0.webp",
+      "atlas": "round2-tang-0.atlas.json",
+      "bytes": 213210,
+      "sha256": "08165cb89c17d4fa13f6eb497cbebf7d46cdaaab61baa144c23454286dfc42f7",
+      "quality": 92,
+      "directory": "round2"
+    },
+    {
+      "key": "round2-tang-1",
+      "image": "round2-tang-1.webp",
+      "atlas": "round2-tang-1.atlas.json",
+      "bytes": 213558,
+      "sha256": "c4c6654fbcefe2c4e38a4e1eb677a97a156f63b52268e1d96e9c07b8e5e3d92c",
+      "quality": 92,
+      "directory": "round2"
+    },
+    {
+      "key": "round2-archer-0",
+      "image": "round2-archer-0.webp",
+      "atlas": "round2-archer-0.atlas.json",
+      "bytes": 119242,
+      "sha256": "d2f8eb5c7543d6e840fe2dfe041234991df3b8a5f754b9f44ab4c2029ba5af60",
+      "quality": 92,
+      "directory": "round2"
+    },
+    {
+      "key": "round2-archer-1",
+      "image": "round2-archer-1.webp",
+      "atlas": "round2-archer-1.atlas.json",
+      "bytes": 115496,
+      "sha256": "8c63e7261ab26a96c3b2bd4a1795b5df7ee4af1e03a63082dde7baa94eba37c7",
+      "quality": 92,
+      "directory": "round2"
+    },
+    {
+      "key": "round3-wukong-0",
+      "image": "round3-wukong-0.webp",
+      "atlas": "round3-wukong-0.atlas.json",
+      "bytes": 34844,
+      "sha256": "0d73ac0d7ad2852dc0be1daa93062125a10de0ff6d7955b81f0821a9d213c606",
+      "encoding": "lossless WebP",
+      "directory": "round3"
+    },
+    {
+      "key": "round3-wukong-4",
+      "image": "round3-wukong-4.webp",
+      "atlas": "round3-wukong-4.atlas.json",
+      "bytes": 35818,
+      "sha256": "04b1ced7427dd88c865627a97291f5a5e6e6dceadd79ef1afe47608ea22fe2a2",
+      "encoding": "lossless WebP",
+      "directory": "round3"
+    },
+    {
+      "key": "round3-wukong-5",
+      "image": "round3-wukong-5.webp",
+      "atlas": "round3-wukong-5.atlas.json",
+      "bytes": 33956,
+      "sha256": "cb5ad2a459432da55926b29eb623697af4d35880154c5271e0dd81bf85e9f351",
+      "encoding": "lossless WebP",
+      "directory": "round3"
+    },
+    {
+      "key": "round3-wukong-12",
+      "image": "round3-wukong-12.webp",
+      "atlas": "round3-wukong-12.atlas.json",
+      "bytes": 38302,
+      "sha256": "21112d6048a93d745913dbbf2c94bf7699bbddb7d0d74e800336cd14b3f06a98",
+      "encoding": "lossless WebP",
+      "directory": "round3"
+    },
+    {
+      "key": "round3-wukong-13",
+      "image": "round3-wukong-13.webp",
+      "atlas": "round3-wukong-13.atlas.json",
+      "bytes": 36566,
+      "sha256": "857d25bc78aa1297f6e7979e39b6964d8cd54a2044f4671f91d2de7bd6b3b8c4",
+      "encoding": "lossless WebP",
+      "directory": "round3"
+    },
+    {
+      "key": "round3-wukong-15",
+      "image": "round3-wukong-15.webp",
+      "atlas": "round3-wukong-15.atlas.json",
+      "bytes": 36194,
+      "sha256": "b771c3fd96499ad3133f5b8d6a74f24778f15de67d1bfb4bfc86e17138c2985a",
+      "encoding": "lossless WebP",
+      "directory": "round3"
+    },
+    {
+      "key": "round3-wukong-17",
+      "image": "round3-wukong-17.webp",
+      "atlas": "round3-wukong-17.atlas.json",
+      "bytes": 37706,
+      "sha256": "cd91c34a62da55f5c4f0e51e776fb3ec8e3f7d0d455259e6026b9e1a32990449",
+      "encoding": "lossless WebP",
+      "directory": "round3"
+    },
+    {
+      "key": "round3-wukong-23",
+      "image": "round3-wukong-23.webp",
+      "atlas": "round3-wukong-23.atlas.json",
+      "bytes": 34216,
+      "sha256": "ac14e1c468416b8876f8a1433245d259d8c6dab31dbfe9f534ea3e42521e533f",
+      "encoding": "lossless WebP",
+      "directory": "round3"
+    },
+    {
+      "key": "round3-archer-react-3",
+      "image": "round3-archer-react-3.webp",
+      "atlas": "round3-archer-react-3.atlas.json",
+      "bytes": 84990,
+      "sha256": "2d436b5163d02d60ee7111119f64f04c4bad44ad4ff86823402cdd97ae6c4b75",
+      "encoding": "lossless WebP",
+      "directory": "round3"
+    },
+    {
+      "key": "round3-archer-react-7",
+      "image": "round3-archer-react-7.webp",
+      "atlas": "round3-archer-react-7.atlas.json",
+      "bytes": 62210,
+      "sha256": "1aca61b42c7b646d17ae455cc04976f3193b101de949eac3917e1ad148329a07",
+      "encoding": "lossless WebP",
+      "directory": "round3"
+    },
+    {
+      "key": "round3-tang-0",
+      "image": "round3-tang-0.webp",
+      "atlas": "round3-tang-0.atlas.json",
+      "bytes": 119280,
+      "sha256": "d93356ab00282795877f41f38ccbf4ab6adb2ae83d5d0ca57ec4027d59cad4da",
+      "encoding": "lossless WebP",
+      "directory": "round3"
+    },
+    {
+      "key": "round3-tang-1",
+      "image": "round3-tang-1.webp",
+      "atlas": "round3-tang-1.atlas.json",
+      "bytes": 109508,
+      "sha256": "cb233686a0a213d08b1ccc123e37f31d7d830a43b1f79507d5bea59c42ad4f06",
+      "encoding": "lossless WebP",
+      "directory": "round3"
+    },
+    {
+      "key": "round3-tang-3",
+      "image": "round3-tang-3.webp",
+      "atlas": "round3-tang-3.atlas.json",
+      "bytes": 107366,
+      "sha256": "37a3d2fbfccbbcf1f47e7e6a842399a952262e8ac4b549a14307f938d17a590b",
+      "encoding": "lossless WebP",
+      "directory": "round3"
+    },
+    {
+      "key": "round3-tang-4",
+      "image": "round3-tang-4.webp",
+      "atlas": "round3-tang-4.atlas.json",
+      "bytes": 119400,
+      "sha256": "526ad322544e9faa0cce39bd145997a6206d2fd037bbbc3dc078185dba5ba644",
+      "encoding": "lossless WebP",
+      "directory": "round3"
+    },
+    {
+      "key": "round3-tang-5",
+      "image": "round3-tang-5.webp",
+      "atlas": "round3-tang-5.atlas.json",
+      "bytes": 108272,
+      "sha256": "ba0cdaceea1ad72ff8d583c5caf08d2bcc5d094d487139222260d734ae3f1119",
+      "encoding": "lossless WebP",
+      "directory": "round3"
+    },
+    {
+      "key": "round3-tang-7",
+      "image": "round3-tang-7.webp",
+      "atlas": "round3-tang-7.atlas.json",
+      "bytes": 110858,
+      "sha256": "cfea12aeddd733b494eae5edc663f1add21ae1b954fc340985d2b2c29df14513",
+      "encoding": "lossless WebP",
+      "directory": "round3"
+    },
+    {
+      "key": "round3-archer-5",
+      "image": "round3-archer-5.webp",
+      "atlas": "round3-archer-5.atlas.json",
+      "bytes": 60060,
+      "sha256": "12e502afaf991a49a5f8fd5021995a186498171da6e822adbe13144585047f72",
+      "encoding": "lossless WebP",
+      "directory": "round3"
+    },
+    {
+      "key": "round3-archer-6",
+      "image": "round3-archer-6.webp",
+      "atlas": "round3-archer-6.atlas.json",
+      "bytes": 56012,
+      "sha256": "70619ed3f417560d24bcc1abfa86f218056bd472b7196b9e405f1c727ce0e309",
+      "encoding": "lossless WebP",
+      "directory": "round3"
+    },
+    {
+      "key": "round3-archer-7",
+      "image": "round3-archer-7.webp",
+      "atlas": "round3-archer-7.atlas.json",
+      "bytes": 56716,
+      "sha256": "3c3872499bb14a1d080cffc1d67bcc27adaab6a442af6784a2ed1e9018cc79eb",
+      "encoding": "lossless WebP",
+      "directory": "round3"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 import {COMBO,MeleeCombo} from './meleeCombo';
 import {EnemyControl} from './enemyControl';
-import {EscortFormation,FORMATION} from './escortFormation';
+import {EscortFormation,FORMATION,firingSpacing} from './escortFormation';
 import {UnitSpace} from './unitSpace';
 import {RangedBattle,makeArcher,ARCHER,RANGED,type Archer,type DamageEvent} from './rangedCombat';
 import {SmoothMover,SAMPLE_NAV,MOVE,distance,segmentClear,type Navigation} from './smoothMovement';
@@ -50,7 +50,7 @@ export class EscortRun {
    if(a.stun>0||this.controls.blocked(a.id)){brain.motion.speed=0;continue;}
    // Only the later claimant adjusts its firing angle; never cancel an active draw.
    if(target&&a.windup<=0&&!brain.spacingGoal&&b.time>=(brain.spacingAt??0)&&b.enemies.some(other=>other.id<a.id&&other.hp>0&&Math.abs(other.x-a.x)<56&&Math.abs(other.y-a.y)<80)){
-    brain.spacingAt=b.time+4;const radius=Math.max(120,Math.min(GUARD.enemyStand,distance(a,target))),other=b.enemies.find(o=>o.id<a.id&&o.hp>0&&Math.abs(o.x-a.x)<56&&Math.abs(o.y-a.y)<80)!,side=a.x>=other.x?1:-1,angle=Math.atan2(a.y-target.y,a.x-target.x),preferred={x:other.x+side*76,y:a.y},goal=this.space.endpoint(a.id,target,preferred,[radius,radius+20],'bow-spacing-'+target.id);
+    brain.spacingAt=b.time+4;const other=b.enemies.find(o=>o.id<a.id&&o.hp>0&&Math.abs(o.x-a.x)<56&&Math.abs(o.y-a.y)<80)!,goal=firingSpacing(a,other,this.space);
     if(goal&&distance(a,goal)>8&&this.space.command(a.id,brain.motion,goal)){brain.spacingGoal=goal;brain.spacingUntil=b.time+1.8;}
    }
    if(brain.spacingGoal){brain.motion.position={x:a.x,y:a.y};brain.walked+=this.space.step(a.id,brain.motion,dt);Object.assign(a,brain.motion.position);if(distance(a,brain.spacingGoal)<3||!brain.motion.route.length||b.time>=(brain.spacingUntil??0))brain.spacingGoal=undefined;else continue;}

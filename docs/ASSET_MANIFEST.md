@@ -41,3 +41,6 @@ RANGED-QB-EXPERIMENT v0.4：ranged-study.webp，1774×887、1350980字节，SHA2
 
 ## round2-2026-11-02 研究版（未批准正式资源）
 路径assets/quality-b/round2：sources/manifest.json记录7次生成原图的尺寸/字节/SHA和采用/拒绝状态；sources为224000字节原件分片，npm run restore:round2-sources精确还原。index.json/registration-audit.json与运行manifest记录52帧、13 WebP图集/JSON、脚线、源边缘风险及校验。工程裁切不补画或改母版。新增light/heavy/miss/hurt-v02.wav原创合成，原四音不变；来源、字节/SHA见运行manifest与assets/audio/README。源图边缘触碰与姿势连续性未获用户批准，不能把资源数量写为品质完成率。
+
+## round3-source-pixel-refinement（待品质审核）
+assets/quality-b/round3/index.json沿用52帧，其中33帧直接引用旧texture/frame，19帧引用lossless WebP覆盖。frame-review.json列全部52个接受/修复决定及29个边界风险理由、原PNG SHA与原边界/新裁窗；恢复192个alpha≥64原像素，清除122个alpha≥64邻姿像素，repaintedPixels=0。13帧扩大原源裁窗，6帧隔离外来片段，不把透明padding称为修复。19WebP合计1,282,274字节；每文件实际尺寸/字节/SHA见运行manifest。4张review PNG为逐帧检视，不是实机截图。scripts/refine-round3-frames.py可核验原始SHA后重建，需要Pillow/NumPy/SciPy，构建运行无该依赖。原13图集与母版原件保持字节不变。生产动画尚未批准。
