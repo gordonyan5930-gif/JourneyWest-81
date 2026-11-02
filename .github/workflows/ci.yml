@@ -36,7 +36,7 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Install video duration probe
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
-      - name: Start read-only 3fcac721 comparison preview
+      - name: Start read-only 661726ed comparison preview
         run: node scripts/start-combat-baseline.mjs
       - id: browser
         run: npm run test:e2e -- --max-failures=1

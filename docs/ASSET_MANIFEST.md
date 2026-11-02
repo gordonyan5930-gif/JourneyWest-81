@@ -44,3 +44,6 @@ RANGED-QB-EXPERIMENT v0.4：ranged-study.webp，1774×887、1350980字节，SHA2
 
 ## round3-source-pixel-refinement（待品质审核）
 assets/quality-b/round3/index.json沿用52帧，其中33帧直接引用旧texture/frame，19帧引用lossless WebP覆盖。frame-review.json列全部52个接受/修复决定及29个边界风险理由、原PNG SHA与原边界/新裁窗；恢复192个alpha≥64原像素，清除122个alpha≥64邻姿像素，repaintedPixels=0。13帧扩大原源裁窗，6帧隔离外来片段，不把透明padding称为修复。19WebP合计1,282,274字节；每文件实际尺寸/字节/SHA见运行manifest。4张review PNG为逐帧检视，不是实机截图。scripts/refine-round3-frames.py可核验原始SHA后重建，需要Pillow/NumPy/SciPy，构建运行无该依赖。原13图集与母版原件保持字节不变。生产动画尚未批准。
+
+## round4（2026-11-03）
+无新增或修改运行PNG/WebP/音效，19源修补与批准原件原样保留。新增scripts/body-capture-browser.js仅为只读QA：实际atlas alpha>96、4世界像素栅格的头/躯干ROI，保存帧/位置/翻转及覆盖比；不作为正式美术或碰撞资产。旗标/射程圈是操作UI，不冒称场景美术。旧副本只附加只读Sprite引用，归档前校验661726ed树5ff3e755。
