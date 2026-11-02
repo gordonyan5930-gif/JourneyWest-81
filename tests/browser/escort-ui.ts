@@ -24,14 +24,13 @@ export async function observeInputs(page:Page){await page.evaluate(()=>{
 });}
 
 export async function riskyPost(page:Page){
+   // Deliberate bad holding order, not a skill-timing test. Keep BOTH real bows alive.
    await clickWorld(page,900,550);await expect.poll(()=>page.evaluate(()=>Math.hypot((window as any).qualityTest.actor.x-900,(window as any).qualityTest.actor.y-550)),{timeout:22000}).toBeLessThan(8);
-   for(let casts=0;casts<2;casts++){const before=await state(page);if(before.escort.enemies[0].hp<=0)break;try{await spell(page,'archer-1',casts===0);}catch(error){if((await state(page)).escort.enemies[0].hp>0)throw error;console.log('RISK_TARGET_ALREADY_DEAD');break;}await expect.poll(async()=>{const s=await state(page);return s.escort.enemies[0].hp<=0||s.battle.hits>before.battle.hits;},{timeout:6000}).toBe(true);}
-   expect((await state(page)).escort.enemies[0].hp).toBe(0);if((await state(page)).escort.heroHp===0){expect((await state(page)).escort.finished).toBe(false);return;}
-   // A deliberate bad holding order inside bow range but outside staff reach.
-   // Select a reachable point from the actual moving enemy, not a stale fixed coordinate.
-   await page.waitForFunction(()=>(window as any).qualityTest.escort.enemies[1].windup>1.4,null,{polling:'raf',timeout:12000});
-   const post=await page.evaluate(async()=>{const q=(window as any).qualityTest,a=q.escort.enemies[1],h=q.actor,nav=await import('/src/game/smoothMovement.ts'),angle=Math.atan2(h.y-a.y,h.x-a.x);for(const offset of [0,.35,-.35,.7,-.7]){const p={x:a.x+Math.cos(angle+offset)*110,y:a.y+Math.sin(angle+offset)*110};const plan=nav.smoothPath(h,p).route;let previous={x:h.x,y:h.y},length=0;for(const n of plan){length+=Math.hypot(previous.x-n.x,previous.y-n.y);previous=n;}if(plan.length&&length<270)return p;}return null;});
-   expect(post).not.toBe(null);await clickWorld(page,post!.x,post!.y);await expect.poll(()=>page.evaluate(()=>(window as any).qualityTest.escort.heroHp),{timeout:65000}).toBe(0);expect((await state(page)).escort.finished).toBe(false);
+   await page.waitForFunction(()=>{const r=(window as any).qualityTest.escort;return r.heroHp===0||r.enemies.some((a:any)=>a.hp>0&&a.targetId==='wukong'&&a.windup>0);},null,{polling:'raf',timeout:20000});
+   // Stay outside melee reach but close enough to remain a real bow threat. No HP,
+   // energy, enemy or clock writes; automatic guard is restored only by the user.
+   if((await state(page)).escort.heroHp>0){const post=await page.evaluate(async()=>{const q=(window as any).qualityTest,h=q.actor,nav=await import('/src/game/smoothMovement.ts'),enemies=q.escort.enemies.filter((a:any)=>a.hp>0).sort((a:any,b:any)=>Math.hypot(h.x-a.x,h.y-a.y)-Math.hypot(h.x-b.x,h.y-b.y));for(const a of enemies){const angle=Math.atan2(h.y-a.y,h.x-a.x);for(const offset of [0,.35,-.35,.7,-.7]){const p={x:a.x+Math.cos(angle+offset)*110,y:a.y+Math.sin(angle+offset)*110};const plan=nav.smoothPath(h,p).route;let previous={x:h.x,y:h.y},length=0;for(const n of plan){length+=Math.hypot(previous.x-n.x,previous.y-n.y);previous=n;}if(plan.length&&length<270)return p;}}return null;});expect(post).not.toBe(null);await clickWorld(page,post!.x,post!.y);}
+   await expect.poll(()=>page.evaluate(()=>(window as any).qualityTest.escort.heroHp),{timeout:65000}).toBe(0);const down=await state(page);expect(down.escort.finished).toBe(false);expect(down.battle.tang.hp).toBeGreaterThan(0);expect(down.escort.enemies.some((a:any)=>a.hp>0)).toBe(true);expect(down.escort.events.filter((e:any)=>e.kind==='arrow'&&e.target==='wukong').reduce((n:number,e:any)=>n+e.amount,0)).toBe(180);
   }
 
 export async function retry(page:Page){if(!await page.locator('#escort-retry').isVisible())await page.locator('#play-menu>summary').click();await page.locator('#escort-retry').click();if(await page.locator('#play-menu').count()&&await page.locator('#play-menu').evaluate(e=>(e as HTMLDetailsElement).open))await page.locator('#play-menu>summary').click();}
