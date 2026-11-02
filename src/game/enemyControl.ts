@@ -20,7 +20,7 @@ export class EnemyControl {
   if(permitted&&a.windup>=COMBO.interruptMinRemaining){a.windup=0;a.next=.25;s.phase='hurt';s.age=0;s.hurtDuration=cfg.flinch*s.resistance.control;s.lightUntil=now+COMBO.lightImmunity;s.remaining=0;return 'interrupt';}
   return 'resisted';
  }
- update(dt:number){for(const a of this.battle.enemies){const s=this.get(a.id);if(s.phase==='airborne'){s.age=Math.min(COMBO.airTime,s.age+dt);this.move(a,s,Math.min(s.remaining,26*s.resistance.knockback/COMBO.airTime*dt));s.height=Math.sin(Math.PI*s.age/COMBO.airTime)*COMBO.airHeight*s.resistance.control;if(s.age>=COMBO.airTime){s.height=0;a.reservedLanding=false;s.phase=a.hp<=0?'dead':'down';s.age=0;}}
+ update(dt:number){for(const a of this.battle.enemies){const s=this.get(a.id);if(s.phase==='airborne'){s.age=Math.min(COMBO.airTime,s.age+dt);this.move(a,s,Math.min(s.remaining,COMBO.steps[2].knockback*s.resistance.knockback/COMBO.airTime*dt));s.height=Math.sin(Math.PI*s.age/COMBO.airTime)*COMBO.airHeight*s.resistance.control;if(s.age>=COMBO.airTime){s.height=0;a.reservedLanding=false;s.phase=a.hp<=0?'dead':'down';s.age=0;}}
    else if(a.hp<=0){s.phase='dead';s.height=0;a.reservedLanding=false;}
    else if(s.phase==='hurt'||s.phase==='down'||s.phase==='rising'){s.age+=dt;const duration=s.phase==='hurt'?s.hurtDuration:s.phase==='down'?COMBO.downTime:COMBO.riseTime;if(s.age>=duration){s.phase=s.phase==='down'?'rising':'none';s.age=0;}}
   }}
