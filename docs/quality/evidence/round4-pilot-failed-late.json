@@ -6,5 +6,5 @@
   "observedArrowRelease": null,
   "input": {"id":"quick-archer-2","wall":1793642030404,"time":14.859409999999974,"energy":100,"hero":120,"tang":100,"combo":{"hits":0,"target":"","step":0,"reset":"move-command"},"feedback":"地形遮挡，无法命中"},
   "result": "No recorded shot for the observed aim at the time of this check; fixed wall delay cannot establish a late-shot control. Test failed, not a successful interrupt or useful intervention.",
-  "correction": "Wait for the visible in-range/clear-LOS card to say already released, then click normally; independently assert the real release precedes input. No game state writes or balance change."
+  "correction": "Wait for the visible card to say already released (without assuming LOS remains clear after the shooter moves), then click normally; independently assert the real release precedes input. No game state writes or balance change."
 }
