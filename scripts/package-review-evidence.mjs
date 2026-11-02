@@ -22,12 +22,13 @@ Baseline Mac normal interaction was checked by the controller; formal Mac perfor
  if(fs.existsSync('docs/quality/evidence/round4-pilot-failed-late.json'))fs.copyFileSync('docs/quality/evidence/round4-pilot-failed-late.json','reports/round4-pilot-failed-late.json');
  if(fs.existsSync('docs/quality/evidence/round4-pilot-unusable-window.json'))fs.copyFileSync('docs/quality/evidence/round4-pilot-unusable-window.json','reports/round4-pilot-unusable-window.json');
  if(fs.existsSync('docs/quality/evidence/round4-local-webgl-clock.json'))fs.copyFileSync('docs/quality/evidence/round4-local-webgl-clock.json','reports/round4-local-webgl-clock.json');
+ if(fs.existsSync('docs/quality/evidence/round4-ci-cue-miss.json'))fs.copyFileSync('docs/quality/evidence/round4-ci-cue-miss.json','reports/round4-ci-cue-miss.json');
  if(fs.existsSync('reports/round4-inputs.json')){fs.writeFileSync('reports/round4-review.md',`# Round4 independent review
 
 Source: ${manifest.sourceSha}
 Baseline661726ed. Read round4-inputs.json for all ordinary successful/early/late/range samples, round4-quick-causal.json for identical-prefix12s comparisons, round4-bodies.json for continuous actual-alpha torso ROI review. Existing round3 source repairs are preserved; no new art generated.
 
-Normal videos round4-experience-*/video.webm contain range training, one-click hits/interrupts, a post-heavy order and failure controls; the body run contains old/new opening/follow/fight/ford/exit. Videos have NO audio track; WAV separate. 2.2s certified recommendation budget remains unresolved; first-shot3.2s proposal is not implemented. Mac performance unverified.
+Normal videos *round4-experience-*/video.webm contain range training, one-click hits/interrupts, a post-heavy order and failure controls; the body run contains old/new opening/follow/fight/ford/exit. Videos have NO audio track; WAV separate. 2.2s certified recommendation budget remains unresolved; first-shot3.2s proposal is not implemented. Mac performance unverified.
 `);}
  const files=[...walk('reports'),...walk('test-results')].filter(p=>!p.endsWith('evidence-budget.json'));
  const categories={report:[],screenshots:[],video:[],audio:[],debug:[]};
