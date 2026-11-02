@@ -21,6 +21,7 @@ Baseline Mac normal interaction was checked by the controller; formal Mac perfor
 
  if(fs.existsSync('docs/quality/evidence/round4-pilot-failed-late.json'))fs.copyFileSync('docs/quality/evidence/round4-pilot-failed-late.json','reports/round4-pilot-failed-late.json');
  if(fs.existsSync('docs/quality/evidence/round4-pilot-unusable-window.json'))fs.copyFileSync('docs/quality/evidence/round4-pilot-unusable-window.json','reports/round4-pilot-unusable-window.json');
+ if(fs.existsSync('docs/quality/evidence/round4-local-webgl-clock.json'))fs.copyFileSync('docs/quality/evidence/round4-local-webgl-clock.json','reports/round4-local-webgl-clock.json');
  if(fs.existsSync('reports/round4-inputs.json')){fs.writeFileSync('reports/round4-review.md',`# Round4 independent review
 
 Source: ${manifest.sourceSha}
