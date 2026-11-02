@@ -1,8 +1,8 @@
 // Read-only historical build for same-window old/new browser evidence.
 import {execFileSync,spawn} from 'node:child_process';import fs from 'node:fs';import path from 'node:path';
-const sha='ac4265cfd2d6e4448b9ff8ccd278e4f692fa5faa',tree='2e1f122e680657672e0ba5016d2dfb82845bd2b8',ref=process.env.BASELINE_SOURCE_REF??sha,port=Number(process.env.BASELINE_PORT??5183),root=process.cwd();
+const sha='3fcac72142acb946764574bb70535d19d1940b88',tree='03a035dc03f6e4cb7fbcbffa8de8954d777b236e',ref=process.env.BASELINE_SOURCE_REF??sha,port=Number(process.env.BASELINE_PORT??5185),root=process.cwd();
 if(!Number.isInteger(port)||port<1024||port>65535)throw new Error('Invalid local baseline port');
-if(execFileSync('git',['rev-parse',`${ref}^{tree}`],{encoding:'utf8'}).trim()!==tree)throw new Error('Historical baseline content must match ac4265cf');
+if(execFileSync('git',['rev-parse',`${ref}^{tree}`],{encoding:'utf8'}).trim()!==tree)throw new Error('Historical baseline content must match3fcac721');
 const dir=`/tmp/journeywest-quality-baseline-${port}`;fs.mkdirSync(dir,{recursive:true});const archive=execFileSync('git',['archive',ref,'src','assets/quality-b','assets/audio','index.html','package.json','package-lock.json','tsconfig.json'],{maxBuffer:40*1024*1024});execFileSync('tar',['-x','-C',dir],{input:archive});try{fs.symlinkSync(path.join(root,'node_modules'),path.join(dir,'node_modules'),'dir');}catch(e){if(e.code!=='EEXIST')throw e;}
 // Separate optimizer cache: the current and historical Vite servers share locked deps only.
 fs.writeFileSync(path.join(dir,'vite.config.mjs'),"export default {cacheDir:'.vite-baseline-cache'};\n");

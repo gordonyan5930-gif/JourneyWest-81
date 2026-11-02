@@ -1,6 +1,7 @@
 import {GUARD} from './guardRules';
-import {RANGED,type RangedBattle} from './rangedCombat';import {distance,segmentClear} from './smoothMovement';
-// Broad, visible response cue only. It changes neither damage nor enemy clocks.
-export function counterOpportunity(b:RangedBattle){if(!b.active||b.failed||b.hero.hp<=0||b.casting||b.cooldown>0||b.energy<RANGED.energyCost)return undefined;return b.enemies.filter(a=>a.hp>0&&a.windup>RANGED.windup+distance(a,b.hero)/RANGED.projectileSpeed+.9&&distance(a,b.hero)<=RANGED.range&&segmentClear(b.hero,a,b.nav)).sort((a,c)=>Number(c.targetId==='tang')-Number(a.targetId==='tang')||c.windup-a.windup)[0];}
+import {RANGED,type RangedBattle} from './rangedCombat';
+import {tacticalAdvice,type AdviceContext} from './tacticalAdvice';
+// Unknown combo context cannot support a recommendation.
+export function counterOpportunity(b:RangedBattle,r?:AdviceContext){return r?tacticalAdvice(b,r).recommendation?.enemy:undefined;}
 export function attackFrame(age:number,kind:string,pending:boolean){if(kind==='melee')return pending?(age<.15?'8':'9'):(age<.35?'10':'11');return age<.2?'8':age<.3?'9':age<.38?'10':'11';}
 export function combatTotals(events:{kind:string;target?:string;amount?:number}[],revives:number){return {heroDamage:events.filter(e=>e.target==='wukong').reduce((n,e)=>n+(e.amount??0),0),tangDamage:events.filter(e=>e.target==='tang').reduce((n,e)=>n+(e.amount??0),0),energySpent:events.filter(e=>e.kind==='cast').length*RANGED.energyCost+revives*GUARD.reviveCost};}
