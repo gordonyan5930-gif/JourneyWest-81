@@ -2,7 +2,7 @@ import {CONFIG} from './world';
 import type {Point} from './world';
 import {ARCHER,type Archer,type Fighter} from './rangedCombat';
 import {distance,segmentClear,smoothPath,SAMPLE_NAV,type Navigation} from './smoothMovement';
-export const GUARD={hp:180,meleeDamage:28,meleeRange:64,windup:.25,period:CONFIG.attackPeriod,pose:.45,radius:270,chase:440,returnDistance:100,replan:.6,enemySpeed:58,archerWindup:2.2,enemyStand:290,enemyPlan:.7,enemyDecision:.25,minApproach:60,targetDelay:.2,nearThreatRadius:140,nearThreatScore:130,tangPriority:70,heroPriority:20,reaction:3,targetLock:1.2,switchMargin:25,threatDecay:4,evadeHold:2,calm:4,evadeLeash:220,sosHp:40,sosDanger:2,sosFar:260,sosInterval:8,sosVisible:3,reviveCost:CONFIG.reviveCost,reviveDelay:CONFIG.reviveDelay};
+export const GUARD={hp:180,meleeRange:64,radius:270,chase:440,returnDistance:100,replan:.6,enemySpeed:58,archerWindup:2.2,enemyStand:290,enemyPlan:.7,enemyDecision:.25,minApproach:60,targetDelay:.2,nearThreatRadius:140,nearThreatScore:130,tangPriority:70,heroPriority:20,reaction:3,targetLock:1.2,switchMargin:25,threatDecay:4,evadeHold:2,calm:4,evadeLeash:220,sosHp:40,sosDanger:2,sosFar:260,sosInterval:8,sosVisible:3,reviveCost:CONFIG.reviveCost,reviveDelay:CONFIG.reviveDelay};
 export function chooseEnemyTarget(a:Archer,hero:Fighter,tang:Fighter,now:number,nav:Navigation=SAMPLE_NAV){
  const valid=[hero,tang].filter(u=>u.hp>0&&distance(a,u)<=ARCHER.range&&segmentClear(a,u,nav));
  const score=(u:Fighter)=>{const d=distance(a,u),h=a.threat[u.id];return (u.id==='tang'?GUARD.tangPriority-d*.08:GUARD.heroPriority-d*.06+(d<GUARD.nearThreatRadius?GUARD.nearThreatScore:0))+(h?h.value*Math.exp(-(now-h.at)/GUARD.threatDecay):0);};

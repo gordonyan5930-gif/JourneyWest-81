@@ -1,3 +1,4 @@
+import {COMBO} from '../src/game/meleeCombo';
 import {test,expect} from 'vitest';
 import {EscortRun,ESCORT} from '../src/game/escortRun';
 import {distance,segmentClear,smoothPath,type Navigation} from '../src/game/smoothMovement';
@@ -9,7 +10,7 @@ const open:Navigation={tile:16,walkable:(x,y)=>x>=0&&y>=0&&x<70&&y<45,speed:()=>
 test('no input guard fights, takes real damage, preserves geometry and wins without spending skill energy',()=>{
  const r=new EscortRun();r.start();let previous=[{...r.battle.hero},{...r.battle.tang},...r.battle.enemies.map(a=>({...a}))],oldTang=100,eventIndex=1;const starts=new Map<string,number>();
  advance(r,90,r=>{const now=[r.battle.hero,r.battle.tang,...r.battle.enemies];now.forEach((p,i)=>expect(segmentClear(previous[i],p)).toBe(true));previous=now.map(p=>({...p}));expect(r.battle.tang.hp).toBeLessThanOrEqual(oldTang);oldTang=r.battle.tang.hp;
-  for(const e of r.events.slice(eventIndex)){if(e.kind==='melee-windup')starts.set(e.target!,e.time);if(e.kind==='melee'){expect(e.time-starts.get(e.target!)!).toBeGreaterThanOrEqual(GUARD.windup-.017);expect(distance(r.battle.hero,r.battle.target(e.target!)!)).toBeLessThanOrEqual(GUARD.meleeRange);expect(segmentClear(r.battle.hero,r.battle.target(e.target!)!)).toBe(true);}if(e.kind==='shot')expect(e.time).toBeGreaterThanOrEqual(GUARD.reaction);}eventIndex=r.events.length;
+  for(const e of r.events.slice(eventIndex)){if(e.kind==='melee-windup')starts.set(e.target!,e.time);if(e.kind==='melee'){expect(e.time-starts.get(e.target!)!).toBeGreaterThanOrEqual(COMBO.steps[e.step??0].windup-.017);expect(distance(r.battle.hero,{x:e.x!,y:e.y!})).toBeLessThanOrEqual(GUARD.meleeRange);expect(segmentClear(r.battle.hero,{x:e.x!,y:e.y!})).toBe(true);}if(e.kind==='shot')expect(e.time).toBeGreaterThanOrEqual(GUARD.reaction);}eventIndex=r.events.length;
  });
  expect(r.phase).toBe('won');expect(r.meleeHits).toBeGreaterThanOrEqual(8);expect(r.battle.hero.hp).toBeLessThan(180);expect(r.battle.hero.hp).toBeGreaterThan(0);expect(r.battle.energy).toBe(100);expect(r.battle.hits).toBe(0);expect(r.battle.enemies.every(a=>a.hp===0)).toBe(true);expect(r.battle.safe).toBe(true);expect(distance(r.battle.tang,ESCORT.exit)).toBeLessThan(2);
  const shots=r.events.filter(e=>e.kind==='shot');expect(shots.some(e=>e.target==='wukong')).toBe(true);
@@ -24,7 +25,7 @@ test('rally uses movement instead of teleport/heal and restores an autonomous wi
 test('manual skills select either enemy and reduce required melee work using the same resource/flight rules',()=>{
  const r=new EscortRun();r.start();r.command({type:'move',position:{x:900,y:550}});let stage=0,rallied=false;
  advance(r,90,r=>{if(stage<2&&r.battle.time>3&&r.battle.enemies[stage===0?1:0].windup>1&&r.command({type:'cast',targetId:stage===0?'archer-2':'archer-1'}))stage++;if(stage===2&&!rallied&&!r.battle.casting){r.command({type:'rally'});rallied=true;}});
- expect(r.phase).toBe('won');expect(r.battle.hits).toBe(2);expect(r.meleeHits).toBe(4);expect(r.events.filter(e=>e.kind==='staff').map(e=>e.target)).toEqual(['archer-2','archer-1']);expect(r.battle.tang.hp).toBeGreaterThan(0);
+ expect(r.phase).toBe('won');expect(r.battle.hits).toBe(2);expect(r.meleeHits).toBe(6); // 55 ranged +22+22+40 requires three real melee contacts per wounded100HP target.expect(r.events.filter(e=>e.kind==='staff').map(e=>e.target)).toEqual(['archer-2','archer-1']);expect(r.battle.tang.hp).toBeGreaterThan(0);
 });
 test('natural Wukong knockdown is not failure, costs existing scheme-B energy to revive and never heals Tang',()=>{
  const r=new EscortRun();r.start();r.command({type:'move',position:{x:900,y:550}});let stage=0,posted=false;

@@ -36,8 +36,8 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Install video duration probe
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
-      - name: Start read-only 45077095 comparison preview
-        run: node scripts/start-quality-baseline.mjs
+      - name: Start read-only ac4265cf combat comparison preview
+        run: node scripts/start-combat-baseline.mjs
       - id: browser
         run: npm run test:e2e -- --max-failures=1
       - name: Generate truthful studio report
@@ -48,13 +48,153 @@ jobs:
         run: |
           node --input-type=module -e 'import fs from "node:fs";fs.mkdirSync("reports",{recursive:true});fs.writeFileSync("reports/steps.json",process.env.STEP_RESULTS);'
           node scripts/studio-report.mjs
+      - name: Prepare bounded independent review downloads
+        if: always()
+        run: node scripts/package-review-evidence.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: studio-evidence
+          name: studio-report-01
           retention-days: 7
-          path: |
-            reports/
-            test-results/
-            playwright-report/
-            docs/p0-a-screenshot.png
+          if-no-files-found: ignore
+          path: evidence/report-01/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-report-02
+          retention-days: 7
+          if-no-files-found: ignore
+          path: evidence/report-02/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-screenshots-01
+          retention-days: 7
+          if-no-files-found: ignore
+          path: evidence/screenshots-01/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-screenshots-02
+          retention-days: 7
+          if-no-files-found: ignore
+          path: evidence/screenshots-02/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-screenshots-03
+          retention-days: 7
+          if-no-files-found: ignore
+          path: evidence/screenshots-03/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-screenshots-04
+          retention-days: 7
+          if-no-files-found: ignore
+          path: evidence/screenshots-04/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-screenshots-05
+          retention-days: 7
+          if-no-files-found: ignore
+          path: evidence/screenshots-05/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-screenshots-06
+          retention-days: 7
+          if-no-files-found: ignore
+          path: evidence/screenshots-06/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-video-01
+          retention-days: 7
+          if-no-files-found: ignore
+          path: evidence/video-01/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-video-02
+          retention-days: 7
+          if-no-files-found: ignore
+          path: evidence/video-02/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-video-03
+          retention-days: 7
+          if-no-files-found: ignore
+          path: evidence/video-03/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-video-04
+          retention-days: 7
+          if-no-files-found: ignore
+          path: evidence/video-04/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-video-05
+          retention-days: 7
+          if-no-files-found: ignore
+          path: evidence/video-05/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-video-06
+          retention-days: 7
+          if-no-files-found: ignore
+          path: evidence/video-06/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-audio-01
+          retention-days: 7
+          if-no-files-found: ignore
+          path: evidence/audio-01/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-debug-01
+          retention-days: 7
+          if-no-files-found: ignore
+          path: evidence/debug-01/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-debug-02
+          retention-days: 7
+          if-no-files-found: ignore
+          path: evidence/debug-02/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-debug-03
+          retention-days: 7
+          if-no-files-found: ignore
+          path: evidence/debug-03/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-debug-04
+          retention-days: 7
+          if-no-files-found: ignore
+          path: evidence/debug-04/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-debug-05
+          retention-days: 7
+          if-no-files-found: ignore
+          path: evidence/debug-05/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studio-debug-06
+          retention-days: 7
+          if-no-files-found: ignore
+          path: evidence/debug-06/

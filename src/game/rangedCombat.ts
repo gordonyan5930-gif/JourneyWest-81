@@ -3,8 +3,8 @@ import {distance,segmentClear,SAMPLE_NAV,type Navigation} from './smoothMovement
 export const RANGED={range:420,cooldown:3.5,energyCost:25,energyMax:100,energyRegen:3,damage:55,windup:.3,projectileSpeed:850,hitRadius:20,interrupt:1.5,knockback:10};
 export const ARCHER={hp:100,range:560,damage:20,windup:1.6,interval:1.1,arrowSpeed:420};
 export const THREAT={hero:{x:600,y:550},tang:{x:750,y:540},archer:{x:950,y:525}};
-export type Fighter=Point&{id:string;hp:number;max:number;flash:number};
-export type Archer=Fighter&{windup:number;windupDuration:number;next:number;stun:number;released:number;targetId:string;lockedUntil:number;threat:Record<string,{value:number;at:number}>};
+export type Fighter=Point&{id:string;hp:number;max:number;flash:number;controlledUntil?:number};
+export type Archer=Fighter&{windup:number;windupDuration:number;reservedLanding?:boolean;next:number;stun:number;released:number;targetId:string;lockedUntil:number;threat:Record<string,{value:number;at:number}>};
 export const makeArcher=(id:string,p:Point):Archer=>({...p,id,hp:ARCHER.hp,max:ARCHER.hp,windup:0,windupDuration:ARCHER.windup,next:.4,stun:0,flash:0,released:0,targetId:'',lockedUntil:0,threat:{}});
 export type Shot={id:number;kind:'staff'|'arrow';position:Point;aim:Point;origin:Point;damage:number;speed:number;targetId:string;sourceId:string};
 export type DamageEvent={sourceId:string;targetId:string;amount:number;kind:'staff'|'arrow'|'melee';time:number};

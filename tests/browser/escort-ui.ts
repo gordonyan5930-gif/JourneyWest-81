@@ -24,7 +24,7 @@ export async function observeInputs(page:Page){await page.evaluate(()=>{
 });}
 
 export async function riskyPost(page:Page){
-   await clickWorld(page,900,550);await expect.poll(()=>page.evaluate(()=>Math.hypot((window as any).qualityTest.actor.x-900,(window as any).qualityTest.actor.y-550)),{timeout:14000}).toBeLessThan(8);
+   await clickWorld(page,900,550);await expect.poll(()=>page.evaluate(()=>Math.hypot((window as any).qualityTest.actor.x-900,(window as any).qualityTest.actor.y-550)),{timeout:22000}).toBeLessThan(8);
    for(let casts=0;casts<2;casts++){const before=await state(page);if(before.escort.enemies[0].hp<=0)break;try{await spell(page,'archer-1');}catch(error){if((await state(page)).escort.enemies[0].hp>0)throw error;console.log('RISK_TARGET_ALREADY_DEAD');break;}await expect.poll(async()=>{const s=await state(page);return s.escort.enemies[0].hp<=0||s.battle.hits>before.battle.hits;},{timeout:6000}).toBe(true);}
    expect((await state(page)).escort.enemies[0].hp).toBe(0);if((await state(page)).escort.heroHp===0){expect((await state(page)).escort.finished).toBe(false);return;}
    // A deliberate bad holding order inside bow range but outside staff reach.

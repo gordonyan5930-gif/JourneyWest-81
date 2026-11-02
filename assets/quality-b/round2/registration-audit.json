@@ -1,0 +1,1718 @@
+[
+  {
+    "group": "wukong",
+    "frame": 0,
+    "sourceCell": [
+      0,
+      0,
+      384,
+      174
+    ],
+    "alpha64Bounds": [
+      88,
+      12,
+      276,
+      174
+    ],
+    "sourceGroundY": 173,
+    "sourceFootX": 188.5,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 37,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      115,
+      229,
+      259,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 1,
+    "sourceCell": [
+      384,
+      0,
+      768,
+      174
+    ],
+    "alpha64Bounds": [
+      50,
+      25,
+      319,
+      173
+    ],
+    "sourceGroundY": 172,
+    "sourceFootX": 151.5,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      114,
+      240,
+      320,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 2,
+    "sourceCell": [
+      768,
+      0,
+      1152,
+      174
+    ],
+    "alpha64Bounds": [
+      44,
+      26,
+      366,
+      173
+    ],
+    "sourceGroundY": 172,
+    "sourceFootX": 155.0,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      107,
+      241,
+      354,
+      353
+    ],
+    "packedMinimumMargin": 30,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 3,
+    "sourceCell": [
+      1152,
+      0,
+      1536,
+      174
+    ],
+    "alpha64Bounds": [
+      42,
+      21,
+      361,
+      173
+    ],
+    "sourceGroundY": 172,
+    "sourceFootX": 141.0,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      116,
+      237,
+      360,
+      353
+    ],
+    "packedMinimumMargin": 24,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 4,
+    "sourceCell": [
+      0,
+      174,
+      400,
+      342
+    ],
+    "alpha64Bounds": [
+      91,
+      0,
+      400,
+      166
+    ],
+    "sourceGroundY": 165,
+    "sourceFootX": 183.0,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 8,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      122,
+      226,
+      358,
+      353
+    ],
+    "packedMinimumMargin": 26,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 5,
+    "sourceCell": [
+      400,
+      174,
+      768,
+      342
+    ],
+    "alpha64Bounds": [
+      0,
+      18,
+      299,
+      167
+    ],
+    "sourceGroundY": 166,
+    "sourceFootX": 151.0,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      116,
+      239,
+      305,
+      352
+    ],
+    "packedMinimumMargin": 32,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 6,
+    "sourceCell": [
+      768,
+      174,
+      1152,
+      342
+    ],
+    "alpha64Bounds": [
+      66,
+      22,
+      312,
+      168
+    ],
+    "sourceGroundY": 167,
+    "sourceFootX": 162.5,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 7,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      118,
+      241,
+      306,
+      352
+    ],
+    "packedMinimumMargin": 32,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 7,
+    "sourceCell": [
+      1152,
+      174,
+      1536,
+      342
+    ],
+    "alpha64Bounds": [
+      73,
+      11,
+      267,
+      168
+    ],
+    "sourceGroundY": 167,
+    "sourceFootX": 181.5,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      109,
+      233,
+      257,
+      352
+    ],
+    "packedMinimumMargin": 32,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 8,
+    "sourceCell": [
+      0,
+      342,
+      384,
+      515
+    ],
+    "alpha64Bounds": [
+      86,
+      18,
+      278,
+      173
+    ],
+    "sourceGroundY": 172,
+    "sourceFootX": 193.0,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 10,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      111,
+      235,
+      257,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 9,
+    "sourceCell": [
+      384,
+      342,
+      768,
+      515
+    ],
+    "alpha64Bounds": [
+      44,
+      16,
+      323,
+      173
+    ],
+    "sourceGroundY": 172,
+    "sourceFootX": 200.0,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      72,
+      233,
+      285,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 10,
+    "sourceCell": [
+      768,
+      342,
+      1152,
+      515
+    ],
+    "alpha64Bounds": [
+      47,
+      24,
+      362,
+      173
+    ],
+    "sourceGroundY": 172,
+    "sourceFootX": 158.5,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      107,
+      239,
+      347,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 11,
+    "sourceCell": [
+      1152,
+      342,
+      1536,
+      515
+    ],
+    "alpha64Bounds": [
+      36,
+      25,
+      369,
+      172
+    ],
+    "sourceGroundY": 171,
+    "sourceFootX": 139.5,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      112,
+      240,
+      367,
+      352
+    ],
+    "packedMinimumMargin": 17,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 12,
+    "sourceCell": [
+      0,
+      515,
+      400,
+      684
+    ],
+    "alpha64Bounds": [
+      57,
+      21,
+      400,
+      167
+    ],
+    "sourceGroundY": 166,
+    "sourceFootX": 167.0,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 9,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      108,
+      241,
+      370,
+      353
+    ],
+    "packedMinimumMargin": 14,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 13,
+    "sourceCell": [
+      400,
+      515,
+      768,
+      684
+    ],
+    "alpha64Bounds": [
+      0,
+      14,
+      288,
+      169
+    ],
+    "sourceGroundY": 168,
+    "sourceFootX": 158.0,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 21,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      71,
+      235,
+      291,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 14,
+    "sourceCell": [
+      768,
+      515,
+      1152,
+      684
+    ],
+    "alpha64Bounds": [
+      51,
+      13,
+      306,
+      169
+    ],
+    "sourceGroundY": 168,
+    "sourceFootX": 159.0,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 9,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      110,
+      234,
+      304,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 15,
+    "sourceCell": [
+      1152,
+      515,
+      1536,
+      684
+    ],
+    "alpha64Bounds": [
+      61,
+      13,
+      268,
+      169
+    ],
+    "sourceGroundY": 168,
+    "sourceFootX": 182.0,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 33,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      100,
+      234,
+      257,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 16,
+    "sourceCell": [
+      0,
+      684,
+      384,
+      865
+    ],
+    "alpha64Bounds": [
+      82,
+      49,
+      332,
+      179
+    ],
+    "sourceGroundY": 178,
+    "sourceFootX": 211.5,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      92,
+      253,
+      283,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 17,
+    "sourceCell": [
+      384,
+      684,
+      768,
+      865
+    ],
+    "alpha64Bounds": [
+      71,
+      0,
+      291,
+      180
+    ],
+    "sourceGroundY": 179,
+    "sourceFootX": 194.0,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 12,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      98,
+      215,
+      266,
+      352
+    ],
+    "packedMinimumMargin": 32,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 18,
+    "sourceCell": [
+      768,
+      684,
+      1152,
+      865
+    ],
+    "alpha64Bounds": [
+      44,
+      6,
+      274,
+      179
+    ],
+    "sourceGroundY": 178,
+    "sourceFootX": 184.0,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      84,
+      221,
+      260,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 19,
+    "sourceCell": [
+      1152,
+      684,
+      1536,
+      865
+    ],
+    "alpha64Bounds": [
+      63,
+      0,
+      323,
+      181
+    ],
+    "sourceGroundY": 180,
+    "sourceFootX": 199.5,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 18,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      88,
+      214,
+      286,
+      352
+    ],
+    "packedMinimumMargin": 32,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 20,
+    "sourceCell": [
+      0,
+      865,
+      384,
+      1024
+    ],
+    "alpha64Bounds": [
+      79,
+      5,
+      345,
+      146
+    ],
+    "sourceGroundY": 145,
+    "sourceFootX": 211.5,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      90,
+      245,
+      293,
+      352
+    ],
+    "packedMinimumMargin": 32,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 21,
+    "sourceCell": [
+      384,
+      865,
+      768,
+      1024
+    ],
+    "alpha64Bounds": [
+      83,
+      18,
+      337,
+      148
+    ],
+    "sourceGroundY": 147,
+    "sourceFootX": 213.0,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      92,
+      253,
+      286,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 22,
+    "sourceCell": [
+      768,
+      865,
+      1152,
+      1024
+    ],
+    "alpha64Bounds": [
+      69,
+      13,
+      311,
+      148
+    ],
+    "sourceGroundY": 147,
+    "sourceFootX": 174.0,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      111,
+      250,
+      297,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "wukong",
+    "frame": 23,
+    "sourceCell": [
+      1152,
+      865,
+      1536,
+      1024
+    ],
+    "alpha64Bounds": [
+      76,
+      0,
+      271,
+      150
+    ],
+    "sourceGroundY": 149,
+    "sourceFootX": 183.0,
+    "packingScale": 0.7639484978540773,
+    "opaqueBorderPixels": 16,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      110,
+      238,
+      259,
+      352
+    ],
+    "packedMinimumMargin": 32,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "archer-react",
+    "frame": 0,
+    "sourceCell": [
+      0,
+      0,
+      444,
+      346
+    ],
+    "alpha64Bounds": [
+      68,
+      108,
+      399,
+      338
+    ],
+    "sourceGroundY": 337,
+    "sourceFootX": 254.5,
+    "packingScale": 0.8298368298368298,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      37,
+      162,
+      312,
+      352
+    ],
+    "packedMinimumMargin": 32,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "archer-react",
+    "frame": 1,
+    "sourceCell": [
+      444,
+      0,
+      887,
+      346
+    ],
+    "alpha64Bounds": [
+      92,
+      54,
+      428,
+      342
+    ],
+    "sourceGroundY": 341,
+    "sourceFootX": 285.0,
+    "packingScale": 0.8298368298368298,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      31,
+      114,
+      311,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "archer-react",
+    "frame": 2,
+    "sourceCell": [
+      887,
+      0,
+      1330,
+      346
+    ],
+    "alpha64Bounds": [
+      89,
+      76,
+      394,
+      341
+    ],
+    "sourceGroundY": 340,
+    "sourceFootX": 232.5,
+    "packingScale": 0.8298368298368298,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      73,
+      133,
+      326,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "archer-react",
+    "frame": 3,
+    "sourceCell": [
+      1330,
+      0,
+      1774,
+      346
+    ],
+    "alpha64Bounds": [
+      107,
+      34,
+      385,
+      346
+    ],
+    "sourceGroundY": 345,
+    "sourceFootX": 241.5,
+    "packingScale": 0.8298368298368298,
+    "opaqueBorderPixels": 21,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      80,
+      94,
+      310,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "archer-react",
+    "frame": 4,
+    "sourceCell": [
+      0,
+      346,
+      444,
+      636
+    ],
+    "alpha64Bounds": [
+      62,
+      38,
+      404,
+      259
+    ],
+    "sourceGroundY": 258,
+    "sourceFootX": 252.5,
+    "packingScale": 0.8298368298368298,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      33,
+      170,
+      317,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "archer-react",
+    "frame": 5,
+    "sourceCell": [
+      444,
+      346,
+      887,
+      636
+    ],
+    "alpha64Bounds": [
+      68,
+      117,
+      432,
+      280
+    ],
+    "sourceGroundY": 279,
+    "sourceFootX": 282.5,
+    "packingScale": 0.8298368298368298,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      14,
+      218,
+      317,
+      352
+    ],
+    "packedMinimumMargin": 14,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "archer-react",
+    "frame": 6,
+    "sourceCell": [
+      887,
+      346,
+      1330,
+      636
+    ],
+    "alpha64Bounds": [
+      34,
+      164,
+      393,
+      278
+    ],
+    "sourceGroundY": 277,
+    "sourceFootX": 225.0,
+    "packingScale": 0.8298368298368298,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      33,
+      258,
+      331,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "archer-react",
+    "frame": 7,
+    "sourceCell": [
+      1330,
+      346,
+      1774,
+      618
+    ],
+    "alpha64Bounds": [
+      45,
+      0,
+      403,
+      269
+    ],
+    "sourceGroundY": 268,
+    "sourceFootX": 223.5,
+    "packingScale": 0.8298368298368298,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      44,
+      130,
+      341,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "archer-react",
+    "frame": 8,
+    "sourceCell": [
+      0,
+      636,
+      444,
+      887
+    ],
+    "alpha64Bounds": [
+      74,
+      41,
+      428,
+      222
+    ],
+    "sourceGroundY": 221,
+    "sourceFootX": 260.5,
+    "packingScale": 0.8298368298368298,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      38,
+      203,
+      330,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "archer-react",
+    "frame": 9,
+    "sourceCell": [
+      444,
+      636,
+      887,
+      887
+    ],
+    "alpha64Bounds": [
+      101,
+      26,
+      439,
+      215
+    ],
+    "sourceGroundY": 214,
+    "sourceFootX": 252.5,
+    "packingScale": 0.8298368298368298,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      66,
+      195,
+      347,
+      352
+    ],
+    "packedMinimumMargin": 32,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "archer-react",
+    "frame": 10,
+    "sourceCell": [
+      887,
+      636,
+      1330,
+      887
+    ],
+    "alpha64Bounds": [
+      95,
+      14,
+      400,
+      218
+    ],
+    "sourceGroundY": 217,
+    "sourceFootX": 215.5,
+    "packingScale": 0.8298368298368298,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      92,
+      183,
+      345,
+      352
+    ],
+    "packedMinimumMargin": 32,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "archer-react",
+    "frame": 11,
+    "sourceCell": [
+      1330,
+      618,
+      1774,
+      887
+    ],
+    "alpha64Bounds": [
+      82,
+      0,
+      388,
+      250
+    ],
+    "sourceGroundY": 249,
+    "sourceFootX": 240.0,
+    "packingScale": 0.8298368298368298,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      61,
+      145,
+      314,
+      352
+    ],
+    "packedMinimumMargin": 32,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "tang",
+    "frame": 0,
+    "sourceCell": [
+      0,
+      0,
+      444,
+      446
+    ],
+    "alpha64Bounds": [
+      49,
+      10,
+      444,
+      442
+    ],
+    "sourceGroundY": 441,
+    "sourceFootX": 280.0,
+    "packingScale": 0.7134268537074149,
+    "opaqueBorderPixels": 4,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      27,
+      44,
+      309,
+      352
+    ],
+    "packedMinimumMargin": 27,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "tang",
+    "frame": 1,
+    "sourceCell": [
+      444,
+      0,
+      887,
+      446
+    ],
+    "alpha64Bounds": [
+      0,
+      12,
+      412,
+      442
+    ],
+    "sourceGroundY": 441,
+    "sourceFootX": 200.0,
+    "packingScale": 0.7134268537074149,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      49,
+      45,
+      343,
+      352
+    ],
+    "packedMinimumMargin": 32,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "tang",
+    "frame": 2,
+    "sourceCell": [
+      887,
+      0,
+      1330,
+      446
+    ],
+    "alpha64Bounds": [
+      41,
+      14,
+      383,
+      444
+    ],
+    "sourceGroundY": 443,
+    "sourceFootX": 242.0,
+    "packingScale": 0.7134268537074149,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      48,
+      46,
+      293,
+      352
+    ],
+    "packedMinimumMargin": 32,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "tang",
+    "frame": 3,
+    "sourceCell": [
+      1330,
+      0,
+      1774,
+      446
+    ],
+    "alpha64Bounds": [
+      7,
+      7,
+      372,
+      446
+    ],
+    "sourceGroundY": 445,
+    "sourceFootX": 122.5,
+    "packingScale": 0.7134268537074149,
+    "opaqueBorderPixels": 13,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      110,
+      40,
+      371,
+      353
+    ],
+    "packedMinimumMargin": 13,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "tang",
+    "frame": 4,
+    "sourceCell": [
+      0,
+      446,
+      448,
+      887
+    ],
+    "alpha64Bounds": [
+      42,
+      9,
+      448,
+      418
+    ],
+    "sourceGroundY": 417,
+    "sourceFootX": 261.5,
+    "packingScale": 0.7134268537074149,
+    "opaqueBorderPixels": 4,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      35,
+      62,
+      325,
+      354
+    ],
+    "packedMinimumMargin": 30,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "tang",
+    "frame": 5,
+    "sourceCell": [
+      448,
+      446,
+      887,
+      887
+    ],
+    "alpha64Bounds": [
+      0,
+      12,
+      423,
+      417
+    ],
+    "sourceGroundY": 416,
+    "sourceFootX": 211.0,
+    "packingScale": 0.7134268537074149,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      41,
+      64,
+      343,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "tang",
+    "frame": 6,
+    "sourceCell": [
+      887,
+      446,
+      1329,
+      887
+    ],
+    "alpha64Bounds": [
+      33,
+      10,
+      383,
+      417
+    ],
+    "sourceGroundY": 416,
+    "sourceFootX": 247.5,
+    "packingScale": 0.7134268537074149,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      38,
+      62,
+      288,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "tang",
+    "frame": 7,
+    "sourceCell": [
+      1329,
+      446,
+      1774,
+      887
+    ],
+    "alpha64Bounds": [
+      0,
+      0,
+      388,
+      424
+    ],
+    "sourceGroundY": 423,
+    "sourceFootX": 244.0,
+    "packingScale": 0.7134268537074149,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      18,
+      50,
+      295,
+      353
+    ],
+    "packedMinimumMargin": 18,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "archer",
+    "frame": 0,
+    "sourceCell": [
+      0,
+      0,
+      444,
+      444
+    ],
+    "alpha64Bounds": [
+      45,
+      23,
+      424,
+      440
+    ],
+    "sourceGroundY": 439,
+    "sourceFootX": 253.0,
+    "packingScale": 0.5281899109792285,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      82,
+      132,
+      282,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "archer",
+    "frame": 1,
+    "sourceCell": [
+      444,
+      0,
+      887,
+      444
+    ],
+    "alpha64Bounds": [
+      60,
+      35,
+      439,
+      440
+    ],
+    "sourceGroundY": 439,
+    "sourceFootX": 244.0,
+    "packingScale": 0.5281899109792285,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      95,
+      138,
+      295,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "archer",
+    "frame": 2,
+    "sourceCell": [
+      887,
+      0,
+      1330,
+      444
+    ],
+    "alpha64Bounds": [
+      65,
+      17,
+      400,
+      444
+    ],
+    "sourceGroundY": 443,
+    "sourceFootX": 239.0,
+    "packingScale": 0.5281899109792285,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      100,
+      127,
+      277,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "archer",
+    "frame": 3,
+    "sourceCell": [
+      1330,
+      0,
+      1774,
+      444
+    ],
+    "alpha64Bounds": [
+      35,
+      24,
+      414,
+      444
+    ],
+    "sourceGroundY": 443,
+    "sourceFootX": 214.5,
+    "packingScale": 0.5281899109792285,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      97,
+      131,
+      298,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": false
+  },
+  {
+    "group": "archer",
+    "frame": 4,
+    "sourceCell": [
+      0,
+      444,
+      444,
+      887
+    ],
+    "alpha64Bounds": [
+      45,
+      11,
+      437,
+      404
+    ],
+    "sourceGroundY": 403,
+    "sourceFootX": 216.5,
+    "packingScale": 0.5281899109792285,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": false,
+    "packedAlpha64Bounds": [
+      102,
+      145,
+      310,
+      352
+    ],
+    "packedMinimumMargin": 32,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": true
+  },
+  {
+    "group": "archer",
+    "frame": 5,
+    "sourceCell": [
+      444,
+      444,
+      891,
+      887
+    ],
+    "alpha64Bounds": [
+      70,
+      10,
+      447,
+      404
+    ],
+    "sourceGroundY": 403,
+    "sourceFootX": 268.5,
+    "packingScale": 0.5281899109792285,
+    "opaqueBorderPixels": 17,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      87,
+      145,
+      286,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": true
+  },
+  {
+    "group": "archer",
+    "frame": 6,
+    "sourceCell": [
+      891,
+      444,
+      1339,
+      887
+    ],
+    "alpha64Bounds": [
+      0,
+      13,
+      448,
+      406
+    ],
+    "sourceGroundY": 405,
+    "sourceFootX": 232.5,
+    "packingScale": 0.5281899109792285,
+    "opaqueBorderPixels": 3,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      69,
+      145,
+      306,
+      353
+    ],
+    "packedMinimumMargin": 31,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": true
+  },
+  {
+    "group": "archer",
+    "frame": 7,
+    "sourceCell": [
+      1339,
+      444,
+      1774,
+      887
+    ],
+    "alpha64Bounds": [
+      0,
+      10,
+      425,
+      409
+    ],
+    "sourceGroundY": 408,
+    "sourceFootX": 337.0,
+    "packingScale": 0.5281899109792285,
+    "opaqueBorderPixels": 0,
+    "sourceBorderTouched": true,
+    "packedAlpha64Bounds": [
+      14,
+      141,
+      239,
+      352
+    ],
+    "packedMinimumMargin": 14,
+    "ground": [
+      192.0,
+      352
+    ],
+    "nativeLeft": true
+  }
+]

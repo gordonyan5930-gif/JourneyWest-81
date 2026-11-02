@@ -38,3 +38,6 @@ RANGED-QB-EXPERIMENT v0.4：ranged-study.webp，1774×887、1350980字节，SHA2
 - 生成原PNG：2172×724、1262226字节，SHA256 `06cd15d3e6d9521439c580950241621968312630e4064b37b5585516687652a8`。大blob调用未完成，采用4片原字节归档，顺序/校验见sources/recovery-source-archive.json；`npm run restore:recovery-source`还原并校验原图。正式母版assets/references仍为原PNG，未变更/重归档。
 - attack/hit/danger/skill-v01.wav：项目原创确定性合成，PCM16/单声道/24kHz，无第三方采样、未购买。生成器scripts/generate-combat-audio.mjs、来源说明assets/audio/README.md；各文件字节数/SHA256见运行manifest，实际播放/静音测试与波形检测不等于正式听感认可。
 - 新源图分片、运行图集、音效全部有实际校验；没有编造图像/模型额度与金额。动画、声音与生产许可/形象品质最终由用户审核，未替换IP母版。
+
+## round2-2026-11-02 研究版（未批准正式资源）
+路径assets/quality-b/round2：sources/manifest.json记录7次生成原图的尺寸/字节/SHA和采用/拒绝状态；sources为224000字节原件分片，npm run restore:round2-sources精确还原。index.json/registration-audit.json与运行manifest记录52帧、13 WebP图集/JSON、脚线、源边缘风险及校验。工程裁切不补画或改母版。新增light/heavy/miss/hurt-v02.wav原创合成，原四音不变；来源、字节/SHA见运行manifest与assets/audio/README。源图边缘触碰与姿势连续性未获用户批准，不能把资源数量写为品质完成率。
