@@ -20,3 +20,6 @@ body:has(.escort-play){overflow:hidden;background:#18241f}.escort-play header{he
 .escort-play #combat-stats:empty{display:none}.escort-play #escort-panel>div:empty{display:none}
 .escort-play #tactical-cue:empty{display:none}.escort-play #tactical-cue{margin-top:7px;padding:8px 12px;max-width:580px;border:1px solid #d2a35d;background:#3c2a16eb;color:#ffe0a0;border-radius:5px;font-weight:600;font-size:14px}.escort-play #sample-skill.counter-ready{border-color:#ffe1a3;box-shadow:0 0 0 2px #b88c38}.escort-play #sound-toggle{margin-top:8px}
 .escort-play #developer-panel #sample-mask{display:inline-block}
+
+.escort-play .map-overview::before{content:'全景 · 完整地图 / 居中留边';position:absolute;bottom:88px;left:50%;transform:translateX(-50%);z-index:3;color:#e9ddb7;background:#172720dc;padding:3px 9px;font-size:11px;pointer-events:none}
+@media(max-height:650px){.escort-play #combat-top{top:6px;left:10px;right:10px}.escort-play #escort-panel{padding:4px 8px}.escort-play #combat-stats{margin-top:3px;padding:3px 8px;font-size:12px}.escort-play #combat-actions{bottom:6px;left:10px;right:10px;padding:5px;gap:5px}.escort-play #combat-actions>button{min-height:34px;padding:6px 8px;font-size:12px}.escort-play #sample-status{bottom:65px;font-size:11px}.escort-play #tactical-cue{padding:4px 8px;font-size:12px}.escort-play #enemy-targets button{font-size:11px;padding:5px 7px}}
