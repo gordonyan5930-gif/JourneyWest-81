@@ -1,0 +1,31 @@
+{
+  "sourceSha": "6fcd65ede7366bf0c7502648d563ad9c4880a81e",
+  "run": 41606075405,
+  "job": 125816097346,
+  "technicalStatus": "failed",
+  "unit": {
+    "passed": 108,
+    "failed": 0
+  },
+  "browser": {
+    "passed": 18,
+    "failed": 1,
+    "skipped": 11
+  },
+  "failure": {
+    "test": "round3-tactics: opening following exit retry",
+    "expected": "轻击 within 5000ms after starting, before actual melee",
+    "received": "",
+    "reason": "idle combo prose deliberately removed for short player HUD",
+    "resolution": "wait at most30000ms for real combo; keep all phase, position and retry assertions"
+  },
+  "firstCounter": {
+    "promptToInputWallMs": 1830,
+    "inputToOutcomeWallMs": 353,
+    "damage": 55,
+    "sameDraw": true,
+    "energySpent": 25
+  },
+  "sourceCodeChangedForResolution": false,
+  "legacyDiagnostic": "Old two-click control reads retained hidden draw DOM; explicitly not current visible teaching proof."
+}
