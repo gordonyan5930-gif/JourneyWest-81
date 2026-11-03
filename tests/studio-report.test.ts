@@ -4,10 +4,16 @@ import {tmpdir} from 'node:os';import {join,resolve} from 'node:path';import {sp
 describe('truthful studio stage reporting',()=>{
  for(const [outcome,evidence,expected] of [
   ['success','valid','passed'],['failure','valid','failed'],['skipped','valid','incomplete'],
-  ['success','missing','incomplete'],['success','broken','incomplete'],['success','failed-unit','failed'],['success','failed-browser','failed'],['success','missing-pressure','incomplete'],['success','missing-experiment-video','incomplete'],['success','missing-tactical','incomplete'],['success','missing-experience','incomplete'],['success','missing-first-counter','incomplete']
+  ['success','missing','incomplete'],['success','broken','incomplete'],['success','failed-unit','failed'],['success','failed-browser','failed'],['success','missing-pressure','incomplete'],['success','missing-experiment-video','incomplete'],['success','missing-tactical','incomplete'],['success','missing-experience','incomplete'],['success','missing-first-counter','incomplete'],['success','missing-choices','incomplete']
  ] as const){it(`${outcome}/${evidence} is ${expected}, never art approval`,()=>{
   const root=mkdtempSync(join(tmpdir(),'studio-report-'));try{
    mkdirSync(join(root,'reports'));writeFileSync(join(root,'reports/steps.json'),JSON.stringify(Object.fromEntries(['install','build','unit','browser_install','browser'].map(k=>[k,{outcome}]))));
+   if(evidence!=='missing-choices'&&evidence!=='missing'){
+    const launch={kind:'launch'},flight={events:[launch],fruit:1,hits:0,healed:20};
+    writeFileSync(join(root,'reports/choices-causal.json'),JSON.stringify({rows:Array.from({length:6},()=>({identicalPrefix:true}))}));
+    writeFileSync(join(root,'reports/choices-browser.json'),JSON.stringify({rows:[{case:'A-stay',end:{escort:{meleeHits:1},flight:{events:[]}}},{case:'B-fly',hit:{flight:{events:[{kind:'hit',amount:70}]}},returned:{escort:{manualHero:false}},end:{flight,escort:{stats:{energySpent:30}}}},{case:'C-peach',end:{flight}},{case:'D-cancelled-fly',end:{flight,escort:{stats:{energySpent:30}}}},{case:'mid-flight-clean-retry',end:{flight:{active:false,fruit:2},battle:{energy:100,shots:0}}}]}));
+    writeFileSync(join(root,'reports/choices-manual.json'),JSON.stringify({returned:{escort:{manualHero:true}},lost:{battle:{tang:{hp:0}},escort:{events:[{kind:'arrow',target:'tang',amount:100}]}},midHarvestRetry:{flight:{fruit:2,active:false,events:[]}}}));
+   }
    if(evidence!=='missing'){
     writeFileSync(join(root,'reports/first-counter-causal.json'),JSON.stringify({rows:Array.from({length:4},()=>({identicalPrefix:true}))}));
     if(evidence!=='missing-first-counter')writeFileSync(join(root,'reports/first-counter.json'),JSON.stringify({rows:[{case:'cold-success-1500',outcome:{damage:55},sameDraw:true,energySpent:25,state:{escort:{manualHero:true}}},...['out-of-range','blocked'].map(k=>({case:k,rejected:{reason:k},energySpent:0})),{case:'late',firstShot:{time:1},input:{game:2}},{case:'rally',rally:{before:{manual:true},after:{manual:false}}},{case:'clean-retry',state:{lesson:{pending:null}}}]}));
