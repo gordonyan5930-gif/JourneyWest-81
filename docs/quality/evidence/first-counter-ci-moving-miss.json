@@ -1,0 +1,48 @@
+{
+  "sourceSha": "b568b26cacda5e3a520f807474e51c20f75c1a56",
+  "run": 41603414357,
+  "unitPassed": 108,
+  "browserPassed": 6,
+  "browserFailed": 1,
+  "browserSkipped": 23,
+  "firstLesson": {
+    "promptInputWallMs": 1939,
+    "inputImpactWallMs": 389,
+    "damage": 55,
+    "sameFirstDraw": true,
+    "energySpent": 25
+  },
+  "movingTarget": {
+    "id": "archer-2",
+    "before": {
+      "hero": {
+        "x": 899.9999961256983,
+        "y": 578.7499990053476,
+        "hp": 120
+      },
+      "time": 12.04454000000001,
+      "target": {
+        "id": "archer-2",
+        "x": 1084.547772942515,
+        "y": 443.5146671111998,
+        "hp": 100,
+        "targetId": "tang",
+        "windup": 0,
+        "drawDuration": 2.2
+      }
+    },
+    "after": {
+      "hero": {
+        "x": 899.9999961256983,
+        "y": 578.7499990053476,
+        "hp": 120
+      },
+      "casting": true,
+      "cooldown": 3.2516699999999994,
+      "time": 12.53950000000001
+    },
+    "text": "破空击出手"
+  },
+  "result": "Old regression shot a moving target with windup0; actual fixed-aim projectile missed. This negative is preserved, not changed into homing.",
+  "correction": "Use the declared reachable teaching post850,540 and wait for a real drawn bow; selected-target damage assertions remain strict. No game rule or parameter change."
+}
