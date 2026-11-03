@@ -1,3 +1,4 @@
+import {FIRST_COUNTER} from './firstCounterGuide';
 import {bodyLane,bodyPath,bodyDistance} from './bodyClearance';
 import {PostHeavyOrder} from './postHeavyOrder';
 import {COMBO,MeleeCombo} from './meleeCombo';
@@ -12,13 +13,13 @@ import type {Point} from './world';
 export const ESCORT={start:{...SAMPLE_MAP.start},encounter:{x:750,y:540},exit:{...SAMPLE_MAP.destination},heroStart:{x:344,y:708},guard:{x:850,y:540},tangSpeed:70,arrival:2,approachRoute:[ROAD[2],ROAD[3],{x:750,y:540}],departureRoute:[ROAD[4],ROAD[5],ROAD[6],ROAD[7],ROAD[8],SAMPLE_MAP.destination],entrances:[{x:1220,y:380},{x:1456,y:272}]};
 export type EscortPhase='ready'|'approach'|'encounter'|'depart'|'won'|'lost';
 export type EscortCommand={type:'move';position:Point}|{type:'cast';targetId:string}|{type:'rally'}|{type:'revive'}|{type:'cast-after-heavy';targetId:string}|{type:'cancel-cast-order'};
-type Brain={motion:SmoothMover;planAt:number;decideAt:number;walked:number;firstShot:number|null;spacingAt?:number;spacingGoal?:Point;spacingUntil?:number};
+type Brain={motion:SmoothMover;planAt:number;decideAt:number;walked:number;firstShot:number|null;hasDrawn:boolean;spacingAt?:number;spacingGoal?:Point;spacingUntil?:number};
 export class EscortRun {
  phase:EscortPhase='ready';battle=new RangedBattle();heroMotion=new SmoothMover(ESCORT.heroStart);
  manualHero=false;returning=false;selectedEnemyId='';heroTarget='';melee:{targetId:string;left:number;step:number}|null=null;meleeNext=0;poseAt=-10;poseUntil=0;poseTargetId='';reviveAt=-10;actionKind='';meleeHits=0;deadFor=0;revives=0;
  evadeGoal:Point|null=null;evadeAt=0;lastDanger=-10;lastTangHit=-10;dangerSince:number|null=null;evadeAnchor:Point={...ESCORT.encounter};sosUntil=0;sosNext=0;sosCount=0;rescueCalls=0;heroPlanAt=0;
  threatEndedAt:number|null=null;dangerSeconds=0;eventSequence=0;
- events:{sequence:number;time:number;kind:string;unit?:string;target?:string;amount?:number;step?:number;x?:number;y?:number}[]=[];
+ events:{sequence:number;time:number;kind:string;unit?:string;target?:string;amount?:number;step?:number;duration?:number;x?:number;y?:number}[]=[];
  private road=new SmoothMover(ESCORT.start);private evade=new SmoothMover(ESCORT.start);private waypoints:Point[]=[];private roadIndex=0;private roadDirty=false;private brains=new Map<string,Brain>();
  postHeavy=new PostHeavyOrder();formation=new EscortFormation();space:UnitSpace;combo=new MeleeCombo();controls=new EnemyControl(this.battle);attackStep=0;poseFacingLeft=false;
  constructor(public nav:Navigation=SAMPLE_NAV){this.space=new UnitSpace(()=>[this.battle.hero,this.battle.tang,...this.battle.enemies],nav);}
@@ -28,7 +29,7 @@ export class EscortRun {
  private event(kind:string,unit?:string,target?:string,amount?:number){this.events.push({sequence:++this.eventSequence,time:this.battle.time,kind,unit,target,amount});if(this.events.length>400)this.events.shift();}
  start(){
   this.battle=new RangedBattle(this.nav);this.controls=new EnemyControl(this.battle);this.combo.reset('new-run');this.attackStep=0;this.poseFacingLeft=false;const b=this.battle;b.enemies=ESCORT.entrances.map((p,i)=>makeArcher(`archer-${i+1}`,p));for(const a of b.enemies)a.windupDuration=GUARD.archerWindup;b.archer=b.enemies[0];Object.assign(b.tang,ESCORT.start,{goal:{...ESCORT.start}});Object.assign(b.hero,ESCORT.heroStart,{hp:GUARD.hp,max:GUARD.hp});
-  this.heroMotion=new SmoothMover(ESCORT.heroStart,this.nav);this.road=this.mover(ESCORT.start,ESCORT.tangSpeed);this.evade=this.mover(ESCORT.start,ESCORT.tangSpeed);this.planRoad(ESCORT.approachRoute);this.brains=new Map(b.enemies.map(a=>[a.id,{motion:this.mover(a,GUARD.enemySpeed),planAt:0,decideAt:0,walked:0,firstShot:null}]));
+  this.heroMotion=new SmoothMover(ESCORT.heroStart,this.nav);this.road=this.mover(ESCORT.start,ESCORT.tangSpeed);this.evade=this.mover(ESCORT.start,ESCORT.tangSpeed);this.planRoad(ESCORT.approachRoute);this.brains=new Map(b.enemies.map(a=>[a.id,{motion:this.mover(a,GUARD.enemySpeed),planAt:0,decideAt:0,walked:0,firstShot:null,hasDrawn:false}]));
   this.manualHero=false;this.returning=false;this.selectedEnemyId='';this.heroTarget='';this.melee=null;this.meleeNext=0;this.poseAt=-10;this.poseUntil=0;this.poseTargetId='';this.reviveAt=-10;this.actionKind='';this.meleeHits=0;this.deadFor=0;this.revives=0;this.evadeGoal=null;this.evadeAt=0;this.lastDanger=-10;this.lastTangHit=-10;this.dangerSince=null;this.evadeAnchor={...ESCORT.start};this.sosUntil=0;this.sosNext=0;this.sosCount=0;this.rescueCalls=0;this.heroPlanAt=0;this.events=[];this.eventSequence=0;this.threatEndedAt=null;this.dangerSeconds=0;
   this.postHeavy.clear('',true);this.space.clear();this.formation.reset();this.combo.reset('retry');this.attackStep=0;this.controls=new EnemyControl(this.battle);b.canOccupy=(u,p)=>this.space.free(p,u.id)&&this.space.canTraverse(u.id,u,p);this.phase='approach';b.driver=dt=>this.drive(dt);b.onDamage=e=>this.damaged(e);b.start();this.event('warning');
  }
@@ -63,7 +64,7 @@ export class EscortRun {
    else {brain.motion.route=[];brain.motion.speed=0;}
    if(!canShoot||!target){a.windup=0;continue;}
    if(a.windup>0){a.windup-=dt;if(a.windup<=0){if(target.hp>0&&distance(a,target)<=ARCHER.range&&segmentClear(a,target,this.nav)){b.launch('arrow',a,target,ARCHER.damage,ARCHER.arrowSpeed,a.id);b.arrowsFired++;a.released=.25;brain.firstShot??=b.time;this.event('shot',a.id,target.id);}a.next=ARCHER.interval;}}
-   else {a.next-=dt;if(a.next<=0){a.windup=a.windupDuration;this.event('aim',a.id,target.id);}}
+   else {a.next-=dt;if(a.next<=0){a.drawDuration=a.id===FIRST_COUNTER.targetId&&!brain.hasDrawn?FIRST_COUNTER.firstWindup:a.windupDuration;a.windup=a.drawDuration;brain.hasDrawn=true;this.event('aim',a.id,target.id);this.events.at(-1)!.duration=a.drawDuration;}}
   }
  }
  private hero(dt:number){const b=this.battle,h=b.hero;this.heroMotion.nav=this.nav;

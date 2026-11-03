@@ -1,0 +1,43 @@
+{
+  "gameBaseline": "1f0f154ad93452b2d8291737b747147a4f56d1be",
+  "phase": "round5 local late pilot",
+  "result": "First shot preceded input; shooter moved behind terrain; zero-resource refusal, not a pure timing-only failure. The original unconditional25-energy assertion was invalid.",
+  "row": {
+    "case": "late",
+    "input": {
+      "kind": "input",
+      "wall": 1793693148671,
+      "game": 14.557750000000015,
+      "target": "archer-2",
+      "energy": 100,
+      "hero": 100,
+      "tang": 100,
+      "combo": 0,
+      "aim": 14
+    },
+    "rejected": {
+      "kind": "rejected",
+      "wall": 1793693148671,
+      "game": 14.557750000000015,
+      "target": "archer-2",
+      "reason": "山石挡住了，换个位置",
+      "energy": 100
+    },
+    "firstShot": {
+      "sequence": 18,
+      "time": 13.982770000000016,
+      "kind": "shot",
+      "unit": "archer-2",
+      "target": "wukong"
+    },
+    "energySpent": 0,
+    "pre": {
+      "hero": 80,
+      "tang": 0
+    },
+    "post": {
+      "hero": 0,
+      "tang": 0
+    }
+  }
+}
