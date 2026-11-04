@@ -25,6 +25,19 @@
       "impact": "no simulation or at-input digest changes, but serialized before could differ after damage",
       "fix": "structuredClone snapshot and recompute reported before SHA256 after every trace; also visible injury/breather locator first avoids simultaneous-match ambiguity",
       "gameChanges": false
+    },
+    {
+      "kind": "CI41779862816-script-error",
+      "unitPassed": 122,
+      "browserPassed": 23,
+      "browserFailed": 1,
+      "browserNotRun": 11,
+      "failure": "TypeError expect(...).first is not a function",
+      "cause": "first() mistakenly attached to assertion, not the union locator",
+      "fix": "move first() inside expect; actual ordinary peach/reselection regression before next CI; strategy-first dependency project executes new3 before original32; same35 tests and assertions",
+      "gameChanges": false,
+      "reportZipSha256": "52a11af00f02fa99b3be3c5e06f9df4831f4d59c51e0d2c45967e68023fa21cb",
+      "ciPrefixSnapshotsRecomputed": 24
     }
   ]
 }
