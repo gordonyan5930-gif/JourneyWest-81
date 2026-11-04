@@ -52,3 +52,14 @@ assets/quality-b/round3/index.json沿用52帧，其中33帧直接引用旧textur
 
 ## 新玩法原型资源 v0.1
 `public/prototypes/peach-tree.svg`：手写原创SVG功能桃树，180×200，1673字节，SHA-256 `1df10ebb4f6735fc244df41add846c95c82e964524f56b4adc2a060d0b27dbc3`。无外部素材/无采购；非正式美术，用户尚未审核。原地图/人物/母版/音效二进制零修改；飞行/采摘仅复用既有姿势，不宣称新增正式动画。
+
+
+## 2026-11-04 Motion/HUD-v0.1（待体验审核）
+不新增批量美术，不改任何现有图片二进制。唐僧8帧来自round3/index的tang分组，均384×384、脚点352、原缩放0.360302；运行时站姿复用0，不能称新增正式动画。悟空头像从游戏图集6裁(170,60,130,130)至64×64，仅离屏绘制img，不直接使用概念母版。新增图标是battleHud.ts中原创SVG路径代码，无外部购买/拷贝；该模块哈希为整文件版本索引，不冒充PNG资产。桃树SVG文件不改，默认世界坐标560,520/classic500,700。
+
+| 来源/版本 | 字节 | SHA-256 |
+| --- | ---: | --- |
+| `src/ui/battleHud.ts` | 6378 | `ae7c7bd38c4e1989695396282ce192f7e08f6ad622546782c89544b70620684f` |
+| `assets/quality-b/wukong-atlas.webp` | 1313732 | `2079b7da7df1b0d543e258ce5b33c9b1f574d7594840a841ebc1edcd99a35727` |
+| `assets/quality-b/round3/index.json` | 17020 | `b45c7a7962a9086bdedc031955a1e3059c972fb9346edd70728c2ebd57941427` |
+| `public/prototypes/peach-tree.svg` | 1673 | `1df10ebb4f6735fc244df41add846c95c82e964524f56b4adc2a060d0b27dbc3` |

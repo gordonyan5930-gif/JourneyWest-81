@@ -4,10 +4,13 @@ import {tmpdir} from 'node:os';import {join,resolve} from 'node:path';import {sp
 describe('truthful studio stage reporting',()=>{
  for(const [outcome,evidence,expected] of [
   ['success','valid','passed'],['failure','valid','failed'],['skipped','valid','incomplete'],
-  ['success','missing','incomplete'],['success','broken','incomplete'],['success','failed-unit','failed'],['success','failed-browser','failed'],['success','missing-pressure','incomplete'],['success','missing-experiment-video','incomplete'],['success','missing-tactical','incomplete'],['success','missing-experience','incomplete'],['success','missing-first-counter','incomplete'],['success','missing-choices','incomplete'],['success','missing-strategy','incomplete']
+  ['success','missing','incomplete'],['success','broken','incomplete'],['success','failed-unit','failed'],['success','failed-browser','failed'],['success','missing-pressure','incomplete'],['success','missing-experiment-video','incomplete'],['success','missing-tactical','incomplete'],['success','missing-experience','incomplete'],['success','missing-first-counter','incomplete'],['success','missing-choices','incomplete'],['success','missing-strategy','incomplete'],['success','missing-motion','incomplete']
  ] as const){it(`${outcome}/${evidence} is ${expected}, never art approval`,()=>{
   const root=mkdtempSync(join(tmpdir(),'studio-report-'));try{
    mkdirSync(join(root,'reports'));writeFileSync(join(root,'reports/steps.json'),JSON.stringify(Object.fromEntries(['install','build','unit','browser_install','browser'].map(k=>[k,{outcome}]))));
+   if(evidence!=='missing-motion'&&evidence!=='missing'){
+    const files={'motion-logic.json':{after:{summary:{hardContactSeconds:0,heroExitDistance:0}}},'motion-comparison.json':{rows:[{samples:Array.from({length:101},()=>({}))},{samples:Array.from({length:101},()=>({}))}]},'motion-hud-smoke.json':{errors:[],clean:{choices:{active:false}}},'motion-ui-controls.json':{hit:{stats:{energySpent:25}},layouts:[{},{}]},'motion-peach-controls.json':{returned:{r:{manualHero:true},flight:{fruit:1,healed:20}},clean:{flight:{fruit:2}}},'motion-terrain.json':{rows:[{terrain:'forest',gait:{wukong:{walking:true}}},{terrain:'shallow',gait:{wukong:{walking:true}}}]}};for(const [file,data] of Object.entries(files))writeFileSync(join(root,'reports',file),JSON.stringify(data));
+   }
    if(evidence!=='missing-strategy'&&evidence!=='missing'){
     writeFileSync(join(root,'reports/strategy-peach-browser.json'),JSON.stringify({rows:[{outcome:{flight:{healed:20}},end:{flight:{fruit:1,healed:20}}},{outcome:{flight:{healed:20}},end:{flight:{fruit:1,healed:20}}}]}));
     writeFileSync(join(root,'reports/strategy-baseline-audit.json'),JSON.stringify({rows:[{},{},{},{}]}));

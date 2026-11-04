@@ -4,7 +4,7 @@ import {distance} from './smoothMovement';
 export type ChoiceProfile=typeof CHOICES & {returnLead?:number;guardReadyOnLanding?:boolean};
 // Same two ordinary archers. Distances, real approach and target AI trigger
 // overlap; there is no spawn clock, frozen enemy or player-only damage bonus.
-export const STRATEGY_CHOICES:ChoiceProfile={...CHOICES,entrances:[{x:1040,y:432},{x:48,y:816}],returnLead:140,guardReadyOnLanding:true};
+export const STRATEGY_CHOICES:ChoiceProfile={...CHOICES,tree:{x:560,y:520},entrances:[{x:1040,y:432},{x:48,y:816}],returnLead:140,guardReadyOnLanding:true};
 export function encounterCue(r:EscortRun){
  const [far,near]=r.battle.enemies,b=r.battle;
  if(!r.started)return {stage:'ready',text:'开始护送：近侧自动护卫，远侧来敌需留意'};

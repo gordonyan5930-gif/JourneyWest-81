@@ -38,6 +38,8 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
       - name: Start read-only 661726ed comparison preview
         run: node scripts/start-combat-baseline.mjs
+      - name: Start read-only f228 gait comparison preview
+        run: node scripts/start-motion-baseline.mjs
       - id: browser
         run: npm run test:e2e -- --max-failures=1
       - name: Generate truthful studio report
