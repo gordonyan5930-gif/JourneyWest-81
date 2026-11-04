@@ -101,7 +101,11 @@ export class EscortRun {
  private tang(dt:number){const b=this.battle,t=b.tang,enemies=b.enemies.filter(a=>a.hp>0);
   const danger=b.time-this.lastTangHit<2||enemies.some(a=>distance(a,t)<180||a.targetId==='tang'&&distance(a,t)<=ARCHER.range&&segmentClear(a,t,this.nav));
   if(danger){this.dangerSeconds+=dt;if(this.dangerSince===null){this.dangerSince=b.time;this.evadeAnchor={x:t.x,y:t.y};}this.lastDanger=b.time;if(this.phase==='approach')this.phase='encounter';
-   if(b.time>=this.evadeAt){const goal=saferPoint(t,this.flight.active?{...b.hero,hp:0}:b.hero,enemies,this.evadeAnchor,this.nav,p=>this.space.free(p,'tang',true)&&this.space.friendClear(p,'tang'));this.evadeAt=b.time+GUARD.evadeHold;if(goal){this.evadeGoal=goal;this.evade.reset({x:t.x,y:t.y});this.space.command('tang',this.evade,goal);this.roadDirty=true;this.event('evade','tang');}}
+   if(b.time>=this.evadeAt){const hero=this.flight.active?{...b.hero,hp:0}:b.hero,open=(p:Point)=>this.space.free(p,'tang',true)&&this.space.friendClear(p,'tang');
+    // Prefer an escape around the visible body, not a route through its torso.
+    // Narrow/dangerous ground retains the existing safe escape fallback; no hard radius changes.
+    const spaced=hero.hp>0?saferPoint(t,hero,enemies,this.evadeAnchor,this.nav,p=>open(p)&&this.space.visualClear(p,'tang')):null;
+    const goal=spaced??saferPoint(t,hero,enemies,this.evadeAnchor,this.nav,open);this.evadeAt=b.time+GUARD.evadeHold;if(goal){this.evadeGoal=goal;this.evade.reset({x:t.x,y:t.y});this.space.command('tang',this.evade,goal);if(hero.hp>0){const plan=bodyPath(t,goal,this.space.view('tang'),hero);let length=0,prev:Point=t,safe=true;const margin=Math.min(60,...enemies.map(e=>distance(e,t)))-10;for(const n of plan.route){length+=distance(prev,n);for(const e of enemies){const dx=n.x-prev.x,dy=n.y-prev.y,k=Math.max(0,Math.min(1,((e.x-prev.x)*dx+(e.y-prev.y)*dy)/Math.max(.0001,dx*dx+dy*dy)));if(distance(e,{x:prev.x+k*dx,y:prev.y+k*dy})<margin)safe=false;}prev=n;}if(plan.route.length&&length<=270&&safe){this.evade.route=plan.route;this.evade.raw=plan.raw;}}this.roadDirty=true;this.event('evade','tang');}}
    this.stepTang(this.evade,dt);if(this.evadeGoal)Object.assign(t,this.evade.position);
   }else if(b.time-this.lastDanger>=GUARD.calm){this.dangerSince=null;this.evadeGoal=null;this.advanceRoad(dt);}
   else if(this.evadeGoal){this.stepTang(this.evade,dt);Object.assign(t,this.evade.position);}
