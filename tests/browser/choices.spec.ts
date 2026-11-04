@@ -1,7 +1,7 @@
 import {test,expect,type Page} from '@playwright/test';
 import {mkdirSync,writeFileSync} from 'node:fs';
 import {retry,clickWorld} from './escort-ui';
-const url='/?sample=quality-b&play=escort&encounter=choices&renderer=canvas&test';
+const url='/?sample=quality-b&play=escort&encounter=choices&profile=classic&renderer=canvas&test';
 async function read(p:Page){return p.evaluate(()=>{const q=(window as any).qualityTest;return {wall:Date.now(),escort:q.escort,battle:q.battle,flight:q.choices,actor:q.actor,camera:q.camera,metrics:q.metrics};});}
 async function visible(p:Page,pattern:RegExp){await expect(p.locator('#choice-status')).toContainText(pattern,{timeout:30000});}
 async function end(p:Page){await expect(p.locator('#escort-result')).toContainText(/护送试段成功|护送失败/,{timeout:95000});return read(p);}

@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-04",
+  "cases": [
+    {
+      "kind": "unit-expectation",
+      "file": "tests/strategy-choices.test.ts",
+      "observed": "final energy82.99999999999926 versus expected70 after long return",
+      "cause": "existing energy regeneration during elapsed flight; not resource refund",
+      "fix": "assert exactly one launch and fly-start, launch energy70; preserve existing regen; no game change"
+    },
+    {
+      "kind": "browser-expectation",
+      "observed": "Tang100/100, Wukong160/180; waited exclusively for Tang injury and timed out20s",
+      "cause": "independent normal play need not injure Tang; no guaranteed negative result",
+      "fix": "visible injury to either living ally or visible cleared threat; retain full-health refusal if no injury; never force health"
+    },
+    {
+      "kind": "local-full-run-load",
+      "observed": "121 passed/1 failed: old first-counter5s timeout during simultaneous video+unit capture; later bounded-worker run old quick-counter60s timeout",
+      "action": "stop repeating full local runs; keep original test budgets and worker config, no game changes; final complete CI authoritative; new strategy3 tests actually passed36.2s in last run"
+    }
+  ]
+}
