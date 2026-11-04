@@ -329,3 +329,8 @@ CI41779862816：122单元/23浏览器通过，1失败/11未执行（浏览器24.
 e1cc2105的CI首场发现交战避险时0.8秒躯干重叠，39浏览器后续未跑，不能写通过。保留失败数据motion-ci-overlap.json。只追加唐僧安全避险的软身体路径偏好，270最大绕行/原敌距安全检查，不扩大硬脚底、不改伤害速度；保留危险时原安全逃离fallback。最终结果以PR同提交CI为准，旧本地127/新负载126+1超时分别保留；真实Mac/声音未验证。
 
 本轮HUD追加回归：285158dd上普通开始按钮后2.5秒音频仍locked/loaded0，确认UI冒泡隔离阻止原解锁。仅将一次性真实pointerdown解锁移到capture阶段，保留UI不穿透，原声音/静音/增益/三声部规则不变；新增普通开始后running/8音频加载检查。不是正式Mac听感验收。记录motion-audio-unlock.json，最终结果以同SHA CI核验。
+
+### 已完成整套回归与最终音频修正边界（北京时间2026-11-04）
+285158dd1927cd81e5ea82f277101f6fcbef1397 / Actions41810704894：npm ci、构建、127单元、40浏览器通过（浏览器34.0分钟）；technicalStatus=passed、advanceAllowed=false。https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41810704894 。实际躯干峰值before0.635/current0.622，非零遮挡或品质通过。
+该运行期间发现新HUD普通开始后音频locked回归，1083ef73c7cc5e39b19d3a38163f0c50584278d5仅增加capture:true首次真实手势解锁。专项11.3秒通过（running/8音频、双击取消不走位、真实飞袭返程重试）；构建6.62秒通过。旧运行不能算修正后同SHA CI。
+分支已1083ef73，但PR HEAD/Actions记录尚未同步，继续核对、不关闭PR、不拿Preview冒充CI。此为真实QA补记，最终同提交结果/分包哈希期限以PR正文与机器报告为准，不新增功能。首轮重叠失败、负载超时仍保留，未放宽检查。影片无音轨；本轮Mac性能/动作自然度/音频听感/趣味待人工；额度需人工核对。
