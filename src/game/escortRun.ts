@@ -1,3 +1,4 @@
+import {type ChoiceProfile,encounterCue} from './choiceStrategy';
 import {FlightAction,CHOICES} from './flightAction';
 import {FIRST_COUNTER} from './firstCounterGuide';
 import {bodyLane,bodyPath,bodyDistance} from './bodyClearance';
@@ -19,20 +20,20 @@ export class EscortRun {
  phase:EscortPhase='ready';battle=new RangedBattle();heroMotion=new SmoothMover(ESCORT.heroStart);
  manualHero=false;returning=false;selectedEnemyId='';heroTarget='';melee:{targetId:string;left:number;step:number}|null=null;meleeNext=0;poseAt=-10;poseUntil=0;poseTargetId='';reviveAt=-10;actionKind='';meleeHits=0;deadFor=0;revives=0;
  evadeGoal:Point|null=null;evadeAt=0;lastDanger=-10;lastTangHit=-10;dangerSince:number|null=null;evadeAnchor:Point={...ESCORT.encounter};sosUntil=0;sosNext=0;sosCount=0;rescueCalls=0;heroPlanAt=0;
- threatEndedAt:number|null=null;dangerSeconds=0;eventSequence=0;
+ threatEndedAt:number|null=null;dangerSeconds=0;eventSequence=0;choiceStage='';
  events:{sequence:number;time:number;kind:string;unit?:string;target?:string;amount?:number;step?:number;duration?:number;x?:number;y?:number}[]=[];
  private road=new SmoothMover(ESCORT.start);private evade=new SmoothMover(ESCORT.start);private waypoints:Point[]=[];private roadIndex=0;private roadDirty=false;private brains=new Map<string,Brain>();
  postHeavy=new PostHeavyOrder();formation=new EscortFormation();space:UnitSpace;combo=new MeleeCombo();controls=new EnemyControl(this.battle);attackStep=0;poseFacingLeft=false;
  flight:FlightAction;
- constructor(public nav:Navigation=SAMPLE_NAV,public variant:'baseline'|'choices'='baseline'){this.flight=new FlightAction(variant==='choices');this.space=new UnitSpace(()=>[...(this.flight.airborne?[]:[this.battle.hero]),this.battle.tang,...this.battle.enemies],nav);}
+ constructor(public nav:Navigation=SAMPLE_NAV,public variant:'baseline'|'choices'='baseline',public choicesProfile:ChoiceProfile=CHOICES){this.flight=new FlightAction(variant==='choices');this.space=new UnitSpace(()=>[...(this.flight.airborne?[]:[this.battle.hero]),this.battle.tang,...this.battle.enemies],nav);}
  get finished(){return this.phase==='won'||this.phase==='lost';}get started(){return this.phase!=='ready';}
  get objective(){switch(this.phase){case 'ready':return '开始护送 · 基础护卫自动执行，破空击与复活由玩家决定';case 'approach':return '沿山路护送 · 前方两名弓箭手正在走来';case 'encounter':return this.manualHero?'悟空手动行进/驻守 · 可破空击或点击回援恢复护卫':'悟空自动护卫 · 可指定敌人破空击，或手动移动/回援';case 'depart':return '全部来敌及敌箭已处理 · 护送唐僧抵达终点';case 'won':return '护送试段成功 · 唐僧存活并已抵达终点';case 'lost':return '护送失败 · 唐僧已阵亡，可重新开始';}}
  private mover(p:Point,speed:number){return new SmoothMover({x:p.x,y:p.y},{...this.nav,speed:(x,y)=>this.nav.speed(x,y)*speed/MOVE.speed});}
  private event(kind:string,unit?:string,target?:string,amount?:number){this.events.push({sequence:++this.eventSequence,time:this.battle.time,kind,unit,target,amount});if(this.events.length>400)this.events.shift();}
  start(){
-  this.flight=new FlightAction(this.variant==='choices');this.battle=new RangedBattle(this.nav);this.controls=new EnemyControl(this.battle);this.combo.reset('new-run');this.attackStep=0;this.poseFacingLeft=false;const b=this.battle;b.enemies=(this.variant==='choices'?CHOICES.entrances:ESCORT.entrances).map((p,i)=>makeArcher(`archer-${i+1}`,p));for(const a of b.enemies)a.windupDuration=GUARD.archerWindup;b.archer=b.enemies[0];Object.assign(b.tang,ESCORT.start,{goal:{...ESCORT.start}});Object.assign(b.hero,ESCORT.heroStart,{hp:GUARD.hp,max:GUARD.hp});
+  this.flight=new FlightAction(this.variant==='choices');this.battle=new RangedBattle(this.nav);this.controls=new EnemyControl(this.battle);this.combo.reset('new-run');this.attackStep=0;this.poseFacingLeft=false;const b=this.battle;b.enemies=(this.variant==='choices'?this.choicesProfile.entrances:ESCORT.entrances).map((p,i)=>makeArcher(`archer-${i+1}`,p));for(const a of b.enemies)a.windupDuration=GUARD.archerWindup;b.archer=b.enemies[0];Object.assign(b.tang,ESCORT.start,{goal:{...ESCORT.start}});Object.assign(b.hero,ESCORT.heroStart,{hp:GUARD.hp,max:GUARD.hp});
   this.heroMotion=new SmoothMover(ESCORT.heroStart,this.nav);this.road=this.mover(ESCORT.start,ESCORT.tangSpeed);this.evade=this.mover(ESCORT.start,ESCORT.tangSpeed);this.planRoad(ESCORT.approachRoute);this.brains=new Map(b.enemies.map(a=>[a.id,{motion:this.mover(a,GUARD.enemySpeed),planAt:0,decideAt:0,walked:0,firstShot:null,hasDrawn:false}]));
-  this.manualHero=false;this.returning=false;this.selectedEnemyId='';this.heroTarget='';this.melee=null;this.meleeNext=0;this.poseAt=-10;this.poseUntil=0;this.poseTargetId='';this.reviveAt=-10;this.actionKind='';this.meleeHits=0;this.deadFor=0;this.revives=0;this.evadeGoal=null;this.evadeAt=0;this.lastDanger=-10;this.lastTangHit=-10;this.dangerSince=null;this.evadeAnchor={...ESCORT.start};this.sosUntil=0;this.sosNext=0;this.sosCount=0;this.rescueCalls=0;this.heroPlanAt=0;this.events=[];this.eventSequence=0;this.threatEndedAt=null;this.dangerSeconds=0;
+  this.manualHero=false;this.returning=false;this.selectedEnemyId='';this.heroTarget='';this.melee=null;this.meleeNext=0;this.poseAt=-10;this.poseUntil=0;this.poseTargetId='';this.reviveAt=-10;this.actionKind='';this.meleeHits=0;this.deadFor=0;this.revives=0;this.evadeGoal=null;this.evadeAt=0;this.lastDanger=-10;this.lastTangHit=-10;this.dangerSince=null;this.evadeAnchor={...ESCORT.start};this.sosUntil=0;this.sosNext=0;this.sosCount=0;this.rescueCalls=0;this.heroPlanAt=0;this.events=[];this.eventSequence=0;this.choiceStage='';this.threatEndedAt=null;this.dangerSeconds=0;
   this.postHeavy.clear('',true);this.space.clear();this.formation.reset();this.combo.reset('retry');this.attackStep=0;this.controls=new EnemyControl(this.battle);b.canOccupy=(u,p)=>this.space.free(p,u.id)&&this.space.canTraverse(u.id,u,p);this.phase='approach';b.driver=dt=>this.drive(dt);b.onDamage=e=>this.damaged(e);b.start();this.event('warning');
  }
  command(c:EscortCommand){const b=this.battle;if(!this.started||this.finished)return false;
@@ -108,7 +109,7 @@ export class EscortRun {
   if(!danger&&b.time-this.lastDanger>=GUARD.calm)this.sosUntil=0;
   t.goal={x:t.x,y:t.y};
  }
- private drive(dt:number){this.controls.update(dt);this.enemies(dt);const order=this.postHeavy.poll(this);if(order){const ok=this.command({type:'cast',targetId:order});this.event(ok?'queue-execute':'queue-reject','wukong',order);}this.hero(dt);this.tang(dt);}
+ private drive(dt:number){this.controls.update(dt);this.enemies(dt);const order=this.postHeavy.poll(this);if(order){const ok=this.command({type:'cast',targetId:order});this.event(ok?'queue-execute':'queue-reject','wukong',order);}this.hero(dt);this.tang(dt);if(this.choicesProfile.guardReadyOnLanding){const cue=encounterCue(this);if(cue.stage!==this.choiceStage){this.choiceStage=cue.stage;this.event('encounter-'+cue.stage);}}}
  update(delta:number){if(this.finished){if(this.flight.active){this.flight.stopForResult(this);this.flight.update(this,Math.min(delta,.1));}return;}if(!this.started)return;const b=this.battle;b.update(delta);this.combo.expire(b.time);
   if(b.safe&&this.threatEndedAt===null)this.threatEndedAt=b.time;
   if(b.failed||b.tang.hp<=0){this.phase='lost';this.flight.stopForResult(this);if(this.postHeavy.pending||this.postHeavy.completion)this.postHeavy.clear('终局取消预约',true);this.melee=null;this.combo.reset('result');this.poseUntil=0;return;}
