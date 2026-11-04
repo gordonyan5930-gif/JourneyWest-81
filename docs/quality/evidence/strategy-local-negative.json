@@ -18,6 +18,13 @@
       "kind": "local-full-run-load",
       "observed": "121 passed/1 failed: old first-counter5s timeout during simultaneous video+unit capture; later bounded-worker run old quick-counter60s timeout",
       "action": "stop repeating full local runs; keep original test budgets and worker config, no game changes; final complete CI authoritative; new strategy3 tests actually passed36.2s in last run"
+    },
+    {
+      "kind": "evidence-integrity",
+      "observed": "read-only audit found before.enemies.threat shares a mutable inner map with simulation",
+      "impact": "no simulation or at-input digest changes, but serialized before could differ after damage",
+      "fix": "structuredClone snapshot and recompute reported before SHA256 after every trace; also visible injury/breather locator first avoids simultaneous-match ambiguity",
+      "gameChanges": false
     }
   ]
 }

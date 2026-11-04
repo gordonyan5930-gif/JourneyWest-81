@@ -1,6 +1,6 @@
 import {createHash} from 'node:crypto';
 export const STEP=1/60;
-export function state(r:any){return {time:r.battle.time,hero:{...r.battle.hero},tang:{...r.battle.tang},enemies:r.battle.enemies.map((a:any)=>({...a})),events:r.events.map((e:any)=>({...e})),energy:r.battle.energy};}
+export function state(r:any){return structuredClone({time:r.battle.time,hero:{...r.battle.hero},tang:{...r.battle.tang},enemies:r.battle.enemies.map((a:any)=>({...a})),events:r.events.map((e:any)=>({...e})),energy:r.battle.energy});}
 export function trace(Run:any,config?:any,at=8,action='fly',horizon=60,prefix:{at:number;type:string;targetId?:string}[]=[]){const r=config?new Run(undefined,'choices',config):new Run(undefined,'choices');r.start();let prefixIndex=0;while(r.battle.time<at&&!r.finished){while(prefixIndex<prefix.length&&r.battle.time>=prefix[prefixIndex].at){const {at:_,...command}=prefix[prefixIndex++];r.command(command);}r.update(STEP);}const before=state(r),prefixDigest=createHash('sha256').update(JSON.stringify(before)).digest('hex');const phases:any[]=[],samples:any[]=[];let phase=r.flight.phase,entered=r.battle.time,landed:any=null,reengage:any=null,defeatedAt:any=null,previousHp=r.battle.enemies[0].hp,cancelled=false;
  const accepted=action==='stay'?true:action==='peach'?r.command({type:'pick-peach'}):action==='staff'?r.command({type:'cast',targetId:'archer-1'}):r.command({type:'fly',targetId:'archer-1'});const spent=before.energy-r.battle.energy;phase=r.flight.phase;
  for(let i=0;i<horizon/STEP;i++){
