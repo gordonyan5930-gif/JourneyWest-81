@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:
+      EVIDENCE_SCOPE: motion
       SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
     steps:
       - uses: actions/checkout@v4
@@ -27,6 +28,16 @@ jobs:
         with:
           node-version: 24
       - run: mkdir -p reports && rm -f docs/p0-a-screenshot.png
+      - name: Prepare artifact quota probe
+        run: node --input-type=module -e 'import fs from "node:fs";fs.writeFileSync("reports/storage-probe.json",JSON.stringify({sourceSha:process.env.SOURCE_SHA,purpose:"quota preflight before expensive browser capture; not account budget monitoring"}));'
+      - name: Check evidence storage before expensive tests
+        id: storage_probe
+        uses: actions/upload-artifact@v4
+        with:
+          name: studio-storage-probe-${{ github.run_attempt }}
+          retention-days: 1
+          path: reports/storage-probe.json
+          if-no-files-found: error
       - id: install
         run: npm ci
       - id: build
@@ -60,147 +71,147 @@ jobs:
         if: always()
         run: node scripts/package-review-evidence.mjs
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-report-01
           retention-days: 7
           if-no-files-found: ignore
           path: evidence/report-01/
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-report-02
           retention-days: 7
           if-no-files-found: ignore
           path: evidence/report-02/
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-screenshots-01
           retention-days: 7
           if-no-files-found: ignore
           path: evidence/screenshots-01/
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-screenshots-02
           retention-days: 7
           if-no-files-found: ignore
           path: evidence/screenshots-02/
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-screenshots-03
           retention-days: 7
           if-no-files-found: ignore
           path: evidence/screenshots-03/
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-screenshots-04
           retention-days: 7
           if-no-files-found: ignore
           path: evidence/screenshots-04/
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-screenshots-05
           retention-days: 7
           if-no-files-found: ignore
           path: evidence/screenshots-05/
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-screenshots-06
           retention-days: 7
           if-no-files-found: ignore
           path: evidence/screenshots-06/
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-video-01
           retention-days: 7
           if-no-files-found: ignore
           path: evidence/video-01/
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-video-02
           retention-days: 7
           if-no-files-found: ignore
           path: evidence/video-02/
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-video-03
           retention-days: 7
           if-no-files-found: ignore
           path: evidence/video-03/
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-video-04
           retention-days: 7
           if-no-files-found: ignore
           path: evidence/video-04/
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-video-05
           retention-days: 7
           if-no-files-found: ignore
           path: evidence/video-05/
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-video-06
           retention-days: 7
           if-no-files-found: ignore
           path: evidence/video-06/
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-audio-01
           retention-days: 7
           if-no-files-found: ignore
           path: evidence/audio-01/
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-debug-01
           retention-days: 7
           if-no-files-found: ignore
           path: evidence/debug-01/
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-debug-02
           retention-days: 7
           if-no-files-found: ignore
           path: evidence/debug-02/
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-debug-03
           retention-days: 7
           if-no-files-found: ignore
           path: evidence/debug-03/
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-debug-04
           retention-days: 7
           if-no-files-found: ignore
           path: evidence/debug-04/
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-debug-05
           retention-days: 7
           if-no-files-found: ignore
           path: evidence/debug-05/
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.storage_probe.outcome == 'success'
         with:
           name: studio-debug-06
           retention-days: 7

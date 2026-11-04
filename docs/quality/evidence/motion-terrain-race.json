@@ -1,0 +1,238 @@
+{
+  "sourceSha": "a0532a26d750460480bfb98c030e96d885fd858d",
+  "ciRun": 41815362169,
+  "ci": "4 browser passed/1 diagnostic failed/35 not run;127unit passed; all artifact uploads rejected for quota",
+  "originalRouteFailure": {
+    "phase": "won",
+    "time": 41.8463,
+    "hero": {
+      "x": 873.702,
+      "y": 536.554
+    },
+    "reason": "forest then long return to ford reached genuine win freeze; no change to win condition"
+  },
+  "shorterRoutePilot": {
+    "phase": "depart",
+    "actor": {
+      "x": 269.5817770412638,
+      "y": 674.1444717268266,
+      "frame": "6",
+      "registeredFootY": 674.1444717268266,
+      "texture": "sample-wukong",
+      "gaitDistance": 2663.5452402762953,
+      "animation": "sample-idle"
+    },
+    "lastSamples": [
+      {
+        "time": 39.99429666666657,
+        "hero": {
+          "x": 269.5817770412638,
+          "y": 674.1444717268266,
+          "hp": 160
+        },
+        "tang": {
+          "x": 1439.2749063297315,
+          "y": 284.56795626275465,
+          "hp": 80
+        },
+        "gait": {
+          "wukong": {
+            "travelled": 2663.5452402762953,
+            "phase": 0.781653931038351,
+            "frame": 6,
+            "speed": 0,
+            "delta": 0,
+            "left": true,
+            "walking": false,
+            "starts": 17,
+            "stops": 17,
+            "flips": 13,
+            "ignoredDistance": 1.9079640266668985,
+            "stride": 112
+          },
+          "tang": {
+            "travelled": 2018.2236829417761,
+            "phase": 0.22779603677220167,
+            "frame": 1,
+            "speed": 69.72912249552468,
+            "delta": 1.8589784057306777,
+            "left": false,
+            "walking": true,
+            "starts": 4,
+            "stops": 3,
+            "flips": 2,
+            "ignoredDistance": 0,
+            "stride": 80
+          }
+        },
+        "terrain": "forest",
+        "motion": {
+          "mode": "smooth",
+          "speed": 0,
+          "heading": -3.8153852793180474,
+          "rawNodes": 2,
+          "blockedSteps": 8,
+          "travelled": 2663.5452402762953
+        }
+      },
+      {
+        "time": 40.06262666666657,
+        "hero": {
+          "x": 269.5817770412638,
+          "y": 674.1444717268266,
+          "hp": 160
+        },
+        "tang": {
+          "x": 1443.3929724668765,
+          "y": 283.8071443421822,
+          "hp": 80
+        },
+        "gait": {
+          "wukong": {
+            "travelled": 2663.5452402762953,
+            "phase": 0.781653931038351,
+            "frame": 6,
+            "speed": 0,
+            "delta": 0,
+            "left": true,
+            "walking": false,
+            "starts": 17,
+            "stops": 17,
+            "flips": 13,
+            "ignoredDistance": 1.9079640266668985,
+            "stride": 112
+          },
+          "tang": {
+            "travelled": 2022.4114393206005,
+            "phase": 0.28014299150750616,
+            "frame": 2,
+            "speed": 56.340256404262355,
+            "delta": 0.9391920742590371,
+            "left": false,
+            "walking": true,
+            "starts": 4,
+            "stops": 3,
+            "flips": 2,
+            "ignoredDistance": 0,
+            "stride": 80
+          }
+        },
+        "terrain": "forest",
+        "motion": {
+          "mode": "smooth",
+          "speed": 0,
+          "heading": -3.8153852793180474,
+          "rawNodes": 2,
+          "blockedSteps": 8,
+          "travelled": 2663.5452402762953
+        }
+      },
+      {
+        "time": 40.11261666666656,
+        "hero": {
+          "x": 269.5817770412638,
+          "y": 674.1444717268266,
+          "hp": 160
+        },
+        "tang": {
+          "x": 1445.8853598262513,
+          "y": 283.34667626067375,
+          "hp": 80
+        },
+        "gait": {
+          "wukong": {
+            "travelled": 2663.5452402762953,
+            "phase": 0.781653931038351,
+            "frame": 6,
+            "speed": 0,
+            "delta": 0,
+            "left": true,
+            "walking": false,
+            "starts": 17,
+            "stops": 17,
+            "flips": 13,
+            "ignoredDistance": 1.9079640266668985,
+            "stride": 112
+          },
+          "tang": {
+            "travelled": 2024.946005477413,
+            "phase": 0.3118250684676639,
+            "frame": 2,
+            "speed": 48.02822490157481,
+            "delta": 0.7996699446112204,
+            "left": false,
+            "walking": true,
+            "starts": 4,
+            "stops": 3,
+            "flips": 2,
+            "ignoredDistance": 0,
+            "stride": 80
+          }
+        },
+        "terrain": "forest",
+        "motion": {
+          "mode": "smooth",
+          "speed": 0,
+          "heading": -3.8153852793180474,
+          "rawNodes": 2,
+          "blockedSteps": 8,
+          "travelled": 2663.5452402762953
+        }
+      },
+      {
+        "time": 40.162596666666566,
+        "hero": {
+          "x": 269.5817770412638,
+          "y": 674.1444717268266,
+          "hp": 160
+        },
+        "tang": {
+          "x": 1448.125778331691,
+          "y": 282.92010870705485,
+          "hp": 80
+        },
+        "gait": {
+          "wukong": {
+            "travelled": 2663.5452402762953,
+            "phase": 0.781653931038351,
+            "frame": 6,
+            "speed": 0,
+            "delta": 0,
+            "left": true,
+            "walking": false,
+            "starts": 17,
+            "stops": 17,
+            "flips": 13,
+            "ignoredDistance": 1.9079640266668985,
+            "stride": 112
+          },
+          "tang": {
+            "travelled": 2027.2267061044674,
+            "phase": 0.34033382630584297,
+            "frame": 2,
+            "speed": 45.52746475064726,
+            "delta": 0.7584875627457768,
+            "left": false,
+            "walking": true,
+            "starts": 4,
+            "stops": 3,
+            "flips": 2,
+            "ignoredDistance": 0,
+            "stride": 80
+          }
+        },
+        "terrain": "forest",
+        "motion": {
+          "mode": "smooth",
+          "speed": 0,
+          "heading": -3.8153852793180474,
+          "rawNodes": 2,
+          "blockedSteps": 8,
+          "travelled": 2663.5452402762953
+        }
+      }
+    ],
+    "reason": "both terrains traversed, but distance<6 plus fixed400ms was not a reliable complete-stop observation"
+  },
+  "fix": "nearby shallow then northern forest1192,344; wait observed stable idle samples before asserting; no actor speed, health, clock or outcome edits"
+}
