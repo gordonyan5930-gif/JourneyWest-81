@@ -61,7 +61,7 @@ export function startQualitySample(){
  }
  const renderer=new URLSearchParams(location.search).get('renderer')??'auto';
  const select=document.querySelector('#sample-renderer') as HTMLSelectElement;select.value=renderer;select.onchange=()=>{const u=new URL(location.href);u.searchParams.set('renderer',select.value);location.href=u.href;};
- const audio=escortEntry?new CombatAudio():null;if(audio){document.addEventListener('pointerdown',()=>audio.unlock(),{once:true});const mute=document.querySelector('#sound-toggle')!;const sync=()=>{mute.textContent=audio.muted?'声音：关':'声音：开';mute.setAttribute('aria-pressed',String(audio.muted));};mute.addEventListener('click',()=>{audio.toggle();sync();});sync();}
+ const audio=escortEntry?new CombatAudio():null;if(audio){document.addEventListener('pointerdown',()=>audio.unlock(),{once:true,capture:true});const mute=document.querySelector('#sound-toggle')!;const sync=()=>{mute.textContent=audio.muted?'声音：关':'声音：开';mute.setAttribute('aria-pressed',String(audio.muted));};mute.addEventListener('click',()=>{audio.toggle();sync();});sync();}
  const hud=tacticalChoices?mountBattleHud():null;
  let scene:SampleScene;const frames:number[]=[];let last=0;let ticks=0;
  const feedback=new StatusFeedback(()=>performance.now(),s=>{document.querySelector('#sample-status')!.textContent=s;});
