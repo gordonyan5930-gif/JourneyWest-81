@@ -1,7 +1,10 @@
 name: Build and test
-on: [pull_request]
+on:
+  pull_request:
+  push:
+    branches: [feat/p0-a-prototype]
 concurrency:
-  group: studio-pr-${{ github.event.pull_request.number }}
+  group: studio-${{ github.event_name }}-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true
 permissions:
   contents: read
@@ -9,6 +12,9 @@ permissions:
   actions: read
 jobs:
   verify:
+    # This branch runs on push even when GitHub PR head synchronization is delayed.
+    # Other PRs retain normal checks; do not duplicate this branch's synchronize event.
+    if: github.event_name != 'pull_request' || github.event.action != 'synchronize' || github.head_ref != 'feat/p0-a-prototype'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:

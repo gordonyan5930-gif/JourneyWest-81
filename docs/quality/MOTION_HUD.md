@@ -59,3 +59,5 @@ e1cc2105 / Actions41809312424：构建/127单元通过；首场连续录像在�
 隔离复查first-counter.test.ts：4/4通过，8.04秒，未调整测试阈值。
 
 本轮HUD追加回归：285158dd上普通开始按钮后2.5秒音频仍locked/loaded0，确认UI冒泡隔离阻止原解锁。仅将一次性真实pointerdown解锁移到capture阶段，保留UI不穿透，原声音/静音/增益/三声部规则不变；新增普通开始后running/8音频加载检查。不是正式Mac听感验收。记录motion-audio-unlock.json，最终结果以同SHA CI核验。
+
+CI触发适配：分支86a61712含最终音频修正/QA记录，但GitHub PR仍停285158dd，未产生新SHA的PR工作流。为当前feat/p0-a-prototype补充push触发，跳过该分支重复synchronize任务；其他PR维持原检查，事件分组避免跳过的PR运行取消push。SOURCE_SHA/checkout在push使用真实分支SHA。只修触发，不改测试/阈值/权限/main/Production，最终以当前push完整CI实际核验。

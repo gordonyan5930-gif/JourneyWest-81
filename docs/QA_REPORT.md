@@ -334,3 +334,5 @@ e1cc2105的CI首场发现交战避险时0.8秒躯干重叠，39浏览器后续�
 285158dd1927cd81e5ea82f277101f6fcbef1397 / Actions41810704894：npm ci、构建、127单元、40浏览器通过（浏览器34.0分钟）；technicalStatus=passed、advanceAllowed=false。https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/41810704894 。实际躯干峰值before0.635/current0.622，非零遮挡或品质通过。
 该运行期间发现新HUD普通开始后音频locked回归，1083ef73c7cc5e39b19d3a38163f0c50584278d5仅增加capture:true首次真实手势解锁。专项11.3秒通过（running/8音频、双击取消不走位、真实飞袭返程重试）；构建6.62秒通过。旧运行不能算修正后同SHA CI。
 分支已1083ef73，但PR HEAD/Actions记录尚未同步，继续核对、不关闭PR、不拿Preview冒充CI。此为真实QA补记，最终同提交结果/分包哈希期限以PR正文与机器报告为准，不新增功能。首轮重叠失败、负载超时仍保留，未放宽检查。影片无音轨；本轮Mac性能/动作自然度/音频听感/趣味待人工；额度需人工核对。
+
+CI触发适配：分支86a61712含最终音频修正/QA记录，但GitHub PR仍停285158dd，未产生新SHA的PR工作流。为当前feat/p0-a-prototype补充push触发，跳过该分支重复synchronize任务；其他PR维持原检查，事件分组避免跳过的PR运行取消push。SOURCE_SHA/checkout在push使用真实分支SHA。只修触发，不改测试/阈值/权限/main/Production，最终以当前push完整CI实际核验。

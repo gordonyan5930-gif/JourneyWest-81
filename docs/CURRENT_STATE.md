@@ -109,3 +109,5 @@ RangedBattle局部泛化敌数组/受击对象/targetId和sourceId，保持RANGE
 e1cc2105的CI首场发现交战避险时0.8秒躯干重叠，39浏览器后续未跑，不能写通过。保留失败数据motion-ci-overlap.json。只追加唐僧安全避险的软身体路径偏好，270最大绕行/原敌距安全检查，不扩大硬脚底、不改伤害速度；保留危险时原安全逃离fallback。最终结果以PR同提交CI为准，旧本地127/新负载126+1超时分别保留；真实Mac/声音未验证。
 
 本轮HUD追加回归：285158dd上普通开始按钮后2.5秒音频仍locked/loaded0，确认UI冒泡隔离阻止原解锁。仅将一次性真实pointerdown解锁移到capture阶段，保留UI不穿透，原声音/静音/增益/三声部规则不变；新增普通开始后running/8音频加载检查。不是正式Mac听感验收。记录motion-audio-unlock.json，最终结果以同SHA CI核验。
+
+CI触发适配：分支86a61712含最终音频修正/QA记录，但GitHub PR仍停285158dd，未产生新SHA的PR工作流。为当前feat/p0-a-prototype补充push触发，跳过该分支重复synchronize任务；其他PR维持原检查，事件分组避免跳过的PR运行取消push。SOURCE_SHA/checkout在push使用真实分支SHA。只修触发，不改测试/阈值/权限/main/Production，最终以当前push完整CI实际核验。
