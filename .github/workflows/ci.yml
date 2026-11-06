@@ -1,8 +1,19 @@
 name: Build and test
 on:
-  pull_request:
   push:
     branches: [feat/p0-a-prototype]
+  pull_request:
+    types: [opened, reopened, synchronize, labeled]
+  workflow_dispatch:
+    inputs:
+      full_evidence:
+        description: Explicit current-SHA full evidence (not automatic approval)
+        type: boolean
+        default: false
+      source_sha:
+        description: Required full40-character current development HEAD
+        type: string
+        required: false
 concurrency:
   group: studio-${{ github.event_name }}-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true
@@ -12,32 +23,27 @@ permissions:
   actions: read
 jobs:
   verify:
-    # This branch runs on push even when GitHub PR head synchronization is delayed.
-    # Other PRs retain normal checks; do not duplicate this branch's synchronize event.
-    if: github.event_name != 'pull_request' || github.event.action != 'synchronize' || github.head_ref != 'feat/p0-a-prototype'
+    if: >-
+      (github.event_name != 'pull_request' || github.event.action != 'synchronize' || github.head_ref != 'feat/p0-a-prototype') &&
+      (github.event_name != 'pull_request' || github.event.action != 'labeled' || startsWith(github.event.label.name, 'full:'))
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:
-      EVIDENCE_SCOPE: motion
       SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: 24
       - run: mkdir -p reports && rm -f docs/p0-a-screenshot.png
-      - name: Prepare artifact quota probe
-        run: node --input-type=module -e 'import fs from "node:fs";fs.writeFileSync("reports/storage-probe.json",JSON.stringify({sourceSha:process.env.SOURCE_SHA,purpose:"quota preflight before expensive browser capture; not account budget monitoring"}));'
-      - name: Check evidence storage before expensive tests
-        id: storage_probe
-        uses: actions/upload-artifact@v4
-        with:
-          name: studio-storage-probe-${{ github.run_attempt }}
-          retention-days: 1
-          path: reports/storage-probe.json
-          if-no-files-found: error
+      - name: Resolve request and query repository inventory (nonblocking)
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/artifact-inventory.mjs
       - id: install
         run: npm ci
       - id: build
@@ -51,15 +57,16 @@ jobs:
           node --experimental-transform-types scripts/logic-benchmark.mjs src/game/world.ts after
       - id: browser_install
         run: npx playwright install --with-deps chromium
-      - name: Install video duration probe
+      - name: Install diagnostic media tools
+        if: env.CAPTURE_FULL_EVIDENCE == 'true'
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
-      - name: Start read-only 661726ed comparison preview
-        run: node scripts/start-combat-baseline.mjs
-      - name: Start read-only f228 gait comparison preview
-        run: node scripts/start-motion-baseline.mjs
+      - name: Start read-only comparison previews
+        run: |
+          node scripts/start-combat-baseline.mjs
+          node scripts/start-motion-baseline.mjs
       - id: browser
-        run: npm run test:e2e -- --max-failures=1
-      - name: Generate truthful studio report
+        run: npm run test:e2e
+      - name: Generate test result (not upload result)
         if: always()
         env:
           STEP_RESULTS: ${{ toJSON(steps) }}
@@ -67,153 +74,57 @@ jobs:
         run: |
           node --input-type=module -e 'import fs from "node:fs";fs.mkdirSync("reports",{recursive:true});fs.writeFileSync("reports/steps.json",process.env.STEP_RESULTS);'
           node scripts/studio-report.mjs
-      - name: Prepare bounded independent review downloads
+      - name: Refresh upload inventory (nonblocking)
+        if: always()
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/artifact-inventory.mjs --upload
+      - name: Prepare bounded reports and requested evidence
+        id: package
         if: always()
         run: node scripts/package-review-evidence.mjs
       - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
+        id: upload_report
+        if: always() && steps.package.outputs.report == 'true'
+        continue-on-error: true
         with:
-          name: studio-report-01
+          name: report-${{ github.run_attempt }}
           retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/report-01/
+          if-no-files-found: error
+          path: evidence-upload/report.zip
       - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
+        id: upload_diagnostics
+        if: always() && steps.package.outputs.diagnostics == 'true'
+        continue-on-error: true
         with:
-          name: studio-report-02
-          retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/report-02/
+          name: diagnostics-${{ github.run_attempt }}
+          retention-days: 3
+          if-no-files-found: error
+          path: evidence-upload/diagnostics.zip
       - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
+        id: upload_acceptance_1
+        if: always() && steps.package.outputs.acceptance_1 == 'true'
+        continue-on-error: true
         with:
-          name: studio-screenshots-01
-          retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/screenshots-01/
+          name: acceptance-1-${{ github.run_attempt }}
+          retention-days: 3
+          if-no-files-found: error
+          path: evidence-upload/acceptance-1.zip
       - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
+        id: upload_acceptance_2
+        if: always() && steps.package.outputs.acceptance_2 == 'true'
+        continue-on-error: true
         with:
-          name: studio-screenshots-02
-          retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/screenshots-02/
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
-        with:
-          name: studio-screenshots-03
-          retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/screenshots-03/
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
-        with:
-          name: studio-screenshots-04
-          retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/screenshots-04/
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
-        with:
-          name: studio-screenshots-05
-          retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/screenshots-05/
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
-        with:
-          name: studio-screenshots-06
-          retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/screenshots-06/
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
-        with:
-          name: studio-video-01
-          retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/video-01/
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
-        with:
-          name: studio-video-02
-          retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/video-02/
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
-        with:
-          name: studio-video-03
-          retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/video-03/
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
-        with:
-          name: studio-video-04
-          retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/video-04/
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
-        with:
-          name: studio-video-05
-          retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/video-05/
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
-        with:
-          name: studio-video-06
-          retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/video-06/
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
-        with:
-          name: studio-audio-01
-          retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/audio-01/
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
-        with:
-          name: studio-debug-01
-          retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/debug-01/
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
-        with:
-          name: studio-debug-02
-          retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/debug-02/
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
-        with:
-          name: studio-debug-03
-          retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/debug-03/
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
-        with:
-          name: studio-debug-04
-          retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/debug-04/
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
-        with:
-          name: studio-debug-05
-          retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/debug-05/
-      - uses: actions/upload-artifact@v4
-        if: always() && steps.storage_probe.outcome == 'success'
-        with:
-          name: studio-debug-06
-          retention-days: 7
-          if-no-files-found: ignore
-          path: evidence/debug-06/
+          name: acceptance-2-${{ github.run_attempt }}
+          retention-days: 3
+          if-no-files-found: error
+          path: evidence-upload/acceptance-2.zip
+      - name: Publish separate upload result and actual expiry
+        if: always()
+        env:
+          UPLOAD_STEPS: ${{ toJSON(steps) }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          node --input-type=module -e 'import fs from "node:fs";fs.mkdirSync("reports",{recursive:true});fs.writeFileSync("reports/upload-steps.json",process.env.UPLOAD_STEPS);'
+          node scripts/evidence-receipt.mjs

@@ -12,6 +12,9 @@ test('separate render baseline and bounded scene object allocation',async({page}
  expect(Math.max(...frames.map((s:any)=>s.textObjects))).toBeLessThanOrEqual(40);
  expect(Math.max(...frames.map((s:any)=>s.sceneObjects))).toBeLessThanOrEqual(45);
  const mean=(key:string)=>frames.reduce((sum:number,s:any)=>sum+s[key],0)/frames.length;
- const report={mode:testInfo.project.name,rendererInfo:data.rendererInfo,sourceSha:process.env.SOURCE_SHA??'local',samples:frames.length,averageFps:1000/avg,p95FrameMs:sorted[Math.floor(sorted.length*.95)],meanLogicMs:mean('logicMs'),meanDrawMs:mean('drawMs'),meanDomMs:mean('domMs'),maxTextObjects:Math.max(...frames.map((s:any)=>s.textObjects)),maxSceneObjects:Math.max(...frames.map((s:any)=>s.sceneObjects)),peakEnemies:Math.max(...frames.map((s:any)=>s.enemies)),minEnemies:Math.min(...frames.map((s:any)=>s.enemies)),hardwareConcurrency:data.hardwareConcurrency,userAgent:data.userAgent,heapUsedBytes:data.heapUsedBytes,durationMs:5000,productQualityApproved:false};
+ const report={captureVideoMode:'off',mode:testInfo.project.name,rendererInfo:data.rendererInfo,sourceSha:process.env.SOURCE_SHA??'local',samples:frames.length,averageFps:1000/avg,p95FrameMs:sorted[Math.floor(sorted.length*.95)],meanLogicMs:mean('logicMs'),meanDrawMs:mean('drawMs'),meanDomMs:mean('domMs'),maxTextObjects:Math.max(...frames.map((s:any)=>s.textObjects)),maxSceneObjects:Math.max(...frames.map((s:any)=>s.sceneObjects)),peakEnemies:Math.max(...frames.map((s:any)=>s.enemies)),minEnemies:Math.min(...frames.map((s:any)=>s.enemies)),hardwareConcurrency:data.hardwareConcurrency,userAgent:data.userAgent,heapUsedBytes:data.heapUsedBytes,durationMs:5000,productQualityApproved:false};
  mkdirSync('reports',{recursive:true});writeFileSync(`reports/${testInfo.project.name}.json`,JSON.stringify(report,null,2));console.log('RENDER_BASELINE '+JSON.stringify(report));
 });
+
+// Ordinary verification keeps failure screenshots/trace, not successful movies.
+test.use({video:'off'});

@@ -3,11 +3,11 @@ import {mkdtempSync,mkdirSync,writeFileSync,readFileSync,rmSync} from 'node:fs';
 import {tmpdir} from 'node:os';import {join,resolve} from 'node:path';import {spawnSync} from 'node:child_process';
 describe('truthful studio stage reporting',()=>{
  for(const [outcome,evidence,expected] of [
-  ['success','valid','passed'],['failure','valid','failed'],['skipped','valid','incomplete'],
-  ['success','missing','incomplete'],['success','broken','incomplete'],['success','failed-unit','failed'],['success','failed-browser','failed'],['success','missing-pressure','incomplete'],['success','missing-experiment-video','incomplete'],['success','missing-tactical','incomplete'],['success','missing-experience','incomplete'],['success','missing-first-counter','incomplete'],['success','missing-choices','incomplete'],['success','missing-strategy','incomplete'],['success','missing-motion','incomplete']
+  ['success','valid','passed'],['success','inventory-failed','passed'],['failure','valid','failed'],['skipped','valid','incomplete'],
+  ['success','missing','incomplete'],['success','broken','incomplete'],['success','failed-unit','failed'],['success','failed-browser','failed'],['success','missing-pressure','incomplete'],['success','missing-experiment-video','passed'],['success','missing-tactical','incomplete'],['success','missing-experience','incomplete'],['success','missing-first-counter','incomplete'],['success','missing-choices','incomplete'],['success','missing-strategy','incomplete'],['success','missing-motion','incomplete']
  ] as const){it(`${outcome}/${evidence} is ${expected}, never art approval`,()=>{
   const root=mkdtempSync(join(tmpdir(),'studio-report-'));try{
-   mkdirSync(join(root,'reports'));writeFileSync(join(root,'reports/steps.json'),JSON.stringify(Object.fromEntries(['install','build','unit','browser_install','browser'].map(k=>[k,{outcome}]))));
+   mkdirSync(join(root,'reports'));writeFileSync(join(root,'reports/steps.json'),JSON.stringify({...Object.fromEntries(['install','build','unit','browser_install','browser'].map(k=>[k,{outcome}])),...(evidence==='inventory-failed'?{inventory:{outcome:'failure'}}:{})}));
    if(evidence!=='missing-motion'&&evidence!=='missing'){
     const files={'motion-logic.json':{after:{summary:{hardContactSeconds:0,heroExitDistance:0}}},'motion-comparison.json':{rows:[{samples:Array.from({length:101},()=>({}))},{samples:Array.from({length:101},()=>({}))}]},'motion-hud-smoke.json':{errors:[],clean:{choices:{active:false}}},'motion-ui-controls.json':{hit:{stats:{energySpent:25}},layouts:[{},{}]},'motion-peach-controls.json':{returned:{r:{manualHero:true},flight:{fruit:1,healed:20}},clean:{flight:{fruit:2}}},'motion-terrain.json':{rows:[{terrain:'forest',gait:{wukong:{walking:true}}},{terrain:'shallow',gait:{wukong:{walking:true}}}]}};for(const [file,data] of Object.entries(files))writeFileSync(join(root,'reports',file),JSON.stringify(data));
    }
@@ -33,8 +33,8 @@ describe('truthful studio stage reporting',()=>{
     writeFileSync(join(root,'reports/unit.json'),evidence==='broken'?'{bad':JSON.stringify({numTotalTests:2,numPassedTests:2,numFailedTests:evidence==='failed-unit'?1:0}));
     writeFileSync(join(root,'reports/browser.json'),JSON.stringify({stats:{expected:2,unexpected:evidence==='failed-browser'?1:0,flaky:0,skipped:0},suites:evidence==='missing-experiment-video'?[{file:'quality-experiment.spec.ts'}]:[]}));
    }
-   const r=spawnSync(process.execPath,[resolve('scripts/studio-report.mjs')],{cwd:root,env:{...process.env,GITHUB_TOKEN:'',GITHUB_EVENT_PATH:'',GITHUB_STEP_SUMMARY:''},encoding:'utf8'});expect(r.status).toBe(expected==='passed'?0:1);
-   const report=JSON.parse(readFileSync(join(root,'reports/dashboard.json'),'utf8'));expect(report.technicalStatus).toBe(expected);expect(report.advanceAllowed).toBe(false);expect(report.art.approval).toBe('direction-approved-reference-files-missing');expect(report.budget.usedPercent).toBeNull();expect(report.budget.automaticHardLimit).toBe(false);
+   const r=spawnSync(process.execPath,[resolve('scripts/studio-report.mjs')],{cwd:root,env:{...process.env,GITHUB_TOKEN:'',GITHUB_EVENT_PATH:'',GITHUB_STEP_SUMMARY:''},encoding:'utf8'});const expectedTest=outcome==='failure'||['failed-unit','failed-browser'].includes(evidence)?'failed':outcome==='skipped'||['missing','broken'].includes(evidence)?'incomplete':'passed';expect(r.status).toBe(expectedTest==='passed'?0:1);
+   const report=JSON.parse(readFileSync(join(root,'reports/dashboard.json'),'utf8'));expect(report.technicalStatus).toBe(expected);expect(report.testStatus).toBe(expectedTest);expect(report.advanceAllowed).toBe(false);expect(report.art.approval).toBe('direction-approved-reference-files-missing');expect(report.budget.usedPercent).toBeNull();expect(report.budget.automaticHardLimit).toBe(false);
   }finally{rmSync(root,{recursive:true,force:true});}
  });}
 });

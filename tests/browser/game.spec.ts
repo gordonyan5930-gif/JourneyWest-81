@@ -1,3 +1,4 @@
+import {reviewScreenshot} from './evidence-capture';
 import {test,expect,type Page} from '@playwright/test';
 async function clickMap(page:Page,x:number,y:number){const b=(await page.locator('canvas').boundingBox())!;await page.mouse.click(b.x+x/30*b.width,b.y+y/18*b.height);}
 async function open(page:Page){await page.goto('/?test');await expect(page.locator('canvas')).toBeVisible();await page.waitForFunction(()=>!!(window as any).gameTest);}
@@ -41,5 +42,8 @@ test('护卫真实逐帧战斗并保住唐僧，生成运行截图',async({page}
  await page.evaluate(()=>{const w=(window as any).gameTest.world;w.spawn({x:6.5,y:10.5});});
  await expect.poll(()=>page.evaluate(()=>(window as any).gameTest.world.kills),{timeout:10000}).toBeGreaterThan(0);
  expect(await page.evaluate(()=>(window as any).gameTest.world.tang.hp)).toBe(100);
- await page.locator('[data-role="tang"]').click();await page.locator('#pause').click();await page.screenshot({path:'docs/p0-a-screenshot.png',fullPage:true});
+ await page.locator('[data-role="tang"]').click();await page.locator('#pause').click();await reviewScreenshot(page,{path:'docs/p0-a-screenshot.png',fullPage:true});
 });
+
+// Ordinary verification keeps failure screenshots/trace, not successful movies.
+test.use({video:'off'});

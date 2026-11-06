@@ -1,3 +1,4 @@
+import {reviewScreenshot} from './evidence-capture';
 import {test,expect} from '@playwright/test';
 import {writeFileSync,mkdirSync} from 'node:fs';
 test('25名普通敌人真实帧压力：连续伤害、下马、自然失败与证据',async({page},testInfo)=>{
@@ -12,7 +13,7 @@ test('25名普通敌人真实帧压力：连续伤害、下马、自然失败与
   w.story.onUpdate=()=>{const now=performance.now();samples.push({frameMs:now-previous,simTime:w.time,enemies:w.enemies.length,tangHp:w.tang.hp,horseHp:w.heroes[4].hp});previous=now;};
  });
  expect(await page.evaluate(()=>(window as any).gameTest.world.enemies.length)).toBeGreaterThanOrEqual(25);
- await page.screenshot({path:'reports/pressure-start.png'});
+ await reviewScreenshot(page,{path:'reports/pressure-start.png'});
  await expect(page.locator('#message')).toContainText('失败',{timeout:70000});
  const samples:any[]=await page.evaluate(()=>(window as any).pressureSamples);
  expect(samples.some(s=>s.horseHp===0)).toBe(true);
@@ -27,5 +28,8 @@ test('25名普通敌人真实帧压力：连续伤害、下马、自然失败与
  console.log('PRESSURE_EVIDENCE '+JSON.stringify({samples:report.samples,averageFps:report.averageFps,p95FrameMs:report.p95FrameMs,observedFrameThresholdsMet:report.observedFrameThresholdsMet,simulatedSeconds:samples.at(-1).simTime,tangHp:samples.at(-1).tangHp,normalCampaignQualityValidated:false}));
  mkdirSync('reports',{recursive:true});writeFileSync('reports/pressure.json',JSON.stringify(report,null,2));
  await testInfo.attach('pressure-metrics',{body:JSON.stringify(report),contentType:'application/json'});
- await page.screenshot({path:'reports/pressure-failure.png'});
+ await reviewScreenshot(page,{path:'reports/pressure-failure.png'});
 });
+
+// Ordinary verification keeps failure screenshots/trace, not successful movies.
+test.use({video:'off'});

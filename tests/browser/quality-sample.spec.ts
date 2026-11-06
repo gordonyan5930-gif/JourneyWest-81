@@ -1,9 +1,10 @@
+import {reviewScreenshot} from './evidence-capture';
 import {test,expect} from '@playwright/test';
 import {mkdirSync,writeFileSync} from 'node:fs';
 import {TERRAIN_REVIEW,reviewWorld} from '../../src/game/terrainReview';
 test('real quality sample: generated assets, UI movement, follow camera, attack, mask, device report',async({page},testInfo)=>{
  test.setTimeout(120000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
- const evidenceTag=testInfo.project.name;
+ const evidenceTag=testInfo.project.name; // Historical project name; captureVideoMode is off in this scenario.
  const renderer=testInfo.project.metadata.renderer==='canvas'?'canvas':'auto';await page.goto(`/?sample=quality-b&test&renderer=${renderer}`);
  await expect(page.locator('#sample-status')).toContainText('资产已载入',{timeout:20000});
  await page.locator('#sample-select').click();const box=(await page.locator('canvas').boundingBox())!;
@@ -19,16 +20,16 @@ test('real quality sample: generated assets, UI movement, follow camera, attack,
  expect(await page.evaluate(()=>(window as any).qualityTest.camera.x)).toBeGreaterThan(100);
  await page.locator('#sample-overview').click();await page.waitForTimeout(500);await clickWorld(380,500);await expect(page.locator('#sample-status')).toContainText('不可到达');
  await page.locator('#sample-attack').click();await expect(page.locator('#sample-status')).toContainText('棒击');
- mkdirSync('reports',{recursive:true});await page.screenshot({path:`reports/quality-map-overview-${evidenceTag}.png`,fullPage:true});
+ mkdirSync('reports',{recursive:true});await reviewScreenshot(page,{path:`reports/quality-map-overview-${evidenceTag}.png`,fullPage:true});
  await page.locator('#sample-mask').click();expect(await page.evaluate(()=>(window as any).qualityTest.maskVisible)).toBe(true);expect(await page.evaluate(()=>(window as any).qualityTest.maskRenderType)).toBe('Image');
- mkdirSync('reports',{recursive:true});await page.screenshot({path:`reports/quality-sample-mask-${evidenceTag}.png`,fullPage:true});await page.locator('#sample-mask').click();
- await page.locator('#sample-overview').click();await page.locator('#sample-reset').click();await page.waitForTimeout(900);await page.screenshot({path:`reports/quality-sample-${evidenceTag}.png`,fullPage:true});
- for(const id of ['F01','F02','R01','W01']){const c=TERRAIN_REVIEW.find(c=>c.id===id)!;await page.locator('#sample-review').selectOption(id);await page.waitForTimeout(150);await page.screenshot({path:`reports/terrain-${id}-art-${evidenceTag}.png`,fullPage:true});await page.locator('#sample-mask').click();await page.screenshot({path:`reports/terrain-${id}-mask-${evidenceTag}.png`,fullPage:true});await page.locator('#sample-mask').click();const p=reviewWorld(c.source);await clickWorld(p.x,p.y);if(['fence','mountain'].includes(c.expected))await expect(page.locator('#sample-status')).toContainText('不可到达');else await expect.poll(()=>page.evaluate(({x,y})=>Math.hypot((window as any).qualityTest.actor.x-x,(window as any).qualityTest.actor.y-y),p),{timeout:15000}).toBeLessThan(20);}
+ mkdirSync('reports',{recursive:true});await reviewScreenshot(page,{path:`reports/quality-sample-mask-${evidenceTag}.png`,fullPage:true});await page.locator('#sample-mask').click();
+ await page.locator('#sample-overview').click();await page.locator('#sample-reset').click();await page.waitForTimeout(900);await reviewScreenshot(page,{path:`reports/quality-sample-${evidenceTag}.png`,fullPage:true});
+ for(const id of ['F01','F02','R01','W01']){const c=TERRAIN_REVIEW.find(c=>c.id===id)!;await page.locator('#sample-review').selectOption(id);await page.waitForTimeout(150);await reviewScreenshot(page,{path:`reports/terrain-${id}-art-${evidenceTag}.png`,fullPage:true});await page.locator('#sample-mask').click();await reviewScreenshot(page,{path:`reports/terrain-${id}-mask-${evidenceTag}.png`,fullPage:true});await page.locator('#sample-mask').click();const p=reviewWorld(c.source);await clickWorld(p.x,p.y);if(['fence','mountain'].includes(c.expected))await expect(page.locator('#sample-status')).toContainText('不可到达');else await expect.poll(()=>page.evaluate(({x,y})=>Math.hypot((window as any).qualityTest.actor.x-x,(window as any).qualityTest.actor.y-y),p),{timeout:15000}).toBeLessThan(20);}
  await page.locator('#sample-review').selectOption('');await page.locator('#sample-reset').click();
- await page.locator('#sample-frame').selectOption('6');await page.waitForTimeout(100);await page.screenshot({path:`reports/quality-wukong-idle-${evidenceTag}.png`,fullPage:true});
+ await page.locator('#sample-frame').selectOption('6');await page.waitForTimeout(100);await reviewScreenshot(page,{path:`reports/quality-wukong-idle-${evidenceTag}.png`,fullPage:true});
  for(const frame of ['6','7','8','9','10','11','r0','r1','r2','r3','r4','r5','r6','r7']){await page.locator('#sample-frame').selectOption(frame);const actor=await page.evaluate(()=>(window as any).qualityTest.actor);expect(Math.abs(actor.registeredFootY-actor.y)).toBeLessThan(.5);}
  const frozen=await page.evaluate(()=>(window as any).qualityTest.actor.gaitDistance);await page.waitForTimeout(150);expect(await page.evaluate(()=>(window as any).qualityTest.actor.gaitDistance)).toBe(frozen);
- await page.screenshot({path:`reports/quality-wukong-recovery-${evidenceTag}.png`,fullPage:true});
+ await reviewScreenshot(page,{path:`reports/quality-wukong-recovery-${evidenceTag}.png`,fullPage:true});
  await page.locator('#sample-reset').click();await expect(page.locator('#sample-frame')).toHaveValue('');
  const report=await page.evaluate(()=>(window as any).qualityTest.metrics);writeFileSync(`reports/quality-device-${evidenceTag}.json`,JSON.stringify(report,null,2));console.log('QUALITY_SAMPLE '+JSON.stringify({project:testInfo.project.name,...report}));expect(errors).toEqual([]);
 });
@@ -62,6 +63,9 @@ test('feedback only: empty FPS sample and rejected fence preserve live route for
  await expect(page.locator('#sample-status')).toContainText('已到达',{timeout:15000});
  expect(await page.evaluate(()=>(window as any).qualityTest.feedback.markerVisible)).toBe(false);
  expect(await page.evaluate(()=>Math.hypot((window as any).qualityTest.actor.x-600,(window as any).qualityTest.actor.y-550))).toBeLessThan(2);
- await page.screenshot({path:`reports/feedback-expired-${testInfo.project.name}.png`,fullPage:true});
+ await reviewScreenshot(page,{path:`reports/feedback-expired-${testInfo.project.name}.png`,fullPage:true});
  writeFileSync(`reports/feedback-${testInfo.project.name}.json`,JSON.stringify({renderer,metricText,before,after,samples,arrivedDuringHold:samples.some(s=>s.ms<1000&&s.remaining===0),rejectionObservedMs:Date.now()-rejectedAt,environment:'automated Chromium; not user Mac/Edge acceptance'},null,2));
 });
+
+// Ordinary verification keeps failure screenshots/trace, not successful movies.
+test.use({video:'off'});

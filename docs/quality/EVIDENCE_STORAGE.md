@@ -1,3 +1,7 @@
+# 历史记录：2026-11-04策略已由ARTIFACT_GOVERNANCE.md（2026-11-06）覆盖
+
+现行规则不以存储失败阻断测试；本轮不删除现存工件。下面旧清理候选不作为今天执行授权。
+
 # 本轮工件存储阻碍与恢复
 
 2026-11-04北京时间。Actions41815362169/a0532a26：127单元通过，4浏览器通过/1地形诊断失败/35未执行；所有4次上传被GitHub拒绝，当前运行工件0个。原文：`Artifact storage quota has been hit. Unable to upload any new artifacts. Usage is recalculated every 6-12 hours.` 不购买、不自动删除、不把上传失败改成成功。
