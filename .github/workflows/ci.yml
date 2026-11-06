@@ -15,7 +15,7 @@ on:
         type: string
         required: false
 concurrency:
-  group: studio-${{ github.event_name }}-${{ github.head_ref || github.ref_name }}
+  group: studio-${{ github.event_name }}-${{ github.head_ref || github.ref_name }}${{ (github.event.action == 'labeled' || github.event_name == 'workflow_dispatch') && format('-{0}', github.event.label.name || inputs.source_sha || 'explicit') || '' }}
   cancel-in-progress: true
 permissions:
   contents: read
