@@ -1,6 +1,6 @@
 import fs from 'node:fs';import path from 'node:path';import {execFileSync} from 'node:child_process';import {pathToFileURL} from 'node:url';
 import {BUDGET,RETENTION,artifactUpperBound,allocate,sha256,largeUploadReason} from './evidence-policy.mjs';
-export const LIMIT=190_000_000;
+export const LIMIT=Math.min(190_000_000,Math.floor(BUDGET.full*.94));
 export function groups(entries,limit=LIMIT){const out=[];let batch=[],size=0;for(const e of entries){if(e.bytes>limit)throw Error('Oversize unsplit evidence: '+e.file);if(batch.length&&size+e.bytes>limit){out.push(batch);batch=[];size=0;}batch.push(e);size+=e.bytes;}if(batch.length)out.push(batch);return out;}
 // Compatibility helper; the current policy below supersedes the former motion-only uploader.
 export function includeEvidence(file,scope='all',failed=new Set()){return scope!=='motion'||!/[.](png|webm|mp4)$/.test(file)||/motion-|strategy-/.test(file)||file.includes('test-failed')||failed.has(file);}
@@ -40,9 +40,9 @@ function main(){
   }else diagnostics.push(original);
  }
  diagnostics.sort((a,b)=>(a.file.endsWith('.png')?-1:0)-(b.file.endsWith('.png')?-1:0)||a.file.localeCompare(b.file));
- const chosenDiagnostics=choose(diagnostics,48_000_000);manifest.missing.push(...chosenDiagnostics.missing.map(x=>({...x,kind:'diagnostics'})));
+ const chosenDiagnostics=choose(diagnostics,Math.floor(BUDGET.diagnostics*.95));manifest.missing.push(...chosenDiagnostics.missing.map(x=>({...x,kind:'diagnostics'})));
  const artifacts=[];
- if(chosenDiagnostics.kept.length)artifacts.push({id:'diagnostics',kind:'diagnostics',retentionDays:3,...zip('evidence-upload/diagnostics.zip',chosenDiagnostics.kept)});
+ if(chosenDiagnostics.kept.length)artifacts.push({id:'diagnostics',kind:'diagnostics',retentionDays:RETENTION.diagnostics,...zip('evidence-upload/diagnostics.zip',chosenDiagnostics.kept)});
  const all=[...walk('reports'),...walk('test-results'),...walk('assets/audio')];const full=[];
  for(const file of all){
   if(!allowed(file)||file.startsWith('reports/failure-clips/')||failedPaths.has(file)||file.includes('evidence-plan')||file.includes('artifact-inventory')||file.includes('storage-probe'))continue;
@@ -54,8 +54,8 @@ function main(){
  if(request.requestedMode==='full'){
   if(!request.requestValid||!request.captureFull)manifest.missing.push({kind:'acceptance',reason:request.reason||request.captureBlockedReason||'Full capture not enabled'});
   else{
-   const rawBudget=280_000_000-chosenDiagnostics.bytes;const eligible=full.filter(f=>{if(f.bytes>LIMIT){manifest.missing.push({...f,kind:'acceptance',reason:'Single source exceeds bounded packet; no silent truncation'});return false;}return true;});const picked=choose(eligible.sort((a,b)=>a.file.localeCompare(b.file)),Math.max(0,rawBudget));manifest.files.push(...full.map(f=>({...f,kind:'acceptance'})));manifest.missing.push(...picked.missing.map(x=>({...x,kind:'acceptance'})));
-   for(const [i,files] of groups(picked.kept).entries())artifacts.push({id:`acceptance-${i+1}`,kind:'acceptance',retentionDays:3,...zip(`evidence-upload/acceptance-${i+1}.zip`,files)});
+   const rawBudget=Math.floor(BUDGET.full*.94)-chosenDiagnostics.bytes;const eligible=full.filter(f=>{if(f.bytes>LIMIT){manifest.missing.push({...f,kind:'acceptance',reason:'Single source exceeds bounded packet; no silent truncation'});return false;}return true;});const picked=choose(eligible.sort((a,b)=>a.file.localeCompare(b.file)),Math.max(0,rawBudget));manifest.files.push(...full.map(f=>({...f,kind:'acceptance'})));manifest.missing.push(...picked.missing.map(x=>({...x,kind:'acceptance'})));
+   for(const [i,files] of groups(picked.kept).entries())artifacts.push({id:`acceptance-${i+1}`,kind:'acceptance',retentionDays:RETENTION.acceptance,...zip(`evidence-upload/acceptance-${i+1}.zip`,files)});
    if(!full.some(f=>/motion-comparison.*video/.test(f.file))||!full.some(f=>/strategy-choices.*video/.test(f.file))||!full.some(f=>/quality-experiment.*video/.test(f.file))||dashboard?.evidenceCaptureChecks?.experimentVideoValid!==true)manifest.missing.push({kind:'acceptance',reason:'Required current-scope continuous acceptance recordings missing'});
   }
  }
@@ -63,9 +63,9 @@ function main(){
  const summary={runUrl:`https://github.com/gordonyan5930-gif/JourneyWest-81/actions/runs/${process.env.GITHUB_RUN_ID??'local'}`,sourceSha:request.sourceSha,mode:request.requestedMode,testStatus:dashboard?.testStatus??dashboard?.technicalStatus??'unknown',functionalReportStatus:dashboard?.technicalStatus??'unknown',steps:read('reports/steps.json'),unit:unit?{passed:unit.numPassedTests,failed:unit.numFailedTests,pending:unit.numPendingTests,cases:unitCases}:null,browser:browser?.stats??null,cases,inputDigests:{unit:fs.existsSync('reports/unit.json')?hash('reports/unit.json'):null,browser:fs.existsSync('reports/browser.json')?hash('reports/browser.json'):null},acceptanceComplete:false,notice:'Tests and evidence delivery are independent. Ordinary validation is never full acceptance. Actual upload/expiry receipt is in the job summary/log.'};
  const provisional=allocate(artifacts,current,request.requestedMode);manifest.missing.push(...provisional.blocked.map(a=>({kind:a.kind,file:a.file,bytes:a.bytes,sha256:a.sha256,reason:a.reason})));manifest.preUploadPlan=provisional;
  fs.writeFileSync('reports/evidence-manifest.json',JSON.stringify(manifest,null,2));fs.writeFileSync('reports/verification-summary.json',JSON.stringify(summary,null,2));
- fs.writeFileSync('reports/EVIDENCE_README.md',`# Verification evidence\nSHA:${request.sourceSha}\nMode:${request.requestedMode}\nTest result:${summary.testStatus}\nNo automatic acceptance. Ordinary report7days, diagnostics3days, full large packets3days, then AUTOMATIC EXPIRY; pending review is not permanent retention.\nBudgets10/50/300MB total and packet<200MB are PROJECT policy, not GitHub official limits.500MB repository inventory is not account remaining quota and cannot guarantee upload. Unknown inventory is never zero.\nMissing entries:${manifest.missing.length}; do not claim complete evidence when missing. Slow motion should be generated locally from originals.\n`);
+ fs.writeFileSync('reports/EVIDENCE_README.md',`# Verification evidence\nSHA:${request.sourceSha}\nMode:${request.requestedMode}\nTest result:${summary.testStatus}\nNo automatic acceptance. Ordinary report${RETENTION.report}days, diagnostics${RETENTION.diagnostics}days, full large packets${RETENTION.acceptance}days, then AUTOMATIC EXPIRY; pending review is not permanent retention.\nBudgets${BUDGET.report/1e6}/${BUDGET.diagnostics/1e6}/${BUDGET.full/1e6}MB total and packet<200MB are PROJECT policy, not GitHub official limits.500MB repository inventory is not account remaining quota and cannot guarantee upload. Unknown inventory is never zero.\nMissing entries:${manifest.missing.length}; do not claim complete evidence when missing. Slow motion should be generated locally from originals.\n`);
  const report=zip('evidence-upload/report.zip',['evidence-manifest.json','verification-summary.json','EVIDENCE_README.md'].map(n=>({file:'reports/'+n,archive:n})));
- const plan=allocate([{id:'report',kind:'report',retentionDays:7,...report},...artifacts],current,request.requestedMode);
+ const plan=allocate([{id:'report',kind:'report',retentionDays:RETENTION.report,...report},...artifacts],current,request.requestedMode);
  const final={...plan,sourceSha:request.sourceSha,mode:request.requestedMode,requestValid:request.requestValid,missing:[...manifest.missing,...plan.blocked],diagnosticsComplete:!manifest.missing.some(m=>m.kind==='diagnostics'),captureComplete:request.requestedMode==='full'&&request.requestValid&&request.captureFull&&dashboard?.technicalStatus==='passed'&&!manifest.missing.length&&!plan.blocked.length,acceptanceComplete:false};
  fs.writeFileSync('reports/evidence-plan.json',JSON.stringify(final,null,2));
  if(process.env.GITHUB_OUTPUT)for(const id of ['report','diagnostics','acceptance-1','acceptance-2','acceptance-3'])fs.appendFileSync(process.env.GITHUB_OUTPUT,`${id.replace('-','_')}=${plan.selected.some(a=>a.id===id)}\n`);

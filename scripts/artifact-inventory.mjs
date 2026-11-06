@@ -1,5 +1,5 @@
 import fs from 'node:fs';import {pathToFileURL} from 'node:url';
-import {REPOSITORY,inventory,resolveRequest,largeUploadReason} from './evidence-policy.mjs';
+import {REPOSITORY,RETENTION,inventory,resolveRequest,largeUploadReason} from './evidence-policy.mjs';
 export async function githubGet(path){
  if(process.env.GITHUB_REPOSITORY&&process.env.GITHUB_REPOSITORY!==REPOSITORY)throw Error('This policy only operates on JourneyWest-81');
  if(!process.env.GITHUB_TOKEN)throw Error('GitHub read credential unavailable');
@@ -14,6 +14,7 @@ async function main(){
   const request=resolveRequest(process.env.GITHUB_EVENT_NAME,event,process.env.SOURCE_SHA??process.env.GITHUB_SHA??'local',event.pull_request?.head?.ref??process.env.GITHUB_REF_NAME??event.ref??'');
   const reason=largeUploadReason(result,0),capture=request.requestedMode==='full'&&request.requestValid&&!reason;
   const resolved={...request,captureFull:capture,captureBlockedReason:reason};fs.writeFileSync('reports/evidence-request.json',JSON.stringify(resolved,null,2));
+  if(process.env.GITHUB_ENV)fs.appendFileSync(process.env.GITHUB_ENV,`EVIDENCE_REPORT_DAYS=${RETENTION.report}\nEVIDENCE_DIAGNOSTIC_DAYS=${RETENTION.diagnostics}\nEVIDENCE_ACCEPTANCE_DAYS=${RETENTION.acceptance}\n`);
   if(process.env.GITHUB_ENV)fs.appendFileSync(process.env.GITHUB_ENV,`EVIDENCE_MODE=${request.requestedMode}\nCAPTURE_FULL_EVIDENCE=${capture}\n`);
  }
  console.log(JSON.stringify({known:result.known,count:result.count,bytes:result.bytes,error:result.error,scope:'repository listed metadata; NOT account remaining quota; concurrent changes possible'}));

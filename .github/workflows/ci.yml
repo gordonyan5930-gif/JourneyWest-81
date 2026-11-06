@@ -27,7 +27,7 @@ jobs:
       (github.event_name != 'pull_request' || github.event.action != 'synchronize' || github.head_ref != 'feat/p0-a-prototype') &&
       (github.event_name != 'pull_request' || github.event.action != 'labeled' || startsWith(github.event.label.name, 'full:'))
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     env:
       SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
     steps:
@@ -90,7 +90,7 @@ jobs:
         continue-on-error: true
         with:
           name: report-${{ github.run_attempt }}
-          retention-days: 7
+          retention-days: ${{ env.EVIDENCE_REPORT_DAYS || '7' }}
           if-no-files-found: error
           path: evidence-upload/report.zip
       - uses: actions/upload-artifact@v4
@@ -99,7 +99,7 @@ jobs:
         continue-on-error: true
         with:
           name: diagnostics-${{ github.run_attempt }}
-          retention-days: 3
+          retention-days: ${{ env.EVIDENCE_DIAGNOSTIC_DAYS || '1' }}
           if-no-files-found: error
           path: evidence-upload/diagnostics.zip
       - uses: actions/upload-artifact@v4
@@ -108,7 +108,7 @@ jobs:
         continue-on-error: true
         with:
           name: acceptance-1-${{ github.run_attempt }}
-          retention-days: 3
+          retention-days: ${{ env.EVIDENCE_ACCEPTANCE_DAYS || '3' }}
           if-no-files-found: error
           path: evidence-upload/acceptance-1.zip
       - uses: actions/upload-artifact@v4
@@ -117,7 +117,7 @@ jobs:
         continue-on-error: true
         with:
           name: acceptance-2-${{ github.run_attempt }}
-          retention-days: 3
+          retention-days: ${{ env.EVIDENCE_ACCEPTANCE_DAYS || '3' }}
           if-no-files-found: error
           path: evidence-upload/acceptance-2.zip
       - uses: actions/upload-artifact@v4
@@ -126,7 +126,7 @@ jobs:
         continue-on-error: true
         with:
           name: acceptance-3-${{ github.run_attempt }}
-          retention-days: 3
+          retention-days: ${{ env.EVIDENCE_ACCEPTANCE_DAYS || '3' }}
           if-no-files-found: error
           path: evidence-upload/acceptance-3.zip
       - name: Publish separate upload result and actual expiry

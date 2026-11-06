@@ -1,8 +1,11 @@
 import {createHash} from 'node:crypto';
+import {readFileSync} from 'node:fs';
 export const REPOSITORY='gordonyan5930-gif/JourneyWest-81';
 // Decimal bytes; project policies, NOT GitHub service limits.
-export const BUDGET={report:10_000_000,diagnostics:50_000_000,full:300_000_000,packet:200_000_000,repository:500_000_000};
-export const RETENTION={report:7,diagnostics:3,acceptance:3};
+const policy=JSON.parse(readFileSync(new URL('../.github/evidence-policy.json',import.meta.url),'utf8'));
+export const BUDGET=Object.freeze(policy.budgets);
+export const RETENTION=Object.freeze(policy.retentionDays);
+for(const values of [BUDGET,RETENTION])for(const n of Object.values(values))if(!Number.isSafeInteger(n)||n<=0)throw Error('Invalid evidence policy');
 export const artifactUpperBound=bytes=>Math.ceil(bytes*1.01)+4096;
 export const sha256=data=>createHash('sha256').update(data).digest('hex');
 export function resolveRequest(eventName,event,sourceSha,refName=event.pull_request?.head?.ref??event.ref??''){
@@ -37,9 +40,9 @@ export function allocate(artifacts,current,mode){
  for(const a of artifacts){
   const estimate=artifactUpperBound(a.bytes);let reason='';
   if(estimate>=BUDGET.packet)reason='Project packet budget requires strictly less than200MB';
-  else if(a.kind==='report'&&report+estimate>BUDGET.report)reason='Project report budget10MB exceeded';
-  else if(a.kind==='diagnostics'&&diagnostics+estimate>BUDGET.diagnostics)reason='Project failed-diagnostic budget50MB exceeded';
-  else if(mode==='full'&&total+estimate>BUDGET.full)reason='Project complete-acceptance total budget300MB exceeded';
+  else if(a.kind==='report'&&report+estimate>BUDGET.report)reason=`Project report budget${BUDGET.report/1e6}MB exceeded`;
+  else if(a.kind==='diagnostics'&&diagnostics+estimate>BUDGET.diagnostics)reason=`Project failed-diagnostic budget${BUDGET.diagnostics/1e6}MB exceeded`;
+  else if(mode==='full'&&total+estimate>BUDGET.full)reason=`Project complete-acceptance total budget${BUDGET.full/1e6}MB exceeded`;
   else if(a.kind!=='report')reason=largeUploadReason(current,total+estimate);
   if(reason){blocked.push({...a,estimatedArtifactBytes:estimate,reason});continue;}
   selected.push({...a,estimatedArtifactBytes:estimate});total+=estimate;if(a.kind==='report')report+=estimate;if(a.kind==='diagnostics')diagnostics+=estimate;

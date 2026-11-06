@@ -1,0 +1,4 @@
+{
+  "budgets": {"report":5000000,"diagnostics":30000000,"full":200000000,"packet":200000000,"repository":500000000},
+  "retentionDays": {"report":7,"diagnostics":1,"acceptance":3}
+}

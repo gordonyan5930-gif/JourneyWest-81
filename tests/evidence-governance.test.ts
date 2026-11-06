@@ -20,7 +20,7 @@ test('aggregate project budgets, exact packet boundary and repository reservatio
  const report={id:'report',kind:'report',bytes:1000},diag={id:'diagnostics',kind:'diagnostics',bytes:49_600_000};
  expect(allocate([{...report,bytes:10_000_000}],known(),'validation').blocked).toHaveLength(1);
  expect(allocate([diag],known(),'validation').blocked).toHaveLength(1);
- const full=allocate([report,{id:'a',kind:'acceptance',bytes:150_000_000},{id:'b',kind:'acceptance',bytes:150_000_000}],known(),'full');expect(full.selected.length).toBe(2);expect(full.blocked[0].reason).toContain('300MB');
+ const full=allocate([report,{id:'a',kind:'acceptance',bytes:150_000_000},{id:'b',kind:'acceptance',bytes:150_000_000}],known(),'full');expect(full.selected.length).toBe(2);expect(full.blocked[0].reason).toContain('200MB');
  expect(allocate([{id:'a',kind:'acceptance',bytes:198_020_000}],known(),'full').blocked[0].reason).toContain('200MB');
  const capped=allocate([report,{id:'a',kind:'acceptance',bytes:10000}],known(1_622_813_927),'full');expect(capped.selected.map(a=>a.id)).toEqual(['report']);expect(capped.blocked).toHaveLength(1);
  const unknown=allocate([report,{id:'a',kind:'acceptance',bytes:10000}],{known:false,bytes:null},'full');expect(unknown.projectedRepositoryBytes).toBeNull();expect(unknown.blocked[0].reason).toContain('UNKNOWN');
@@ -53,7 +53,8 @@ test('PR full label uses its head branch, not the synthetic merge ref; missing c
  }finally{rmSync(root,{recursive:true,force:true});}
 });
 
-test('a valid300MB total may require three small packets; every packet remains selected, not lost to fixed upload slots',()=>{
- const packets=groups([70_000_000,130_000_000,70_000_000].map((bytes,i)=>({file:String(i),bytes})));expect(packets).toHaveLength(3);
- const plan=allocate([{id:'report',kind:'report',bytes:1000},...packets.map((p,i)=>({id:'acceptance-'+(i+1),kind:'acceptance',bytes:p.reduce((n,e)=>n+e.bytes,0)}))],known(),'full');expect(plan.blocked).toHaveLength(0);expect(plan.selected).toHaveLength(4);expect(plan.estimatedNewBytes).toBeLessThan(BUDGET.full);
+test('configured200MB total retains every packet or explicitly blocks it',()=>{
+ const packets=groups([100_000_000,90_000_000].map((bytes,i)=>({file:String(i),bytes})));expect(packets).toHaveLength(2);
+ const plan=allocate([{id:'report',kind:'report',bytes:1000},...packets.map((p,i)=>({id:'acceptance-'+(i+1),kind:'acceptance',bytes:p.reduce((n,e)=>n+e.bytes,0)}))],known(),'full');expect(plan.blocked).toHaveLength(0);expect(plan.selected).toHaveLength(3);expect(plan.estimatedNewBytes).toBeLessThan(BUDGET.full);
+ expect(BUDGET.report).toBe(5_000_000);expect(BUDGET.diagnostics).toBe(30_000_000);expect(BUDGET.full).toBe(200_000_000);
 });
