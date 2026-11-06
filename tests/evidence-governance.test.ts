@@ -1,5 +1,5 @@
 import {test,expect} from 'vitest';import {mkdtempSync,mkdirSync,writeFileSync,readFileSync,rmSync} from 'node:fs';import {tmpdir} from 'node:os';import {join,resolve} from 'node:path';import {spawnSync} from 'node:child_process';
-import {BUDGET,inventory,resolveRequest,allocate,artifactUpperBound} from '../scripts/evidence-policy.mjs';import {assessReceipt} from '../scripts/evidence-receipt.mjs';
+import {BUDGET,inventory,resolveRequest,allocate,artifactUpperBound} from '../scripts/evidence-policy.mjs';import {groups} from '../scripts/package-review-evidence.mjs';import {assessReceipt} from '../scripts/evidence-receipt.mjs';
 const sha='a'.repeat(40),known=(bytes=0)=>({known:true,bytes});
 test('full capture is explicit and pinned; labels are not sticky across pushes or mismatched SHAs',()=>{
  expect(resolveRequest('push',{label:{name:'full:'+sha}},sha).requestedMode).toBe('validation');
@@ -51,4 +51,9 @@ test('PR full label uses its head branch, not the synthetic merge ref; missing c
   const r=spawnSync(process.execPath,[resolve('scripts/artifact-inventory.mjs')],{cwd:root,encoding:'utf8',env:{...process.env,GITHUB_TOKEN:'',GITHUB_EVENT_PATH:event,GITHUB_EVENT_NAME:'pull_request',GITHUB_REF_NAME:'1/merge',SOURCE_SHA:sha,GITHUB_ENV:''}});expect(r.status).toBe(0);
   const request=JSON.parse(readFileSync(join(root,'reports/evidence-request.json'),'utf8')),current=JSON.parse(readFileSync(join(root,'reports/artifact-inventory.json'),'utf8'));expect(request.requestValid).toBe(true);expect(request.requestedMode).toBe('full');expect(request.captureFull).toBe(false);expect(current.bytes).toBeNull();
  }finally{rmSync(root,{recursive:true,force:true});}
+});
+
+test('a valid300MB total may require three small packets; every packet remains selected, not lost to fixed upload slots',()=>{
+ const packets=groups([70_000_000,130_000_000,70_000_000].map((bytes,i)=>({file:String(i),bytes})));expect(packets).toHaveLength(3);
+ const plan=allocate([{id:'report',kind:'report',bytes:1000},...packets.map((p,i)=>({id:'acceptance-'+(i+1),kind:'acceptance',bytes:p.reduce((n,e)=>n+e.bytes,0)}))],known(),'full');expect(plan.blocked).toHaveLength(0);expect(plan.selected).toHaveLength(4);expect(plan.estimatedNewBytes).toBeLessThan(BUDGET.full);
 });

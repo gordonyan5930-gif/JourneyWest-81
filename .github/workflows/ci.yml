@@ -120,6 +120,15 @@ jobs:
           retention-days: 3
           if-no-files-found: error
           path: evidence-upload/acceptance-2.zip
+      - uses: actions/upload-artifact@v4
+        id: upload_acceptance_3
+        if: always() && steps.package.outputs.acceptance_3 == 'true'
+        continue-on-error: true
+        with:
+          name: acceptance-3-${{ github.run_attempt }}
+          retention-days: 3
+          if-no-files-found: error
+          path: evidence-upload/acceptance-3.zip
       - name: Publish separate upload result and actual expiry
         if: always()
         env:

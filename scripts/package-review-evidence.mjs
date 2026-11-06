@@ -68,7 +68,7 @@ function main(){
  const plan=allocate([{id:'report',kind:'report',retentionDays:7,...report},...artifacts],current,request.requestedMode);
  const final={...plan,sourceSha:request.sourceSha,mode:request.requestedMode,requestValid:request.requestValid,missing:[...manifest.missing,...plan.blocked],diagnosticsComplete:!manifest.missing.some(m=>m.kind==='diagnostics'),captureComplete:request.requestedMode==='full'&&request.requestValid&&request.captureFull&&dashboard?.technicalStatus==='passed'&&!manifest.missing.length&&!plan.blocked.length,acceptanceComplete:false};
  fs.writeFileSync('reports/evidence-plan.json',JSON.stringify(final,null,2));
- if(process.env.GITHUB_OUTPUT)for(const id of ['report','diagnostics','acceptance-1','acceptance-2'])fs.appendFileSync(process.env.GITHUB_OUTPUT,`${id.replace('-','_')}=${plan.selected.some(a=>a.id===id)}\n`);
+ if(process.env.GITHUB_OUTPUT)for(const id of ['report','diagnostics','acceptance-1','acceptance-2','acceptance-3'])fs.appendFileSync(process.env.GITHUB_OUTPUT,`${id.replace('-','_')}=${plan.selected.some(a=>a.id===id)}\n`);
  console.log('EVIDENCE_MANIFEST '+JSON.stringify(manifest));
  console.log(JSON.stringify({sourceSha:final.sourceSha,mode:final.mode,estimatedNewBytes:final.estimatedNewBytes,repositoryKnown:current.known,repositoryBytes:current.bytes,selected:plan.selected.map(a=>({id:a.id,bytes:a.bytes,estimatedArtifactBytes:a.estimatedArtifactBytes})),blocked:plan.blocked,missing:manifest.missing}));
 }
