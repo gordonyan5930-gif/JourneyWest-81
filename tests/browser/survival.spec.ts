@@ -1,8 +1,10 @@
+import {readFileSync} from 'node:fs';
+const runRegistration=JSON.parse(readFileSync(new URL('../../assets/quality-b/wukong-run.json',import.meta.url),'utf8'));
 import {test,expect} from '@playwright/test';
 const open=async(page:any,renderer='canvas')=>{await page.goto('/?sample=survival-a&test=1&renderer='+renderer);await page.getByRole('button',{name:'进入战场'}).click();await page.waitForFunction(()=>!!(window as any).survivalTest?.camera?.width);};
 test('independent arena: movement, real held attacks, dash, pause/input clear, retry and layout',async({page})=>{
  await open(page);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
- const start=await page.evaluate(()=>(window as any).survivalTest.run.snapshot());await page.mouse.move(800,280);await page.keyboard.down('d');await page.waitForTimeout(1400);await page.keyboard.up('d');await expect.poll(async()=>page.evaluate(()=>(window as any).survivalTest.run.phase)).not.toBe('ready');
+ const start=await page.evaluate(()=>(window as any).survivalTest.run.snapshot());await page.mouse.move(800,280);await page.keyboard.down('d');await page.waitForTimeout(1400);const pose=await page.evaluate(()=>(window as any).survivalTest.actorPose);expect(pose.texture).toBe('a-run');expect(pose.originY).toBe((runRegistration.frames as any)[String(pose.frame)].pivot.y);await page.keyboard.up('d');await expect.poll(async()=>page.evaluate(()=>(window as any).survivalTest.run.phase)).not.toBe('ready');
  await page.mouse.down();await page.waitForTimeout(600);await page.mouse.up();await expect.poll(async()=>page.evaluate(()=>(window as any).survivalTest.run.events.filter((e:any)=>e.type==='windup').length)).toBeGreaterThan(0);
  await page.keyboard.press('Space');await expect.poll(async()=>page.evaluate(()=>(window as any).survivalTest.run.events.filter((e:any)=>e.type==='dash').length)).toBe(1);
  await page.keyboard.down('w');await page.mouse.down();await page.keyboard.press('Escape');const paused=await page.evaluate(()=>(window as any).survivalTest.run.snapshot());await page.waitForTimeout(250);expect(await page.evaluate(()=>(window as any).survivalTest.run.time)).toBe(paused.time);expect(await page.evaluate(()=>(window as any).survivalTest.run.input.read().attack)).toBe(false);await page.mouse.up();await page.keyboard.up('w');await page.getByRole('button',{name:'继续战斗'}).click();
