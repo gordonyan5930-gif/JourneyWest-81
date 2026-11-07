@@ -27,7 +27,7 @@ export function round1Cue(r:EscortRun){
   if(returning)return {stage:'away',text:`${action}${settled?'已结算':'未结算'} · 正在返程，落地恢复${mode}`};
   if(f.phase==='harvest')return {stage:'away',text:'正在采摘 · 成功才扣1份桃子并回血，可提前回援'};
   const phase=({takeoff:'起飞',outbound:'接近目标','approach-land':'准备落地',windup:'强击蓄势',contact:'强击接触',recovery:'收招'} as Record<string,string>)[f.phase]??'进行中';
-  return {stage:'away',text:`悟空离队${action} · ${phase}${r.dangerSince!==null?'，唐僧受威胁':''}，可回援`};
+  return {stage:'away',text:`悟空离队${action} · ${phase}${!b.safe&&r.dangerSince!==null?'，唐僧受威胁':''}，可回援`};
  }
  const full=[b.hero,b.tang].filter(u=>u.hp>0).every(u=>u.hp===u.max);
  if(r.manualHero)return {stage:'manual',text:`悟空手动${r.heroMotion.route.length?'行进':'驻守'} · ${b.safe&&full?'全员满血；':''}回援才恢复自动护卫`};
