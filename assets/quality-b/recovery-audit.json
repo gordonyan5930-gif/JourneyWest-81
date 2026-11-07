@@ -1,0 +1,136 @@
+{
+  "sourceSha256": "06cd15d3e6d9521439c580950241621968312630e4064b37b5585516687652a8",
+  "sourceDimensions": [
+    2172,
+    724
+  ],
+  "poses": [
+    "lowering",
+    "down-kneel",
+    "rising",
+    "guard"
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "sourceCell": [
+        0,
+        0,
+        543,
+        724
+      ],
+      "sourceAlpha64Bounds": [
+        48,
+        252,
+        541,
+        657
+      ],
+      "sourceFootX": 300,
+      "groundY": 656,
+      "packingScale": 0.8,
+      "destinationFoot": [
+        320,
+        592
+      ],
+      "packedAlpha64Bounds": [
+        119,
+        269,
+        512,
+        593
+      ],
+      "lowestAlpha64Y": 592,
+      "minimumMargin": 47
+    },
+    {
+      "frame": 1,
+      "sourceCell": [
+        543,
+        0,
+        543,
+        724
+      ],
+      "sourceAlpha64Bounds": [
+        28,
+        269,
+        533,
+        652
+      ],
+      "sourceFootX": 350,
+      "groundY": 651,
+      "packingScale": 0.8,
+      "destinationFoot": [
+        320,
+        592
+      ],
+      "packedAlpha64Bounds": [
+        63,
+        286,
+        466,
+        593
+      ],
+      "lowestAlpha64Y": 592,
+      "minimumMargin": 47
+    },
+    {
+      "frame": 2,
+      "sourceCell": [
+        1086,
+        0,
+        543,
+        724
+      ],
+      "sourceAlpha64Bounds": [
+        65,
+        251,
+        508,
+        653
+      ],
+      "sourceFootX": 320,
+      "groundY": 652,
+      "packingScale": 0.8,
+      "destinationFoot": [
+        320,
+        592
+      ],
+      "packedAlpha64Bounds": [
+        116,
+        271,
+        470,
+        593
+      ],
+      "lowestAlpha64Y": 592,
+      "minimumMargin": 47
+    },
+    {
+      "frame": 3,
+      "sourceCell": [
+        1629,
+        0,
+        543,
+        724
+      ],
+      "sourceAlpha64Bounds": [
+        47,
+        91,
+        471,
+        654
+      ],
+      "sourceFootX": 335,
+      "groundY": 653,
+      "packingScale": 0.8,
+      "destinationFoot": [
+        320,
+        592
+      ],
+      "packedAlpha64Bounds": [
+        89,
+        142,
+        428,
+        593
+      ],
+      "lowestAlpha64Y": 592,
+      "minimumMargin": 47
+    }
+  ],
+  "status": "minimal pose prototype; transitions not final animation; user review pending"
+}

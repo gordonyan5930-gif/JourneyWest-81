@@ -1,0 +1,300 @@
+{
+  "frames": {
+    "0": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 362,
+        "h": 362
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 362,
+        "h": 362
+      },
+      "sourceSize": {
+        "w": 362,
+        "h": 362
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9392265193370166
+      }
+    },
+    "1": {
+      "frame": {
+        "x": 362,
+        "y": 0,
+        "w": 362,
+        "h": 362
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 362,
+        "h": 362
+      },
+      "sourceSize": {
+        "w": 362,
+        "h": 362
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9502762430939227
+      }
+    },
+    "2": {
+      "frame": {
+        "x": 724,
+        "y": 0,
+        "w": 362,
+        "h": 362
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 362,
+        "h": 362
+      },
+      "sourceSize": {
+        "w": 362,
+        "h": 362
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9337016574585635
+      }
+    },
+    "3": {
+      "frame": {
+        "x": 1086,
+        "y": 0,
+        "w": 362,
+        "h": 362
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 362,
+        "h": 362
+      },
+      "sourceSize": {
+        "w": 362,
+        "h": 362
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9530386740331491
+      }
+    },
+    "4": {
+      "frame": {
+        "x": 0,
+        "y": 362,
+        "w": 362,
+        "h": 362
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 362,
+        "h": 362
+      },
+      "sourceSize": {
+        "w": 362,
+        "h": 362
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8895027624309392
+      }
+    },
+    "5": {
+      "frame": {
+        "x": 362,
+        "y": 362,
+        "w": 362,
+        "h": 362
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 362,
+        "h": 362
+      },
+      "sourceSize": {
+        "w": 362,
+        "h": 362
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9171270718232044
+      }
+    },
+    "6": {
+      "frame": {
+        "x": 724,
+        "y": 362,
+        "w": 362,
+        "h": 362
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 362,
+        "h": 362
+      },
+      "sourceSize": {
+        "w": 362,
+        "h": 362
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9337016574585635
+      }
+    },
+    "7": {
+      "frame": {
+        "x": 1086,
+        "y": 362,
+        "w": 362,
+        "h": 362
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 362,
+        "h": 362
+      },
+      "sourceSize": {
+        "w": 362,
+        "h": 362
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9337016574585635
+      }
+    },
+    "8": {
+      "frame": {
+        "x": 0,
+        "y": 724,
+        "w": 362,
+        "h": 362
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 362,
+        "h": 362
+      },
+      "sourceSize": {
+        "w": 362,
+        "h": 362
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8342541436464088
+      }
+    },
+    "9": {
+      "frame": {
+        "x": 362,
+        "y": 724,
+        "w": 362,
+        "h": 362
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 362,
+        "h": 362
+      },
+      "sourceSize": {
+        "w": 362,
+        "h": 362
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8370165745856354
+      }
+    },
+    "10": {
+      "frame": {
+        "x": 724,
+        "y": 724,
+        "w": 362,
+        "h": 362
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 362,
+        "h": 362
+      },
+      "sourceSize": {
+        "w": 362,
+        "h": 362
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8370165745856354
+      }
+    },
+    "11": {
+      "frame": {
+        "x": 1086,
+        "y": 724,
+        "w": 362,
+        "h": 362
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 362,
+        "h": 362
+      },
+      "sourceSize": {
+        "w": 362,
+        "h": 362
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8370165745856354
+      }
+    }
+  },
+  "meta": {
+    "image": "wukong-atlas.webp",
+    "size": {
+      "w": 1448,
+      "h": 1086
+    },
+    "scale": "1"
+  }
+}

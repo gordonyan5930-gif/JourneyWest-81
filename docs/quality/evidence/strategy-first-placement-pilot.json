@@ -1,0 +1,843 @@
+{
+  "method": "all first placement attempts retained, fixed-step exploration, not browser proof",
+  "groups": [
+    {
+      "config": {
+        "entrances": [
+          {
+            "x": 1120,
+            "y": 400
+          },
+          {
+            "x": 48,
+            "y": 800
+          }
+        ],
+        "tree": {
+          "x": 500,
+          "y": 700
+        },
+        "fruit": 2,
+        "heal": 40,
+        "returnLead": 140,
+        "guardReadyOnLanding": true
+      },
+      "rows": [
+        {
+          "at": 8,
+          "action": "stay",
+          "accepted": true,
+          "spent": 0,
+          "defeatedAt": 17.68333333333361,
+          "landed": null,
+          "reengage": null,
+          "after": {
+            "phase": "won",
+            "time": 37.9166666666658,
+            "hero": 160,
+            "tang": 80,
+            "heroDamage": 20,
+            "tangDamage": 0,
+            "fruit": 2,
+            "healed": 0,
+            "away": 0
+          }
+        },
+        {
+          "at": 8,
+          "action": "fly",
+          "accepted": true,
+          "spent": 30,
+          "defeatedAt": 15.750000000000362,
+          "landed": {
+            "time": 12.400000000000196,
+            "hero": {
+              "x": 537.8516409518191,
+              "y": 721.8591343227203,
+              "id": "wukong",
+              "hp": 180,
+              "max": 180,
+              "flash": 0,
+              "airHeight": 0
+            },
+            "target": {
+              "x": 906.5957297785778,
+              "y": 503.7073701820357,
+              "hp": 30
+            },
+            "distance": 428.44182247111377,
+            "tang": {
+              "x": 417.3587998514926,
+              "y": 793.1436013795164,
+              "id": "tang",
+              "hp": 80,
+              "max": 100,
+              "flash": 0,
+              "goal": {
+                "x": 417.3587998514926,
+                "y": 793.1436013795164
+              }
+            }
+          },
+          "reengage": {
+            "sequence": 39,
+            "time": 14.90000000000032,
+            "kind": "melee",
+            "unit": "wukong",
+            "target": "archer-1",
+            "amount": 22,
+            "step": 0,
+            "x": 906.5957297785778,
+            "y": 503.7073701820357
+          },
+          "after": {
+            "phase": "won",
+            "time": 35.166666666665954,
+            "hero": 180,
+            "tang": 80,
+            "heroDamage": 0,
+            "tangDamage": 0,
+            "fruit": 2,
+            "healed": 0,
+            "away": 4.383333333333323
+          }
+        },
+        {
+          "at": 8,
+          "action": "cancel",
+          "accepted": true,
+          "spent": 30,
+          "defeatedAt": 18.366666666666905,
+          "landed": {
+            "time": 9.650000000000059,
+            "hero": {
+              "x": 568.0460172969263,
+              "y": 706.1442958239577,
+              "id": "wukong",
+              "hp": 180,
+              "max": 180,
+              "flash": 0,
+              "airHeight": 0
+            },
+            "target": {
+              "x": 882.4027749037039,
+              "y": 513.2310740005248,
+              "hp": 100
+            },
+            "distance": 368.8301536037195,
+            "tang": {
+              "x": 424.89633618201583,
+              "y": 788.7918027500617,
+              "id": "tang",
+              "hp": 80,
+              "max": 100,
+              "flash": 0,
+              "goal": {
+                "x": 424.89633618201583,
+                "y": 788.7918027500617
+              }
+            }
+          },
+          "reengage": {
+            "sequence": 40,
+            "time": 15.10000000000033,
+            "kind": "melee",
+            "unit": "wukong",
+            "target": "archer-1",
+            "amount": 22,
+            "step": 0,
+            "x": 818.6823667886867,
+            "y": 552.9647988741286
+          },
+          "after": {
+            "phase": "won",
+            "time": 38.316666666665775,
+            "hero": 180,
+            "tang": 80,
+            "heroDamage": 0,
+            "tangDamage": 0,
+            "fruit": 2,
+            "healed": 0,
+            "away": 1.6333333333333324
+          }
+        },
+        {
+          "at": 8,
+          "action": "staff",
+          "accepted": false,
+          "spent": 0,
+          "defeatedAt": 17.68333333333361,
+          "landed": null,
+          "reengage": null,
+          "after": {
+            "phase": "won",
+            "time": 37.9166666666658,
+            "hero": 160,
+            "tang": 80,
+            "heroDamage": 20,
+            "tangDamage": 0,
+            "fruit": 2,
+            "healed": 0,
+            "away": 0
+          }
+        }
+      ]
+    },
+    {
+      "config": {
+        "entrances": [
+          {
+            "x": 1040,
+            "y": 512
+          },
+          {
+            "x": 16,
+            "y": 872
+          }
+        ],
+        "tree": {
+          "x": 500,
+          "y": 700
+        },
+        "fruit": 2,
+        "heal": 40,
+        "returnLead": 140,
+        "guardReadyOnLanding": true
+      },
+      "rows": [
+        {
+          "at": 4,
+          "action": "stay",
+          "accepted": true,
+          "spent": 0,
+          "defeatedAt": 24.316666666666567,
+          "landed": null,
+          "reengage": null,
+          "after": {
+            "phase": "won",
+            "time": 47.266666666665266,
+            "hero": 160,
+            "tang": 80,
+            "heroDamage": 20,
+            "tangDamage": 20,
+            "fruit": 2,
+            "healed": 0,
+            "away": 0
+          }
+        },
+        {
+          "at": 4,
+          "action": "fly",
+          "accepted": true,
+          "spent": 30,
+          "defeatedAt": 24.18333333333324,
+          "landed": {
+            "time": 8.91666666666669,
+            "hero": {
+              "x": 354.52184458621855,
+              "y": 748.591896052122,
+              "id": "wukong",
+              "hp": 180,
+              "max": 180,
+              "flash": 0,
+              "airHeight": 0
+            },
+            "target": {
+              "x": 882.9053214051139,
+              "y": 545.8171364253287,
+              "hp": 30
+            },
+            "distance": 565.9564486044204,
+            "tang": {
+              "x": 492.1081983608453,
+              "y": 722.707629498803,
+              "id": "tang",
+              "hp": 60,
+              "max": 100,
+              "flash": 0,
+              "goal": {
+                "x": 492.1081983608453,
+                "y": 722.707629498803
+              }
+            }
+          },
+          "reengage": {
+            "sequence": 57,
+            "time": 23.33333333333329,
+            "kind": "melee",
+            "unit": "wukong",
+            "target": "archer-1",
+            "amount": 22,
+            "step": 0,
+            "x": 700.7953567379528,
+            "y": 619.944302849329
+          },
+          "after": {
+            "phase": "won",
+            "time": 48.283333333331875,
+            "hero": 160,
+            "tang": 60,
+            "heroDamage": 20,
+            "tangDamage": 40,
+            "fruit": 2,
+            "healed": 0,
+            "away": 4.899999999999988
+          }
+        },
+        {
+          "at": 4,
+          "action": "cancel",
+          "accepted": true,
+          "spent": 30,
+          "defeatedAt": 23.316666666666624,
+          "landed": {
+            "time": 5.933333333333318,
+            "hero": {
+              "x": 354.52184458621855,
+              "y": 748.591896052122,
+              "id": "wukong",
+              "hp": 180,
+              "max": 180,
+              "flash": 0,
+              "airHeight": 0
+            },
+            "target": {
+              "x": 852.9382225495225,
+              "y": 560.4608112760455,
+              "hp": 100
+            },
+            "distance": 532.7402658717307,
+            "tang": {
+              "x": 492.1081983608453,
+              "y": 722.707629498803,
+              "id": "tang",
+              "hp": 100,
+              "max": 100,
+              "flash": 0,
+              "goal": {
+                "x": 492.1081983608453,
+                "y": 722.707629498803
+              }
+            }
+          },
+          "reengage": {
+            "sequence": 50,
+            "time": 20.050000000000143,
+            "kind": "melee",
+            "unit": "wukong",
+            "target": "archer-1",
+            "amount": 22,
+            "step": 0,
+            "x": 629.2359968624969,
+            "y": 633.3020815872569
+          },
+          "after": {
+            "phase": "won",
+            "time": 46.58333333333197,
+            "hero": 160,
+            "tang": 60,
+            "heroDamage": 20,
+            "tangDamage": 40,
+            "fruit": 2,
+            "healed": 0,
+            "away": 1.9166666666666647
+          }
+        },
+        {
+          "at": 4,
+          "action": "staff",
+          "accepted": false,
+          "spent": 0,
+          "defeatedAt": 24.316666666666567,
+          "landed": null,
+          "reengage": null,
+          "after": {
+            "phase": "won",
+            "time": 47.266666666665266,
+            "hero": 160,
+            "tang": 80,
+            "heroDamage": 20,
+            "tangDamage": 20,
+            "fruit": 2,
+            "healed": 0,
+            "away": 0
+          }
+        },
+        {
+          "at": 6,
+          "action": "stay",
+          "accepted": true,
+          "spent": 0,
+          "defeatedAt": 24.316666666666567,
+          "landed": null,
+          "reengage": null,
+          "after": {
+            "phase": "won",
+            "time": 47.266666666665266,
+            "hero": 160,
+            "tang": 80,
+            "heroDamage": 20,
+            "tangDamage": 20,
+            "fruit": 2,
+            "healed": 0,
+            "away": 0
+          }
+        },
+        {
+          "at": 6,
+          "action": "fly",
+          "accepted": true,
+          "spent": 30,
+          "defeatedAt": 22.08333333333336,
+          "landed": {
+            "time": 10.933333333333456,
+            "hero": {
+              "x": 327.76094815220836,
+              "y": 717.5908501400975,
+              "id": "wukong",
+              "hp": 180,
+              "max": 180,
+              "flash": 0,
+              "airHeight": 0
+            },
+            "target": {
+              "x": 842.9598177697164,
+              "y": 558.7649780962608,
+              "hp": 30
+            },
+            "distance": 539.1247841507968,
+            "tang": {
+              "x": 457.61475935241344,
+              "y": 665.2650657046828,
+              "id": "tang",
+              "hp": 80,
+              "max": 100,
+              "flash": 0,
+              "goal": {
+                "x": 457.61475935241344,
+                "y": 665.2650657046828
+              }
+            }
+          },
+          "reengage": {
+            "sequence": 62,
+            "time": 21.23333333333341,
+            "kind": "melee",
+            "unit": "wukong",
+            "target": "archer-1",
+            "amount": 22,
+            "step": 0,
+            "x": 690.2646140856533,
+            "y": 587.571549286463
+          },
+          "after": {
+            "phase": "won",
+            "time": 48.34999999999854,
+            "hero": 180,
+            "tang": 60,
+            "heroDamage": 0,
+            "tangDamage": 40,
+            "fruit": 2,
+            "healed": 0,
+            "away": 4.9166666666666545
+          }
+        },
+        {
+          "at": 6,
+          "action": "cancel",
+          "accepted": true,
+          "spent": 30,
+          "defeatedAt": 20.816666666666766,
+          "landed": {
+            "time": 7.699999999999978,
+            "hero": {
+              "x": 327.76094815220836,
+              "y": 717.5908501400975,
+              "id": "wukong",
+              "hp": 180,
+              "max": 180,
+              "flash": 0,
+              "airHeight": 0
+            },
+            "target": {
+              "x": 818.5369529969086,
+              "y": 567.6825829478555,
+              "hp": 100
+            },
+            "distance": 513.1603799046705,
+            "tang": {
+              "x": 457.61475935241344,
+              "y": 665.2650657046828,
+              "id": "tang",
+              "hp": 100,
+              "max": 100,
+              "flash": 0,
+              "goal": {
+                "x": 457.61475935241344,
+                "y": 665.2650657046828
+              }
+            }
+          },
+          "reengage": {
+            "sequence": 55,
+            "time": 17.583333333333616,
+            "kind": "melee",
+            "unit": "wukong",
+            "target": "archer-1",
+            "amount": 22,
+            "step": 0,
+            "x": 664.7717346234273,
+            "y": 592.6107375996788
+          },
+          "after": {
+            "phase": "won",
+            "time": 44.83333333333207,
+            "hero": 180,
+            "tang": 80,
+            "heroDamage": 0,
+            "tangDamage": 20,
+            "fruit": 2,
+            "healed": 0,
+            "away": 1.6833333333333322
+          }
+        },
+        {
+          "at": 6,
+          "action": "staff",
+          "accepted": false,
+          "spent": 0,
+          "defeatedAt": 24.316666666666567,
+          "landed": null,
+          "reengage": null,
+          "after": {
+            "phase": "won",
+            "time": 47.266666666665266,
+            "hero": 160,
+            "tang": 80,
+            "heroDamage": 20,
+            "tangDamage": 20,
+            "fruit": 2,
+            "healed": 0,
+            "away": 0
+          }
+        },
+        {
+          "at": 8,
+          "action": "stay",
+          "accepted": true,
+          "spent": 0,
+          "defeatedAt": 24.316666666666567,
+          "landed": null,
+          "reengage": null,
+          "after": {
+            "phase": "won",
+            "time": 47.266666666665266,
+            "hero": 160,
+            "tang": 80,
+            "heroDamage": 20,
+            "tangDamage": 20,
+            "fruit": 2,
+            "healed": 0,
+            "away": 0
+          }
+        },
+        {
+          "at": 8,
+          "action": "fly",
+          "accepted": true,
+          "spent": 30,
+          "defeatedAt": 25.4666666666665,
+          "landed": {
+            "time": 12.750000000000213,
+            "hero": {
+              "x": 326.28788153706057,
+              "y": 713.7753858775221,
+              "id": "wukong",
+              "hp": 180,
+              "max": 180,
+              "flash": 0,
+              "airHeight": 0
+            },
+            "target": {
+              "x": 794.3583065556394,
+              "y": 573.2789573219274,
+              "hp": 30
+            },
+            "distance": 488.7015134148352,
+            "tang": {
+              "x": 457.61475935241344,
+              "y": 665.2650657046828,
+              "id": "tang",
+              "hp": 80,
+              "max": 100,
+              "flash": 0,
+              "goal": {
+                "x": 457.61475935241344,
+                "y": 665.2650657046828
+              }
+            }
+          },
+          "reengage": {
+            "sequence": 64,
+            "time": 24.61666666666655,
+            "kind": "melee",
+            "unit": "wukong",
+            "target": "archer-1",
+            "amount": 22,
+            "step": 0,
+            "x": 642.5722358709008,
+            "y": 614.0562345081553
+          },
+          "after": {
+            "phase": "won",
+            "time": 50.88333333333173,
+            "hero": 160,
+            "tang": 60,
+            "heroDamage": 20,
+            "tangDamage": 40,
+            "fruit": 2,
+            "healed": 0,
+            "away": 4.733333333333322
+          }
+        },
+        {
+          "at": 8,
+          "action": "cancel",
+          "accepted": true,
+          "spent": 30,
+          "defeatedAt": 19.90000000000015,
+          "landed": {
+            "time": 9.633333333333391,
+            "hero": {
+              "x": 346.7635076680053,
+              "y": 729.2650657046828,
+              "id": "wukong",
+              "hp": 180,
+              "max": 180,
+              "flash": 0,
+              "airHeight": 0
+            },
+            "target": {
+              "x": 771.950649270475,
+              "y": 582.0732526526853,
+              "hp": 100
+            },
+            "distance": 449.9439245212816,
+            "tang": {
+              "x": 457.61475935241344,
+              "y": 665.2650657046828,
+              "id": "tang",
+              "hp": 80,
+              "max": 100,
+              "flash": 0.25,
+              "goal": {
+                "x": 457.61475935241344,
+                "y": 665.2650657046828
+              }
+            }
+          },
+          "reengage": {
+            "sequence": 46,
+            "time": 16.63333333333367,
+            "kind": "melee",
+            "unit": "wukong",
+            "target": "archer-1",
+            "amount": 22,
+            "step": 0,
+            "x": 691.4705071125427,
+            "y": 607.5116904096046
+          },
+          "after": {
+            "phase": "won",
+            "time": 42.64999999999886,
+            "hero": 180,
+            "tang": 80,
+            "heroDamage": 0,
+            "tangDamage": 20,
+            "fruit": 2,
+            "healed": 0,
+            "away": 1.6166666666666658
+          }
+        },
+        {
+          "at": 8,
+          "action": "staff",
+          "accepted": false,
+          "spent": 0,
+          "defeatedAt": 24.316666666666567,
+          "landed": null,
+          "reengage": null,
+          "after": {
+            "phase": "won",
+            "time": 47.266666666665266,
+            "hero": 160,
+            "tang": 80,
+            "heroDamage": 20,
+            "tangDamage": 20,
+            "fruit": 2,
+            "healed": 0,
+            "away": 0
+          }
+        },
+        {
+          "at": 10,
+          "action": "stay",
+          "accepted": true,
+          "spent": 0,
+          "defeatedAt": 24.316666666666567,
+          "landed": null,
+          "reengage": null,
+          "after": {
+            "phase": "won",
+            "time": 47.266666666665266,
+            "hero": 160,
+            "tang": 80,
+            "heroDamage": 20,
+            "tangDamage": 0,
+            "fruit": 2,
+            "healed": 0,
+            "away": 0
+          }
+        },
+        {
+          "at": 10,
+          "action": "fly",
+          "accepted": true,
+          "spent": 30,
+          "defeatedAt": 16.98333333333365,
+          "landed": {
+            "time": 14.216666666666953,
+            "hero": {
+              "x": 494.9416374034141,
+              "y": 675.3208919441493,
+              "id": "wukong",
+              "hp": 180,
+              "max": 180,
+              "flash": 0,
+              "airHeight": 0
+            },
+            "target": {
+              "x": 784.4781632522764,
+              "y": 577.1761444263295,
+              "hp": 30
+            },
+            "distance": 305.71848368387134,
+            "tang": {
+              "x": 362.35196493612517,
+              "y": 720.2650657046828,
+              "id": "tang",
+              "hp": 80,
+              "max": 100,
+              "flash": 0,
+              "goal": {
+                "x": 362.35196493612517,
+                "y": 720.2650657046828
+              }
+            }
+          },
+          "reengage": {
+            "sequence": 45,
+            "time": 16.1333333333337,
+            "kind": "melee",
+            "unit": "wukong",
+            "target": "archer-1",
+            "amount": 22,
+            "step": 0,
+            "x": 784.4781632522764,
+            "y": 577.1761444263295
+          },
+          "after": {
+            "phase": "won",
+            "time": 36.86666666666586,
+            "hero": 160,
+            "tang": 80,
+            "heroDamage": 20,
+            "tangDamage": 0,
+            "fruit": 2,
+            "healed": 0,
+            "away": 4.216666666666657
+          }
+        },
+        {
+          "at": 10,
+          "action": "cancel",
+          "accepted": true,
+          "spent": 30,
+          "defeatedAt": 16.28333333333369,
+          "landed": {
+            "time": 11.533333333333486,
+            "hero": {
+              "x": 549.4122493405038,
+              "y": 612.2657601491262,
+              "id": "wukong",
+              "hp": 180,
+              "max": 180,
+              "flash": 0,
+              "airHeight": 0
+            },
+            "target": {
+              "x": 759.9437878759334,
+              "y": 585.7822134995291,
+              "hp": 100
+            },
+            "distance": 212.19073250553726,
+            "tang": {
+              "x": 406.2293825814779,
+              "y": 694.9324268157906,
+              "id": "tang",
+              "hp": 80,
+              "max": 100,
+              "flash": 0,
+              "goal": {
+                "x": 406.2293825814779,
+                "y": 694.9324268157906
+              }
+            }
+          },
+          "reengage": {
+            "sequence": 42,
+            "time": 12.916666666666888,
+            "kind": "melee",
+            "unit": "wukong",
+            "target": "archer-1",
+            "amount": 22,
+            "step": 0,
+            "x": 756.8704262314437,
+            "y": 587.0511000989461
+          },
+          "after": {
+            "phase": "won",
+            "time": 37.36666666666583,
+            "hero": 180,
+            "tang": 80,
+            "heroDamage": 0,
+            "tangDamage": 0,
+            "fruit": 2,
+            "healed": 0,
+            "away": 1.5333333333333328
+          }
+        },
+        {
+          "at": 10,
+          "action": "staff",
+          "accepted": false,
+          "spent": 0,
+          "defeatedAt": 24.316666666666567,
+          "landed": null,
+          "reengage": null,
+          "after": {
+            "phase": "won",
+            "time": 47.266666666665266,
+            "hero": 160,
+            "tang": 80,
+            "heroDamage": 20,
+            "tangDamage": 0,
+            "fruit": 2,
+            "healed": 0,
+            "away": 0
+          }
+        }
+      ]
+    }
+  ]
+}

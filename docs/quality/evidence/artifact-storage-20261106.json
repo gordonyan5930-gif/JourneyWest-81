@@ -1,0 +1,668 @@
+{
+  "repository": "gordonyan5930-gif/JourneyWest-81",
+  "queriedAt": "2026-11-06T03:36:29.342Z",
+  "method": "paginated all workflow runs, paginated per-run artifacts (connector repository artifacts URL unsupported)",
+  "runs": 85,
+  "complete": true,
+  "errors": [],
+  "artifacts": [
+    {
+      "id": 13314102623,
+      "name": "studio-video-04",
+      "size_in_bytes": 59452271,
+      "digest": "sha256:ead49dfb989faa4b5eadc8d538da29f72479ed1274d7ce0d9e2fe9428c2eb0f1",
+      "created_at": "2026-11-04T10:31:29Z",
+      "expires_at": "2026-11-11T10:31:27Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41810704894,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "285158dd1927cd81e5ea82f277101f6fcbef1397"
+      }
+    },
+    {
+      "id": 13314072706,
+      "name": "studio-audio-01",
+      "size_in_bytes": 102220,
+      "digest": "sha256:206a7b6fd08ae80a58cf85b18b0bb5aef225a4dc5f68a1303dbfac3fcdb9ed74",
+      "created_at": "2026-11-04T10:31:30Z",
+      "expires_at": "2026-11-11T10:31:30Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41810704894,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "285158dd1927cd81e5ea82f277101f6fcbef1397"
+      }
+    },
+    {
+      "id": 13313713529,
+      "name": "studio-video-03",
+      "size_in_bytes": 167492781,
+      "digest": "sha256:c2eb955d3efe12d487b0f520cf58b1c816309cab96a2d0bbaaab2afd76beb412",
+      "created_at": "2026-11-04T10:31:26Z",
+      "expires_at": "2026-11-11T10:31:22Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41810704894,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "285158dd1927cd81e5ea82f277101f6fcbef1397"
+      }
+    },
+    {
+      "id": 13313672665,
+      "name": "studio-video-02",
+      "size_in_bytes": 143523302,
+      "digest": "sha256:eb6be34008cd47dd920fda5033ad4ad4d31696a673f9e82c4dd2fe1a6d9ace3e",
+      "created_at": "2026-11-04T10:31:21Z",
+      "expires_at": "2026-11-11T10:31:17Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41810704894,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "285158dd1927cd81e5ea82f277101f6fcbef1397"
+      }
+    },
+    {
+      "id": 13313219010,
+      "name": "studio-screenshots-01",
+      "size_in_bytes": 182927057,
+      "digest": "sha256:7a0662a5ebd77412dfa6f681063b1dddb512d8f4fc00f7d8086a42a696a899ad",
+      "created_at": "2026-11-04T10:31:09Z",
+      "expires_at": "2026-11-11T10:31:04Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41810704894,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "285158dd1927cd81e5ea82f277101f6fcbef1397"
+      }
+    },
+    {
+      "id": 13313184145,
+      "name": "studio-report-01",
+      "size_in_bytes": 1622492,
+      "digest": "sha256:955e740b1d93864204b4c5753403a8269af121a23245520839414d1aa8d026fa",
+      "created_at": "2026-11-04T10:31:03Z",
+      "expires_at": "2026-11-11T10:31:02Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41810704894,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "285158dd1927cd81e5ea82f277101f6fcbef1397"
+      }
+    },
+    {
+      "id": 13313019578,
+      "name": "studio-screenshots-02",
+      "size_in_bytes": 68851242,
+      "digest": "sha256:433949a043df752f252fe38bfbe58a5e5bd1727c34a302120f2598841fe7a3e3",
+      "created_at": "2026-11-04T10:31:11Z",
+      "expires_at": "2026-11-11T10:31:09Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41810704894,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "285158dd1927cd81e5ea82f277101f6fcbef1397"
+      }
+    },
+    {
+      "id": 13312824943,
+      "name": "studio-video-01",
+      "size_in_bytes": 170648121,
+      "digest": "sha256:8c62122ee30d786c4bf9edd272a1d45b1a691019e96c585df2a217cc1c377ad4",
+      "created_at": "2026-11-04T10:31:17Z",
+      "expires_at": "2026-11-11T10:31:13Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41810704894,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "285158dd1927cd81e5ea82f277101f6fcbef1397"
+      }
+    },
+    {
+      "id": 13312265208,
+      "name": "studio-report-01",
+      "size_in_bytes": 1156654,
+      "digest": "sha256:4eeae63a84d50b555f22a251261b38bfab7b5511babaf96fb3b7cc7f44d8902d",
+      "created_at": "2026-11-04T09:44:46Z",
+      "expires_at": "2026-11-11T09:44:45Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41809312424,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "e1cc2105db4a93d4a68741c8c55603d626804d7d"
+      }
+    },
+    {
+      "id": 13312185389,
+      "name": "studio-screenshots-01",
+      "size_in_bytes": 13157311,
+      "digest": "sha256:998c525e6319a9e7b4beca9ab1f05d31bfd300ca8f0ce006bed028018750c3ce",
+      "created_at": "2026-11-04T09:44:48Z",
+      "expires_at": "2026-11-11T09:44:46Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41809312424,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "e1cc2105db4a93d4a68741c8c55603d626804d7d"
+      }
+    },
+    {
+      "id": 13312160490,
+      "name": "studio-debug-01",
+      "size_in_bytes": 34860055,
+      "digest": "sha256:f2d9a123ca5a4b721f8a96fb735eefc52fd46b49b211d32a7eb8e676de6a000f",
+      "created_at": "2026-11-04T09:44:53Z",
+      "expires_at": "2026-11-11T09:44:52Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41809312424,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "e1cc2105db4a93d4a68741c8c55603d626804d7d"
+      }
+    },
+    {
+      "id": 13311971944,
+      "name": "studio-video-01",
+      "size_in_bytes": 25303811,
+      "digest": "sha256:4c89c86eb78ab4a72f84571e41de432404e91e8a8f427905f1cb395ec2fa9bce",
+      "created_at": "2026-11-04T09:44:50Z",
+      "expires_at": "2026-11-11T09:44:49Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41809312424,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "e1cc2105db4a93d4a68741c8c55603d626804d7d"
+      }
+    },
+    {
+      "id": 13301922181,
+      "name": "studio-audio-01",
+      "size_in_bytes": 102220,
+      "digest": "sha256:108d1283887067356ce5e5e3e1975d8cfd6840bddb336aea1f335903055db890",
+      "created_at": "2026-11-04T06:43:54Z",
+      "expires_at": "2026-11-11T06:43:53Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41783360041,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "f2289bd4b9d600271d55ec715de8f852d3cca64f"
+      }
+    },
+    {
+      "id": 13301782428,
+      "name": "studio-video-02",
+      "size_in_bytes": 95797076,
+      "digest": "sha256:657820ce01336250287a52ac31e089a23b2469430353c1b14c2b578f29fff80d",
+      "created_at": "2026-11-04T06:43:42Z",
+      "expires_at": "2026-11-11T06:43:38Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41783360041,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "f2289bd4b9d600271d55ec715de8f852d3cca64f"
+      }
+    },
+    {
+      "id": 13301632942,
+      "name": "studio-video-04",
+      "size_in_bytes": 61349125,
+      "digest": "sha256:0df1deae01ce7a41789c463112175664e605e117fdbd08aed5635f1d44a36a9e",
+      "created_at": "2026-11-04T06:43:52Z",
+      "expires_at": "2026-11-11T06:43:49Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41783360041,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "f2289bd4b9d600271d55ec715de8f852d3cca64f"
+      }
+    },
+    {
+      "id": 13301612793,
+      "name": "studio-report-01",
+      "size_in_bytes": 977744,
+      "digest": "sha256:531f05d9ccd2c4118de0ebbdc70ec766ca6572edcbb4f8c6403f12f7b89305fc",
+      "created_at": "2026-11-04T06:43:20Z",
+      "expires_at": "2026-11-11T06:43:19Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41783360041,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "f2289bd4b9d600271d55ec715de8f852d3cca64f"
+      }
+    },
+    {
+      "id": 13301562805,
+      "name": "studio-screenshots-02",
+      "size_in_bytes": 44709682,
+      "digest": "sha256:015b266958252aabfc86c6c2677e9d2761f9e85b1a3f59f41291876bd1016db3",
+      "created_at": "2026-11-04T06:43:30Z",
+      "expires_at": "2026-11-11T06:43:27Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41783360041,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "f2289bd4b9d600271d55ec715de8f852d3cca64f"
+      }
+    },
+    {
+      "id": 13301457981,
+      "name": "studio-video-01",
+      "size_in_bytes": 182485329,
+      "digest": "sha256:4abe91e1acf0f31536c4ba1ad2630ad33c6ae2fa866a9c2d515c64c7ab9d0bc4",
+      "created_at": "2026-11-04T06:43:38Z",
+      "expires_at": "2026-11-11T06:43:31Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41783360041,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "f2289bd4b9d600271d55ec715de8f852d3cca64f"
+      }
+    },
+    {
+      "id": 13301443255,
+      "name": "studio-video-03",
+      "size_in_bytes": 178478159,
+      "digest": "sha256:744da78270b48f10f338c880209c1e37bafa61c60bec97cfd7ecad1942bd4055",
+      "created_at": "2026-11-04T06:43:48Z",
+      "expires_at": "2026-11-11T06:43:42Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41783360041,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "f2289bd4b9d600271d55ec715de8f852d3cca64f"
+      }
+    },
+    {
+      "id": 13301358466,
+      "name": "studio-screenshots-01",
+      "size_in_bytes": 183277951,
+      "digest": "sha256:06597976956671c8e224461091530b509be6aea59221d5315373b6e04b0d70de",
+      "created_at": "2026-11-04T06:43:27Z",
+      "expires_at": "2026-11-11T06:43:21Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41783360041,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "f2289bd4b9d600271d55ec715de8f852d3cca64f"
+      }
+    },
+    {
+      "id": 13299428219,
+      "name": "studio-report-01",
+      "size_in_bytes": 877911,
+      "digest": "sha256:52a11af00f02fa99b3be3c5e06f9df4831f4d59c51e0d2c45967e68023fa21cb",
+      "created_at": "2026-11-04T06:00:49Z",
+      "expires_at": "2026-11-11T06:00:48Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41779862816,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "f56833fc90158ccbed53f20426ce014710251c75"
+      }
+    },
+    {
+      "id": 13297674619,
+      "name": "studio-report-01",
+      "size_in_bytes": 869929,
+      "digest": "sha256:a343a507d496e2e82e06eea8b9339bca05d24b280fbb63cfee37763c72a24f11",
+      "created_at": "2026-11-04T05:34:04Z",
+      "expires_at": "2026-11-11T05:34:03Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41777262265,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "472b42699d0ac134ce2f7f253f41e7763386f485"
+      }
+    },
+    {
+      "id": 13241755611,
+      "name": "studio-report-01",
+      "size_in_bytes": 557432,
+      "digest": "sha256:6ae828a07f3b7b50c87bafa4ab7ae35c94442a87f4212bdea02c70a34c9e8dd6",
+      "created_at": "2026-11-03T15:00:24Z",
+      "expires_at": "2026-11-10T15:00:23Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41654785503,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "3a336f9afd62382f7ea8831f08198b42aff6a63f"
+      }
+    },
+    {
+      "id": 13219962395,
+      "name": "studio-report-01",
+      "size_in_bytes": 528289,
+      "digest": "sha256:53ae1156313c2335fcdd7f55afcd5e6d788fb5eeac1913ca29088ae6bd5fca7c",
+      "created_at": "2026-11-03T09:45:05Z",
+      "expires_at": "2026-11-10T09:45:04Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41609204537,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "04196f1adf8bfae847ff0e725f65ca946610cfba"
+      }
+    },
+    {
+      "id": 13217631850,
+      "name": "studio-report-01",
+      "size_in_bytes": 319057,
+      "digest": "sha256:0e2fc503b389a63c31197e9aa273615400f82d8a0db29ce0876e988ab8642d04",
+      "created_at": "2026-11-03T09:05:04Z",
+      "expires_at": "2026-11-10T09:05:04Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41606075405,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "6fcd65ede7366bf0c7502648d563ad9c4880a81e"
+      }
+    },
+    {
+      "id": 13215593730,
+      "name": "studio-report-01",
+      "size_in_bytes": 281214,
+      "digest": "sha256:8a88c938076a6eca2bd3b9243bd3f79579e8f2c82b3df6b1bfa9187ecfa87a20",
+      "created_at": "2026-11-03T08:36:18Z",
+      "expires_at": "2026-11-10T08:36:17Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41603414357,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "b568b26cacda5e3a520f807474e51c20f75c1a56"
+      }
+    },
+    {
+      "id": 13171532730,
+      "name": "studio-report-01",
+      "size_in_bytes": 496153,
+      "digest": "sha256:cc90e774678d7ee65f48f6bf645a6c72fa41781183601553be75855837399d65",
+      "created_at": "2026-11-02T19:18:09Z",
+      "expires_at": "2026-11-09T19:18:08Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41504790089,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "1f0f154ad93452b2d8291737b747147a4f56d1be"
+      }
+    },
+    {
+      "id": 13170306409,
+      "name": "studio-report-01",
+      "size_in_bytes": 409127,
+      "digest": "sha256:08ca90ecf09c3355225ec3267a52fc2dec375db3bcbad298c1b9ccc6ce9763d7",
+      "created_at": "2026-11-02T18:45:42Z",
+      "expires_at": "2026-11-09T18:45:40Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41500937425,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "26172315acfd45d77e8ce1b75d10ff0abf033dd6"
+      }
+    },
+    {
+      "id": 13168016446,
+      "name": "studio-report-01",
+      "size_in_bytes": 170424,
+      "digest": "sha256:ca37183552b7998ff9ebead16a70f16322fc8e5dca9415df59332eb3c3238264",
+      "created_at": "2026-11-02T18:13:41Z",
+      "expires_at": "2026-11-09T18:13:40Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41497290454,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "bc8fb165671e080c8e4d5ede409942fd5eb6b555"
+      }
+    },
+    {
+      "id": 13166104777,
+      "name": "studio-report-01",
+      "size_in_bytes": 34162,
+      "digest": "sha256:540038888663cb081c9abc3ac26039d04236ca554eeb738a81bd6b77026e4d00",
+      "created_at": "2026-11-02T18:07:07Z",
+      "expires_at": "2026-11-09T18:07:07Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41496815081,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "a97ebef38279d6f0010b725aa516fcc9246e594f"
+      }
+    },
+    {
+      "id": 13166767318,
+      "name": "studio-report-01",
+      "size_in_bytes": 67075,
+      "digest": "sha256:6fb7f7f0db3e26e684a8b2be76106e9713c6204224ada97ba941c5befd279a6d",
+      "created_at": "2026-11-02T18:04:39Z",
+      "expires_at": "2026-11-09T18:04:37Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41495267675,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "b4f862b81613e91a97524b8fda540b2096add26f"
+      }
+    },
+    {
+      "id": 13156671786,
+      "name": "studio-report-01",
+      "size_in_bytes": 430656,
+      "digest": "sha256:d30e1b36a71263205e52e4f579d3c54a2d1f5d86c9253c9215ea41270a32736b",
+      "created_at": "2026-11-02T15:43:15Z",
+      "expires_at": "2026-11-09T15:43:14Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41470618997,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "661726ede0444f47fb78f7a84ca55561ef6f28e0"
+      }
+    },
+    {
+      "id": 13155635489,
+      "name": "studio-report-01",
+      "size_in_bytes": 32745,
+      "digest": "sha256:9e065191f3ecc23eaf864cd076d97c9cae5349bdc9a0a05a085e68c24b34ecab",
+      "created_at": "2026-11-02T15:21:23Z",
+      "expires_at": "2026-11-09T15:21:22Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41470305120,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "03fb92e2479238f3dc1a5847d32b624efc31d469"
+      }
+    },
+    {
+      "id": 13154846508,
+      "name": "studio-report-01",
+      "size_in_bytes": 159283,
+      "digest": "sha256:6b7de190cc3083217104e1a4e1891a072a715a3e5ed2edf559cd690a544b0915",
+      "created_at": "2026-11-02T15:10:33Z",
+      "expires_at": "2026-11-09T15:10:33Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41468169374,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "f0a45b3627e66733d17d7a59bca34ca60fc4b473"
+      }
+    },
+    {
+      "id": 13153481427,
+      "name": "studio-report-01",
+      "size_in_bytes": 198627,
+      "digest": "sha256:93257cfbb58406fa19da253f4b988061a3d710f57fb781cde85180194d9bd72e",
+      "created_at": "2026-11-02T15:00:03Z",
+      "expires_at": "2026-11-09T15:00:02Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41465678487,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "3f8635d4a977ae2dde56acaf21aadcefa7593e5d"
+      }
+    },
+    {
+      "id": 13151340719,
+      "name": "studio-report-01",
+      "size_in_bytes": 398785,
+      "digest": "sha256:6db68578f38175466261ab889e6d00bd12001355be14593728a3fd07d27f4d9d",
+      "created_at": "2026-11-02T14:46:47Z",
+      "expires_at": "2026-11-09T14:46:46Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41461174797,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "c13a7c37004a29b7a9815362aaeeb1633b8947fa"
+      }
+    },
+    {
+      "id": 13148633933,
+      "name": "studio-report-01",
+      "size_in_bytes": 26756,
+      "digest": "sha256:b4d04bbe81a8ed6eec73c29dab867f7fe9e178847cc78a129481cef0ee4fc594",
+      "created_at": "2026-11-02T14:17:26Z",
+      "expires_at": "2026-11-09T14:17:26Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41460298743,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "7017e4ea8ca7a1e20fa59f4a4c572f946a787b8f"
+      }
+    },
+    {
+      "id": 13136874665,
+      "name": "studio-report-01",
+      "size_in_bytes": 364477,
+      "digest": "sha256:d80cbcd6f8178b9df6f66819acc1d0bb8ab4519785b0d497cd2b421520ad0ecf",
+      "created_at": "2026-11-02T11:52:41Z",
+      "expires_at": "2026-11-09T11:52:40Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41437956425,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "3fcac72142acb946764574bb70535d19d1940b88"
+      }
+    },
+    {
+      "id": 13137360085,
+      "name": "studio-report-01",
+      "size_in_bytes": 147601,
+      "digest": "sha256:8793b3655a7802992d8698fc1a5ec8354efba0b9ac10a496843a6a6f9d47828c",
+      "created_at": "2026-11-02T11:24:32Z",
+      "expires_at": "2026-11-09T11:24:30Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41435777939,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "f33ec2334c59a75dc2ae5e24d5cb3fb209347112"
+      }
+    },
+    {
+      "id": 13134573530,
+      "name": "studio-report-01",
+      "size_in_bytes": 137058,
+      "digest": "sha256:d23cb3dd15439c4f2723222680266f2f63770c6caf240fde3eabc7d4650015b7",
+      "created_at": "2026-11-02T10:56:16Z",
+      "expires_at": "2026-11-09T10:56:16Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41431962299,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "ed615e33a6319119e18c32ce31a0eb24a2a3b358"
+      }
+    },
+    {
+      "id": 13134826824,
+      "name": "studio-report-01",
+      "size_in_bytes": 32563,
+      "digest": "sha256:f0c8855ccd6dccbdf8431bb7f2b3be2c33b57c8bef274e53e93f21f758c9dd07",
+      "created_at": "2026-11-02T10:51:27Z",
+      "expires_at": "2026-11-09T10:51:26Z",
+      "expired": false,
+      "workflow_run": {
+        "id": 41431399956,
+        "repository_id": 1440635667,
+        "head_repository_id": 1440635667,
+        "head_branch": "feat/p0-a-prototype",
+        "head_sha": "fa097ec526b44bb03039a4a3cb84db4277a2955d"
+      }
+    }
+  ],
+  "count": 41,
+  "bytes": 1622813927
+}

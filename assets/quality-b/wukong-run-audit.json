@@ -1,0 +1,118 @@
+{
+  "version": "0.3-draft",
+  "frames": [
+    {
+      "frame": "0",
+      "boundsAlpha64": [
+        46,
+        95,
+        399,
+        428
+      ],
+      "edgeClearancePixels": 16,
+      "groundLineY": 427,
+      "lowestAlpha64Y": 427,
+      "phase": "contact"
+    },
+    {
+      "frame": "1",
+      "boundsAlpha64": [
+        55,
+        98,
+        396,
+        428
+      ],
+      "edgeClearancePixels": 16,
+      "groundLineY": 427,
+      "lowestAlpha64Y": 427,
+      "phase": "compression"
+    },
+    {
+      "frame": "2",
+      "boundsAlpha64": [
+        34,
+        94,
+        385,
+        422
+      ],
+      "edgeClearancePixels": 22,
+      "groundLineY": 427,
+      "lowestAlpha64Y": 421,
+      "phase": "push"
+    },
+    {
+      "frame": "3",
+      "boundsAlpha64": [
+        43,
+        94,
+        416,
+        401
+      ],
+      "edgeClearancePixels": 28,
+      "groundLineY": 427,
+      "lowestAlpha64Y": 400,
+      "phase": "flight"
+    },
+    {
+      "frame": "4",
+      "boundsAlpha64": [
+        45,
+        78,
+        415,
+        398
+      ],
+      "edgeClearancePixels": 29,
+      "groundLineY": 397,
+      "lowestAlpha64Y": 397,
+      "phase": "contact"
+    },
+    {
+      "frame": "5",
+      "boundsAlpha64": [
+        62,
+        80,
+        393,
+        399
+      ],
+      "edgeClearancePixels": 44,
+      "groundLineY": 397,
+      "lowestAlpha64Y": 398,
+      "phase": "compression"
+    },
+    {
+      "frame": "6",
+      "boundsAlpha64": [
+        42,
+        77,
+        385,
+        397
+      ],
+      "edgeClearancePixels": 42,
+      "groundLineY": 397,
+      "lowestAlpha64Y": 396,
+      "phase": "push"
+    },
+    {
+      "frame": "7",
+      "boundsAlpha64": [
+        33,
+        81,
+        405,
+        381
+      ],
+      "edgeClearancePixels": 33,
+      "groundLineY": 397,
+      "lowestAlpha64Y": 380,
+      "phase": "flight"
+    }
+  ],
+  "scale": 0.31,
+  "strideWorldPixels": 160,
+  "registration": "Per-row ground lines from contact poses; flight feet retain their authored lift, not bottom-normalized. Distance-driven playback. These are registration measurements, not human animation approval.",
+  "limitations": [
+    "AI leg identity/hip proportions and staff/cape consistency still require professional frame review",
+    "Source contact frames 0 and4 are not guaranteed anatomically perfect opposite-foot contacts",
+    "No claim of production animation acceptance"
+  ],
+  "humanApproval": false
+}

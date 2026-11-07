@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-04",
+  "baseline": "f2289bd4b9d600271d55ec715de8f852d3cca64f",
+  "diagonalFormationRejected": {
+    "baselineHeroExitDistance": 198.23537374597998,
+    "choicesHeroExitDistance": 293.01857939557675,
+    "fix": "reverted new diagonal offsets; retained104/-12+24, moving goals/hysteresis only; arrival rule unchanged"
+  },
+  "initialPixelObservation": {
+    "before": {
+      "peak": 0.6833333333333333,
+      "over50Total": 1.733269999999976,
+      "over50Longest": 0.8149599999999779
+    },
+    "after": {
+      "peak": 0.697841726618705,
+      "over50Total": 0.13333999999999868,
+      "over50Longest": 0.13333999999999868
+    },
+    "note": "local first diagnostic before final path-cache/goal work; peak did not improve; do not claim complete separation or formal asset approval"
+  },
+  "canvasLocatorFailure": {
+    "cases": 2,
+    "cause": "portrait introduced second DOM canvas, strict game selector ambiguous",
+    "fix": "offscreen canvas derives existing atlas intoimg; no additional battlefield canvas"
+  },
+  "priorTacticalMatrix": {
+    "passed": 126,
+    "failed": 1,
+    "cause": "historical twelve contexts no longer cancel combo with changed paths",
+    "fix": "retain12rows, add natural reachable current-light paired cancellation; never alter damage/range"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "version": "0.1",
+  "originalPath": "assets/quality-b/sources/wukong-recovery-original.png",
+  "originalBytes": 1262226,
+  "originalSha256": "06cd15d3e6d9521439c580950241621968312630e4064b37b5585516687652a8",
+  "dimensions": [
+    2172,
+    724
+  ],
+  "format": "image/png; exact original bytes concatenated from numbered parts",
+  "reason": "GitHub connector large-blob upload did not complete; bounded smaller uploads preserve original bytes, no regeneration",
+  "parts": [
+    {
+      "path": "assets/quality-b/sources/wukong-recovery-original.png.part0",
+      "bytes": 315558,
+      "sha256": "c454befc89d34a8f2e4ff6d798069859edea0c391f7c87a437ae321bb825d5d9"
+    },
+    {
+      "path": "assets/quality-b/sources/wukong-recovery-original.png.part1",
+      "bytes": 315558,
+      "sha256": "c7af850901ed18620554245e9c682ad4da3bef8e61e39febe743c010b001156a"
+    },
+    {
+      "path": "assets/quality-b/sources/wukong-recovery-original.png.part2",
+      "bytes": 315558,
+      "sha256": "9ddfc4a1146538b2fe02efdfa218fe6cfce586f6c47358c5943d2933992f552b"
+    },
+    {
+      "path": "assets/quality-b/sources/wukong-recovery-original.png.part3",
+      "bytes": 315552,
+      "sha256": "ff0f0f90345289835ee3b0938a5328061a92d16258f336e60888e7c794e147fd"
+    }
+  ],
+  "restore": "npm run restore:recovery-source"
+}

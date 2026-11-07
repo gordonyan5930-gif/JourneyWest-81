@@ -1,0 +1,703 @@
+{
+  "assets": [
+    {
+      "id": "terrace-map",
+      "version": "0.1-draft",
+      "path": "assets/quality-b/terrace-map.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 941682,
+      "sha256": "3b54b8782ed0d1fbdb11df2859e666aad1e1fb960e67e5056418e490d1d19eb6",
+      "generatedSourceSha256": "cb1c6b7351b614069fd6b29a7724006083d7f82a64c15c5e3eef2eb3f7b4d9a7",
+      "origin": "newly generated game sample asset using visible approved references; not a crop of a reference board",
+      "status": "prototype-awaiting-user-review",
+      "mode": "RGB"
+    },
+    {
+      "id": "wukong-atlas",
+      "version": "0.2-draft",
+      "path": "assets/quality-b/wukong-atlas.webp",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 1313732,
+      "sha256": "2079b7da7df1b0d543e258ce5b33c9b1f574d7594840a841ebc1edcd99a35727",
+      "generatedSourceSha256": "3d4e44bf14751edd9d5bd2c753cf454fa03f1f3604eb80a88310458e95124c95",
+      "origin": "newly generated game sample asset using visible approved references; not a crop of a reference board",
+      "status": "prototype-awaiting-user-review",
+      "mode": "RGBA",
+      "frames": {
+        "run": 6,
+        "idle": 2,
+        "strike": 4
+      },
+      "anchorAudit": "assets/quality-b/wukong-audit.json"
+    },
+    {
+      "id": "wukong-run",
+      "version": "0.3-draft",
+      "path": "assets/quality-b/wukong-run.webp",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1128304,
+      "sha256": "d65793dd442e74a2b6013965c6944983955e721fda7f5602c5ed68302472ed8c",
+      "generatedSourceSha256": "bd3c53d7891a749ec334cb6fbe653db626af34a9d2f71aa2257130cf0232e65f",
+      "origin": "New running study derived from archived approved character direction; not a crop or replacement of master",
+      "status": "prototype-awaiting-user-review",
+      "frames": 8,
+      "audit": "assets/quality-b/wukong-run-audit.json"
+    },
+    {
+      "id": "ranged-study",
+      "version": "0.4-experimental",
+      "path": "assets/quality-b/ranged-study.webp",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1350980,
+      "sha256": "b9cbf66a6f024e95f22fa8cc7bf640f854a1f1463dcaabb68345d345e72b63a1",
+      "generatedSourceSha256": "33f177e03962e66ee8d4f0a70828fb8c7ba6aa3b774843b5ed0a704fae71c172",
+      "origin": "New supporting archer/Tang/flight-image study only for authorized ranged counter demonstration; not master crops",
+      "status": "prototype-awaiting-user-review",
+      "limitations": "Key poses only; cell-edge cleanup/consistent anatomy and final staff silhouette pending; not production animation"
+    },
+    {
+      "id": "wukong-recovery-atlas",
+      "version": "0.1-pose-study",
+      "path": "assets/quality-b/wukong-recovery.webp",
+      "width": 2560,
+      "height": 640,
+      "bytes": 280516,
+      "sha256": "093026abd07dca95b2e57d04a639eac5c0cf661dabf27f77e31bcb5d98ae33dc",
+      "origin": "image_gen original minimal same-Wukong 4-pose study; reference existing runtime atlas; no master altered",
+      "status": "prototype-needs-user-art-review",
+      "role": "down/rise game pose sample, not final animation",
+      "audit": "assets/quality-b/recovery-audit.json"
+    },
+    {
+      "id": "audio-attack",
+      "version": "0.1-procedural",
+      "path": "assets/audio/attack-v01.wav",
+      "bytes": 7724,
+      "sha256": "51f26dde39542ea62a8ca7c6ee3809922b92cc6e5264834e5789e37db7336039",
+      "sampleRate": 24000,
+      "channels": 1,
+      "encoding": "PCM16 WAV",
+      "origin": "project-original deterministic synthesis in scripts/generate-combat-audio.mjs; no third-party samples",
+      "status": "functional audio sample; listening/mix review pending"
+    },
+    {
+      "id": "audio-hit",
+      "version": "0.1-procedural",
+      "path": "assets/audio/hit-v01.wav",
+      "bytes": 8684,
+      "sha256": "24f34731c86793aba61aeb5321ab52a2722f61d6f4fe3b5f95f1e555ff807a8b",
+      "sampleRate": 24000,
+      "channels": 1,
+      "encoding": "PCM16 WAV",
+      "origin": "project-original deterministic synthesis in scripts/generate-combat-audio.mjs; no third-party samples",
+      "status": "functional audio sample; listening/mix review pending"
+    },
+    {
+      "id": "audio-danger",
+      "version": "0.1-procedural",
+      "path": "assets/audio/danger-v01.wav",
+      "bytes": 29804,
+      "sha256": "8bf8a9cadd940c9ca3e92603ba058049765030a3fb14bdba53fbe59bdb7178bb",
+      "sampleRate": 24000,
+      "channels": 1,
+      "encoding": "PCM16 WAV",
+      "origin": "project-original deterministic synthesis in scripts/generate-combat-audio.mjs; no third-party samples",
+      "status": "functional audio sample; listening/mix review pending"
+    },
+    {
+      "id": "audio-skill",
+      "version": "0.1-procedural",
+      "path": "assets/audio/skill-v01.wav",
+      "bytes": 20204,
+      "sha256": "e40dce583c065624fa4037397758c0560a4ca85920ae6a03fe4c329c5fc577a7",
+      "sampleRate": 24000,
+      "channels": 1,
+      "encoding": "PCM16 WAV",
+      "origin": "project-original deterministic synthesis in scripts/generate-combat-audio.mjs; no third-party samples",
+      "status": "functional audio sample; listening/mix review pending"
+    },
+    {
+      "id": "wukong-recovery-source-archive",
+      "version": "0.1",
+      "path": "assets/quality-b/sources/recovery-source-archive.json",
+      "bytes": 1317,
+      "sha256": "29e4fe95b3ef795d4c7f029795553cddb3c25d5d3cd63dd4fd895de21478f159",
+      "origin": "original generated PNG bytes preserved in 4 numbered binary parts; restore command in archive descriptor",
+      "originalSha256": "06cd15d3e6d9521439c580950241621968312630e4064b37b5585516687652a8",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "status": "source-preserved-not-final-art"
+    },
+    {
+      "id": "wukong-recovery-source-part-0",
+      "version": "0.1",
+      "path": "assets/quality-b/sources/wukong-recovery-original.png.part0",
+      "bytes": 315558,
+      "sha256": "c454befc89d34a8f2e4ff6d798069859edea0c391f7c87a437ae321bb825d5d9",
+      "origin": "exact byte span of generated original PNG, not a new image",
+      "status": "source-archive-part"
+    },
+    {
+      "id": "wukong-recovery-source-part-1",
+      "version": "0.1",
+      "path": "assets/quality-b/sources/wukong-recovery-original.png.part1",
+      "bytes": 315558,
+      "sha256": "c7af850901ed18620554245e9c682ad4da3bef8e61e39febe743c010b001156a",
+      "origin": "exact byte span of generated original PNG, not a new image",
+      "status": "source-archive-part"
+    },
+    {
+      "id": "wukong-recovery-source-part-2",
+      "version": "0.1",
+      "path": "assets/quality-b/sources/wukong-recovery-original.png.part2",
+      "bytes": 315558,
+      "sha256": "9ddfc4a1146538b2fe02efdfa218fe6cfce586f6c47358c5943d2933992f552b",
+      "origin": "exact byte span of generated original PNG, not a new image",
+      "status": "source-archive-part"
+    },
+    {
+      "id": "wukong-recovery-source-part-3",
+      "version": "0.1",
+      "path": "assets/quality-b/sources/wukong-recovery-original.png.part3",
+      "bytes": 315552,
+      "sha256": "ff0f0f90345289835ee3b0938a5328061a92d16258f336e60888e7c794e147fd",
+      "origin": "exact byte span of generated original PNG, not a new image",
+      "status": "source-archive-part"
+    },
+    {
+      "id": "round2-wukong-0",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-wukong-0.webp",
+      "bytes": 70248,
+      "sha256": "d009cb4d9b236952356170ef21e61e659c606063ef8c32d6c3cde76d7ebd4353",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-wukong-0.atlas",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-wukong-0.atlas.json",
+      "bytes": 1767,
+      "sha256": "7cf3db5b1b4dc0794cf9da8af5d95a2f218b9bb89c94d878bdc665bfe310f584",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-wukong-1",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-wukong-1.webp",
+      "bytes": 69644,
+      "sha256": "b87f0ab5e1eb9c57e3c0cc7b6354318e4c00e14dd2825dac302406dc43a043a2",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-wukong-1.atlas",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-wukong-1.atlas.json",
+      "bytes": 1767,
+      "sha256": "13ec8cb33afbd41e31a807e766f299a5348134cdb2faeeca53a96fe9855692f1",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-wukong-2",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-wukong-2.webp",
+      "bytes": 75706,
+      "sha256": "754345a24e5aa1184a24275380fde5fff836c3305c6d60fc5f8885b5356a7ce7",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-wukong-2.atlas",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-wukong-2.atlas.json",
+      "bytes": 1769,
+      "sha256": "62a4636f0d13709bb8b61ab2aba9bd18afa360901abe3a2cca0db7923fd67eda",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-wukong-3",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-wukong-3.webp",
+      "bytes": 73914,
+      "sha256": "c931b10274eb3c596b49cb532d96a56c7f2d17ec7832daf60ee52138656059b2",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-wukong-3.atlas",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-wukong-3.atlas.json",
+      "bytes": 1771,
+      "sha256": "8e273b709350e7a716a0e482f1d40b0a6c0354aa1cdab6b7d73331951f6a53f1",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-wukong-4",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-wukong-4.webp",
+      "bytes": 74414,
+      "sha256": "ef85e79f76424de31c81795446275f22d03f601d4537432b4301975c8d0ad282",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-wukong-4.atlas",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-wukong-4.atlas.json",
+      "bytes": 1771,
+      "sha256": "a44608865a694de5236aa7e2486c68a36aff22c7dcaed64c38398cc72fa27a1f",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-wukong-5",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-wukong-5.webp",
+      "bytes": 64906,
+      "sha256": "a0851b4b7ebb110407728614478245abaca7546b0b0911c7f3faa5a5e36e587f",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-wukong-5.atlas",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-wukong-5.atlas.json",
+      "bytes": 1771,
+      "sha256": "5307e19333b41d0ede517f67c8c20c6c24ac66671f43eebea653aa1ce9cbcd06",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-archer-react-0",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-archer-react-0.webp",
+      "bytes": 161054,
+      "sha256": "e050a61931eca6c146cbfc6dda80a00dff43b7673f7634e28c24eadb1f41c74d",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-archer-react-0.atlas",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-archer-react-0.atlas.json",
+      "bytes": 1773,
+      "sha256": "2996b9641a6b6a72c64af9c2e316de188fea2e7fa0942e96b19cb2573dd1ef22",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-archer-react-1",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-archer-react-1.webp",
+      "bytes": 120794,
+      "sha256": "edb98481853b6e33f1c73b35238c0e4334c6cd01343740cb3bbc0261f7824ce2",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-archer-react-1.atlas",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-archer-react-1.atlas.json",
+      "bytes": 1773,
+      "sha256": "e7e53f37c71835274c2929f4670860609258004c4025a384aa061a5e9c65f460",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-archer-react-2",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-archer-react-2.webp",
+      "bytes": 127830,
+      "sha256": "a5522d941724c08d88acc94f90b9636cae48383f68261368ecc81112e3ae0ee9",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-archer-react-2.atlas",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-archer-react-2.atlas.json",
+      "bytes": 1775,
+      "sha256": "b2d79d161cb6e487c85833fe8912113268e30ab341ab773a31ec032a90c85c8f",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-tang-0",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-tang-0.webp",
+      "bytes": 213210,
+      "sha256": "08165cb89c17d4fa13f6eb497cbebf7d46cdaaab61baa144c23454286dfc42f7",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-tang-0.atlas",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-tang-0.atlas.json",
+      "bytes": 1765,
+      "sha256": "c271b588cff6d9cf99d2c86349ffd06a746e4b5f3f8f7481448835872c467a30",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-tang-1",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-tang-1.webp",
+      "bytes": 213558,
+      "sha256": "c4c6654fbcefe2c4e38a4e1eb677a97a156f63b52268e1d96e9c07b8e5e3d92c",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-tang-1.atlas",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-tang-1.atlas.json",
+      "bytes": 1765,
+      "sha256": "8d47dbfc35e6363272e60375b7673b68d1c430b8c15cc8169ab0efb40967f429",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-archer-0",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-archer-0.webp",
+      "bytes": 119242,
+      "sha256": "d2f8eb5c7543d6e840fe2dfe041234991df3b8a5f754b9f44ab4c2029ba5af60",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-archer-0.atlas",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-archer-0.atlas.json",
+      "bytes": 1767,
+      "sha256": "2ff3834346a4b1372f3d3a4d79bb690b25359b13743288a7cfe6c0fd2e8ac31f",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-archer-1",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-archer-1.webp",
+      "bytes": 115496,
+      "sha256": "8c63e7261ab26a96c3b2bd4a1795b5df7ee4af1e03a63082dde7baa94eba37c7",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-archer-1.atlas",
+      "version": "round2-study-02",
+      "path": "assets/quality-b/round2/round2-archer-1.atlas.json",
+      "bytes": 1767,
+      "sha256": "eae492c1eac5f0aa7eb62c72b71995dde5dbe3bc66b673dc3b5963cc4931f3af",
+      "origin": "project-original AI drawn poses; engineering segmentation and foot registration only",
+      "status": "animation-study-awaiting-user-review"
+    },
+    {
+      "id": "round2-light",
+      "version": "0.2",
+      "path": "assets/audio/light-v02.wav",
+      "bytes": 6764,
+      "sha256": "b48f9f3a8098b04b87ae05f77645a37ecc61e7a2b9e1901671e94c80c75eea17",
+      "origin": "project-original deterministic procedural PCM; no third-party recordings or purchase",
+      "status": "mix-awaiting-listening-review",
+      "format": "mono PCM16 24000Hz"
+    },
+    {
+      "id": "round2-heavy",
+      "version": "0.2",
+      "path": "assets/audio/heavy-v02.wav",
+      "bytes": 15404,
+      "sha256": "edb873fd142b135d57836e052fbc82d2c2a9732dc81afb857bd0901dbf24265b",
+      "origin": "project-original deterministic procedural PCM; no third-party recordings or purchase",
+      "status": "mix-awaiting-listening-review",
+      "format": "mono PCM16 24000Hz"
+    },
+    {
+      "id": "round2-miss",
+      "version": "0.2",
+      "path": "assets/audio/miss-v02.wav",
+      "bytes": 11084,
+      "sha256": "ea59952ebca3a296b2fac6e301fffa86e0049f9ec97cfea939a60b2cb46f6285",
+      "origin": "project-original deterministic procedural PCM; no third-party recordings or purchase",
+      "status": "mix-awaiting-listening-review",
+      "format": "mono PCM16 24000Hz"
+    },
+    {
+      "id": "round2-hurt",
+      "version": "0.2",
+      "path": "assets/audio/hurt-v02.wav",
+      "bytes": 10604,
+      "sha256": "df210cc8706b634e086c7a980d472155b43b6a751711e2e18d0899d988404a36",
+      "origin": "project-original deterministic procedural PCM; no third-party recordings or purchase",
+      "status": "mix-awaiting-listening-review",
+      "format": "mono PCM16 24000Hz"
+    }
+  ],
+  "approval": "pending-human-asset-review",
+  "originalReferenceBytesAvailable": true,
+  "runtimeAnimations": {
+    "run": "wukong-run 8 frames, distance-driven 160 world pixels/cycle",
+    "idle": "wukong-atlas frames6-7",
+    "strike": "wukong-atlas frames8-11",
+    "legacyUnused": "wukong-atlas frames0-5 retained for provenance, not current run playback"
+  },
+  "round2": {
+    "sourceManifest": "assets/quality-b/round2/sources/manifest.json",
+    "registrationAudit": "assets/quality-b/round2/registration-audit.json",
+    "frameGroups": {
+      "wukong": 24,
+      "archer-react": 12,
+      "tang": 8,
+      "archer": 8
+    },
+    "approval": "pending-human-animation-review",
+    "limitations": "Source border touches, cloth/hand continuity and inter-pose proportion changes require human cleanup; padded atlas margins do not prove complete original linework."
+  },
+  "round3": {
+    "baseline": "3fcac721",
+    "index": "assets/quality-b/round3/index.json",
+    "audit": "assets/quality-b/round3/frame-review.json",
+    "approval": "engineering source recovery; animation quality pending user",
+    "newGenerationCalls": 0,
+    "oldMastersUnchanged": true
+  },
+  "round3Files": [
+    {
+      "path": "assets/quality-b/round3/README.md",
+      "bytes": 1547,
+      "sha256": "36b4273dd2a4f590923bd7a370b1da0419c021d173099631e272f68d16b186e6"
+    },
+    {
+      "path": "assets/quality-b/round3/frame-review.json",
+      "bytes": 44577,
+      "sha256": "f74ba097d660bac65cdf38636234e82e6a626bfcea068d09d566dd3d509372d1"
+    },
+    {
+      "path": "assets/quality-b/round3/index.json",
+      "bytes": 17020,
+      "sha256": "b45c7a7962a9086bdedc031955a1e3059c972fb9346edd70728c2ebd57941427"
+    },
+    {
+      "path": "assets/quality-b/round3/review-archer-react.png",
+      "bytes": 268918,
+      "sha256": "07808cba54738ed8d95efe93b24361567e7b59d665499c2fcb09eb2246fe3b49"
+    },
+    {
+      "path": "assets/quality-b/round3/review-archer.png",
+      "bytes": 144698,
+      "sha256": "b12b0138a54e2070fb3981d5d201db5f9fad5ac9b379c91a0165faa1f3b89ab2"
+    },
+    {
+      "path": "assets/quality-b/round3/review-tang.png",
+      "bytes": 142637,
+      "sha256": "7d77cf399d5a211fc0012ca9ba0ab00c429ce83911e732c6d9a26f8f0fea7863"
+    },
+    {
+      "path": "assets/quality-b/round3/review-wukong.png",
+      "bytes": 705497,
+      "sha256": "c51e15db24f18a3ea0daaf64e18fc9b0896786299d0a91c269b813a2ca04736e"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-archer-5.atlas.json",
+      "bytes": 547,
+      "sha256": "a2b9ac8f9ad4a22170ef31017c86aa2ec2e7588e0aa104dd33fed142585c159b"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-archer-5.webp",
+      "bytes": 60060,
+      "sha256": "12e502afaf991a49a5f8fd5021995a186498171da6e822adbe13144585047f72"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-archer-6.atlas.json",
+      "bytes": 547,
+      "sha256": "6eea667e50c16e81b9ad1520c7641709c4fe652df9aa0be45b7415f052601b28"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-archer-6.webp",
+      "bytes": 56012,
+      "sha256": "70619ed3f417560d24bcc1abfa86f218056bd472b7196b9e405f1c727ce0e309"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-archer-7.atlas.json",
+      "bytes": 547,
+      "sha256": "3cd6175d18c734e1064e962b3f6c188a8a05641dda12460faf83d0f02873ff84"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-archer-7.webp",
+      "bytes": 56716,
+      "sha256": "3c3872499bb14a1d080cffc1d67bcc27adaab6a442af6784a2ed1e9018cc79eb"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-archer-react-3.atlas.json",
+      "bytes": 553,
+      "sha256": "bc3cfdb4a16a8b09beec2ba28083e61a2a1a9b280db141611224d8c99c18771c"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-archer-react-3.webp",
+      "bytes": 84990,
+      "sha256": "2d436b5163d02d60ee7111119f64f04c4bad44ad4ff86823402cdd97ae6c4b75"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-archer-react-7.atlas.json",
+      "bytes": 553,
+      "sha256": "d8f353f0b4f4ee203c87fb9fb4e31af0690757e4487e4a3adb9273cef1c850d7"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-archer-react-7.webp",
+      "bytes": 62210,
+      "sha256": "1aca61b42c7b646d17ae455cc04976f3193b101de949eac3917e1ad148329a07"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-0.atlas.json",
+      "bytes": 545,
+      "sha256": "2041d114ed0689159ecf028d6c3c257c72ed2553ceabb1eb79d8646e83aa8fb2"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-0.webp",
+      "bytes": 119280,
+      "sha256": "d93356ab00282795877f41f38ccbf4ab6adb2ae83d5d0ca57ec4027d59cad4da"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-1.atlas.json",
+      "bytes": 545,
+      "sha256": "b54e4cf7e8027b4d4afb1e2553444ce56b957384bb122cb549f1543900289ab1"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-1.webp",
+      "bytes": 109508,
+      "sha256": "cb233686a0a213d08b1ccc123e37f31d7d830a43b1f79507d5bea59c42ad4f06"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-3.atlas.json",
+      "bytes": 545,
+      "sha256": "f0f6804c4914254380578cc78b3bd1ca7ea77fc9ce4395a3aafbb0a4017e4ab3"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-3.webp",
+      "bytes": 107366,
+      "sha256": "37a3d2fbfccbbcf1f47e7e6a842399a952262e8ac4b549a14307f938d17a590b"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-4.atlas.json",
+      "bytes": 545,
+      "sha256": "08af43733f3c925cf1e88737e4b6c5269e877e14113669e2655ee4f2f833074e"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-4.webp",
+      "bytes": 119400,
+      "sha256": "526ad322544e9faa0cce39bd145997a6206d2fd037bbbc3dc078185dba5ba644"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-5.atlas.json",
+      "bytes": 545,
+      "sha256": "03cd0d370fc00a4a8c6a05a3c35ab549d2a7da7c3105a20cc1f953f708acd268"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-5.webp",
+      "bytes": 108272,
+      "sha256": "ba0cdaceea1ad72ff8d583c5caf08d2bcc5d094d487139222260d734ae3f1119"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-7.atlas.json",
+      "bytes": 545,
+      "sha256": "fd5c7a08ab6957708c868cb431516853338e2e56436cd873a649e6f274b0b087"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-tang-7.webp",
+      "bytes": 110858,
+      "sha256": "cfea12aeddd733b494eae5edc663f1add21ae1b954fc340985d2b2c29df14513"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-0.atlas.json",
+      "bytes": 547,
+      "sha256": "b3767114071f8b649415299bfed3258f85ec0ce675b86c3e0eba5357574932e6"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-0.webp",
+      "bytes": 34844,
+      "sha256": "0d73ac0d7ad2852dc0be1daa93062125a10de0ff6d7955b81f0821a9d213c606"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-12.atlas.json",
+      "bytes": 549,
+      "sha256": "5e893d769f74c1420f21cb8bdade5616212ba21763b346b81b7832429880f8b1"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-12.webp",
+      "bytes": 38302,
+      "sha256": "21112d6048a93d745913dbbf2c94bf7699bbddb7d0d74e800336cd14b3f06a98"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-13.atlas.json",
+      "bytes": 549,
+      "sha256": "4c7a743f1854290aa303044a669069f052669e89c7865a5a0ac967dece1daeca"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-13.webp",
+      "bytes": 36566,
+      "sha256": "857d25bc78aa1297f6e7979e39b6964d8cd54a2044f4671f91d2de7bd6b3b8c4"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-15.atlas.json",
+      "bytes": 549,
+      "sha256": "341a8bc05699b4ec5be168181a128d673e3fda734ef2001772e56762828a30ec"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-15.webp",
+      "bytes": 36194,
+      "sha256": "b771c3fd96499ad3133f5b8d6a74f24778f15de67d1bfb4bfc86e17138c2985a"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-17.atlas.json",
+      "bytes": 549,
+      "sha256": "d6d69685fc0b1228da73c66ed25ac5544a8e19dcb7bca6c81068abf79b7993f2"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-17.webp",
+      "bytes": 37706,
+      "sha256": "cd91c34a62da55f5c4f0e51e776fb3ec8e3f7d0d455259e6026b9e1a32990449"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-23.atlas.json",
+      "bytes": 549,
+      "sha256": "67c795fc2adeef660e03fe703fa31b01ddd4551667473ef6ff28f95c9de3abaf"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-23.webp",
+      "bytes": 34216,
+      "sha256": "ac14e1c468416b8876f8a1433245d259d8c6dab31dbfe9f534ea3e42521e533f"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-4.atlas.json",
+      "bytes": 547,
+      "sha256": "8dd6159031907868fdff029a0c48092269e40125cd8770cba54d96d353c37e54"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-4.webp",
+      "bytes": 35818,
+      "sha256": "04b1ced7427dd88c865627a97291f5a5e6e6dceadd79ef1afe47608ea22fe2a2"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-5.atlas.json",
+      "bytes": 547,
+      "sha256": "572296dde8b7c2f074cf33e3cddeae7396faac518dc33673efcd9edce54b96ea"
+    },
+    {
+      "path": "assets/quality-b/round3/round3-wukong-5.webp",
+      "bytes": 33956,
+      "sha256": "cb5ad2a459432da55926b29eb623697af4d35880154c5271e0dd81bf85e9f351"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+// Read-only historical build for same-window old/new browser evidence.
+import {execFileSync,spawn} from 'node:child_process';import fs from 'node:fs';import path from 'node:path';
+const sha='45077095be4cb590c0e2c73f379f9efa1d45716e',tree='59c00a489ab8eee517a36f0f46b182acff2e7d9c',ref=process.env.BASELINE_SOURCE_REF??sha,port=Number(process.env.BASELINE_PORT??5180),root=process.cwd();
+if(!Number.isInteger(port)||port<1024||port>65535)throw new Error('Invalid local baseline port');
+if(execFileSync('git',['rev-parse',`${ref}^{tree}`],{encoding:'utf8'}).trim()!==tree)throw new Error('Historical baseline content must match 45077095');
+const dir=`/tmp/journeywest-quality-baseline-${port}`;fs.mkdirSync(dir,{recursive:true});const archive=execFileSync('git',['archive',ref,'src','assets/quality-b','index.html','package.json','package-lock.json','tsconfig.json'],{maxBuffer:40*1024*1024});execFileSync('tar',['-x','-C',dir],{input:archive});try{fs.symlinkSync(path.join(root,'node_modules'),path.join(dir,'node_modules'),'dir');}catch(e){if(e.code!=='EEXIST')throw e;}
+// Separate optimizer cache: the current and historical Vite servers share locked deps only.
+fs.writeFileSync(path.join(dir,'vite.config.mjs'),"export default {cacheDir:'.vite-baseline-cache'};\n");
+const log=fs.openSync(`/tmp/journeywest-quality-baseline-${port}.log`,'a'),child=spawn(process.execPath,[path.join(root,'node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port',String(port),'--strictPort'],{cwd:dir,detached:true,stdio:['ignore',log,log]});child.unref();let ready=false;for(let i=0;i<30;i++){try{if((await fetch(`http://127.0.0.1:${port}`)).ok){ready=true;break;}}catch{}await new Promise(r=>setTimeout(r,300));}if(!ready)throw new Error('Historical baseline did not become ready');console.log(JSON.stringify({baselineSha:sha,archiveRef:ref,sourceTree:tree,port,mode:'read-only archived source, no production deploy'}));

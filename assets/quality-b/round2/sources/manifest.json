@@ -1,0 +1,489 @@
+[
+  {
+    "id": "wukong-v01",
+    "version": "round2-study-01",
+    "status": "rejected-staff-overlaps-cells",
+    "sourceName": "exec-3fb3fb19-4e99-492b-aada-1b417f2eed4b.png",
+    "sourceDimensions": [
+      1536,
+      1024
+    ],
+    "sourceBytes": 2728995,
+    "sourceSha256": "3a3db399e92c6f34109c48da9361c8a5a3914c694edaa91f1ddc8ce796c4a9df",
+    "parts": [
+      {
+        "file": "assets/quality-b/round2/sources/wukong-v01.png.part00",
+        "bytes": 224000,
+        "sha256": "3a9a9dcd04d80ea02c158381e8e6352e0020193c5d021b6cfd36613a2304da5c"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong-v01.png.part01",
+        "bytes": 224000,
+        "sha256": "b94aac356e33ffa677c9f195607957686f8b4ae8f102545b840af182f77e4a2a"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong-v01.png.part02",
+        "bytes": 224000,
+        "sha256": "099312ec21ea5802d116b7e2888660ee85c84de9b7951dc770fc4ca48816e1b4"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong-v01.png.part03",
+        "bytes": 224000,
+        "sha256": "89f30afbfe4211801536f8722f24dc94e7af3bd96e3d579233a84132d4616d25"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong-v01.png.part04",
+        "bytes": 224000,
+        "sha256": "d8cb2624348d9e657012b400142cd06032dc70186aa2d5e5e09f74ec723a7450"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong-v01.png.part05",
+        "bytes": 224000,
+        "sha256": "7ce08954b0c8a06d4e91250f784e52c64f20369e1417d6b2162b47f86847935c"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong-v01.png.part06",
+        "bytes": 224000,
+        "sha256": "baaa27bc29ab30aa107b48035359b346d67ee18e6b02999d0edfe86232311e31"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong-v01.png.part07",
+        "bytes": 224000,
+        "sha256": "2908c120373b115a9ffeda6e6c9f2e340a5ef2631e22d55d6aaf53a9dd7adf82"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong-v01.png.part08",
+        "bytes": 224000,
+        "sha256": "590542ae6854ee8c6242a60535bb6bc65fda3578df936653295e6a78d00facef"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong-v01.png.part09",
+        "bytes": 224000,
+        "sha256": "a5ecc11363543bdf5e3ddac608ffe4b44c4cf2a2dbe4f67bb56a82e0c0070808"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong-v01.png.part10",
+        "bytes": 224000,
+        "sha256": "ecdc55c517e94e19a77d06ec0dc613d7733163372220d0696dc3994fb8f3d04c"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong-v01.png.part11",
+        "bytes": 224000,
+        "sha256": "c8355dcbdf9b1ddbf5dce4cbc92361b0995bda6858d443e5ac460b796fb4435b"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong-v01.png.part12",
+        "bytes": 40995,
+        "sha256": "9b10e9f15fce3b743faeccb0f3dfd8c6dbea96ac84e6893b793e46b7fcb5e6e4"
+      }
+    ],
+    "origin": "OpenAI image generation; project-owned runtime atlas reference; no purchased assets",
+    "approval": "user animation review pending"
+  },
+  {
+    "id": "wukong",
+    "version": "round2-study-02",
+    "status": "used-attack-study",
+    "sourceName": "exec-2f183f20-c344-40da-bd35-9cc95b7952e5.png",
+    "sourceDimensions": [
+      1536,
+      1024
+    ],
+    "sourceBytes": 2464831,
+    "sourceSha256": "2e3f68180cbc1d54e3768fb239b738eb4f90ecea469225fe73b6253e3f70d781",
+    "parts": [
+      {
+        "file": "assets/quality-b/round2/sources/wukong.png.part00",
+        "bytes": 224000,
+        "sha256": "be1325b65ee80c074c41db92a9a961a6633a6eb2709f8365dfec0f2b76ab49ff"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong.png.part01",
+        "bytes": 224000,
+        "sha256": "cacc21231007e10406ea5a3c84a102f1562120e0a1a6d91ee9fbe05096f0528b"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong.png.part02",
+        "bytes": 224000,
+        "sha256": "f120f968dcb28c0a6b755b30d30994cf003e7d2828bd5868ded047ccec8d02e6"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong.png.part03",
+        "bytes": 224000,
+        "sha256": "a6ea52f8714e0f66592a635c67e92067a336c8d664e0aebeda9ebe8d10d72ff8"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong.png.part04",
+        "bytes": 224000,
+        "sha256": "ae3d90205c00c7133b9a17550c6e4717c91f0401dc545c3fd9ed2ddf31cecf90"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong.png.part05",
+        "bytes": 224000,
+        "sha256": "a9a40504d962085596eb34746b1b19cfc62e6f4f00b67a7b17c48c59d6d3a86c"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong.png.part06",
+        "bytes": 224000,
+        "sha256": "51a3e3e66766d6900f4584ef70f1a296424324ea679c8649bc5e831e5583f535"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong.png.part07",
+        "bytes": 224000,
+        "sha256": "4d1b170f5f15c25aefa3a16e501a3a1f1904ec9ce6637ae9c16c341fea1a004e"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong.png.part08",
+        "bytes": 224000,
+        "sha256": "cc18d6403f35d3c2e7f4dd30f71fbbb751a1e6cd8d2368eaac09d1728141b905"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong.png.part09",
+        "bytes": 224000,
+        "sha256": "38b801a58d8fcb1c78b18ebaf4207183c90f5b940b5965a924c4c99edcdfbcf0"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong.png.part10",
+        "bytes": 224000,
+        "sha256": "6940a419440c7cbd18940e6b62a4f76506bc1e643db445729ca9dc4fff12ba85"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/wukong.png.part11",
+        "bytes": 831,
+        "sha256": "7e6572173d3ec38fdc66658e29dd268dc8f09b064f7c544c196b307009df14ea"
+      }
+    ],
+    "origin": "OpenAI image generation; project-owned runtime atlas reference; no purchased assets",
+    "approval": "user animation review pending"
+  },
+  {
+    "id": "tang-v01",
+    "version": "round2-study-01",
+    "status": "rejected-gait-insufficient",
+    "sourceName": "exec-a686b482-1143-488c-94d0-1fc8bb615b18.png",
+    "sourceDimensions": [
+      1774,
+      887
+    ],
+    "sourceBytes": 2286658,
+    "sourceSha256": "8d2ef8dc02d879b661b1c7f090c52572198963bcf5b4393d82c3eb068cdf4dd6",
+    "parts": [
+      {
+        "file": "assets/quality-b/round2/sources/tang-v01.png.part00",
+        "bytes": 224000,
+        "sha256": "2f373b81e218a91644d24c0f3e5bb61cd148c7e66eb972e362327cd14f1a5b7e"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/tang-v01.png.part01",
+        "bytes": 224000,
+        "sha256": "8604787b79fdc639ff64cfe8fd92e1dae98fc572807056fd40f3723f1415dc9f"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/tang-v01.png.part02",
+        "bytes": 224000,
+        "sha256": "f1eed5e140b25a699bb19974e124b71c932c4b86f528fe6c98c8cde647af8012"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/tang-v01.png.part03",
+        "bytes": 224000,
+        "sha256": "02429bd77fdb3d586c72c45df8481d26e22f5cc7289d8155a5a8f52f547dfc4f"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/tang-v01.png.part04",
+        "bytes": 224000,
+        "sha256": "7c63f1ef540fc9a5fac81024000db8d3ba4a12dd3aa206e79e406c015bd8e0e5"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/tang-v01.png.part05",
+        "bytes": 224000,
+        "sha256": "ea51261fcb9696d09e840a00d5cc24f848dd3c4644ad5870e543201559f9cffd"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/tang-v01.png.part06",
+        "bytes": 224000,
+        "sha256": "355db504cd33adf0afc15897b1651f314b3e85c994ae9c2e0c128afd4f76b6b8"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/tang-v01.png.part07",
+        "bytes": 224000,
+        "sha256": "bb8ef1ab7e87c9502273475878e89421fd60b4a68708a9b765c9b7aba9321667"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/tang-v01.png.part08",
+        "bytes": 224000,
+        "sha256": "e79d52d2883c474690a387c2abc941ae5b90772a0588f992e67e2f60d47a5939"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/tang-v01.png.part09",
+        "bytes": 224000,
+        "sha256": "864d3fe76a0e4324f5b4c268d9e73e236cf5c8d1a30510ce88ab031a99ad0f44"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/tang-v01.png.part10",
+        "bytes": 46658,
+        "sha256": "c2beb8cee9ddebd8331327628f3f5c44c168a51c1a43cd40a06bd9d7b487f412"
+      }
+    ],
+    "origin": "OpenAI image generation; project-owned runtime atlas reference; no purchased assets",
+    "approval": "user animation review pending"
+  },
+  {
+    "id": "archer-v01",
+    "version": "round2-study-01",
+    "status": "rejected-gutter-clipping",
+    "sourceName": "exec-acc466fc-4d1a-41dc-9dbb-b67202afb159.png",
+    "sourceDimensions": [
+      1774,
+      887
+    ],
+    "sourceBytes": 2442545,
+    "sourceSha256": "013816101eaeca59c217153e7d4b3aca73c52de547f0221ca49774ea282a5557",
+    "parts": [
+      {
+        "file": "assets/quality-b/round2/sources/archer-v01.png.part00",
+        "bytes": 224000,
+        "sha256": "e41cba0eeb5da1e3db27ce3bdbace23a9ebd783a81979db6312f554e97920e43"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer-v01.png.part01",
+        "bytes": 224000,
+        "sha256": "cba63b4f3437f953c4cdc45b6772c762023cdcc570bab956cbf9198adeb23f20"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer-v01.png.part02",
+        "bytes": 224000,
+        "sha256": "b1fdd055b3749f40cf3a8c6ce201d058428fdea6f2f6b776684f564a31707253"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer-v01.png.part03",
+        "bytes": 224000,
+        "sha256": "c282750f066276aabcf195e9b223868ae1f739ad29736e9f8fd5ca9ad04e0ff7"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer-v01.png.part04",
+        "bytes": 224000,
+        "sha256": "3cb215aa021a6d27b067f877dffb92fe08126e5bdc11c16f115756f889e08c8f"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer-v01.png.part05",
+        "bytes": 224000,
+        "sha256": "e83b90f98d02ec5e6125fd4313a3742e42ae3723770afa22423d07e883cf6493"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer-v01.png.part06",
+        "bytes": 224000,
+        "sha256": "90b00e695af550cb9edf074c653cc6e1dddad3b47e9b797853af0ea06d41e499"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer-v01.png.part07",
+        "bytes": 224000,
+        "sha256": "f849f4fce542e74ea2424e0c8604a67c2771cd6136caf5b2e4662cda30f7f3eb"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer-v01.png.part08",
+        "bytes": 224000,
+        "sha256": "b82ce100d25e42b021bfa06cb39cbf76b2516f3a7acc77a6413f8fd9300a8f3b"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer-v01.png.part09",
+        "bytes": 224000,
+        "sha256": "775a47b163efff67392b77534433b962e997c917eda2e9adcbe1cb2afd968427"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer-v01.png.part10",
+        "bytes": 202545,
+        "sha256": "03654af152d1d5b6620b801e2113fb5f98317ed65cb20bdcc3c86fe8cafce869"
+      }
+    ],
+    "origin": "OpenAI image generation; project-owned runtime atlas reference; no purchased assets",
+    "approval": "user animation review pending"
+  },
+  {
+    "id": "archer-react",
+    "version": "round2-study-02",
+    "status": "used-reaction-study",
+    "sourceName": "exec-5bb22492-2c57-4af6-9341-9e8842be13c2.png",
+    "sourceDimensions": [
+      1774,
+      887
+    ],
+    "sourceBytes": 1669532,
+    "sourceSha256": "7ed7eb03059969fa7e872596628e855b19295d45f1b7f9278e33889f6a20297b",
+    "parts": [
+      {
+        "file": "assets/quality-b/round2/sources/archer-react.png.part00",
+        "bytes": 224000,
+        "sha256": "2dfe093afa1a8f8a19aff39176d652c65d313f7c344865ba477a1e682b1d5bab"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer-react.png.part01",
+        "bytes": 224000,
+        "sha256": "f4356cb91dc63297bcc7a0ccb0cb6331c84dbd83b96ae385b59601b319d297f2"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer-react.png.part02",
+        "bytes": 224000,
+        "sha256": "061a60e15a583039684df0a9d3d6c898b5937774d7f6f1fa952c7ac28854bf93"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer-react.png.part03",
+        "bytes": 224000,
+        "sha256": "2e4287f7f2260262825591dc1fd986a86d1e888605df0468ed05d4e8a5f34340"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer-react.png.part04",
+        "bytes": 224000,
+        "sha256": "6fd8bbf8b1d2f451ae6ff2c9f8a05a0112f0c0276f2585ca59f54e5dcbacaba1"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer-react.png.part05",
+        "bytes": 224000,
+        "sha256": "99aaad6b0c73e84673f8c8277c8ac14ca17ae7f5bced8f897e4002f1513d0e8f"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer-react.png.part06",
+        "bytes": 224000,
+        "sha256": "07f1f164538a3a65b17b4690463e7544960087f4d300f1a5d158607371514242"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer-react.png.part07",
+        "bytes": 101532,
+        "sha256": "4c3828b0dffa9cfa71727793929fcaa2834b16c087e8db2636d1f99d821d4ff8"
+      }
+    ],
+    "origin": "OpenAI image generation; project-owned runtime atlas reference; no purchased assets",
+    "approval": "user animation review pending"
+  },
+  {
+    "id": "tang",
+    "version": "round2-study-02",
+    "status": "used-walk-study",
+    "sourceName": "exec-d9bf1a48-d802-4a6e-84db-dd79dbb8c0e1.png",
+    "sourceDimensions": [
+      1774,
+      887
+    ],
+    "sourceBytes": 2218856,
+    "sourceSha256": "3122f9bfe908aab19fdde9e9499b7b9b53828607a96c23b7a11a9ce9781101f0",
+    "parts": [
+      {
+        "file": "assets/quality-b/round2/sources/tang.png.part00",
+        "bytes": 224000,
+        "sha256": "3d40b67675a7fe669a18630a05ce908db29de0c0f9d1eb5d9e34200bfcdb283e"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/tang.png.part01",
+        "bytes": 224000,
+        "sha256": "9df1f8cb0be2bc57b4c91096a4a269702d66f58eeb19809be6cecf14a4920b69"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/tang.png.part02",
+        "bytes": 224000,
+        "sha256": "1f79fbab87525469c3cc5669922dade40483435ed6ac0066e1969bb4ad702b10"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/tang.png.part03",
+        "bytes": 224000,
+        "sha256": "2aae3601209e944c853bf72dfc232cba6d7277640f8901ba249d5d71347771e4"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/tang.png.part04",
+        "bytes": 224000,
+        "sha256": "cacb760b3a93f4b617245d6d93a6ac6aa96f3164dd0604ca1c2326bab147419c"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/tang.png.part05",
+        "bytes": 224000,
+        "sha256": "d5a0d192a284fb637d836269e9793acb3f6a0aea98d5f9e124ba31fff5c9268e"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/tang.png.part06",
+        "bytes": 224000,
+        "sha256": "f370bc288cf479acbc918b626495b1d4e3a08ca8dc16e9f21b47fb8bf21b645c"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/tang.png.part07",
+        "bytes": 224000,
+        "sha256": "59edccd5694478fae3eaada95651bae00709cdb00f463f13a62daaacfa7aff61"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/tang.png.part08",
+        "bytes": 224000,
+        "sha256": "47df37d1e596e10ab170827a2fde423cafb08f969bbfe7130b45d8d47b05ae75"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/tang.png.part09",
+        "bytes": 202856,
+        "sha256": "60f3822f926a7cebd3969613606ff68f6a7198329bac22299a0b3360ceeec10e"
+      }
+    ],
+    "origin": "OpenAI image generation; project-owned runtime atlas reference; no purchased assets",
+    "approval": "user animation review pending"
+  },
+  {
+    "id": "archer",
+    "version": "round2-study-02",
+    "status": "used-walk-study",
+    "sourceName": "exec-3151b13b-c193-403b-9284-45c28c9bd163.png",
+    "sourceDimensions": [
+      1774,
+      887
+    ],
+    "sourceBytes": 2084369,
+    "sourceSha256": "c9a0a59be64d184dda962cd2ae890d801c87ee3a1699d4645df5b717763f393d",
+    "parts": [
+      {
+        "file": "assets/quality-b/round2/sources/archer.png.part00",
+        "bytes": 224000,
+        "sha256": "a804d1bc2c98bade291e52ebdf95edc5df7986ef935481c1dd12f189151a8bb1"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer.png.part01",
+        "bytes": 224000,
+        "sha256": "cedbfd7ae093f734b9dbc427f8529295a35cbb9640a68816cb41dcb4aa97b956"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer.png.part02",
+        "bytes": 224000,
+        "sha256": "f6cc729efc27148ff634628839db37ebb3c240d4d3575ecb9fe21df93dfbebae"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer.png.part03",
+        "bytes": 224000,
+        "sha256": "606c2b40917ebbfc73d28419f916b3b72b7c9153a0e7404936d10fb55a6e32f1"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer.png.part04",
+        "bytes": 224000,
+        "sha256": "fd87082a21f8c234c035587bb59470c67b75c0ba6bd52894d6322add8acffab6"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer.png.part05",
+        "bytes": 224000,
+        "sha256": "6f4e8fee49fda157b5f4c46800994e558355d0b61a9e0df128344fb7245d5f91"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer.png.part06",
+        "bytes": 224000,
+        "sha256": "3ee370b79bc06682074aaf014d351c42155e4363699ceeb86eb1f4b4e1b28daf"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer.png.part07",
+        "bytes": 224000,
+        "sha256": "7a2355a6e03203e717964152d9e306fc29e739fb23e1ec1a36ce338093177c1e"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer.png.part08",
+        "bytes": 224000,
+        "sha256": "33ab37d26dd25c34a971d85594147c5670c26092bbec9b3b79b79a8a37c63541"
+      },
+      {
+        "file": "assets/quality-b/round2/sources/archer.png.part09",
+        "bytes": 68369,
+        "sha256": "c62a364a2bd68500c86293927103038b4628659edb0d13f4d02e942fe7644d47"
+      }
+    ],
+    "origin": "OpenAI image generation; project-owned runtime atlas reference; no purchased assets",
+    "approval": "user animation review pending"
+  }
+]

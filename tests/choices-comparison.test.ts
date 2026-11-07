@@ -1,0 +1,13 @@
+import {test,expect} from 'vitest';import {createHash} from 'node:crypto';import {mkdirSync,writeFileSync} from 'node:fs';
+import {EscortRun} from '../src/game/escortRun';import {CHOICES,FLIGHT} from '../src/game/flightAction';
+test('same-prefix choices compare a fixed sixty-second horizon, retaining cancellation and bad timing',()=>{
+ const rows:any[]=[],prefix=new Map<number,string>(),dt=1/60;
+ for(const [at,action] of [[8,'stay'],[8,'fly'],[8,'peach'],[8,'cancel-fly'],[14,'stay'],[14,'peach']] as const){const r=new EscortRun(undefined,'choices');r.start();while(r.battle.time<at)r.update(dt);const before={hero:{...r.battle.hero},tang:{...r.battle.tang},enemies:r.battle.enemies.map(a=>({...a})),events:r.events.map(e=>({...e})),energy:r.battle.energy};const digest=createHash('sha256').update(JSON.stringify(before)).digest('hex');if(prefix.has(at))expect(digest).toBe(prefix.get(at));else prefix.set(at,digest);
+  const accepted=action==='stay'?true:r.command(action==='peach'?{type:'pick-peach'}:{type:'fly',targetId:'archer-1'});const afterEnergy=r.battle.energy;let recalled=false;for(let i=0;i<60/dt;i++){if(action==='cancel-fly'&&!recalled&&r.flight.active&&r.flight.away>=1){r.command({type:'cancel-flight'});recalled=true;}r.update(dt);}
+  const damage=(id:string)=>r.events.filter(e=>e.kind==='arrow'&&e.target===id&&e.time>=at).reduce((n,e)=>n+(e.amount??0),0);
+  rows.push({at,action,dt,horizon:60,identicalPrefix:true,prefixDigest:digest,before,accepted,energySpent:before.energy-afterEnergy,after:{hero:r.battle.hero.hp,tang:r.battle.tang.hp,heroDamage:damage('wukong'),tangDamage:damage('tang'),phase:r.phase,resultTime:r.battle.time,away:r.flight.lastAway,fruit:r.flight.fruit,hits:r.flight.hits,healed:r.flight.healed},flightEvents:r.flight.events,combatEvents:r.events});
+ }
+ const [a,b,c,d,,bad]=rows;expect(a.after.phase).toBe('won');expect(b.accepted).toBe(true);expect(b.after.hits).toBe(1);expect(b.energySpent).toBe(30);expect(c.after.fruit).toBe(1);expect(c.after.healed).toBeGreaterThan(0);expect(d.after.hits).toBe(0);expect(d.energySpent).toBe(30);expect(d.after.fruit).toBe(2);expect(rows.every(r=>!r.flightEvents.some((e:any)=>e.kind==='picked')||r.action==='peach')).toBe(true);
+ // Benefit/cost metrics are data, not a guaranteed rule that every intervention wins.
+ mkdirSync('reports',{recursive:true});writeFileSync('reports/choices-causal.json',JSON.stringify({source:'same initial state, same commands/events until at; fixed1/60, sixty-second observation; result freezes naturally; no HP/spawn/energy writes',configuration:{CHOICES,FLIGHT},rows},null,2));console.log('CHOICES_CAUSAL '+JSON.stringify(rows.map(({at,action,after})=>({at,action,after}))));
+},60000);
