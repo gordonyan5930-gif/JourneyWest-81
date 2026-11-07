@@ -11,6 +11,18 @@ export const STRATEGY_CHOICES:ChoiceProfile={...CHOICES,tree:{x:560,y:520},entra
 // damage model. Explicit entry keeps the accepted strategy/classic comparisons.
 export const ROUND1_CHOICES:ChoiceProfile={...STRATEGY_CHOICES};
 export const CHOICE_READABILITY={nearRange:100,staffRange:RANGED.range};
+/** Current idle status, not a stale result from the previous flight. */
+export function idleChoiceStatus(r:EscortRun,treeSelected=false,aiming=false){
+ const f=r.flight;
+ if(!r.started||r.finished||r.battle.hero.hp<=0)return round1Cue(r).text;
+ if(f.active)return null;
+ if(treeSelected)return `桃树剩${f.fruit}份 · ${f.reason(r,'peach')||'离队采摘1.5秒，耗1份，存活队员各回40'}`;
+ if(f.rejectedAt!==null)return '上次未出发 · '+f.message;
+ if(aiming)return null;
+ if(r.manualHero||r.battle.safe)return round1Cue(r).text;
+ if(r.returning)return '悟空正在回援 · 抵达后护卫';
+ return f.events.at(-1)?.kind==='landed'?'已恢复自动护卫 · 选敌查看技能条件':'悟空自动护卫 · 选敌查看技能条件';
+}
 export function round1Cue(r:EscortRun){
  const fact=encounterCue(r),b=r.battle,[far,near]=b.enemies;
  if(fact.stage==='ready')return {stage:'ready',text:'先留守观察：近侧自动接敌，远端可选中查看'};
@@ -32,7 +44,7 @@ export function round1Cue(r:EscortRun){
  const full=[b.hero,b.tang].filter(u=>u.hp>0).every(u=>u.hp===u.max);
  if(r.manualHero)return {stage:'manual',text:`悟空手动${r.heroMotion.route.length?'行进':'驻守'} · ${b.safe&&full?'全员满血；':''}回援才恢复自动护卫`};
  if(b.safe){
-  const restored=f.events.at(-1)?.kind==='landed'?'已恢复护卫 · ':'';
+  const restored=f.events.at(-1)?.kind==='landed'?'已恢复自动护卫 · ':'';
   const recovery=full?'全员满血，无需摘桃':f.fruit===0?'桃子已耗尽，继续护送':`有伤势，选桃树查看采摘条件（${f.fruit}份）`;
   return {stage:'breather',text:'威胁已解除 · '+restored+recovery};
  }
