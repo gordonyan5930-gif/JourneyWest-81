@@ -63,3 +63,7 @@ assets/quality-b/round3/index.json沿用52帧，其中33帧直接引用旧textur
 | `assets/quality-b/wukong-atlas.webp` | 1313732 | `2079b7da7df1b0d543e258ce5b33c9b1f574d7594840a841ebc1edcd99a35727` |
 | `assets/quality-b/round3/index.json` | 17020 | `b45c7a7962a9086bdedc031955a1e3059c972fb9346edd70728c2ebd57941427` |
 | `public/prototypes/peach-tree.svg` | 1673 | `1df10ebb4f6735fc244df41add846c95c82e964524f56b4adc2a060d0b27dbc3` |
+
+
+## 2026-11-07 · 生存试玩门A
+门A不新增正式人物或地图源资产。复用terrace-map地面裁片（仅运行时取样、不改原件）、wukong-run/round2/round3、ranged-study、原音频与prototypes/peach-tree.svg。近战小妖/岩石/浅滩为程序灰盒原型，明示非正式美术。母版原件与校验不变。

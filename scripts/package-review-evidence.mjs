@@ -65,6 +65,7 @@ function main(){
  const textNames=['round2-input-layout.json','round2-input.csv','round2-harvest.json','round2-state-fixtures.json','round2-states.csv','round2-README.txt'];
  const textRequested=cases.some(c=>c.name.includes('round2-interface'))||fs.existsSync('reports/round2-state-fixtures.json');
  const textFiles=textRequested?textNames.flatMap(name=>{const file='reports/'+name;if(!allowed(file)){manifest.missing.push({file,kind:'report',reason:'Round2 text evidence not generated or unsafe; no silent completeness claim'});return [];}return [{...meta(file),archive:name}];}):[];
+ for(const name of ['survival-policies.json']){const file='reports/'+name;if(allowed(file))textFiles.push({...meta(file),archive:name});}
  manifest.lightweightReports=textFiles;
  const provisional=allocate(artifacts,current,request.requestedMode);manifest.missing.push(...provisional.blocked.map(a=>({kind:a.kind,file:a.file,bytes:a.bytes,sha256:a.sha256,reason:a.reason})));manifest.preUploadPlan=provisional;
  fs.writeFileSync('reports/evidence-manifest.json',JSON.stringify(manifest,null,2));fs.writeFileSync('reports/verification-summary.json',JSON.stringify(summary,null,2));
