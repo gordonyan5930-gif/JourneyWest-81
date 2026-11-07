@@ -1,6 +1,7 @@
 import type {EscortRun} from './escortRun';
 import {CHOICES} from './flightAction';
 import {RANGED} from './rangedCombat';
+import {GUARD} from './guardRules';
 import {distance} from './smoothMovement';
 export type ChoiceProfile=typeof CHOICES & {returnLead?:number;guardReadyOnLanding?:boolean};
 // Same two ordinary archers. Distances, real approach and target AI trigger
@@ -14,8 +15,27 @@ export function round1Cue(r:EscortRun){
  const fact=encounterCue(r),b=r.battle,[far,near]=b.enemies;
  if(fact.stage==='ready')return {stage:'ready',text:'先留守观察：近侧自动接敌，远端可选中查看'};
  if(r.finished)return fact;
- if(b.safe)return {stage:'breather',text:`威胁已解除 · 查看伤势，再决定摘桃（${r.flight.fruit}份）`};
- if(r.flight.active)return {stage:'away',text:r.flight.kind==='peach'?'悟空离队摘桃 · 唐僧仍可能受袭，可回援':'悟空离队飞袭 · 留意唐僧，可提前回援'};
+ const f=r.flight;
+ if(b.hero.hp<=0){
+  const text=f.active?'正在安全落地，落地后按条件复活':r.deadFor<GUARD.reviveDelay?`复活还需${Math.ceil(GUARD.reviveDelay-r.deadFor)}秒`:b.energy<GUARD.reviveCost?`复活需要${GUARD.reviveCost}能量，当前不足`:`可尝试复活（${GUARD.reviveCost}能量，需安全空位）`;
+  return {stage:'down',text:'悟空倒地 · '+text};
+ }
+ if(f.active){
+  const returning=['return-rise','return','land','crash'].includes(f.phase),events=f.events.filter(e=>e.action===f.action);
+  const action=f.kind==='peach'?'摘桃':'飞袭',settled=events.some(e=>e.kind===(f.kind==='peach'?'picked':'hit'));
+  const mode=f.returnManual?'手动驻守':'自动护卫';
+  if(returning)return {stage:'away',text:`${action}${settled?'已结算':'未结算'} · 正在返程，落地恢复${mode}`};
+  if(f.phase==='harvest')return {stage:'away',text:'正在采摘 · 成功才扣1份桃子并回血，可提前回援'};
+  const phase=({takeoff:'起飞',outbound:'接近目标','approach-land':'准备落地',windup:'强击蓄势',contact:'强击接触',recovery:'收招'} as Record<string,string>)[f.phase]??'进行中';
+  return {stage:'away',text:`悟空离队${action} · ${phase}${r.dangerSince!==null?'，唐僧受威胁':''}，可回援`};
+ }
+ const full=[b.hero,b.tang].filter(u=>u.hp>0).every(u=>u.hp===u.max);
+ if(r.manualHero)return {stage:'manual',text:`悟空手动${r.heroMotion.route.length?'行进':'驻守'} · ${b.safe&&full?'全员满血；':''}回援才恢复自动护卫`};
+ if(b.safe){
+  const restored=f.events.at(-1)?.kind==='landed'?'已恢复护卫 · ':'';
+  const recovery=full?'全员满血，无需摘桃':f.fruit===0?'桃子已耗尽，继续护送':`有伤势，选桃树查看采摘条件（${f.fruit}份）`;
+  return {stage:'breather',text:'威胁已解除 · '+restored+recovery};
+ }
  if(near.hp>0){
   if(r.meleeHits===0&&distance(near,b.hero)>CHOICE_READABILITY.nearRange)return {stage:'approach',text:'近侧来敌 · 留守可自动接敌，观察远端入口'};
   if(far.hp>0&&far.windup>0)return {stage:'overlap',text:'两路威胁 · 近侧尚未清除，此时离队有风险'};
